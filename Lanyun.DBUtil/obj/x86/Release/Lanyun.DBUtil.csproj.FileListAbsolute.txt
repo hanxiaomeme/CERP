@@ -1,0 +1,4 @@
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\bin\x86\Release\Lanyun.DBUtil.dll
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\bin\x86\Release\Lanyun.DBUtil.pdb
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\obj\x86\Release\Lanyun.DBUtil.dll
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\obj\x86\Release\Lanyun.DBUtil.pdb

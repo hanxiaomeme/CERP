@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "用户操作日志";
+
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loaddg();
+
+        });
+
+        function loaddg() {
+            var qryParam = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/Logs/GetUserActionLogList")',
+                title: '用户操作日志',
+            singleSelect: true,
+            queryParams: qryParam
+        });
+        }
+
+        function fmtLogType(value, row, index) {
+            if (value == '1') {
+                return '默认';
+            } else if (value == '2') {
+                return '查询';
+            } else if (value == '3') {
+                return '新增';
+            } else if (value == '4') {
+                return '编辑';
+            } else if (value == '5') {
+                return '删除';
+            }
+
+        }
+
+</script>
+   }
+
+<form id="qryForm">
+    <div id="tb">
+        <div class="qwf-searchbar" style="padding: 10px">
+            <table width="100%" border="0" cellspacing="5" cellpadding="3">
+                <tr>
+                    <td>用户ID:<input type="text" id="qryUserId" name="qryUserId" /></td>
+                    <td>用户编码:<input type="text" id="qryUserCode" name="qryUserCode" /></td>
+                    <td>用户名:<input type="text" id="qryUserName" name="qryUserName" /></td>
+                    <td>日志CODE:<input type="text" id="qryLogCode" name="qryLogCode" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        日志类型:
+                        <select id="qryLogTypes" name="qryLogTypes" class="easyui-combobox" panelHeight="auto" style="width:100px">
+                            <option value="0">==全部==</option>
+                            <option value="1">默认</option>
+                            <option value="2">查询</option>
+                            <option value="3">新增</option>
+                            <option value="4">编辑</option>
+                            <option value="5">删除</option>
+                        </select>
+                    </td>
+                    <td>
+                        开始时间:
+                        <input id="qryBeginTime" name="qryBeginTime" class="easyui-datebox" size="10"/>
+                        ~<input id="qryEndTime" name="qryEndTime" class="easyui-datebox" size="10" />
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div id="toolbar" style="padding: 3px">
+            <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+        </div>
+    </div>
+    <table id="dg">
+        <thead>
+            <tr>
+                <th field="UserId" width="100">用户ID</th>
+                <th field="UserCode" width="120">用户编码</th>
+                <th field="UserName" width="120">用户名</th>
+                <th field="UserIp" width="80">用户IP</th>
+                <th field="LogCode" width="150">日志代码</th>
+                <th field="LogDescription" width="280">日志描述</th>
+                <th field="LogType" formatter="fmtLogType" width="80">日志类型</th>
+                <th field="CreateTime" width="130">操作时间</th>
+                <th field="ActionMethod" width="260">调用方法</th>
+                <th field="LogItems" width="300">数据值</th>
+            </tr>
+        </thead>
+    </table>
+</form>

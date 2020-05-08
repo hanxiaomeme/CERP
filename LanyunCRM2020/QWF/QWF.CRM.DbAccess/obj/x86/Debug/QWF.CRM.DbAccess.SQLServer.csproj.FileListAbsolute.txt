@@ -1,0 +1,14 @@
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\QWF.CRM.DbAccess.SQLServer.dll.config
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\QWF.CRM.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\QWF.CRM.DbAccess.SQLServer.pdb
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\EntityFramework.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\EntityFramework.SqlServer.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\EntityFramework.xml
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\EntityFramework.SqlServer.xml
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\zh-Hans\EntityFramework.resources.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Debug\QWF.CRM.DbAccess.SQLServer.csprojResolveAssemblyReference.cache
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Debug\QWF.CRM.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Debug\QWF.CRM.DbAccess.SQLServer.pdb

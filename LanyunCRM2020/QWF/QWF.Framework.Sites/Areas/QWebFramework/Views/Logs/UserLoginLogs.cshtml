@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "用户登录日志";
+}
+
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loaddg();
+
+        });
+        function loaddg() {
+            var qryParms = $('#qryform').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/Logs/GetUserLoginLogList")',
+                title: '用户登录日志',
+                singleSelect: true,
+                queryParams: qryParms
+            });
+        }
+</script>
+    }
+
+
+<body>
+    <form id="qryform">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="5" cellpadding="3">
+                    <tr>
+                        <td>
+                            用户名:<input type="text" id="qryUserName" name="qryUserName" />
+                        </td>
+                        <td>
+                            登录时间:
+                            <input id="qryBeginTime" name="qryBeginTime" class="easyui-datebox" size="10"   />
+                            ~<input id="qryEndTime" name="qryEndTime" class="easyui-datebox" size="10"   />
+
+                        </td>
+                        <td>
+                            用户状态:
+                            <select id="qryUserStatus" name="qryUserStatus" class="easyui-combobox" panelHeight="auto" style="width:100px">
+                                <option value="0">全部</option>
+                                <option value="1">正常</option>
+                                <option value="2">禁用</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            姓　名:<input type="text" id="qryRealname" name="qryRealname" />
+                        </td>
+                        <td>
+                            登录状态 <select id="qryLoginStatus" name="qryLoginStatus" class="easyui-combobox" panelHeight="auto" style="width:100px">
+                                <option value="0">全部</option>
+                                <option value="1">正常</option>
+                                <option value="2">失败</option>
+                            </select>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+            </div>
+        </div>
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th field="AppId" width="100">应用ID</th>
+                    <th field="LoginUser" width="100">用户名</th>
+                    <th field="Realname" width="100">姓名</th>
+                    <th field="Position" width="150">职位</th>
+                    <th field="Ip" width="100">登录IP</th>
+                    <th field="LoginTime" width="130">登录时间</th>
+                    <th field="LoginStatusName" width="80">登录状态</th>
+                    <th field="UserStatus" width="80">用户状态</th>
+                    <th field="Remarks" width="280">说明</th>
+                    <th field="IsDelete" width="80">是否删除</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</body>

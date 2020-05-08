@@ -1,0 +1,10 @@
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\bin\Release\Common.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\bin\Release\Common.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\obj\Release\ResolveAssemblyReference.cache
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\obj\Release\Common.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\obj\Release\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\Release\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\Release\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\Release\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\Release\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\Release\Common.csprojResolveAssemblyReference.cache

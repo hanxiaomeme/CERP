@@ -1,0 +1,25 @@
+D:\EAStar\01.世达钢管\Common\bin\x86\Release\Common.dll
+D:\EAStar\01.世达钢管\Common\bin\x86\Release\Common.pdb
+D:\EAStar\01.世达钢管\Common\obj\x86\Release\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管\Common\obj\x86\Release\Common.dll
+D:\EAStar\01.世达钢管\Common\obj\x86\Release\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\x86\Release\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\x86\Release\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Release\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Release\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Release\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\x86\Release\office.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\x86\Release\Microsoft.Vbe.Interop.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\x86\Release\stdole.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\Common.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\Common.pdb
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\ICSharpCode.SharpZipLib.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\NPOI.OpenXmlFormats.dll
+E:\Project\C# Project\00.Modules\01.Common\obj\x86\Release\Common.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.Modules\01.Common\obj\x86\Release\Common.dll
+E:\Project\C# Project\00.Modules\01.Common\obj\x86\Release\Common.pdb
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\EPPlus.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\EPPlus.xml
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\NPOI.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\NPOI.OOXML.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Release\NPOI.OpenXml4Net.dll

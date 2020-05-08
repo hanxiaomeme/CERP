@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "角色组管理";
+}
+
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+        }
+
+        ///获取角色组
+        function loaddg() {
+            var params = {
+                qryGroupName: $('#qryGroupName').val()
+            };
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/RoleGroup/List")',
+                title: '角色组管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '用户组管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的角色或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的用户！');
+                return false;
+            } else {
+                console.log(row);
+                $('#dlg').dialog('open');
+                $('#groupId').val(row.GroupId);
+                $('#groupName').textbox('setValue', row.GroupName);
+                $('#remarks').textbox('setValue', row.GroupRemarks);
+            }
+        }
+
+        function fmtSort(value, row, index) {
+            var i = index + 1;
+            return "<input type='text' name='sortId_" + row.GroupId + "' value='" + i + "' size='3'/>";
+        }
+        function btnSort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#mainForm').ajaxSubmit({
+                        url: '@Url.Content("~/QWebFramework/RoleGroup/Sort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            } else {
+                                alertError(res.Message);
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+        /**/
+        function btnOrders(type) {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: 'Delete',
+                        data: { groupId: row.GroupId },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-from').form('clear');
+        }
+
+        function save() {
+            var $from = $('#dlg-from');
+            var obj = $from.serializeJSON();
+
+            if (obj.groupName == undefined || obj.groupName == null || obj.groupName == '') {
+                alertError('请填写角色组名称');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/RoleGroup/SaveRoleGroup")',
+                data: $from.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        loaddg();
+                    }
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="mainForm" name="mainForm" method="post">
+
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            角色组名称:<input id="qryGroupName" name="qryGroupName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="btnOrders('del');">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="btnSort();">排序</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="GroupId" width="80">角色组ID</th>
+                    <th field="GroupName" width="150">角色组名称</th>
+                    <th field="SortId" width="100" formatter='fmtSort'>排序ID</th>
+                    <th field="GroupRemarks" width="200">角色组备注</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+
+
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-from">
+        <input type="hidden" id="groupId" name="groupId" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="groupName" name="groupName" label="角色组名称:" required="true" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px',multiline:true" " style="width:100%;height:60px;">
+            </div>
+
+        </div>
+    </form>
+
+</div>
+

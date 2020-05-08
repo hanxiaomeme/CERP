@@ -1,0 +1,14 @@
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\LanyunMES.Business.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\LanyunMES.Business.pdb
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\Lanyun.DBUtil.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\LanyunMES.DAL.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\LanyunMES.Entity.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\Dapper.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\Common.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\Lanyun.DBUtil.pdb
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\LanyunMES.DAL.pdb
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\LanyunMES.Entity.pdb
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\bin\x86\Release\Dapper.xml
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\obj\x86\Release\LanyunMES.Business.csprojResolveAssemblyReference.cache
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\obj\x86\Release\LanyunMES.Business.dll
+C:\Lanyun Project\Lanyun_MES\Client\LanyunMES.Business\obj\x86\Release\LanyunMES.Business.pdb

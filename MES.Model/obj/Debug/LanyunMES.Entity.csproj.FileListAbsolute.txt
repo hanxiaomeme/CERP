@@ -1,0 +1,6 @@
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\bin\Debug\LanyunMES.Entity.dll.config
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\bin\Debug\LanyunMES.Entity.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\bin\Debug\LanyunMES.Entity.pdb
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\obj\Debug\LanyunMES.Entity.csprojResolveAssemblyReference.cache
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\obj\Debug\LanyunMES.Entity.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\obj\Debug\LanyunMES.Entity.pdb

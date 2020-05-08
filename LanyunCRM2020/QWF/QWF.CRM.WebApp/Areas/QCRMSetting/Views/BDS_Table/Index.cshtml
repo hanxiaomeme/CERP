@@ -1,0 +1,278 @@
+﻿
+@{
+    ViewBag.Title = "数据表管理";
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+            $('#dlg-delete-div').hide();
+        }
+
+        function loaddg() {
+
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_Table/GetList")',
+                title: '数据表管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '数据表管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            $('#code').textbox('enable');
+            $('#create').checkbox('enable');
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的数据。');
+                return false;
+            } else {
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#id').val(row.Code);
+                //设置禁用
+                $('#code').textbox('disable').textbox('setValue', row.Code);
+                $('#name').textbox('setValue', row.Name);
+                $('#remarks').textbox('setValue', row.Remarks);
+                $('#create').checkbox('disable');
+                if (row.DeleteType == 1) {
+                    $('#deleteType').checkbox('check');
+                    $('#deleteField').textbox('setValue', row.DeleteField);
+                    $('#deleteFlag').textbox('setValue', row.DeleteFlag);
+                    $('#dlg-delete-div').show();
+                } else {
+                    $('#deleteType').checkbox('uncheck');
+                    $('#dlg-delete-div').hide();
+                }
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条需要删除的记录。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '删除数据后,数据不可恢复。', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Table/Delete")',
+                        data: { code: row.Code },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if(obj.id.isNull() && obj.code.isNull()){
+                alertError('请填写表名。');
+                return false;
+            }
+            else if (obj.name.isNull()) {
+                alertError('请填写描述。');
+                return false;
+            }
+
+            if (obj.deleteType=='1') {
+                if (obj.deleteField.isNull()) {
+                    alertError('请填写字段名。');
+                    return false;
+                }else if(obj.deleteFlag.isNull()){
+                    alertError('请填写正常标识。');
+                    return false;
+                }
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_Table/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+
+        function deleteTypeOnChange(checked) {
+            if (checked) {
+                $('#dlg-delete-div').show();
+            } else {
+                $('#dlg-delete-div').hide();
+            }
+        }
+
+
+    </script>
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            表名:<input type="text" id="qryCode" name="qryCode" />
+                        </td>
+                        <td>
+                            描述:<input type="text" id="qryName" name="qryName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();;">删除</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'ID',checkbox:true"></th>
+                    <th field="Code" width="150">表名</th>
+                    <th field="Name" width="200">描述</th>
+                    <th field="DeleteTypeName" width="80">逻辑删除</th>
+                    <th field="DeleteField" width="150">字段名</th>
+                    <th field="DeleteFlag" width="80">正常标识</th>
+                    <th field="Remarks" width="300">备注</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+
+
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="code" name="code" label="表名<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-form-desc">
+                1.表名规范:3-128位字母、数字或下划线组合，不能以数字开头。<br />
+                3.表名一旦创建，则不能更改。<br/>
+                3.建议用“TB_”开头，全拼或英文简写<br />
+                4.视图建议用“vw_”开头，全拼或英文简写。<br />
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="描述<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注:" 
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:true" 
+                        style="width:300px;height:60px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="create" name="create" label="创建物理表:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="deleteType" name="deleteType" label="逻辑删除:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',onChange:function(checked){deleteTypeOnChange(checked);}">
+            </div>
+            <!-- -->
+            <div id="dlg-delete-div">
+                <div class="dlg-input-item">
+                    <input class="easyui-textbox" id="deleteField" name="deleteField" label="字段名<span class='font-red'>*</span>：" required="true"
+                           data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                           style="width:300px;">
+                </div>
+                <div class="dlg-input-item">
+                    <input class="easyui-textbox" id="deleteFlag" name="deleteFlag" label="正常标识<span class='font-red'>*</span>：" required="true"
+                           data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                           style="width:300px;">
+                </div>
+                <div class="dlg-form-desc">
+                    1.当勾选逻辑删除，字段名和删除标识为必填，通常这里是由开发人员填写。<br />
+                    2.逻辑删除通常用于基础数据的情况。<br />
+                    3.字段名：表示标识删除的字段如：Deleted。<br />
+                    4.正常标识：是指XX值表示未删除，例如：0 代表未删除。<br />
+                </div>
+            </div>
+         
+
+        </div>
+    </form>
+
+</div>
+
+
+

@@ -1,0 +1,308 @@
+﻿@{
+    ViewBag.Title = "多级数据字典管理";
+}
+
+@section script{
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            $('#isTopNode').checkbox({
+                checked:false,
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#dicComboTree').combotree('disable');
+                    } else {
+                        $('#dicComboTree').combotree('enable');
+                    }
+                }
+            });
+            $('#div-itemValue').hide();
+            $('#systemVaule').checkbox({
+                checked: true,
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#div-itemValue').hide();
+                    } else {
+                        $('#div-itemValue').show();
+                    }
+                }
+            });
+            
+            //初始化弹窗
+            initDialog();
+            loadTreeCombox();
+            loadTreeGrid();
+        }
+
+        function loadTreeCombox(id) {
+            $('#dicComboTree').combotree({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/GetDictionaryTree")',
+                onLoadSuccess: function () {
+                    if (id != undefined && id !=null ) {
+                        $('#dicComboTree').combotree('setValue', id);
+                    }
+                }
+            });
+        }
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '多级数据字典管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+
+        function save() {
+            var $from = $('#dlg-from');
+            var obj = $from.serializeJSON();
+
+            if (obj.parentId == undefined || obj.parentId == null || obj.parentId == '0' || obj.parentId == '') {
+                if (obj.isTopNode == undefined || obj.isTopNode == '') {
+                    alertError('请选择所属分类或勾选一级分类。');
+                    return false;
+                }
+            }
+
+            if (obj.name.isNull()) {
+                alertError("请填名称。");
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/SaveTree")',
+                data: $from.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        loadTreeCombox(obj.parentId);
+                        loadTreeGrid();
+                        
+                    }
+                }
+            });
+        }
+
+
+        function loadTreeGrid() {
+            index = 0;
+            $('#dicTreeGrid').treegrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/GetTreeGridList")',
+                fit: true,
+                fitColumns: false,
+                idField: 'id',
+                treeField: 'Name',
+                toolbar: '#toolbar',
+                border: false,
+                onDblClickRow: function (row) {
+                    openEditWindows(row);
+                }
+
+            });
+            return false;
+        }
+
+
+        function fmtSort(value, row) {
+            index++;
+            return "<input type='text' name='sortId_" + row.id + "' value='" + index + "' size='3'/>";
+        }
+
+        function addNode() {
+            $('#dlg').dialog('open');
+            $('#div-istop').show();
+            resetForm();
+            $('#div-itemValue').hide();
+            $('#systemVaule').checkbox('disable');
+            $('#isTopNode').checkbox('enable');
+            $('#dicComboTree').combotree('enable');
+            $('#itemValue').textbox('enable');
+
+        }
+
+        function editNode() {
+            var node = $('#dicTreeGrid').treegrid('getSelected');
+            if (!node) {
+                alertError('请选择要编辑数据或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(node);
+            }
+        }
+
+        function openEditWindows(node) {
+            if (!node) {
+                alertError('请选择要编辑的数据！');
+                return false;
+            } else {
+                $('#dlg').dialog('open');
+
+                //设置数据
+                $('#id').val(node.id);
+                $('#oldParentId').val(node.ParentId);
+
+                $('#isTopNode').checkbox({
+                    checked: node.ParentId == '0' ? true : false
+                });
+
+                $('#div-istop').hide();
+                if (node.ParentId == '0') {
+                    $('#dicComboTree').combotree('setValue', '');
+                    $('#dicComboTree').combotree('disable');
+                    
+                } else {
+                    $('#dicComboTree').combotree('enable');
+                    $('#dicComboTree').combotree('setValue', node.ParentId);
+                }
+                $('#name').textbox('setValue', node.Name);
+                $('#itemValue').textbox('setValue', node.ItemValue);
+                if (node.ItemValueType == 1) {
+                    $('#div-itemValue').hide();
+                    //设置
+                    $('#itemValue').textbox('disable');
+                }
+                else {
+                    $('#systemVaule').checkbox('enable');
+                    $('#div-itemValue').show();
+                    $('#itemValue').textbox('enable');
+                }
+
+
+            }
+        }
+
+        function delNode() {
+            var node = $('#dicTreeGrid').treegrid('getSelected');
+            if (!node) {
+                alertError('请选择一条要删除的数据。');
+                return false;
+            }
+            $.messager.confirm('删除确认框', '确定删除【' + node.Name + '】吗?删除将不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/DeleteTree")',
+                        data: {
+                            id:node.id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                reLoad();
+                                alertInfo('删除成功。');
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function treeSort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#mainForm').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/TreeSort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                reLoad();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function resetForm() {
+            $("#dlg-from").form('clear').form('reset');
+        }
+
+        function reLoad() {
+            loadTreeGrid();
+            loadTreeCombox();
+        }
+    </script>
+}
+<form id="mainForm" name="mainForm" method="post">
+    <div id="toolbar" style="padding:3px">
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width:80px" onclick="addNode();">新增</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width:80px" onclick="editNode()">编辑</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width:80px" onclick="delNode()">删除</a>
+
+        <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="treeSort();">排序</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="reLoad();">刷新</a>
+    </div>
+
+    <table id="dicTreeGrid" title="多级数据字典管理" class="easyui-treegrid">
+        <thead>
+            <tr>
+                <th data-options="field:'Id',checkbox:true"></th>
+                <th field="Code" width="150">分类编码</th>
+                <th field="Name" width="200">名称</th>
+                <th field="IsParent" width="80">一级分类</th>
+                <th field="ItemValue" width="120">值</th>
+                <th field="ItemSort" width="100" formatter='fmtSort'>排序ID</th>
+                <th field="CreateTime" width="150">创建时间</th>
+                <th field="UpdateTime" width="150">修改时间</th>
+            </tr>
+        </thead>
+    </table>
+</form>
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-from">
+        <input type="hidden" id="id" name="id" />
+        <input type="hidden" id="oldParentId" name="oldParentId" />
+        <div id="dlg-div" class="dlg-div">
+            <!-- 顶级节点-->
+            <div class="dlg-input-item" id="div-istop">
+                <input class="easyui-checkbox" id="isTopNode" name="isTopNode" value="1" label="一级分类:" 
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'">
+            </div>
+
+            <div class="dlg-input-item">
+                <input id="dicComboTree" name="parentId" label="所属节点<span class='font-red'>*</span>:" labelWidth="100px" 
+                       labelAlign="right" class="easyui-combotree" style="width:350px;" />
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="名称<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'"
+                       style="width:350px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="systemVaule" name="systemVaule" label="子项值(系统生成):" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+
+            <div id="div-itemValue" class="dlg-input-item">
+                <input class="easyui-textbox" id="itemValue" name="itemValue" label="子项值(自定义)：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-form-desc">
+                1.子项值为不勾选则可以自定义子项的值。<br />
+                2.子项默认值规则:类似P20193020001的编号,本系统唯一码。<br />
+                3.子项名称如果有数据产生报表，不建议再修改。否则会产生"脏数据"<br />
+            </div>
+
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,483 @@
+﻿
+@{
+    //Layout = null;
+    ViewBag.Title = "菜单管理";
+}
+
+@section script{
+    <script type="text/javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+        $(document).ready(function () {
+            $('#tb-edit').hide();
+            getMenuTree();
+            initGroups();
+
+            $('#isTopNodeSpan').hide();
+            //顶级事件
+            $('#isTopNode').checkbox({
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#combotreeMenu').combotree('disable');
+                    } else {
+                        $('#combotreeMenu').combotree('enable');
+                    }
+                }
+            });
+        });
+
+        function initGroups() {
+            $('#ddlGroups').combobox({
+                onSelect: function (rec) {
+                    loadRoleDataGrid();
+                }
+            });
+        }
+
+        function getMenuTree(parentId) {
+            $('#menuTree').tree({
+                url: '@Url.Content("~/QWebFramework/Menu/GetMenuTree")',
+                onClick: function (node) {
+                    if (parseInt(node.id) > 0) {
+                        $('#tb-edit').show();
+                        loadEditMenuInfo(node.id);
+                        //loadMenuInRoleDataGrid();
+                    }
+                },
+                onLoadSuccess: function (node, data) {
+                    var node = $('#menuTree').tree('find', parentId);
+                    if (node != null) {
+                        $('#menuTree').tree('expandTo', node.target).tree('select', node.target);
+                    }
+                },
+                onContextMenu: function (e, node) {
+                    e.preventDefault();
+                    if (node != null) {
+                        $(this).tree('select', node.target);
+                        $('#mm').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                }
+            });
+        }
+
+        function combotreeLoad() {
+            $('#combotreeMenu').combotree({
+                url: '@Url.Content("~/QWebFramework/Menu/GetMenuTree")'
+            });
+
+        }
+        //加载编辑数据
+        function loadEditMenuInfo(menuId) {
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Menu/GetMenuInfo")',
+                data: { menuId: menuId },
+                success: function (res) {
+                    if (res.Success) {
+                        combotreeLoad();
+                        if (parseInt(res.Data.ParentId) > 0) {
+                            $('#combotreeMenu').combotree({ disabled: false });
+                            $('#combotreeMenu').combotree('setValue', res.Data.ParentId);
+                            $('#isTopNodeSpan').hide();
+                        } else {
+                            $('#isTopNodeSpan').show();
+
+                            $('#combotreeMenu').combotree('setValue', '');
+                            $('#combotreeMenu').combotree({ disabled: true });
+                        }
+
+                        $('#isTopNode').checkbox({
+                            checked: res.Data.ParentId == '0' ? true : false
+                        });;
+
+                        $('#oldParentId').val(res.Data.ParentId);
+                        $('#hidMenuId').val(res.Data.MenuId);
+                        $('#txtMenuName').val(res.Data.MenuName);
+                        $('#txtDefaultUrl').val(res.Data.DefaultUrl);
+                        $('#txtIconCls').val(res.Data.IconCls);
+                        $('#txtUrls').val(res.Data.MenuUrls);
+                        if (res.Data.IsShow == 1)
+                            $('#chkIsShow').prop("checked", res.Data.IsShow);
+                        else
+                            $('#chkIsShow').prop("checked", false);
+
+                        if (res.Data.IsTarget == 1)
+                            $('#chkIsTarget').prop("checked", res.Data.IsTarget);
+                        else
+                            $('#chkIsTarget').prop("checked", false);
+                    }
+                }
+            });
+        }
+
+
+        function openAddDialog(isParentNode) {
+            if (isParentNode) {
+                $('#hidAddParentId').val('0');
+                $('#spanParentName').text('顶级菜单');
+            }
+            else {
+                var node = $('#menuTree').tree('getSelected');
+                if (node) {
+                    $('#hidAddParentId').val(node.id);
+                    $('#spanParentName').text(node.text);
+
+                } else {
+                    alertError('请选择左侧菜单所属的节点');
+                    return false;
+                }
+            }
+            $('#addDialog').dialog('open');
+        }
+
+        function addMenu() {
+            var params = {
+                parentId: $('#hidAddParentId').val(),
+                menuName: $('#txtAddMenuName').val()
+            }
+            if (params.menuName == '') {
+                alertError('填写菜单名称');
+                return false;
+            }
+            $('#addDialog').dialog('close');
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Menu/AddMenu")',//'AddMenu',
+                data: params,
+                success: function (res) {
+                    if (res.Success) {
+                        getMenuTree(res.Data.MenuId);
+                        loadEditMenuInfo(res.Data.MenuId);
+                    }
+                }
+            })
+            return false;
+        }
+
+        function editMenu() {
+            var params = {
+                oldParentId: $('#oldParentId').val(),
+                parentId: $('#combotreeMenu').combotree('getValue'),
+                menuId: $('#hidMenuId').val(),
+                menuName: $('#txtMenuName').val(),
+                menuUrls: $('#txtUrls').val(),
+                defaultUrl: $('#txtDefaultUrl').val(),
+                iconCls:$('#txtIconCls').val(),
+                isShow: $('#chkIsShow').prop('checked'),
+                IsTarget: $('#chkIsTarget').prop('checked')
+            };
+            if (params.parentId == '0') {
+                alertError("请选择所属菜单");
+                return false;
+            } else if (params.menuName == '') {
+                alertError('菜单名称不能为空');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Menu/EditMenu")',//'EditMenu',
+                data: params,
+                success: function (res) {
+                    if (res.Success) {
+                        getMenuTree(params.menuId);
+                        loadEditMenuInfo(params.menuId);
+                        alertInfo('保存成功!');
+                    }
+                }
+            });
+            return false;
+        }
+
+        function delMenu() {
+            var node = $('#menuTree').tree('getSelected');
+            var msg = '确定要删除【 ' + node.text + '】的菜单吗?'
+            $.messager.confirm('删除确认框', msg, function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Menu/DeleteMenu")',
+                        data: { menuId: node.id },
+                        success: function (res) {
+                            if (res.Success) {
+                                getMenuTree();
+                            }
+
+
+                        }
+                    });
+                }
+            });
+        }
+
+        //////////////// menu in role /////////
+        @*function loadRoleDataGrid() {
+            $('#roleDataGrid').datagrid({
+                url: qwf.urlAction('GetRoleList'),
+                singleSelect: false,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                pagination: false,
+                toolbar: '#role-dlg-tb',
+                queryParams: {
+                    groupId: $('#ddlGroups').combobox('getValue')
+                }
+            });
+        }
+
+        function openAddRoleDialog() {
+            var node = $('#menuTree').tree('getSelected');
+            if (!node) {
+                qwf.alertError('请选择菜单');
+                return false;
+            }
+
+            var childNode = $('#menuTree').tree('getChildren', node.target);
+            if (childNode.length > 0) {
+                qwf.alertError('您选择菜单下含有子节点，不能添加权限');
+                return false;
+            }
+            $('#addRoleDialog').dialog('open');
+
+            loadRoleDataGrid();
+        }
+
+        function addMenuInRole() {
+            var roleIds = '';
+            var node = $('#menuTree').tree('getSelected');
+            var itmes = $('#roleDataGrid').datagrid('getChecked');
+            $.each(itmes, function (index, item) {
+                if (roleIds.length > 0)
+                    roleIds += ',';
+
+                roleIds += item.roleId;
+            });
+
+            if (roleIds.length == 0) {
+                qwf.alertError('请选择角色');
+                return false;
+            }
+
+            $('#addRoleDialog').dialog('close');
+
+            $.qwfAjax({
+                action: 'AddMenuInRole',
+                data: {
+                    roleIds: roleIds,
+                    menuId: node.id
+                },
+                success: function (data) {
+                    if (!qwf.isSuccess(data)) {
+                        qwf.alertError(data.error);
+                    } else {
+                        loadMenuInRoleDataGrid();
+                    }
+                }
+            });
+
+        }
+
+        function loadMenuInRoleDataGrid() {
+            var menuId = $('#menuTree').tree('getSelected').id;
+            $('#menuInRoleDataGrid').datagrid({
+                url: '@Url.Content("~/QWebFramework/Menu/GetMenuInRole")',
+                rownumbers: false,
+                singleSelect: false,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                pagination: false,
+                toolbar: '#tb-order-role',
+                queryParams: {
+                    menuId: menuId
+                }
+            });
+        }
+
+        function delMenInRole() {
+
+
+            var data = [];
+
+            var items = $('#menuInRoleDataGrid').datagrid('getSelections');
+            if (items.length == 0) {
+                qwf.alertError('请选择一条记录');
+                return false;
+            }
+
+            $.each(items, function (index, item) {
+                var d = {
+                    menuId: item.menuId,
+                    roleId: item.roleId
+                }
+                data.push(d);
+            });
+            var json = $.toJSON(data);
+
+            $.messager.confirm('删除确认框', '确认要删除你选择的角色吗', function (r) {
+                if (r) {
+                    $.qwfAjax({
+                        action: 'DelMenuInRole',
+                        data: { menuInRoles: json },
+                        success: function (data) {
+                            if (!qwf.isSuccess(data)) {
+                                qwf.alertError(data.error);
+                            } else {
+                                loadMenuInRoleDataGrid();
+                            }
+                        }
+                    });
+                }
+            });
+        }*@
+
+    </script>
+}
+<body>
+    <form id="form1" class="easyui-layout">
+        <div data-options="region:'west',split:true,border:true" title="系统菜单" style="width:280px; ">
+            <div class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="openAddDialog(true);">创建顶级菜单</a>
+                <a href="@Url.Content("~/QWebFramework/Menu/MenuSort")" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">菜单排序</a>
+
+            </div>
+            <ul id="menuTree" class="easyui-tree" lines="true"></ul>
+        </div>
+
+        <div data-options="region:'center',title:'编辑菜单',border:true">
+            <div class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="openAddDialog(false);">新增子菜单</a>
+            </div>
+            <table width="100%" border="0" cellpadding="5" cellspacing="0" class="qwf-tb" id="tb-edit">
+                <tr>
+                    <td width="120" scope="row">
+                        所属菜单：
+                    </td>
+                    <td>
+                        <input id="combotreeMenu" class="easyui-combotree" style="width:300px;" />
+                        <span id="isTopNodeSpan">
+                            <input class="easyui-checkbox" id="isTopNode" name="isTopNode" value="1" label="顶级节点:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'">
+                        </span>
+                        <input type="hidden" id="oldParentId" name="oldParentId" value="" />
+                        <input type="hidden" id="hidMenuId" name="hidMenuId" value="" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>菜单名称：</td>
+                    <td>
+                        <input type="text" name="txtMenuName" id="txtMenuName" /><span class="qwf-font-red">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>默认链接：</td>
+                    <td>
+                        <input type="text" name="txtDefaultUrl" id="txtDefaultUrl" size="50" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>图标样式</td>
+                    <td>
+                        <input type="text" name="txtIconCls" id="txtIconCls" size="50" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL地址：</td>
+                    <td>
+                        <textarea id="txtUrls" name="txtUrls" cols="60" rows="15"></textarea>
+                        <br /> 每行为一个URL,并为绝对路径如:  /QWebFramework/Page/User/UserList.aspx
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>显示：</td>
+                    <td>
+                        <input type="checkbox" name="chkIsShow" id="chkIsShow" value="1" /> 是
+                        <input type="checkbox" name="chkIsTarget" id="chkIsTarget" value="1" /> 新窗口打开
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="center">
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="width:80px" onclick="editMenu();">保存</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        @*<div data-options="region:'east', split:true ,border:false" style="width:350px;padding:0px">
+                <div id="tb-order-role">
+                    <div class="qwf-topbar">
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="loadMenuInRoleDataGrid();">刷新</a>
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="openAddRoleDialog();">新增菜单角色</a>
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'" onclick="delMenInRole();">删除菜单角色</a>
+                    </div>
+                </div>
+                <table id="menuInRoleDataGrid">
+                    <thead>
+                        <tr>
+                            <th data-options="field:'RoleId',checkbox:true" width="130px"></th>
+                            <th data-options="field:'RoleName'" width="130px">角色名称</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>*@
+
+        <div id="mm" class="easyui-menu" style="width:120px;">
+            <div onclick="javascript:delMenu();" data-options="iconCls:'icon-remove'">删除菜单</div>
+            <div onclick="javascript:openAddDialog()" data-options="iconCls:'icon-add'">新增菜单</div>
+            <div class="menu-sep"></div>
+        </div>
+
+        <!-- add sub menu -->
+        <div id="addDialog" class="easyui-dialog" title="新增菜单" style="width:350px;height:200px;" data-options="resizable:true,modal:true,closed:true,buttons:'#dlg-buttons-add'">
+            <table width="100%" border="0" cellpadding="5" cellspacing="5" class="qwf-tb">
+                <tr>
+                    <td width="120" scope="row">上级菜单：</td>
+                    <td>
+                        <span id="spanParentName" class="qwf-font-red"></span>
+                        <input type="hidden" name="hidAddParentId" id="hidAddParentId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>菜单名称：</td>
+                    <td>
+                        <input type="text" name="txtAddMenuName" id="txtAddMenuName" /><span class="qwf.font-red">*</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dlg-buttons-add" class="qwf-win-footerbar2">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:addMenu();">保存</a>
+        </div>
+
+        <!-- add menu role -->
+        @*<div id="addRoleDialog" class="easyui-dialog" title="新增菜单对应角色" style="width:450px;height:500px;"
+                 data-options="resizable:true,modal:true,closed:true,buttons:'#dlg-buttons-addrole'">
+                <div id="role-dlg-tb">
+                    <table>
+                        <tr>
+                            <td>角色组:<asp:DropDownList ID="ddlGroups" runat="server" CssClass="easyui-combobox"></asp:DropDownList></td>
+                        </tr>
+
+                    </table>
+                </div>
+                <table id="roleDataGrid">
+                    <thead>
+                        <tr>
+                            <th data-options="field:'roleId',checkbox:true" width="130px"></th>
+                            <th data-options="field:'roleName'" width="130px">角色名称</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div id="dlg-buttons-addrole" class="qwf-win-footerbar2">
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:addMenuInRole();">保存</a>
+            </div>*@
+    </form>
+
+</body>

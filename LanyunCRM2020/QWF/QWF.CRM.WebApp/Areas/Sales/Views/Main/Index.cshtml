@@ -1,0 +1,884 @@
+﻿@model  QWF.CRM.WebApp.Areas.Sales.Models.UI_SalesMain
+
+@{
+        ViewBag.Title = "业务中心";
+        var dialogs = Model.FormList.Where(w => w.ActionStyle == QWF.CRM.WebApp.Areas.Sales.Models.UI_SalesMainFormActionType.Dialog).ToList();
+        var permission = QWF.CRM.Utils.PermissionUtils.Create();
+}
+@section script{
+    <script type="text/javascript">
+
+        var customerFormList = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.CustomerFormList))');
+
+        $(function () {
+            init();
+            initDialog();
+            initCustomerChangDialog();
+        });
+
+        function init() {
+            $('#queryCategoryTree').tree({
+                url: '@Url.Content("~/Sales/Main/GetQueryCategoryTree")',
+                onClick: function (node) {
+                    $('#formSreach').form('clear');
+                    $('#formSreach').form('reset');
+                    if (parseInt( node.attributes.parentId)>0) {
+                        queryCustomer(node.id);
+                    }
+                }
+            });
+            //加载客户信息
+            //loadCustomer();
+            //初始化客户信息弹窗
+            initCustomerDialog();
+            checkIsCustomerFromList();
+            //搜索
+            initQuickSreach();
+        }
+
+        function initQuickSreach() {
+            $('#span-qsreach-text').hide();
+            $('#span-qsreach-select').hide();
+            $('#span-qsreach-selecttree').hide();
+            $('#span-qsreach-date').hide();
+            getQuickSreachItem();
+        }
+
+        function getQuickSreachItem() {
+            $('#qrySreachId').combobox({
+                valueField: 'Id',
+                textField: 'Name',
+                url: '@Url.Content("~/Sales/Main/GetQuickSreachItem")',
+                queryParams: {},
+                onSelect: function (e) {
+                    if (e.SreachType == 'select' && e.DictionaryType == 0) {
+                        $('#span-qsreach-text').hide();
+                        $('#span-qsreach-select').show();
+                        $('#span-qsreach-selecttree').hide();
+                        $('#span-qsreach-date').hide();
+                        $('#qSreachSelect').combobox({
+                            valueField: 'Value',
+                            textField: 'Name',
+                            multiple: true,
+                            url: '@Url.Content("~/Sales/Dictionary/GetItemByCode")?code=' + e.DictionaryCode
+                        });
+                    } else if (e.SreachType == 'select' && e.DictionaryType == 1) {
+                        $('#span-qsreach-text').hide();
+                        $('#span-qsreach-select').hide();
+                        $('#span-qsreach-selecttree').show();
+                        $('#span-qsreach-date').hide();
+                        //绑定数据
+                        $('#qSreachSelectTree').combotree({
+                            multiple: true,
+                            url: '@Url.Content("~/Sales/Dictionary/GetTreeByCode")?code=' + e.DictionaryCode
+                        });
+
+                    } else if (e.SreachType == 'date') {
+                        $('#span-qsreach-text').hide();
+                        $('#span-qsreach-select').hide();
+                        $('#span-qsreach-selecttree').hide();
+                        $('#span-qsreach-date').show();
+                    } else if (e.SreachType == 'text') {
+                        $('#span-qsreach-text').show();
+                        $('#span-qsreach-select').hide();
+                        $('#span-qsreach-selecttree').hide();
+                        $('#span-qsreach-date').hide();
+                    }
+                }
+
+            });
+        }
+        function checkIsCustomerFromList(code) {
+            var exist = false;
+            $.each(customerFormList, function (i, item) {
+                if (code == item) {
+                    exist = true;
+                    return false;
+                }
+            });
+            return exist;
+        }
+
+        function initTabs() {
+            @foreach (var tab in Model.SublevelCode)
+            {
+                @Html.Raw("loadSubDataGrid('" + tab + "');\r\n");
+            }
+        }
+
+        function queryCustomer(whereId) {
+            loadCustomer(null, whereId);
+            initTabs();
+        }
+
+        function loadCustomer(customerCode, whereId) {
+            if (!customerCode) {
+                $('#customerCode').val('');
+            } else {
+                $('#customerCode').val(customerCode);
+            };
+
+            var formSreach = $('#formSreach').serializeJSON();
+
+            formSreach.whereId = !whereId ? '' : whereId;
+            if (formSreach.qryUserCode != undefined)
+                formSreach.qryUserCode = $('#qryUserCode').combobox('getValues').join(',');
+
+            formSreach.qSreachSelect = $('#qSreachSelect').combobox('getValues').join(',');
+            formSreach.qSreachSelect = $('#qSreachSelectTree').combotree('getValues').join(',');
+
+            //客户列表加载
+            $('#dg_@Model.CustomerListCode').qwfDataGrid({
+                url: '@Url.Content("~/Sales/Main/GetDataList?qcrm_listtype=" + Model.CustomerListCode + "")',
+                queryParams: formSreach,
+                onDblClickRow: function (index, rows) {
+                    editCustomer();
+                },
+                onClickRow: function (index, row) {
+                    //加载全部子tab
+                    $('#customerCode').val(row.TB_Customer_CustomerCode);
+                    initTabs();
+                },
+                onLoadSuccess: function (data) {
+                    //加载成功
+                    var dg = $(this);
+                    $.each(data.rows, function (i, row) {
+                        if (row.TB_Customer_CustomerCode == customerCode) {
+                            dg.datagrid('selectRow', i);
+                            return false;
+                        }
+                    });
+                }
+            });
+        }
+
+        function loadSubDataGrid(listType) {
+            var customerCode = $('#customerCode').val();
+            var params = {
+                customerCode: customerCode
+            };
+            if (!customerCode.isNull()) {
+                $('#dg_' + listType).qwfDataGrid({
+                    url: '@Url.Content("~/Sales/Main/GetTabList?qcrm_listtype=")' + listType,
+                    queryParams: params
+                });
+            }
+        }
+        function initDialog() {
+            @{
+                foreach (var dialog in dialogs)
+                {
+                    var obj = Newtonsoft.Json.JsonConvert.SerializeObject(dialog);
+                    @Html.Raw("loadDialog(JSON.parse('" + obj + "'));");
+                }
+            }
+
+        }
+
+        function loadDialog(o) {
+            //初始化弹窗
+            //{"ListType":"customer_list","Code":"qcrm_customer_add","Name":"新增客户信息","ActionType":"create","ActionName":"新增","ActionStyle":10,"StyleColums":2,"WindowsWidth":800,"ButtonStyle":null,"ButtonIcon":null}
+            $('#dlg_' + o.Code).dialog({
+                width: o.WindowsWidth,
+                height: '80%',
+                title: o.Name,
+
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        actionSave(o.Code, o.ActionType);
+                    }
+                }
+                ]
+            });
+        }
+
+        function actionOpen(obj, tabName) {
+            var action = JSON.parse(obj);
+            console.log(action);
+
+            //获取客户信息
+            var customerCode = $('#customerCode').val();
+            if (customerCode.isNull()) {
+                alertInfo("请选择一个客户信息，然后再操作!");
+                return false;
+            }
+            //重置表单
+            $('#dlg_form_' + action.Code).form('clear').form('reset');
+
+            //获取动态加载的数据
+            var select = $('#dlg_form_' + action.Code).find('[qcrm-data-select-dynamic-id]');
+            $.each(select, function (i, item) {
+                var obj = $('#' + item.id);
+                var url = obj.attr('qcrm-data-url');
+
+                if (url.indexOf('?') > -1) {
+                    url = url + "&typeCode=" + customerCode;
+                } else {
+                    url = url + "?typeCode=" + customerCode;
+                }
+                $('#' + item.id).combobox({ url: url });
+            });
+
+            //设置弹框标题
+            var customer = $('#dg_customer_list').datagrid('getSelected');
+            var dialogTitle = action.ActionName + tabName + ' · ' + customer.TB_Customer_CustomerName + '(' + customer.TB_Customer_CustomerCode + ')';
+
+            if (action.ActionType == 'create') {
+                $('#dlg_' + action.Code).dialog('open').dialog('setTitle', dialogTitle);
+            }
+            if (action.ActionType == "update") {
+                var row = $('#dg_' + action.ListType).datagrid('getSelected');
+                if (!row) {
+                    alertInfo('请选择【' + action.ActionName + tabName + '】的一条记录');
+                    return false;
+                }
+                setEditForm(action.Code, row, function (res) {
+                    //远程加载成功才打开弹窗或对话框
+                    if (action.ActionStyle == 10) {
+                        $('#dlg_' + action.Code).dialog('open').dialog('setTitle', dialogTitle);
+
+                    } else if (action.ActionStyle == 20) {
+                        $.messager.confirm('操作确认框', action.ActionName + tabName + '的数据.', function (r) {
+                            if (r) {
+                                ajaxCore({
+                                    url: '@Url.Content("~/Sales/Main/SaveForm?formCode=")' + action.Code + '&customerCode=' + customerCode,
+                                    data: { __qcrm_pkval: row[res.Data.PkName] },
+                                    success: function (res) {
+                                        if (res.Success) {
+                                            alertInfo('操作成功!');
+                                            initTabs();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            } else if (action.ActionType == "delete") {
+                //删除
+                actionDel(action);
+            }
+            var customer = $('#dg_@Model.CustomerListCode').datagrid('getSelected');
+            if (!customer) {
+                alertInfo("请选择一个客户信息，再操作!");
+                return false;
+            }
+
+        }
+
+
+        function actionSave(formCode, actionType) {
+            var form = $('#dlg_form_' + formCode);
+            var customerCode = $('#customerCode').val();
+
+            ajaxCore({
+                url: '@Url.Content("~/Sales/Main/SaveForm?formCode=")' + formCode + '&customerCode=' + customerCode,
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('操作成功!');
+                        //客户信息新增成功。
+                        if (checkIsCustomerFromList(formCode)) {
+                            //客户信息代码
+                            customerCode = actionType == 'create' ? res.Data.Code : customerCode;
+                            if (actionType == 'delete') { loadCustomer() } else { loadCustomer(customerCode); }
+                        }
+                        initTabs();
+                    }
+                }
+            });
+        }
+        function actionDel(action) {
+            var row = $('#dg_' + action.ListType).datagrid('getSelected');
+            if (!row) {
+                alertInfo('请选择【' + action.Name + '】的一条记录');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/Sales/Main/DeleteForm?formCode=")' + action.Code,
+                        data: row,
+                        success: function (res) {
+                            if (res.Success) {
+                                if (action.Code == '@Model.CustomerListCode') {
+                                    loadCustomer();
+                                } else {
+                                    loadSubDataGrid(action.ListType)
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        ///设置编辑表单的值
+        function setEditForm(formCode, row, cb) {
+            //formCode 表单代码，row 数据行
+            ajaxCore({
+                url: '@Url.Content("~/Sales/Main/GetFormInputListByCode")', //获取T_QCRM_FormInput数据
+                data: {
+                    formCode: formCode
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        var inputs = res.Data.Rows; //字段属性
+                        var pkName = res.Data.PkName;//PK键名称
+                        //设置主键
+                        $('#pkval_' + formCode).val(row[pkName]);
+                        //提取数据
+                        $.each(inputs, function (i, input) {
+                            var inputId = input.InputName;
+                            var val = row[input.RowFieldName];
+                            var type = input.InputType;
+                            var $from = $('#' + inputId);
+                            // console.log('id:' + inputId + ",val:" + val + ",type:" + type);
+                            if (type == 'text') $from.textbox('setValue', val);
+                            if (type == 'select') $from.combobox('setValue', val);
+                            if (type == 'select_tree') $from.combotree('setValue', val);
+                            if (type == 'checkbox' && !val.isNull()) $from.checkbox({ checked: true });
+                            if (type == 'radio') $from.radiobutton('setValue', val);
+                            if (type == 'textarea') $from.textbox('setValue', val);
+                            if (type == 'text') $from.textbox('setValue', val);
+                            if (type == 'date') $from.datebox('setValue', val);
+                            if (type == 'checkboxgroup') {
+                                var ckValus = val.split(',');//多选择值
+                                $.each(ckValus, function (i, ckval) {
+                                    $('#' + inputId + "_" + ckval).checkbox('check');
+                                });
+                            }
+                        });
+                        //回调
+                        cb != undefined && typeof (cb) == "function" && cb(res);
+                    }
+                }
+            });
+        }
+        ////////////////////
+        //客户信息弹窗初始化
+        function initCustomerDialog() {
+            $('#dlg_customer').dialog({
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        saveCustomer();
+                    }
+                }
+                ]
+            });
+        }
+
+        function initCustomerChangDialog() {
+            $('#dlg_customer_changCustomer').dialog({
+                width: 500,
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '确定并转移',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        saveChangeCustomer();
+                    }
+                }
+                ]
+            });
+        }
+
+
+        function resetCustomerForm() {
+            $('#dlg_form_customer').form('clear').form('reset');
+        }
+        //客户信息
+        function addCustomer() {
+            //重置表单
+            resetCustomerForm();
+            //打开窗口
+            $('#dlg_customer').dialog('open');
+        }
+        function editCustomer() {
+            resetCustomerForm();
+            var row = $('#dg_@Model.CustomerListCode').datagrid('getSelected');
+            if (!row) {
+                alertInfo('请选择一条客户信息记录或双击数据行编辑');
+                return false;
+            }
+            //设置编辑状态的
+            //console.log(row);
+            $('#qcrm_customer_customerCode').val(row.TB_Customer_CustomerCode);
+            setPorductForm(row.TB_Customer_CustomerCode);
+
+            setEditForm('qcrm_customer_edit', row, function (res) {
+                //加载成功才打开弹窗
+                $('#dlg_customer').dialog('open').dialog('setTitle', row.TB_Customer_CustomerName);
+            });
+        }
+        function setPorductForm(customerCode) {
+            //设置业务
+            ajaxCore({
+                url: '@Url.Content("~/Sales/Main/GetProductListByCustomerCode")',
+                data: {
+                    code: customerCode
+                },
+                success: function (res) {
+                    var rows = res.Data.rows;
+                    $.each(rows, function (i, row) {
+                        $('#product_' + row.ProductCode).checkbox('check');
+                        $('#svrBeginDate_' + row.ProductCode).datebox('setValue', row.BeginTime);
+                        $('#svrEndDate_' + row.ProductCode).datebox('setValue', row.EndTime);
+                        if (row.ProductItemId > 0)
+                            $('#productItem_' + row.ProductCode).combobox('setValue', row.ProductItemId);
+                        $('#productRemarks_' + row.ProductCode).textbox('setValue', row.Remarks);
+
+                    })
+                }
+            });
+
+        }
+        function saveCustomer() {
+            var form = $('#dlg_form_customer');
+            var obj = form.serializeJSON();
+            var customerCode = obj.customerCode;
+            var formCode = customerCode.isNull() ? 'qcrm_customer_add' : 'qcrm_customer_edit';
+            var actionType = customerCode.isNull() ? 'create' : 'update';
+            //保存
+            ajaxCore({
+                url: '@Url.Content("~/Sales/Main/SaveCustomerForm?formCode=")' + formCode,
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        customerCode = actionType == 'create' ? res.Data.Code : customerCode;
+                        loadCustomer(customerCode);
+                        initTabs();
+                    }
+                }
+            });
+        }
+
+        function delCustomer() {
+            var row = $('#dg_@Model.CustomerListCode').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '确定要删除【' + row.TB_Customer_CustomerName+ '】的数据吗？删除数据将无法恢复，请谨慎操作并提前好数据备份。', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/Sales/Main/DeleteCustomer?formCode=qcrm_customer_del")',
+                        data: {
+                            __qcrm_pkval: row.TB_Customer_CustomerId,
+                            customerCode: row.TB_Customer_CustomerCode
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                alertInfo('删除成功!');
+                                loadCustomer();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function onChangeIsVague(checked) {
+            if (checked) {
+                //隐藏结束时间
+                $('#span-qsreach-date-end').hide();
+            } else {
+                $('#span-qsreach-date-end').show();
+            }
+        }
+
+        function changeCustomer() {
+
+            var rows = $('#dg_@Model.CustomerListCode').datagrid('getChecked');
+            if (rows.length == 0) {
+                alertError('请选择一条需要转移的客户');
+                return false;
+            }
+            console.log(rows);
+            $('#dlg_customer_changCustomer').dialog('open');
+            var customerName = '';
+            $.each(rows, function (index, row) {
+                if (customerName.length > 0)
+                    customerName = customerName + '<br />';
+
+                customerName += row.TB_Customer_CustomerName
+            });
+
+            $('#dlg_span_customerName').html(customerName);
+        }
+        function saveChangeCustomer() {
+            var rows = $('#dg_@Model.CustomerListCode').datagrid('getChecked');
+            var toUserCode = $('#changToUser').combobox('getValue');
+            if (toUserCode.isNull()) {
+                alertError('请选择接收者。');
+                return false;
+            }
+
+            var customerCodes = '';
+            $.each(rows, function (index, row) {
+                if (customerCodes.length > 0)
+                    customerCodes = customerCodes + ',';
+
+                customerCodes += row.TB_Customer_CustomerCode
+            });
+
+
+            $.messager.confirm('操作确认框', '确定要转移的客户数据吗？一旦转移成功数据不可逆。', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/Sales/Main/ChangeCustomer?formCode=qcrm_customer_change")',
+                        data: {
+                            customerCodes: customerCodes,
+                            changToUserCode: toUserCode
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                alertInfo('转移成功!');
+                                $('#dlg_customer_changCustomer').dialog('close');
+                                loadCustomer();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}
+<body id="mainLayout" class="easyui-layout">
+    <div id="mainTopNva" region="north" border="false" style="height: 50px">
+        @{
+            Html.RenderPartial("~/Views/Shared/_TopNav.cshtml");
+        }
+    </div>
+
+    <div region="west" border="true" split="true" style="width: 200px;" title="客户">
+        <div id="queryCategoryTree" class="easyui-tree"></div>
+    </div>
+
+    <div region="center">
+        <div id="subLayout" class="easyui-layout" style="height: 100%;">
+            <div id="subTopNva" region="center" border="false" split="true" style="height: 60%">
+                <!-- 客户查询信息 -->
+                <div id="customerTb">
+                    <form id="formSreach" name="formSreach" method="post">
+                        <div class="qwf-searchbar" style="padding: 10px">
+                            <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                                <tr>
+                                    <td>
+                                        @if (permission.GetDataRange() > QWF.CRM.Models.PermissionDataRange.Self)
+                                        {  //可以查看别人数据则显示员工
+                                            var userItem = permission.GetFuEmpList();
+                                            <span>人员：</span>
+                                            <select id="qryUserCode" name="qryUserCode" class="easyui-combobox" style="width:180px" panelHeight="200" multiple="true">
+                                                @foreach (var item in userItem)
+                                                {
+                                                    <option value="@item.UserCode">@item.Realname</option>
+                                                }
+                                            </select>
+                                        }
+
+                                    </td>
+                                    <td>
+                                        搜索:
+                                        <select id="qrySreachId" name="qrySreachId" class="easyui-combobox" style="width:150px" panelHeight="200"></select>
+
+                                        <span id="span-qsreach-text">
+                                            <input type="text" id="qSreachText" name="qSreachText" prompt="关键字" class="easyui-textbox" />
+                                        </span>
+
+                                        <span id="span-qsreach-date">
+                                            <input type="text" id="qrySreachBeginTime" name="qrySreachBeginTime" class="easyui-datebox" style="width:130px" />
+                                            <span id="span-qsreach-date-end">~<input type="text" id="qrySreachEndTime" name="qrySreachEndTime" class="easyui-datebox" style="width:130px" /></span>
+                                        </span>
+                                        <span id="span-qsreach-select">
+                                            <select id="qSreachSelect" name="qSreachSelect" class="easyui-combobox" style="width:200px" panelHeight="200"></select>
+                                        </span>
+                                        <span id="span-qsreach-selecttree">
+                                            <select id="qSreachSelectTree" name="qSreachSelectTree" class="easyui-combotree" style="width:200px" panelHeight="200"></select>
+                                        </span>
+
+                                        <input id="qryIsVague" name="qryIsVague" value="1" label="精确" labelWidth="50" labelPosition="after"
+                                               style="width:18px; height:18px;" labelAlign="left" class="easyui-checkbox" data-options="onChange:function(e){onChangeIsVague(e);}" />
+
+                                    </td>
+                                    <td>
+                                        排序：
+                                        <select id="qrySortField" name="qrySortField" class="easyui-combobox" style="width:150px" panelHeight="200">
+                                            <option value="" selected></option>
+                                            @foreach (var item in Model.SortFields)
+                                            {
+                                                <option value="@item.Key">@item.Value</option>
+                                            }
+                                        </select>
+                                        <select id="qryAscOrDesc" name="qryAscOrDesc" class="easyui-combobox"
+                                                data-options="labelPosition:'before',labelAlign:'left'" panelHeight="100" style="width:80px;">
+                                            <option value="desc" selected>↓降序</option>
+                                            <option value="asc">↑升序</option>
+                                        </select>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div id="toolbar" style="padding: 3px">
+
+                            <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="padding-left: 10px; padding-right: 10px;" onclick="queryCustomer();">查询</a>
+                            @{
+                                var customerButtonCodes = Model.FormList.Where(w => w.ListType == "customer_list").Select(s=>s.Code ).ToList();
+                            }
+                            @if (customerButtonCodes.Contains("qcrm_customer_add"))
+                            {  
+                                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="padding-left: 10px; padding-right: 10px;" onclick="addCustomer();">新增</a>
+                            }
+                            @if (customerButtonCodes.Contains("qcrm_customer_edit"))
+                            {
+                                 <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="padding-left: 10px; padding-right: 10px;" onclick="editCustomer();">编辑</a>
+                            }
+                            @if (customerButtonCodes.Contains("qcrm_customer_del"))
+                            {
+                                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="padding-left: 10px; padding-right: 10px;" onclick="delCustomer();">删除</a>
+                            }
+                            @if (customerButtonCodes.Contains("qcrm_customer_change"))
+                            {                          
+                                 <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" style="padding-left: 10px; padding-right: 10px;" onclick="changeCustomer();">转移</a>
+                            }
+                        </div>
+                    </form>
+                </div>
+
+                <table id="dg_@Model.CustomerListCode" class="easyui-datagrid" title='客户信息列表' toolbar='#customerTb'  pagination="true" singleSelect="true" checkOnSelect="true" selectOnCheck="false" remoteSort="false"  fit="true">
+                    <thead>
+                        <tr>
+                            @{
+                                var customerList = Model.UserFields.Where(w => w.ListType == Model.CustomerListCode).ToList().OrderBy(o => o.SortId);
+                                var check = customerList.Where(w => w.Checkbox == 1).FirstOrDefault();
+                                if (check != null)
+                                {
+                                    <th field="@(check.TableCode)_@(check.FieldCode)" checkbox="true"></th>
+                                }
+                                foreach (var item in customerList)
+                                {
+                                    if (item.Checkbox != 1 && item.IsHide == 0)
+                                    {
+                                        var fieldCode = string.Format("{0}_{1}", item.TableCode, item.FieldCode);
+                                        if (!string.IsNullOrWhiteSpace(item.FormatterType))
+                                        {
+                                            fieldCode = string.Format("{0}_{1}_FMT", item.TableCode, item.FieldCode);
+                                        }
+                                        <th field="@(fieldCode)" width="@(item.StyleWidth)" sortable="true">@item.TitleName</th>
+                                    }
+                                }
+                            }
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+            <div id="subBottompNva" region="south" border="true" split="true" style="height: 40%">
+                <!-- 客户信息扩展的tabs-->
+                <div id="customerExtendTabs" class="easyui-tabs" tabWidth="150" style="width:100%;height:100%">
+                    <input type="hidden" name="customerCode" id="customerCode" value="" />
+                    @{
+
+                        var subTabs = (from a in Model.SublevelCode.ToList().Select(s => new { ListTypeCode = s })
+                                       join b in Model.TableList on a.ListTypeCode equals b.ListType
+                                       select new { b.ListType, b.TypeName }).ToList();
+
+                        foreach (var tab in subTabs)
+                        {
+                            var tabDataList = Model.UserFields.Where(w => w.ListType == tab.ListType).ToList();
+                             <!-- tab list begin-->
+                            <div id="@tab.ListType" title="@tab.TypeName" style="padding:0px">
+                                <div id="@("toolbar_" + tab.ListType)">
+                                    <a href="javascript:void(0);" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-reload'" style="padding-left: 10px; padding-right: 10px;" onclick="loadSubDataGrid('@tab.ListType');">刷新</a>
+                                    <!-- button begin-->
+                                    @{
+
+                                        var tabButtons = Model.FormList.Where(w => w.ListType == tab.ListType).OrderBy(o => o.ButtonSortId);
+                                        foreach (var button in tabButtons)
+                                        {
+                                            var btnJson = Newtonsoft.Json.JsonConvert.SerializeObject(button);
+                                            <a href="javascript:void(0);" plain="true" class="@button.ButtonStyle" iconCls="@button.ButtonIcon" style="padding-left: 10px; padding-right: 10px;" onclick="actionOpen('@btnJson','@tab.TypeName');">@button.ActionName</a>
+                                        }
+                                    }
+                                    <!-- button end -->
+                                </div>
+
+                                <table class="easyui-datagrid" id="@("dg_" + tab.ListType)"  pagination="true" singleSelect="true" checkOnSelect="true" selectOnCheck="false" remoteSort="false" toolbar = "@("#toolbar_"+tab.ListType)" fit="true" >
+                                    <thead>
+                                        <tr>
+                                            @{
+                                                var tabList = Model.UserFields.Where(w => w.ListType == tab.ListType).ToList().OrderBy(o => o.SortId);
+                                                var tabCheck = tabList.Where(w => w.Checkbox == 1).FirstOrDefault();
+                                                if (tabCheck != null)
+                                                {
+                                                    <th field="@(tabCheck.TableCode)_@(tabCheck.FieldCode)" checkbox="true"></th>
+                                                }
+                                                foreach (var item in tabList)
+                                                {
+                                                    if (item.Checkbox != 1 && item.IsHide != 1)
+                                                    {
+                                                        var fieldCode = string.Format("{0}_{1}", item.TableCode, item.FieldCode);
+                                                        if (!string.IsNullOrWhiteSpace(item.FormatterType))
+                                                        {
+                                                            fieldCode = string.Format("{0}_{1}_FMT", item.TableCode, item.FieldCode);
+                                                        }
+                                                        <th field="@(fieldCode)" width="@(item.StyleWidth)" sortable="true">@item.TitleName</th>
+                                                    }
+                                                }
+                                            }
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <!-- tab list end -->
+                            </div>
+                                                }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@{
+    //提取与客户信息关联的自定义tab
+    var subDialogs = dialogs.Where(w => !Model.CustomerFormList.Contains(w.Code)).ToList();
+    var showInputType = new string[] { "system" };//系统字段
+    foreach (var form in subDialogs)
+    {
+        var inputs = Model.FormInputs.Where(w => w.FormCode == form.Code && !showInputType.Contains(w.InputType)).OrderBy(o => o.SortId).ToList();
+        //输出表单
+        <div id="dlg_@form.Code" style="max-width:@(form.WindowsWidth)px;">
+            <form id="dlg_form_@(form.Code)">
+                <input type="hidden" id="pkval_@form.Code" name="__qcrm_pkval" />
+                @{
+                    Html.RenderPartial("_FormInput", new QWF.CRM.WebApp.Areas.Sales.Models.UI_FormInputs { Form = form, Inputs = inputs, Dictionarys = Model.Dictionarys });
+                }
+
+            </form>
+        </div>
+                    }
+}
+
+<!-- 客户信息 按字段分tab -->
+@{
+    var customerFormCode = "qcrm_customer_edit";
+    var customerForm = dialogs.Where(w => w.Code == customerFormCode).FirstOrDefault();
+}
+<div id="dlg_customer" title="客户信息管理" class="easyui-dialog" style="max-width:@(customerForm.WindowsWidth)px; height:80%">
+    <form id="dlg_form_customer">
+        <input type="hidden" id="pkval_qcrm_customer_edit" name="__qcrm_pkval" />
+        <input type="hidden" id="qcrm_customer_customerCode" name="customerCode" />
+        <div id="customerTabs" class="easyui-tabs" tabWidth="150" style="width:100%;height:100%">
+            @{
+                var tabs = QWF.CRM.Utils.ConfigUtils.Instance.GetCustomerTabs();
+                foreach (var tab in tabs)
+                {
+            <div id="@tab.Key" title="@tab.Value" style="padding:5px">
+                @{
+                            var inputs = (from a in Model.FormInputs
+                                          join b in Model.CustomerTabs on new { TableCode = a.TableCode, FieldCode = a.FieldCode } equals new { TableCode = b.TableCode, FieldCode = b.FieldCode }
+                                          where a.FormCode == customerFormCode && b.TabCode == tab.Key && !showInputType.Contains(a.InputType)
+                                          orderby b.SortId ascending  //这里是分类的SortID 排序
+                                          select a ).ToList();
+                            //输出表单
+                            Html.RenderPartial("_FormInput", new QWF.CRM.WebApp.Areas.Sales.Models.UI_FormInputs { Form = customerForm, Inputs = inputs, Dictionarys = Model.Dictionarys });
+                }
+            </div>
+
+                 }
+            }
+            <!-- 产品&服务-->
+            <div id="tabProduct" title="相关业务" tabWidth="150" style="width:100%;height:100%">
+                <table width="100%" border="0" cellspacing="8" cellpadding="1" style="padding:16px">
+                    @{
+                        foreach (var product in Model.Products)
+                        {
+                    <tr>
+                        <td width="150px">
+                            <span class="sales-svr-span-prod">
+                                <input type="checkbox" class="easyui-checkbox" style="width:15px; height:15px;" name="product" id="product_@product.Code" value="@(product.Code+"$"+product.Name)">
+                            </span>
+                            @product.Name
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrWhiteSpace(product.ItemTitle))
+                                    {
+                                        var productItem = Model.ProductItem.Where(w => w.ProductCode == product.Code).OrderBy(o => o.SortId).ToList();
+                                    <span>@(product.ItemTitle):</span>
+                                    <select class="easyui-combobox" name="productItem_@product.Code" id="productItem_@product.Code" style="width:150px;">
+                                        <option value=""></option>
+                                        @foreach (var item in productItem)
+                                            {
+                                            <option value="@item.ItemId">@item.ItemName</option>
+                                            }
+                                    </select>
+                                    }
+                            @if (product.ServerType == 1)
+                                    {
+                                    <span>服务时间:</span> <input name="svrBeginDate_@product.Code" id="svrBeginDate_@product.Code" class="easyui-datebox" style="width:100px;" />
+                                    <span>~</span><input name="svrEndDate_@product.Code" id="svrEndDate_@product.Code" class="easyui-datebox" style="width:100px;" />
+                                    }
+                        </td>
+                        <td><input name="productRemarks_@product.Code" id="productRemarks_@product.Code" value="" class="easyui-textbox" prompt="写备注" style="width:200px;" /></td>
+                    </tr>
+                        }
+                    }
+                </table>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="dlg_customer_changCustomer" title="转移客户" class="easyui-dialog" style="max-width:500px; height:80%">
+    <form id="dlg_form_changCustomer">
+        <table class="dlg-tb" width="100%" border="0" cellspacing="3" cellpadding="3">
+            <tr>
+                <td>接收者：</td>
+                <td>
+                    @if (permission.IsChangCustomer())
+                    {
+                        var userItem = permission.GetAllEpmList();
+                        <select id="changToUser" name="changToUser" class="easyui-combobox" style="width:180px" panelHeight="200">
+                            @foreach (var item in userItem)
+                            {
+                                <option value="@item.UserCode">@item.Realname</option>
+                            }
+                        </select>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>客户名称：</td>
+                <td><span id="dlg_span_customerName"></span></td>
+            </tr>
+         
+    </table>
+</form>
+</div>

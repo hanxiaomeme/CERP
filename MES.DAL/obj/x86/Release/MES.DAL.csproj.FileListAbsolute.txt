@@ -1,0 +1,14 @@
+E:\Project\C# Project\00.MES\Client\MES.DAL\obj\x86\Release\MES.DAL.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.DAL.dll.config
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.DAL.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.DAL.pdb
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\Common.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\Dapper.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.Model.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.Server.Model.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.Model.pdb
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\Dapper.xml
+E:\Project\C# Project\00.MES\Client\MES.DAL\obj\x86\Release\MES.DAL.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\obj\x86\Release\MES.DAL.pdb
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.DTO.dll
+E:\Project\C# Project\00.MES\Client\MES.DAL\bin\x86\Release\MES.DTO.pdb

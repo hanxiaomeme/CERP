@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Report" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://127.0.0.1:8000/Report?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://127.0.0.1:8000/Report?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://127.0.0.1:8000/Report?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MES.Server.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReport_GetCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCard" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_OperationStart_InputMessage">
+    <wsdl:part name="parameters" element="tns:OperationStart" />
+  </wsdl:message>
+  <wsdl:message name="IReport_OperationStart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OperationStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_ReportOP_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportOP" />
+  </wsdl:message>
+  <wsdl:message name="IReport_ReportOP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportOPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetOperationList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOperationList" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetOperationList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOperationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetPersonList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonList" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetPersonList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_ReportCanel_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportCanel" />
+  </wsdl:message>
+  <wsdl:message name="IReport_ReportCanel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportCanelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_SplitCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SplitCard" />
+  </wsdl:message>
+  <wsdl:message name="IReport_SplitCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SplitCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="IReport_GetVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReport">
+    <wsdl:operation name="GetCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/GetCard" message="tns:IReport_GetCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/GetCardResponse" message="tns:IReport_GetCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OperationStart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/OperationStart" message="tns:IReport_OperationStart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/OperationStartResponse" message="tns:IReport_OperationStart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportOP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/ReportOP" message="tns:IReport_ReportOP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/ReportOPResponse" message="tns:IReport_ReportOP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/GetOperationList" message="tns:IReport_GetOperationList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/GetOperationListResponse" message="tns:IReport_GetOperationList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/GetPersonList" message="tns:IReport_GetPersonList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/GetPersonListResponse" message="tns:IReport_GetPersonList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportCanel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/ReportCanel" message="tns:IReport_ReportCanel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/ReportCanelResponse" message="tns:IReport_ReportCanel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SplitCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/SplitCard" message="tns:IReport_SplitCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/SplitCardResponse" message="tns:IReport_SplitCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReport/GetVersion" message="tns:IReport_GetVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReport/GetVersionResponse" message="tns:IReport_GetVersion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IReport" type="tns:IReport">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCard">
+      <soap:operation soapAction="http://tempuri.org/IReport/GetCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OperationStart">
+      <soap:operation soapAction="http://tempuri.org/IReport/OperationStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportOP">
+      <soap:operation soapAction="http://tempuri.org/IReport/ReportOP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationList">
+      <soap:operation soapAction="http://tempuri.org/IReport/GetOperationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonList">
+      <soap:operation soapAction="http://tempuri.org/IReport/GetPersonList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportCanel">
+      <soap:operation soapAction="http://tempuri.org/IReport/ReportCanel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SplitCard">
+      <soap:operation soapAction="http://tempuri.org/IReport/SplitCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://tempuri.org/IReport/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Report">
+    <wsdl:port name="BasicHttpBinding_IReport" binding="tns:BasicHttpBinding_IReport">
+      <soap:address location="http://127.0.0.1:8000/Report" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

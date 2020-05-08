@@ -1,0 +1,115 @@
+﻿@model  QWF.CRM.WebApp.Areas.Sales.Models.UI_FormInputs
+@{
+    Layout = null;
+    var form = Model.Form;
+    var inputs = Model.Inputs;
+}
+<div id="dlg_div_@form.Code" class="sales-dlg-div">
+    @foreach (var input in inputs)
+    {
+        var easyuiCss = string.Empty;
+        //字典数据
+        var dictionary = Model.Dictionarys.Where(w => w.Code == input.DictionaryCode).FirstOrDefault();
+        var inputItems = Model.Dictionarys.Where(w => w.ParentId == dictionary.Id).OrderBy(o => o.ItemSort);
+
+        var inputName = input.InputName;
+        var inputTitle = input.Name;
+        if(input.IsNotNull == 1)
+        {
+            inputTitle = inputTitle + "<span class='font-red'>*</span>";
+        }
+        var inputId = input.InputName + "_" + input.Id;
+        <div class="@(form.StyleColums == 2 ? "sales-dlg-input-item2" : "sales-dlg-input-item")">
+            @if (input.InputType == "text")
+            {
+                <input id="@inputId" name="@inputName" value="@input.DefaultValue" label="@inputTitle:" labelAlign="left" class="easyui-textbox" style="width:@(input.CssWidth)px;@( input.CssHeight > 0 ? "height:" + input.CssHeight + "px;" : "" );" />
+            }
+            else if (input.InputType == "textarea")
+            {
+                <input id="@inputId" name="@inputName" value="@input.DefaultValue" label="@inputTitle:" labelAlign="left" class="easyui-textbox" multiline="true" prompt="在这里填写@(input.Name)..." style="width:@(input.CssWidth)px;@( input.CssHeight > 0 ? "height:" + input.CssHeight + "px;" : "" );" />
+            }
+            else if (input.InputType == "select")
+            {
+                if (dictionary.DataSource == 1)
+                {
+                    @*远程取数视图数据*@
+                    <input id="@inputId" qcrm-data-select-dynamic-id="@inputId"  name="@inputName" qcrm-data-url="@Url.Content("~/Sales/Dictionary/GetViewItemByCode?code="+ input.DictionaryCode)" valueField="DicValue" textField="DicName"  label="@inputTitle:" labelAlign="left" class="easyui-combobox" style="width:@(input.CssWidth)px;" @Html.Raw(input.CssHeight > 0 ? "panelHeight=\"" + input.CssHeight + "px\"" : "") />
+                }
+                else
+                {
+                    <select id="@inputId" name="@inputName" label="@inputTitle:" labelAlign="left" class="easyui-combobox" style="width:@(input.CssWidth)px;" @Html.Raw(input.CssHeight > 0 ? "panelHeight=\"" + input.CssHeight + "px\"" : "")>
+                        <option value="">==请选择==</option>
+                        @foreach (var item in inputItems)
+                        {
+                            @*<option value="@item.ItemValue" @(item.DefaultItem == 1 ? "selected" : "")>@item.ItemName</option>*@
+                            <option value="@item.ItemValue">@item.ItemName</option>
+                        }
+                    </select>
+                }
+
+            }
+            else if (input.InputType == "checkbox")
+            {
+                <label class="textbox-label textbox-label-before" style="text-align: left; height: 30px; line-height: 30px;">@inputTitle：</label>
+                <input id="@inputId" name="@inputName" value="@input.DefaultValue" label="@inputTitle:" labelAlign="left" class="easyui-checkbox" />
+            }
+            else if (input.InputType == "checkboxgroup")
+            {
+                <label class="textbox-label textbox-label-before" style="text-align: left; height: 30px; line-height: 30px;">@inputTitle：</label>
+                <span style="width: @(input.CssWidth)px;   ">
+                    @{
+                        var radioWidth = (input.CssWidth - inputItems.Count() * 20) / inputItems.Count();
+                        foreach (var item in inputItems)
+                        {
+                        <input id="@(inputId+"_" + item.ItemValue)" name="@input.InputName" value="@item.ItemValue" label="@item.ItemName" 
+                               labelWidth="@radioWidth" style="width:15px; height:15px;"  labelAlign="right" class="easyui-checkbox" />
+                        }
+                      }
+                </span>
+              }
+                        else if (input.InputType == "radio")
+                        {
+                <label class="textbox-label textbox-label-before" style="text-align: left; height: 30px; line-height: 30px;">@inputTitle：</label>
+                <span style="width: @(input.CssWidth)px;   ">
+                    @{
+                        var radioWidth = (input.CssWidth - inputItems.Count() * 20) / inputItems.Count();
+                    }
+                    @foreach (var item in inputItems)
+                    {
+                        <input id="@(inputId+"_" + item.ItemValue)" name="@input.InputName" value="@item.ItemValue" label="@item.ItemName" labelWidth="@radioWidth" labelAlign="right" class="easyui-radiobutton" />
+                    }
+                </span>
+             }
+                        else if (input.InputType == "date") //日期
+                        {
+                            <input id="@inputId" name="@inputName" label="@inputTitle:" labelAlign="left" class="easyui-datebox" style="width:@(input.CssWidth)px;@( input.CssHeight > 0? "height:" + input.CssHeight + "px;":"" );" />
+                        }
+                        else if (input.InputType == "select_tree") //树形下拉框
+                        {
+                            <input id="@inputId" name="@inputName" label="@inputTitle:" labelAlign="left" class="easyui-combotree" style="width:@(input.CssWidth)px;@( input.CssHeight > 0? "height:" + input.CssHeight + "px;":"" );" url="@(Url.Content("~/Sales/Dictionary/GetTreeByCode?code="+ input.DictionaryCode ))" method="get" />
+
+                        }
+            @if (!string.IsNullOrWhiteSpace(input.InputDesc) && input.InputDesc.Length > 0)
+            {
+                <div class="sales-dlg-form-desc">
+                    @{
+                        var sr = new System.IO.StringReader(input.InputDesc);
+                        string sLine = null;
+                        while ((sLine = sr.ReadLine()) != null)
+                        {
+                            if (sLine.Length > 0)
+                            {
+                                <span>@Html.Raw(sLine.Replace(" ", "&nbsp"))</span><br />
+                            }
+                        }
+                    }
+                </div>
+                        }
+        </div>
+
+        <!--desc-->
+
+
+
+                        }
+</div>

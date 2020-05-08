@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C87871D-4A93-44CF-A55F-5020C3946779}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LanyunMES.UI</RootNamespace>
+    <AssemblyName>LanyunMES.UI</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LanyunMES.UI.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\..\..\..\Lib\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Component">
+      <HintPath>..\..\..\..\Lib\Component.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpressUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Lib\DevExpressUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport">
+      <HintPath>D:\Program Files (x86)\FastReport.2017.1.16\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.Net4.1.0.0\lib\net40\MaterialSkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MES.Server.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Lib\MES.Server.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="U8Ext.Ref, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Lib\U8Ext.Ref.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="99.用户管理\FmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="99.用户管理\FmMenu.Designer.cs">
+      <DependentUpon>FmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="99.用户管理\FmRoleUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="99.用户管理\FmRoleUser.Designer.cs">
+      <DependentUpon>FmRoleUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FReportHelper.cs" />
+    <Compile Include="UITools\ModuleControl.cs" />
+    <Compile Include="Service References\Report\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\U8API\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserManager\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UITools\UIControl.cs" />
+    <Compile Include="Program.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIMain\FmAccCfg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIMain\FmAccCfg.designer.cs">
+      <DependentUpon>FmAccCfg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="99.用户管理\FmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="99.用户管理\FmRole.Designer.cs">
+      <DependentUpon>FmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="99.用户管理\FmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="99.用户管理\FmUser.Designer.cs">
+      <DependentUpon>FmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="99.用户管理\FmRoleAuth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="99.用户管理\FmRoleAuth.Designer.cs">
+      <DependentUpon>FmRoleAuth.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="99.用户管理\FmMenu.resx">
+      <DependentUpon>FmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="99.用户管理\FmRoleUser.resx">
+      <DependentUpon>FmRoleUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIMain\FmAccCfg.resx">
+      <DependentUpon>FmAccCfg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIMain\FmLogin.resx">
+      <DependentUpon>FmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIMain\FmAbout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIMain\FmGetAppInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FmGetAppInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIMain\FmMain.resx">
+      <DependentUpon>FmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="99.用户管理\FmMdyPwd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FmMdyPwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="99.用户管理\FmRole.resx">
+      <DependentUpon>FmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="99.用户管理\FmUser.resx">
+      <DependentUpon>FmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="99.用户管理\FmRoleAuth.resx">
+      <DependentUpon>FmRoleAuth.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\MES.Model.AccountInfo.datasource" />
+    <None Include="Properties\DataSources\MES.Model.BusinessInfo.datasource" />
+    <None Include="Properties\DataSources\MES.Model.CardDetail.datasource" />
+    <None Include="Properties\DataSources\MES.Model.ColumnInfo.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Customer.datasource" />
+    <None Include="Properties\DataSources\MES.Model.CustomerClass.datasource" />
+    <None Include="Properties\DataSources\MES.Model.DataScale.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Department.datasource" />
+    <None Include="Properties\DataSources\MES.Model.ForeignCurrency.datasource" />
+    <None Include="Properties\DataSources\MES.Model.GradeInfo.datasource" />
+    <None Include="Properties\DataSources\MES.Model.GroupPlan.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Information.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Inventory.datasource" />
+    <None Include="Properties\DataSources\MES.Model.InventoryClass.datasource" />
+    <None Include="Properties\DataSources\MES.Model.ITreeModel.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Machine.datasource" />
+    <None Include="Properties\DataSources\MES.Model.ModuleInfo.datasource" />
+    <None Include="Properties\DataSources\MES.Model.ModuleItem.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Mom_Order.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Mom_OrderDetail.datasource" />
+    <None Include="Properties\DataSources\MES.Model.NotifyPropertyChanged.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Person.datasource" />
+    <None Include="Properties\DataSources\MES.Model.PO_Podetails.datasource" />
+    <None Include="Properties\DataSources\MES.Model.PO_Pomain.datasource" />
+    <None Include="Properties\DataSources\MES.Model.QmReport.datasource" />
+    <None Include="Properties\DataSources\MES.Model.QmReports.datasource" />
+    <None Include="Properties\DataSources\MES.Model.RoleInfo.datasource" />
+    <None Include="Properties\DataSources\MES.Model.SaleType.datasource" />
+    <None Include="Properties\DataSources\MES.Model.SO.datasource" />
+    <None Include="Properties\DataSources\MES.Model.SO_SODetails.datasource" />
+    <None Include="Properties\DataSources\MES.Model.SO_SOMain.datasource" />
+    <None Include="Properties\DataSources\MES.Model.UA_Account.datasource" />
+    <None Include="Properties\DataSources\MES.Model.UA_User.datasource" />
+    <None Include="Properties\DataSources\MES.Model.UserModuleAuth.datasource" />
+    <None Include="Properties\DataSources\MES.Model.UserToKen.datasource" />
+    <None Include="Properties\DataSources\MES.Model.Vendor.datasource" />
+    <None Include="Properties\DataSources\MES.Model.WorkCenter.datasource" />
+    <None Include="Properties\DataSources\MES.Model.WorkOrder.datasource" />
+    <None Include="Properties\DataSources\MES.Model.WO_Details.datasource" />
+    <None Include="Properties\DataSources\MES.Model.WO_Main.datasource" />
+    <None Include="Properties\DataSources\MES.Server.Model.Card.datasource" />
+    <None Include="Properties\DataSources\MES.Server.Model.FtpUser.datasource" />
+    <None Include="Properties\DataSources\MES.Server.Model.MESVerion.datasource" />
+    <None Include="Properties\DataSources\MES.Server.Model.Operation.datasource" />
+    <None Include="Properties\DataSources\MES.Server.Model.Person.datasource" />
+    <None Include="Properties\DataSources\MES.Server.Model.User.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UIMain\FmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIMain\FmLogin.Designer.cs">
+      <DependentUpon>FmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIMain\FmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIMain\FmAbout.Designer.cs">
+      <DependentUpon>FmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIMain\FmGetAppInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIMain\FmGetAppInfo.Designer.cs">
+      <DependentUpon>FmGetAppInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIMain\FmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIMain\FmMain.Designer.cs">
+      <DependentUpon>FmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="99.用户管理\FmMdyPwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="99.用户管理\FmMdyPwd.Designer.cs">
+      <DependentUpon>FmMdyPwd.cs</DependentUpon>
+    </Compile>
+    <None Include="Service References\Report\Report.wsdl" />
+    <None Include="Service References\Report\Report.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Report\Report1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Report\Report2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\U8API\U8Operation1.wsdl" />
+    <None Include="Service References\U8API\U8Operation2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\U8API\U8Operation21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserManager\UserManager1.wsdl" />
+    <None Include="Service References\UserManager\UserManager3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserManager\UserManager31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserManager\UserManager32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lanyun.Common\Lanyun.Common.csproj">
+      <Project>{5e1931f3-ae49-4d1a-af55-698e77fe68c4}</Project>
+      <Name>Lanyun.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LanyunMES.Business\LanyunMES.Business.csproj">
+      <Project>{49e372e1-6b41-4c01-b2bc-907398749438}</Project>
+      <Name>LanyunMES.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.Model\LanyunMES.Entity.csproj">
+      <Project>{8e8d59ec-498b-4263-844c-391190cb8380}</Project>
+      <Name>LanyunMES.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.UIBase\LanyunMES.UIBase.csproj">
+      <Project>{7d3d1874-6df1-41c7-a6cd-df7249dad153}</Project>
+      <Name>LanyunMES.UIBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logo.ico" />
+    <None Include="Service References\Report\Report.disco" />
+    <None Include="Service References\UserManager\UserManager1.disco" />
+    <None Include="Service References\U8API\U8Operation1.disco" />
+    <None Include="Service References\Report\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Report\configuration.svcinfo" />
+    <None Include="Service References\Report\configuration91.svcinfo" />
+    <None Include="Service References\U8API\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\U8API\configuration.svcinfo" />
+    <None Include="Service References\U8API\configuration91.svcinfo" />
+    <None Include="Service References\UserManager\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\UserManager\configuration.svcinfo" />
+    <None Include="Service References\UserManager\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="00.基础设置\" />
+    <Folder Include="01.采购管理\" />
+    <Folder Include="02.质检管理\" />
+    <Folder Include="03.库存管理\" />
+    <Folder Include="04.生产管理\" />
+    <Folder Include="05.APS\" />
+    <Folder Include="06.质量管理\" />
+    <Folder Include="Ref\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Report\" />
+    <WCFMetadataStorage Include="Service References\U8API\" />
+    <WCFMetadataStorage Include="Service References\UserManager\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbFrameworkEntity_SQLServer" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DbFrameworkContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_QWF_Config" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Config" />
+    <EntitySet Name="T_QWF_LoginLog" EntityType="DbFrameworkEntity_SQLServer.T_QWF_LoginLog" />
+    <EntitySet Name="T_QWF_Menu" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Menu" />
+    <EntitySet Name="T_QWF_MenuInUrl" EntityType="DbFrameworkEntity_SQLServer.T_QWF_MenuInUrl" />
+    <EntitySet Name="T_QWF_Org" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Org" />
+    <EntitySet Name="T_QWF_Resource" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Resource" />
+    <EntitySet Name="T_QWF_Role" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Role" />
+    <EntitySet Name="T_QWF_RoleGroup" EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleGroup" />
+    <EntitySet Name="T_QWF_RoleInMenu" EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleInMenu" />
+    <EntitySet Name="T_QWF_RoleInResource" EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleInResource" />
+    <EntitySet Name="T_QWF_Seq" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Seq" />
+    <EntitySet Name="T_QWF_User" EntityType="DbFrameworkEntity_SQLServer.T_QWF_User" />
+    <EntitySet Name="T_QWF_UserActionLog" EntityType="DbFrameworkEntity_SQLServer.T_QWF_UserActionLog" />
+    <EntitySet Name="T_QWF_UserInRole" EntityType="DbFrameworkEntity_SQLServer.T_QWF_UserInRole" />
+  </EntityContainer>
+  <EntityType Name="T_QWF_Config">
+    <Key>
+      <PropertyRef Name="ConfigId" />
+    </Key>
+    <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConfigResourceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigValueType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="LayerId" Type="Int32" Nullable="false" />
+    <Property Name="ConfigIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SortId" Type="Int32" Nullable="false" />
+    <Property Name="IsDelete" Type="Int32" Nullable="false" />
+    <Property Name="IsHidden" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+    <Property Name="ConfigRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_QWF_LoginLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ip" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LoginStatus" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="T_QWF_Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="LayerId" Type="Int32" Nullable="false" />
+    <Property Name="MenuIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SortId" Type="Int32" Nullable="false" />
+    <Property Name="MenuName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsShow" Type="Int32" Nullable="false" />
+    <Property Name="DefaultUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="IconCls" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+    <Property Name="Target" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QWF_MenuInUrl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QWF_Org">
+    <Key>
+      <PropertyRef Name="OrgId" />
+    </Key>
+    <Property Name="OrgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrgCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="OrgName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="OrgNamePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrgAttribute" Type="Int32" Nullable="false" />
+    <Property Name="IsOut" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" Nullable="false" />
+    <Property Name="LayerId" Type="Int32" Nullable="false" />
+    <Property Name="OrgIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OrgCodeList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SortId" Type="Int32" Nullable="false" />
+    <Property Name="IsDelete" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="UpdateUserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_QWF_Resource">
+    <Key>
+      <PropertyRef Name="ResourceCode" />
+    </Key>
+    <Property Name="RuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceCode" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="ResourceName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="ResourceType" Type="Int32" Nullable="false" />
+    <Property Name="ResourceRemarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="T_QWF_Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RoleGroupId" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="SortId" Type="Int32" Nullable="false" />
+    <Property Name="IsDelete" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_QWF_RoleGroup">
+    <Key>
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="GroupRemarks" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="SortId" Type="Int32" Nullable="false" />
+    <Property Name="IsDelete" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QWF_RoleInMenu">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QWF_RoleInResource">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="RuleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="RuleId" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QWF_Seq">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Prefix" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DateFormart" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SerialLength" Type="Int32" Nullable="false" />
+    <Property Name="CurrentNumber" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_QWF_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserCode" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="OrgId" Type="Int32" Nullable="false" />
+    <Property Name="Leader" Type="Int32" Nullable="false" />
+    <Property Name="LastLoginIp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+    <Property Name="UserStatus" Type="Int32" Nullable="false" />
+    <Property Name="IsDelete" Type="Int32" Nullable="false" />
+    <Property Name="QQ" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Realname" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Weixin" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="UserRemarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateUserId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_QWF_UserActionLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LogCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LogType" Type="Int32" Nullable="false" />
+    <Property Name="UserIp" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="ActionMethod" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="LogDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LogItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="T_QWF_UserInRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,4 @@
+D:\open_qcrm\QWF\QWF.Assembly\bin\x86\Debug\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.Assembly\bin\x86\Debug\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.Assembly\obj\x86\Debug\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.Assembly\obj\x86\Debug\QWF.Assembly.pdb

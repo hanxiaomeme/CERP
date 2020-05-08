@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "快捷搜索管理";
+}
+@section script{
+
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+            initSreachId();
+        }
+
+        function loaddg() {
+            index = 0;
+            var params = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/QuickSreachUser/GetList")',
+                title: '快捷搜索管理',
+                singleSelect: true,
+                pagination: false,
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: 400,
+                height: 300,
+                title: '快捷搜索管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            resetForm();
+        }
+
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '确定要删除数据吗?', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/QuickSreachUser/Delete")',
+                        data: {
+                            id: row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.sreachId.isNull()) {
+                alertError('请选择搜索字段。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/QuickSreachUser/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+        function initSreachId() {
+            $('#sreachId').combobox({
+                valueField: 'Id',
+                textField: 'Name',
+                url: '@Url.Content("~/QCRMSetting/QuickSreachUser/GetSreachFieldList")'
+            });
+        }
+
+    </script>
+
+
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();">删除</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="SreachTitle" width="150">搜索名称</th>
+                    <th field="CreateTime" width="130">创建时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</body>
+<div id="dlg" style="max-width:650px;">
+
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <select id="sreachId" name="sreachId" class="easyui-combobox" label="搜索字段<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',panelHeight:180 "
+                        style="width:300px;"></select>
+            </div>
+
+        </div>
+    </form>
+
+</div>

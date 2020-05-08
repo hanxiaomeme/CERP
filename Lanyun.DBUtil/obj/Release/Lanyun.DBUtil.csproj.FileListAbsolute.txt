@@ -1,0 +1,5 @@
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\bin\Release\Lanyun.DBUtil.dll
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\bin\Release\Lanyun.DBUtil.pdb
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\obj\Release\Lanyun.DBUtil.csprojResolveAssemblyReference.cache
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\obj\Release\Lanyun.DBUtil.dll
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.DBUtil\obj\Release\Lanyun.DBUtil.pdb

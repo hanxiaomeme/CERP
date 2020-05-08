@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PuStoreInAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pmrGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="autoid" type="xs:int" />
+        <xs:element minOccurs="0" name="maker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PuStoreInAddResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInAdd2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="rdGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInAdd2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PuStoreInAdd2Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInAdd3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pmGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="autoid" type="xs:int" />
+        <xs:element minOccurs="0" name="maker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInAdd3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PuStoreInAdd3Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInByTV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PuStoreInByTVResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PuStoreInByTVResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransVouch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransVouchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TransVouchResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuditMaterialPlan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mpGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cmaker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuditMaterialPlanResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnAuditMaterialPlan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mpGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnAuditMaterialPlanResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MergeMaterialOutAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cMaker" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MergeMaterialOutAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MergeMaterialOutAddResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProductIn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cardNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OpSeq" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProductInResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProductInResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

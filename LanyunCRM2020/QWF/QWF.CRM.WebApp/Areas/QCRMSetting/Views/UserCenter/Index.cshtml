@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "个人中心";
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/UserCenter/Get")',
+                success: function (res) {
+                    if (res.Success) {
+                        if (res.Data.UI_Style != undefined) {
+                            $('#uiStyle').combobox('setValue',res.Data.UI_Style);
+                        }
+                    }
+                }
+            });
+        }
+
+        function save() {
+            var form = $('#appForm');
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/UserCenter/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="appForm" name="appForm" method="post">
+        <div class="div-form">
+            <div class="item">
+                <select id="uiStyle" name="uiStyle" class="easyui-combobox" label="系统风格<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px' "
+                        style="width:300px;">
+                    <option value="01" selected>简约</option>
+                    <option value="02">经典</option>
+                </select>
+            </div>
+            
+            <div class="item">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-save'" style="width:110px" onclick="save();">保存</a>
+            </div>
+        </div>
+    </form>
+</body>
+

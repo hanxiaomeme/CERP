@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "表单权限管理";
+}
+
+@section script{
+    <script type="text/javascript" language="javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+
+        $(document).ready(function () {
+            loadRole();
+            $('#formdg').hide();
+        });
+
+        function loadRole() {
+            $('#roledg').datagrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_UserInForm/GetRoleList")',
+                title: '系统角色',
+                singleSelect: true,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#tb',
+                pagination: false,
+                onClickRow: function (rowIndex, rowData) {
+                    if (rowData) {
+                        if (rowData.RoleCode) {
+                            loadRoleInForm(rowData.RoleCode);
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadForm(formCodes) {
+            $('#formdg').datagrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_UserInForm/GetFormList")',
+                singleSelect: false,
+                idField:"Code",
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#form_toolbar',
+                pagination: false,
+                onLoadSuccess: function (data) {
+                    //取消选择
+                    $("#formdg").datagrid("uncheckAll");
+
+                    $.each(formCodes, function (i, form) {
+                        var code = form.FormCode;
+                        console.log(code);
+                        $("#formdg").datagrid("selectRecord", code);
+                    });
+                }
+            });
+        }
+
+        function loadRoleInForm(roleCode) {
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_UserInForm/RoleInFormCodes")',
+                data:{
+                    roleCode:roleCode
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        loadForm(res.Data.rows);
+                    }
+                }
+            });
+        }
+
+        function saveRoleForm() {
+            var roleCode = $('#roledg').datagrid('getSelected').RoleCode;
+
+            var formCodes = '';
+            var items = $('#formdg').datagrid('getChecked');
+            for (i = 0; i < items.length; i++) {
+                if (formCodes.length > 0)
+                    formCodes += ',';
+                formCodes += items[i].Code;
+            }
+            if (formCodes == '') {
+                alertError('请先选择表单，然后再点击保存。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_UserInForm/SaveInRoleForm")',
+                data: {
+                    roleCode: roleCode,
+                    formCodes: formCodes
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loadRoleInForm(roleCode)
+                    }
+                }
+            });
+        }
+
+    </script>
+}
+
+<body>
+    <form id="form1" class="easyui-layout">
+        <div data-options="region:'west',split:true,border:true" style="width:350px;padding:0px">
+            <div class="qwf-topbar" id="tb">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="loadRole();">刷新</a>
+            </div>
+
+            <table id="roledg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'RoleName'" width="100%">角色名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div data-options="region:'center',border:true" style="padding:0px" title="全部表单">
+            <div id="form_toolbar" class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" onclick="saveRoleForm();">保存</a>
+            </div>
+            <table id="formdg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'Code',checkbox:true"></th>
+                        <th field="Name" width="120">表单名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </form>
+
+</body>
+

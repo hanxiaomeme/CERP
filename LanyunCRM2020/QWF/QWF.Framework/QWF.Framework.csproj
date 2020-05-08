@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAE2931B-348B-4213-ADD7-2665E52617BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QWF.Framework</RootNamespace>
+    <AssemblyName>QWF.Framework.alpha.v3.0.1.0</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Newtonsoft.Json.6.0.4\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADO\SQLServerDatabase.cs" />
+    <Compile Include="Common\ConfigHelper.cs" />
+    <Compile Include="Common\DateTimeTools.cs" />
+    <Compile Include="Common\DES3.cs" />
+    <Compile Include="Common\EasyCacheHelper.cs" />
+    <Compile Include="Common\HttpHelper.cs" />
+    <Compile Include="Common\Log\LogInfo.cs" />
+    <Compile Include="Common\Log\LogTypeEnum.cs" />
+    <Compile Include="Common\Log\LogHelper.cs" />
+    <Compile Include="Common\Log\LogQueue.cs" />
+    <Compile Include="Common\Singleton.cs" />
+    <Compile Include="Common\IDTools.cs" />
+    <Compile Include="Dynamic\QueryableHelper.cs" />
+    <Compile Include="ExtendUtils\ObjectExtend.cs" />
+    <Compile Include="ExtendUtils\SafeConvert.cs" />
+    <Compile Include="ExtendUtils\StringExtend.cs" />
+    <Compile Include="ExtendUtils\ValidatorExtend.cs" />
+    <Compile Include="GlobalConst.cs" />
+    <Compile Include="GlobalException\PermissionException.cs" />
+    <Compile Include="GlobalException\UIValidateException.cs" />
+    <Compile Include="GlobalException\UserValidateException.cs" />
+    <Compile Include="Iocs.cs" />
+    <Compile Include="IOC\IOrganizeIoc.cs" />
+    <Compile Include="IOC\IRoleIoc.cs" />
+    <Compile Include="IOC\IUserInRoleIoc.cs" />
+    <Compile Include="IOC\IUserIoc.cs" />
+    <Compile Include="IOC\IUserPassWordIoc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MainServices.cs" />
+    <Compile Include="Services\BLL\Config.cs" />
+    <Compile Include="Services\BLL\ConfigHelper.cs" />
+    <Compile Include="Services\BLL\Menu.cs" />
+    <Compile Include="Services\BLL\Org.cs" />
+    <Compile Include="Services\BLL\OrgHelper.cs" />
+    <Compile Include="Services\BLL\Role.cs" />
+    <Compile Include="Services\BLL\RoleGroup.cs" />
+    <Compile Include="Services\BLL\RoleHelper.cs" />
+    <Compile Include="Services\BLL\User.cs" />
+    <Compile Include="Services\BLL\UserActionLogHelper.cs" />
+    <Compile Include="Services\BLL\UserHelper.cs" />
+    <Compile Include="Services\BLL\Models\UserToken.cs" />
+    <Compile Include="Services\BLL\UserInRole.cs" />
+    <Compile Include="Services\BLL\MenuHelper.cs" />
+    <Compile Include="Services\BLL\UserLoginHelper.cs" />
+    <Compile Include="Services\ConfigServices.cs" />
+    <Compile Include="Services\MenuServices.cs" />
+    <Compile Include="Services\ResouceServices.cs" />
+    <Compile Include="Services\RoleServices.cs" />
+    <Compile Include="Services\SeqServices.cs" />
+    <Compile Include="Services\OrgServices.cs" />
+    <Compile Include="Services\SvrModels\SvrConfig.cs" />
+    <Compile Include="Services\SvrModels\SvrConfigInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrMenuInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrOrgInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrRoleGroupInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrRoleInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrSeqInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrUserActionLog.cs" />
+    <Compile Include="Services\SvrModels\SvrUserInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrUserLogin.cs" />
+    <Compile Include="Services\UserActionLogServices.cs" />
+    <Compile Include="Services\UserLoginServices.cs" />
+    <Compile Include="Validation\ValidationError.cs" />
+    <Compile Include="Validation\ValidationErrorCollection.cs" />
+    <Compile Include="Validation\ValidationHelper.cs" />
+    <Compile Include="Web\ItemKeyValue.cs" />
+    <Compile Include="Web\UI\TreeHelperV2.cs" />
+    <Compile Include="Web\UserContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\SvrModels\SvrShortUserInfo.cs" />
+    <Compile Include="Services\SvrModels\SvrUserIdentifier.cs" />
+    <Compile Include="Services\UsersServices.cs" />
+    <Compile Include="Web\Filter\AccessInfo.cs" />
+    <Compile Include="Web\Filter\AllowCrossAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Web\Filter\ExceptionAttribute.cs" />
+    <Compile Include="Web\Filter\PermissionUrlAttribute.cs" />
+    <Compile Include="Web\QWFRequest.cs" />
+    <Compile Include="Web\ResultWebData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QWF.Assembly\QWF.Assembly.csproj">
+      <Project>{787742ec-c1c4-4788-baa7-2b87593fab56}</Project>
+      <Name>QWF.Assembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWF.Framework.DbAccess.SQLServer\QWF.Framework.DbAccess.SQLServer.csproj">
+      <Project>{a514efda-cbc8-4d26-939a-1ba7c298aeff}</Project>
+      <Name>QWF.Framework.DbAccess.SQLServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

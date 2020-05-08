@@ -1,0 +1,12 @@
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\LanyunMES.DAL.dll.config
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\LanyunMES.DAL.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\LanyunMES.DAL.pdb
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\Dapper.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\Lanyun.DBUtil.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\LanyunMES.Entity.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\Lanyun.DBUtil.pdb
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\LanyunMES.Entity.pdb
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\bin\x86\Release\Dapper.xml
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\obj\x86\Release\LanyunMES.DAL.csprojResolveAssemblyReference.cache
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\obj\x86\Release\LanyunMES.DAL.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\obj\x86\Release\LanyunMES.DAL.pdb

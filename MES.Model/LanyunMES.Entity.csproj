@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E8D59EC-498B-4263-844C-391190CB8380}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LanyunMES.Entity</RootNamespace>
+    <AssemblyName>LanyunMES.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MES.Server.Model">
+      <HintPath>..\..\..\..\Lib\MES.Server.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="02.质量管理\QCReport.cs" />
+    <Compile Include="02.质量管理\QCReports.cs" />
+    <Compile Include="02.质量管理\QCReports_v.cs" />
+    <Compile Include="02.质量管理\QCReport_v.cs" />
+    <Compile Include="02.质量管理\QMCardOP.cs" />
+    <Compile Include="02.质量管理\质检项目\QMItem.cs" />
+    <Compile Include="02.质量管理\质检项目\QMItemClass.cs" />
+    <Compile Include="03.生产管理\WorkOrder.cs" />
+    <Compile Include="03.生产管理\WorkOrderDetail.cs" />
+    <Compile Include="03.生产管理\拣货单\MaterialPlans.cs" />
+    <Compile Include="03.生产管理\流转卡材料合并\MaterialRequest.cs" />
+    <Compile Include="03.生产管理\MergeCard.cs" />
+    <Compile Include="03.生产管理\拣货单\MaterialPlan.cs" />
+    <Compile Include="03.生产管理\MomOrder.cs" />
+    <Compile Include="03.生产管理\流转卡材料合并\MaterialRequestSum.cs" />
+    <Compile Include="04.APS\MaintenancePlan.cs" />
+    <Compile Include="04.APS\MaintenancePlans.cs" />
+    <Compile Include="AccInfo\UA_Account.cs" />
+    <Compile Include="AccInfo\UserToKen.cs" />
+    <Compile Include="BusinessInfo.cs" />
+    <Compile Include="ColumnInfo.cs" />
+    <Compile Include="AccInfo\DataScale.cs" />
+    <Compile Include="FileInformaion.cs" />
+    <Compile Include="GradeInfo.cs" />
+    <Compile Include="IBill.cs" />
+    <Compile Include="ICTableField.cs" />
+    <Compile Include="ICTableInfo.cs" />
+    <Compile Include="ICTransType.cs" />
+    <Compile Include="IItem.cs" />
+    <Compile Include="ITreeItem.cs" />
+    <Compile Include="Voucher.cs" />
+    <Compile Include="基础档案\工艺路线\Routings.cs" />
+    <Compile Include="基础档案\工艺路线\Routing.cs" />
+    <Compile Include="流转卡\MCard.cs" />
+    <Compile Include="基础档案\Equipment.cs" />
+    <Compile Include="基础档案\EquipmentClass.cs" />
+    <Compile Include="PropertyChanged.cs" />
+    <Compile Include="GroupPlan.cs" />
+    <Compile Include="系统配置\Auth_Data.cs" />
+    <Compile Include="系统配置\DTO\RoleAuthDTO.cs" />
+    <Compile Include="系统配置\DTO\RoleUserDTO.cs" />
+    <Compile Include="系统配置\Information.cs" />
+    <Compile Include="AccInfo\ModuleItem.cs" />
+    <Compile Include="基础档案\Machine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SO_SODetails.cs" />
+    <Compile Include="SO_SOMain.cs" />
+    <Compile Include="UIControlStatus.cs" />
+    <Compile Include="SO.cs" />
+    <Compile Include="WO_Details.cs" />
+    <Compile Include="WO_Main.cs" />
+    <Compile Include="02.质量管理\QmRecord.cs" />
+    <Compile Include="02.质量管理\QmReport.cs" />
+    <Compile Include="02.质量管理\QmReports.cs" />
+    <Compile Include="基础档案\Mould.cs" />
+    <Compile Include="基础档案\MouldClass.cs" />
+    <Compile Include="04.APS\WorkCalendar.cs" />
+    <Compile Include="基础档案\MouldEquipmentInv.cs" />
+    <Compile Include="流转卡\MCardDetail.cs" />
+    <Compile Include="系统配置\Menu.cs" />
+    <Compile Include="系统配置\ModelSqlInfo.cs" />
+    <Compile Include="系统配置\Role.cs" />
+    <Compile Include="系统配置\User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="01.库存管理\" />
+    <Folder Include="基本配置\" />
+    <Folder Include="基础档案\Interface\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

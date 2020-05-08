@@ -1,0 +1,28 @@
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Framework.DbAccess.SQLServer.dll.config
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Framework.DbAccess.SQLServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Framework.DbAccess.SQLServer.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.SqlServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Assembly.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Assembly.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.SqlServer.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\obj\Release\QWF.Framework.DbAccess.SQLServer.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\obj\Release\QWF.Framework.DbAccess.SQLServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\obj\Release\QWF.Framework.DbAccess.SQLServer.pdb
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Framework.DbAccess.SQLServer.dll.config
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Framework.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Framework.DbAccess.SQLServer.pdb
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.SqlServer.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.xml
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\EntityFramework.SqlServer.xml
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\obj\Release\QWF.Framework.DbAccess.SQLServer.csprojResolveAssemblyReference.cache
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\obj\Release\QWF.Framework.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.Framework.DbAccess.SQLServer\obj\Release\QWF.Framework.DbAccess.SQLServer.pdb

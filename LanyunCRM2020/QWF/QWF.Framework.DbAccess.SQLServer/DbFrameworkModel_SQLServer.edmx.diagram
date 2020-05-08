@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9991fcb595914c5dbe2ddb2c3c59a76d" Name="Diagram1">
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_Config" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_LoginLog" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_Menu" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_MenuInUrl" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_Org" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_Resource" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_Role" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleGroup" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleInMenu" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleInResource" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_Seq" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_User" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_UserActionLog" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DbFrameworkEntity_SQLServer.T_QWF_UserInRole" Width="1.5" PointX="8.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

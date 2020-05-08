@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "系统配置表排序";
+}
+@section script{
+<script type="text/javascript">
+        $(document).ready(function () {
+            loadTreeGrid();
+        });
+        // 加载js tree 表格
+
+        function loadTreeGrid() {
+            index = 0;
+            $('#configTreeGrid').treegrid({
+                url: '@Url.Content("~/QWebFramework/Config/GetConfigTreeGrid")',
+                idField: 'ConfigId',
+                treeField: 'ConfigName',
+                fit: true,
+                fitColumns: false,
+                toolbar: '#toolbar',
+                border: false
+                
+            });
+        }
+
+        function expandAll() {
+            $('#configTreeGrid').treegrid('expandAll');
+        }
+
+        var index = 0;
+        function fmtSort(value, row) {
+            index++;
+            return "<input type='text' name='sortId_" + row.ConfigId + "' value='" + index + "' size='5'/>";
+        }
+        function btnSort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#form1').ajaxSubmit({
+                        url: '@Url.Content("~/QWebFramework/Config/ConfigTreeSort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loadTreeGrid();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+</script>
+}
+
+<body>
+    <form id="form1" method="post">
+        <div id="toolbar" style="padding:3px">
+            <a href="@Url.Content("~/QWebFramework/Config/ConfigList")" class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="width:80px">返回</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="btnSort();">排序</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton" style="width:100px" onclick="expandAll();">展开全部</a>
+        </div>
+        <table id="configTreeGrid" title="系统配置表" class="easyui-treegrid">
+            <thead>
+                <th field="ConfigId" width="100">节点ID</th>
+                <th field="ConfigName" width="200">节点名称</th>
+                <th field="ConfigCode" width="180">节点代码</th>
+                <th field="ConfigValue" width="150">节点值</th>
+                <th field="ValueType" width="100">值类型</th>
+                <th field="Remarks" width="200">备注</th>
+                <th field="SortId" width="100" formatter='fmtSort'>排序ID</th>
+                <th field="CreateTime" width="130">创建时间</th>
+                <th field="UpdateTime" width="130">修改时间</th>
+            </thead>
+        </table>
+    </form>
+</body>

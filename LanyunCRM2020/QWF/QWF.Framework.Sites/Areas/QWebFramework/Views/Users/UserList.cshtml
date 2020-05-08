@@ -1,0 +1,345 @@
+﻿@{
+    ViewBag.Title = "用户管理";
+}
+@section script{
+    <script type="text/javascript">
+
+        $(function () {
+            init();
+        });
+
+        function loaddg(orgId) {
+            var qryParams = {};
+            if (orgId != undefined && orgId!=null && parseInt(orgId) > 0 ) {
+                qryParams = {
+                    qryOrgId:orgId
+                };
+            }else{
+                qryParams = $('#qryForm').serializeJSON();
+            }
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/Users/GetUserList")',
+                title: '用户管理',
+                singleSelect: false,
+                onDblClickRow: function (index, row) {
+                    //赋值
+                    $('#userId').val(row.UserId);
+                    $('#orgComboTree').combotree('setValue', row.OrgId);
+
+                    $('#userName').textbox({ disabled: true });
+                    $('#userName').textbox('setValue', row.UserName);
+
+                    $('#password').textbox({
+                        prompt: '不修改密码，则不填！'
+                    });
+
+                    $('#realname').textbox('setValue', row.Realname);
+                    $('#phone').textbox('setValue', row.Phone);
+                    $('#tel').textbox('setValue', row.Tel);
+                    $('#fax').textbox('setValue', row.Fax);
+                    $('#email').textbox('setValue', row.Email);
+                    $('#qq').textbox('setValue', row.QQ);
+                    $('#weixin').textbox('setValue', row.Weixin);
+                    $('#position').textbox('setValue', row.Position);
+                    if (row.Leader =='是') {
+                        $('#leader').checkbox('check', true);
+                    } else {
+                        $('#leader').checkbox({ checked: false });
+                    }
+                    $('#userRemarks').textbox('setValue', row.UserRemarks);
+                    openDialog();
+                },
+                onLoadSuccess: function (data) {
+                    
+                },
+                queryParams: qryParams
+            });
+        }
+
+        //新增
+        function add() {
+            //清空表单
+            resetForm();
+
+            //打开弹窗
+            openDialog();
+        }
+
+        function resetForm() {
+            $("#dlg-from").form('clear');
+            $('#userName').textbox({ disabled: false });
+            $('#password').textbox({
+                prompt: '设置用户密码！'
+            });
+        }
+        //
+        function btnOrders(type) {
+
+            var action = '@Url.Content("~/QWebFramework/Users/OrderUser")';
+            var msg = '';
+            switch (type) {
+                case 'del':
+                    action += '?type=DelUser';
+                    msg = "确认要删除下面所选择的用户吗？删除用户，则不可恢复"
+                    break;
+                case 'stop':
+                    action += '?type=StopUser';
+                    msg = "确认要禁用下面所选择的用户吗？"
+                    break;
+                case 'start':
+                    action += '?type=StartUser';
+                    msg = "确认要启用下面所选择的用户吗？"
+                    break;
+            }
+
+            var userIds = '';
+            var items = $('#dg').datagrid('getSelections');
+            if (items.length == 0) {
+                alertError('请选择一条记录');
+                return false;
+            }
+            $.each(items, function (index, item) {
+                if (userIds.length > 0) {
+                    userIds += ','
+                }
+                userIds += item.UserId;
+            });
+            $.messager.confirm('操作确认框', msg, function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: action,
+                        data: {
+                            userIds:userIds
+                        },
+                        success: function (res) {
+                            if (res.Success)
+                            {
+                                loaddg();
+                                alertInfo('操作成功');
+                            }
+                        }
+                    })
+                }
+            });
+
+        }
+
+        //打开弹窗
+        function openDialog() {
+            $('#dlg-div').show();
+            $('#dlg').dialog('open');
+
+        }
+
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '用户信息管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+
+        function save() {
+            //获取机构树
+            var $from = $("#dlg-from");
+
+            var obj = $from.serializeJSON();
+
+            if (obj.userId == 0) {
+                if (obj.userName == undefined || obj.userName == '') {
+                    alertError("请填写用户名");
+                    return false;
+                }
+            }
+
+            if (obj.realname == undefined || obj.realname == '' || obj.realname.length == 0) {
+                alertError("请填写姓名");
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Users/SaveUser")',
+                data: $from.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        if ($('#userId').val() == "" || parseInt($('#userId').val()) == 0) {
+                            resetForm();
+                        }
+                        loaddg();
+                        alertInfo("保存成功！");
+                    }
+
+                }
+            });
+
+
+
+        }
+        function init() {
+
+            loadOrgTree();
+            loadOrgTreeCombox();
+            initDialog();
+            loaddg();
+
+        }
+
+        function loadOrgTree() {
+            $('#orgTree').tree({
+                url: '@Url.Content("~/QWebFramework/Common/GetOrgTree")',
+                onClick: function (node) {
+                    loaddg(node.id);
+                }
+            });
+        }
+        function loadOrgTreeCombox() {
+            $('#orgComboTree').combotree({
+                url: '@Url.Content("~/QWebFramework/Common/GetOrgTree")'
+            });
+        }
+    </script>
+
+}
+
+<body id="subBody" class="easyui-layout">
+    <div data-options="region:'west',split:true,border:true" title="组织机构" style="width:200px; ">
+        <ul id="orgTree" class="easyui-tree" lines="true"></ul>
+    </div>
+
+    <div data-options="region:'center',border:true">
+        <div id="tb">
+
+            <div class="qwf-searchbar">
+                <form id="qryForm" name="qryFrom">
+                    <table width="100%" border="0" cellspacing="3" cellpadding="3">
+                        <tr>
+                            <td>
+                                用户名：<input type="text" id="qryUserName" name="qryUserName" />
+                            </td>
+                            <td>
+                                用户ID：<input type="text" id="qryUserId" name="qryUserId" />
+                            </td>
+                            <td>姓 名：<input type="text" id="qryRealname" name="qryRealname" /></td>
+                            <td>
+                                用户状态：
+                                <select id="qryUserStatus" name="qryUserStatus" class="easyui-combobox" panelheight="auto" style="width:100px">
+                                    <option value="0">全部</option>
+                                    <option value="1">正常</option>
+                                    <option value="2">禁用</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+          
+            <div id="dg-toolbar">
+
+                <a href="javascript:void(0);" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-search'" style="width:80px" onclick="loaddg('0');">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" plain="true" data-options="iconCls:'icon-add'" style="width:80px" onclick="add();">新增</a>
+
+                <a href="javascript:void(0);" class="easyui-linkbutton" plain="true"  data-options="iconCls:'icon-remove'" style="width:80px" onclick="btnOrders('del');">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" plain="true"  data-options="iconCls:'icon-cancel'" style="width:80px" onclick="btnOrders('stop');">禁用</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" plain="true"  data-options="iconCls:'icon-ok'" style="width:80px" onclick="btnOrders('start');">启用</a>
+            </div>
+
+        </div>
+
+        <table id="dg">
+            <thead data-options="frozen:true">
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="UserId" width="80">用户ID</th>
+                    <th field="UserCode" width="200">用户编号</th>
+                    <th field="UserName" width="120">用户名</th>
+                    <th field="Realname" width="80">姓 名</th>
+                    <th field="OrgName" width="80">所属机构</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th field="UserStatus" width="60">状态</th>
+                    <th field="Leader" width="60">负责人</th>
+                    <th field="Tel" width="120">电话</th>
+                    <th field="Phone" width="120">手机</th>
+                    <th field="Email" width="200">E-Mail</th>
+                    <th field="Position" width="100">职位</th>
+                    <th field="QQ" width="80">QQ</th>
+                    <th field="Weixin" width="100">微信号</th>
+                    <th field="Fax" width="120">传真</th>
+                    <th field="LastLoginIp" width="100">上次登录IP</th>
+                    <th field="LastLoginTime" width="130">上次登录时间</th>
+                    <th field="CreateTime" width="130">创建时间</th>
+                    <th field="UserRemarks" width="200">用户备注</th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+</body>
+
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-from">
+        <input type="hidden" id="userId" name="userId" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input id="orgComboTree" name="orgId" label="所属机构:" labelWidth="100px" labelAlign="right" class="easyui-combotree" style="width:100%;" />
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="userName" name="userName" label="用户名:" required="true" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="password" name="password" label="登录密码:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="realname" name="realname" label="姓名:" required="true" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="tel" name="tel" label="电话:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="fax" name="fax" label="传真:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="phone" name="phone" label="手机:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="email" name="email" label="E-Mail:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="qq" name="qq" label="QQ:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="weixin" name="weixin" label="微信号:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="position" name="position" label="职位:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="leader" name="leader" label="部门负责人:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="userRemarks" name="userRemarks" label="备注:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px',multiline:true" " style="width:100%;height:60px;">
+            </div>
+
+        </div>
+    </form>
+
+</div>

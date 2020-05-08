@@ -1,0 +1,7 @@
+E:\Project\C# Project\00.MES\Client\MES.Model\bin\x86\Release\MES.Model.dll.config
+E:\Project\C# Project\00.MES\Client\MES.Model\bin\x86\Release\MES.Model.dll
+E:\Project\C# Project\00.MES\Client\MES.Model\bin\x86\Release\MES.Model.pdb
+E:\Project\C# Project\00.MES\Client\MES.Model\bin\x86\Release\MES.Server.Model.dll
+E:\Project\C# Project\00.MES\Client\MES.Model\obj\x86\Release\MES.Model.dll
+E:\Project\C# Project\00.MES\Client\MES.Model\obj\x86\Release\MES.Model.pdb
+E:\Project\C# Project\00.MES\Client\MES.Model\obj\x86\Release\MES.Model.csprojResolveAssemblyReference.cache

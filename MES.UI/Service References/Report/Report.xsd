@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MES.Server.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MES.Server.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Card">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DList" nillable="true" type="tns:ArrayOfCardDetail" />
+      <xs:element minOccurs="0" name="M" nillable="true" type="tns:CardMain" />
+      <xs:element minOccurs="0" name="ZJList" nillable="true" type="tns:ArrayOfCardChildren" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Card" nillable="true" type="tns:Card" />
+  <xs:complexType name="ArrayOfCardDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardDetail" nillable="true" type="tns:CardDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardDetail" nillable="true" type="tns:ArrayOfCardDetail" />
+  <xs:complexType name="CardDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AutoId" type="xs:int" />
+      <xs:element minOccurs="0" name="CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CycleTime" type="xs:decimal" />
+      <xs:element minOccurs="0" name="EQId" type="xs:int" />
+      <xs:element minOccurs="0" name="OpName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpSeq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationId" type="xs:int" />
+      <xs:element minOccurs="0" name="RouterId" type="xs:int" />
+      <xs:element minOccurs="0" name="bQuality" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bhgQty" type="xs:decimal" />
+      <xs:element minOccurs="0" name="cDepCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cEQCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cEQName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cMemo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cRepPsn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cWorker" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dRepDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hgQty" type="xs:decimal" />
+      <xs:element minOccurs="0" name="iStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardDetail" nillable="true" type="tns:CardDetail" />
+  <xs:complexType name="CardMain">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CloseDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClosePsn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="MoTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortSeq" type="xs:int" />
+      <xs:element minOccurs="0" name="U8RDCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="U8RDId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="WOCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WOGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WOQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="bChild" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bClosed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bComplete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bPause" type="xs:boolean" />
+      <xs:element minOccurs="0" name="bStockIn" type="xs:boolean" />
+      <xs:element minOccurs="0" name="cComUnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cInvCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cInvName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cInvStd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cMaker" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cMemo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cmpQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="curOpName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="curOpSeq" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="curOperation" nillable="true" type="tns:CardDetail" />
+      <xs:element minOccurs="0" name="curOperationId" type="xs:int" />
+      <xs:element minOccurs="0" name="dCreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="iQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="pCardNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardMain" nillable="true" type="tns:CardMain" />
+  <xs:complexType name="ArrayOfCardChildren">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardChildren" nillable="true" type="tns:CardChildren" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardChildren" nillable="true" type="tns:ArrayOfCardChildren" />
+  <xs:complexType name="CardChildren">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AutoID" type="xs:int" />
+      <xs:element minOccurs="0" name="CardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationId" type="xs:int" />
+      <xs:element minOccurs="0" name="RouterId" type="xs:int" />
+      <xs:element minOccurs="0" name="cComUnitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cInvCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cInvName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cInvStd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="iQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="rQuantity" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardChildren" nillable="true" type="tns:CardChildren" />
+  <xs:complexType name="ArrayOfCardMain">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardMain" nillable="true" type="tns:CardMain" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardMain" nillable="true" type="tns:ArrayOfCardMain" />
+  <xs:complexType name="ArrayOfOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Operation" nillable="true" type="tns:Operation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperation" nillable="true" type="tns:ArrayOfOperation" />
+  <xs:complexType name="Operation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Operation" nillable="true" type="tns:Operation" />
+  <xs:complexType name="ArrayOfPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Person" nillable="true" type="tns:Person" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPerson" nillable="true" type="tns:ArrayOfPerson" />
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="JobNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cDept_Num" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cPsn_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cPsn_Num" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" nillable="true" type="tns:Person" />
+  <xs:complexType name="MESVerion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerCode" type="xs:int" />
+      <xs:element minOccurs="0" name="VerDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="dDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MESVerion" nillable="true" type="tns:MESVerion" />
+</xs:schema>

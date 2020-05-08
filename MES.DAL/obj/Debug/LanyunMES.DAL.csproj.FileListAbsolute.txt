@@ -1,0 +1,1 @@
+C:\Lanyun Project\Lanyun_MES\Client\MES.DAL\obj\Debug\LanyunMES.DAL.csprojResolveAssemblyReference.cache

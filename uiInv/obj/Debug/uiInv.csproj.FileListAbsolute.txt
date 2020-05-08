@@ -1,0 +1,380 @@
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\ResolveAssemblyReference.cache
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\SUPortal.FmInvClass.resources
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\SUPortal.FmIUInv.resources
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\SUPortal.FmQBank.resources
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\SUPortal.Properties.Resources.resources
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\SUPortal.FmInv.resources
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\uiInv.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\uiInv.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Business.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Common.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Component.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\ISecurity.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\suOffice.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\uiBase.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\uiRef.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Interop.Office.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Interop.Excel.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\DALayer.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\DataHelper.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Interop.VBIDE.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Common.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Component.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\Business.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\uiRef.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\ISecurity.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\suOffice.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\DALayer.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\DataHelper.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\bin\Debug\uiBase.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\uiInv.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\uiInv\obj\Debug\uiInv.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\uiInv.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\uiInv.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Business.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Common.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Component.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\ISecurity.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\suOffice.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\uiBase.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\uiRef.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Interop.Office.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Interop.Excel.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\DALayer.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\DataHelper.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Interop.VBIDE.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Common.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Component.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\Business.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\uiRef.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\ISecurity.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\suOffice.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\DALayer.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\DataHelper.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\bin\Debug\uiBase.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\ResolveAssemblyReference.cache
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\SUPortal.FmInvClass.resources
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\SUPortal.FmIUInv.resources
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\SUPortal.FmQBank.resources
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\SUPortal.Properties.Resources.resources
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\SUPortal.FmInv.resources
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\uiInv.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\uiInv\obj\Debug\uiInv.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\uiInv.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\uiInv.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Business.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Common.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Component.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\ISecurity.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\suOffice.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\uiBase.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\uiRef.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Interop.Office.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Interop.Excel.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\DALayer.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\DataHelper.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Interop.VBIDE.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Common.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Component.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\Business.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\uiRef.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\ISecurity.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\suOffice.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\DALayer.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\DataHelper.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\bin\Debug\uiBase.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\SUPortal.FmInvClass.resources
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\SUPortal.FmIUInv.resources
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\SUPortal.FmQBank.resources
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\SUPortal.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\SUPortal.FmInv.resources
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\uiInv.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\uiInv\obj\Debug\uiInv.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\uiInv.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\uiInv.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Business.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Common.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Component.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\ISecurity.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\uiBase.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\uiRef.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Interop.Office.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Interop.Excel.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\DALayer.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\DataHelper.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Common.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Component.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\Business.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\uiRef.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\ISecurity.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\DALayer.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\DataHelper.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\uiBase.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\uiInv.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\uiInv.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\Eastar.FmInvClass.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\Eastar.FmIUInv.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\Eastar.FmQBank.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\obj\Debug\Eastar.FmInv.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\ESOffice.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\uiInv\bin\Debug\ESOffice.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiInv.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiInv.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Business.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Common.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Component.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ESOffice.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ISecurity.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiBase.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiRef.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.Office.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.Excel.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DALayer.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DataHelper.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Common.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ESOffice.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Component.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Business.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiRef.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ISecurity.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DALayer.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DataHelper.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiBase.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmInvClass.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmIUInv.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmQBank.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmInv.resources
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiInv.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiInv.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Business.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Common.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Component.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ESOffice.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ISecurity.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiBase.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiRef.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.Office.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.Excel.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DALayer.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DataHelper.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Common.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ESOffice.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Component.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\Business.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiRef.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\ISecurity.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DALayer.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\DataHelper.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\bin\Debug\uiBase.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmInvClass.resources
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmIUInv.resources
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmQBank.resources
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmInv.resources
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.pdb
+E:\ESMESSolution\uiInv\bin\Debug\uiInv.dll
+E:\ESMESSolution\uiInv\bin\Debug\uiInv.pdb
+E:\ESMESSolution\uiInv\bin\Debug\Business.dll
+E:\ESMESSolution\uiInv\bin\Debug\Common.dll
+E:\ESMESSolution\uiInv\bin\Debug\Component.dll
+E:\ESMESSolution\uiInv\bin\Debug\ESOffice.dll
+E:\ESMESSolution\uiInv\bin\Debug\ISecurity.dll
+E:\ESMESSolution\uiInv\bin\Debug\uiBase.dll
+E:\ESMESSolution\uiInv\bin\Debug\uiRef.dll
+E:\ESMESSolution\uiInv\bin\Debug\Interop.Office.dll
+E:\ESMESSolution\uiInv\bin\Debug\Interop.Excel.dll
+E:\ESMESSolution\uiInv\bin\Debug\DALayer.dll
+E:\ESMESSolution\uiInv\bin\Debug\DataHelper.dll
+E:\ESMESSolution\uiInv\bin\Debug\Interop.VBIDE.dll
+E:\ESMESSolution\uiInv\bin\Debug\Common.pdb
+E:\ESMESSolution\uiInv\bin\Debug\ESOffice.pdb
+E:\ESMESSolution\uiInv\bin\Debug\Component.pdb
+E:\ESMESSolution\uiInv\bin\Debug\Business.pdb
+E:\ESMESSolution\uiInv\bin\Debug\uiRef.pdb
+E:\ESMESSolution\uiInv\bin\Debug\ISecurity.pdb
+E:\ESMESSolution\uiInv\bin\Debug\DALayer.pdb
+E:\ESMESSolution\uiInv\bin\Debug\DataHelper.pdb
+E:\ESMESSolution\uiInv\bin\Debug\uiBase.pdb
+E:\ESMESSolution\uiInv\obj\Debug\ResolveAssemblyReference.cache
+E:\ESMESSolution\uiInv\obj\Debug\Eastar.FmInvClass.resources
+E:\ESMESSolution\uiInv\obj\Debug\Eastar.FmIUInv.resources
+E:\ESMESSolution\uiInv\obj\Debug\Eastar.FmQBank.resources
+E:\ESMESSolution\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+E:\ESMESSolution\uiInv\obj\Debug\Eastar.FmInv.resources
+E:\ESMESSolution\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+E:\ESMESSolution\uiInv\obj\Debug\uiInv.dll
+E:\ESMESSolution\uiInv\obj\Debug\uiInv.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\uiInv.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\uiInv.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Business.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Common.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Component.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\ESOffice.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\ISecurity.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\uiBase.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\uiRef.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.Office.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.Excel.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\DALayer.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\DataHelper.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Interop.VBIDE.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Common.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\ESOffice.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Component.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\Business.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\uiRef.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\ISecurity.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\DALayer.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\DataHelper.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\uiBase.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\ResolveAssemblyReference.cache
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmInvClass.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmIUInv.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmQBank.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmInv.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\uiInv.pdb
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmAtt.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmAttClass_Add.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.FmAtt_Add.resources
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\FastReport.Bars.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\FastReport.Editor.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\bin\Debug\FastReport.dll
+E:\MES_Source\MES_Code\ESMESSolution\uiInv\obj\Debug\Eastar.ImportExcel.resources
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\uiInv.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\uiInv.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Business.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Common.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Component.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\ESOffice.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\ISecurity.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\uiBase.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\uiRef.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\FastReport.Bars.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\FastReport.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\FastReport.Editor.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\DALayer.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\DataHelper.dll
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\ISecurity.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\ESOffice.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Component.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Business.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\uiRef.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\DALayer.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\DataHelper.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\uiBase.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Common.pdb
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmInvClass.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmIUInv.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmQBank.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmInv.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.ImportExcel.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmAtt.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmAttClass_Add.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\Eastar.FmAtt_Add.resources
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\uiInv.dll
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\uiInv.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\uiInv.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\uiInv.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Business.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Common.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Component.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\ESOffice.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\ISecurity.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\uiBase.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\uiRef.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Interop.Office.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\FastReport.Bars.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Interop.Excel.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Interop.VBIDE.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\FastReport.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\FastReport.Editor.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\DALayer.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\DataHelper.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\ISecurity.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\ESOffice.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Component.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Business.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\uiRef.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\DALayer.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\DataHelper.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\uiBase.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\bin\Debug\Common.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmInvClass.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmIUInv.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmQBank.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmInv.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.ImportExcel.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmAtt.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmAttClass_Add.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\Eastar.FmAtt_Add.resources
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\uiInv.dll
+D:\EAStar\01.世达钢管 - 外币修改版\uiInv\obj\Debug\uiInv.pdb
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\GenerateResource-ResGen.read.4.tlog
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\EAStar\01.世达钢管\uiInv\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\GenerateResource.read.1007.tlog
+D:\EAStar\01.世达钢管\uiInv\obj\Debug\GenerateResource.write.1007.tlog
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\uiInv.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\uiInv.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\Business.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\Component.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\ESOffice.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\ISecurity.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\uiBase.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\uiRef.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\DALayer.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\DataHelper.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\FastReport.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\FastReport.Bars.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\FastReport.Editor.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\Business.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\Component.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\ESOffice.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\ISecurity.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\uiBase.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\uiRef.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\DALayer.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\DataHelper.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\Debug\FastReport.xml
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\uiInv.csprojResolveAssemblyReference.cache
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmInvClass.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmIUInv.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmQBank.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.Properties.Resources.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmInv.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.ImportExcel.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmAtt.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmAttClass_Add.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\Eastar.FmAtt_Add.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\uiInv.csproj.GenerateResource.Cache
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\uiInv.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\Debug\uiInv.pdb

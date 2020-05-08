@@ -1,0 +1,13 @@
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.csprojResolveAssemblyReference.cache
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmBILL.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmBIU.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmRList.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmTreeClass.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmTreeGrid.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmQBox.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmQList.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.FmRMDList.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.Properties.Resources.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.RefForm.resources
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.csproj.GenerateResource.Cache
+C:\Lanyun Project\Lanyun_MES\Client\MES.UIBase\obj\Debug\LanyunMES.UIBase.dll.licenses

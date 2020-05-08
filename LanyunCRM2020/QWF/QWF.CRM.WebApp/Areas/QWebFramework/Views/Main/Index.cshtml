@@ -1,0 +1,213 @@
+﻿@{
+    ViewBag.Title  = "首页";
+    var user = (QWF.Framework.Services.SvrModels.SvrShortUserInfo)Model;
+}
+@section css{
+<link href="~/QWebFramework/Css/sidemenu.css" rel="stylesheet" />
+<link href="~/QWebFramework/Css/page.main.css" rel="stylesheet" />
+} 
+@section script{
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            initData();
+        });
+
+        function initData() {
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Common/GetUserLeftMenu")',
+                success: function (res) {
+                    $('#leftMenuNva').sidemenu({
+                        data: res,
+                        onSelect: function (e) {
+                            var url = e.attributes.url;
+                            if (e.attributes.target == 1) {
+                                var tempwindow = window.open();
+                                tempwindow.location = url;
+                            } else {
+                                addTab(e.text, e.attributes.url, e.attributes.menuId);
+                            }
+                            
+                        }
+                    });
+                }
+            })
+        }
+
+        function toggle() {
+            var opts = $('#leftMenuNva').sidemenu('options');
+            $('#leftMenuNva').sidemenu(opts.collapsed ? 'expand' : 'collapse');
+            opts = $('#leftMenuNva').sidemenu('options');
+
+            var width = 200
+            if (opts.collapsed) {//关闭
+                width = 60;
+                $('#menuBarText').text('open');
+                $('#menuBarBtn').text('u');
+            } else {
+                width = 200;
+                $('#menuBarText').text('navigation');
+                $('#menuBarBtn').text('t');
+            }
+
+            $('#leftMenuNva').sidemenu('resize', {
+                width: width
+            });
+
+            //设置左边导航宽度
+            $('#mainLayout').layout('panel', 'west').panel("resize", { width: width });
+            $('#mainLayout').layout('resize');
+        }
+
+        function addTab(title, url, menuId) {
+            if ($('#tabs').tabs('exists', title)) {
+                $('#tabs').tabs('select', title); //选中并刷新
+                var currTab = $('#tabs').tabs('getSelected');
+                var url = $(currTab.panel('options').content).attr('src');
+                if (url != undefined) {
+                    $('#tabs').tabs('update', {
+                        tab: currTab,
+                        options: {
+                            content: createFrame(url, menuId)
+                        }
+                    })
+                }
+            } else {
+                var content = createFrame(url, menuId);
+                $('#tabs').tabs('add', {
+                    title: title,
+                    content: content,
+                    closable: true
+                });
+            }
+        }
+
+        function createFrame(url, menuId) {
+
+            var $iframeWrap = $("<div id=\"" + menuId + "Wrap\" style=\"position:relative;height:100%\"></div>");
+            var $iframeLoad = $("<div class=\"" + menuId + "Load\" style=\"position:absolute;top:10px;left:10px;\"><i class=\"fa fa-refresh fa-spin fa-fw\"></i> Loading...</div>");
+            var $iframe = $("<iframe class=\"" + menuId + "\" src=\"" + url + "\" style=\"width:100%;height:100%;margin:auto;\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\"></iframe>");
+
+            $iframeWrap.append($iframeLoad);
+            $iframeWrap.append($iframe);
+
+            $iframe.load(function () {
+                $iframeLoad.hide();
+                $iframeLoad.remove();
+            });
+            return $iframeWrap;
+        }
+
+        function resetPasswrod() {
+            var oldPwd = $('#oldPwd').val();
+            var newPwd1 = $('#newPwd1').val();
+            var newPwd2 = $('#newPwd2').val();
+
+            if (oldPwd.length < 6) {
+                alertError('旧密码长度至少6位');
+                return false;
+            } else if (newPwd1.length < 6) {
+                alertError('新密码长度至少6位');
+                return false;
+            } else if (newPwd1 != newPwd2) {
+                alertError('二次输入密码不一致');
+                return false;
+            } else if (oldPwd == newPwd1) {
+                alertError('新密码不能与旧密码相同');
+                return false;
+            }
+
+            $('#editPwdDialog').dialog('close');
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Main/ResetPassword")', 
+                data: {
+                    oldPwd: oldPwd,
+                    newPwd: newPwd1
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        $('#dlgForm').form('clear');
+                        alertInfo("修改密码成功!");
+                    }
+                }
+            });
+        }
+</script>
+ }
+
+
+<body id="mainLayout" class="easyui-layout">
+    <div id="mainTopNva" region="north" border="false" style="height: 50px" class="main-top">
+        <div class="main-top-nva clearfix ">
+            <div class="log-text">@QWF.Framework.GlobalConst.AppName</div>
+            <div class="user-info clearfix">
+                <div class="user-info-item">
+                    <i class="fa fa-user-circle"></i>
+                    <span>@user.Realname (@user.CurrentUserName)</span>
+                </div>
+                <div class="user-info-item">
+                    <i class="fa fa-lock"></i><span><a href="javasript:void(0);" onclick="javascript:$('#editPwdDialog').dialog('open');">修改密码</a></span>
+                </div>
+                <div class="user-info-item">
+                    <i class="fa fa-power-off"></i>
+                    <span><a href="@Url.Content("~/QWebFramework/Main/Logout")">安全退出</a></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div region="west" border="false" split="false" style="width: 200px;" class="main-left-bg">
+        <div id="menuOpen" onclick="toggle();" title="打开/关闭" class="leftmenu-bar clearfix">
+            <div id="menuBarText" class="menu-bar-text">navigation</div>
+            <div id="menuBarBtn" class="menu-bar-btn">t</div>
+        </div>
+        <div id="leftMenuNva"></div>
+    </div>
+    <div region="center">
+        <div id="tabs" class="easyui-tabs" fit="true" border="false">
+            <div title="首页" closable="false">
+                <iframe id="iframe_1" scrolling="auto" frameborder="0" src="" style="width: 100%;height: 100%;"></iframe>
+            </div>
+        </div>
+    </div>
+    <div region="south" border="false" class="qwf-copyright">
+        @QWF.Framework.GlobalConst.Copyright
+    </div>
+
+
+</body>
+
+<div id="editPwdDialog" class="easyui-dialog" title="修改密码" style="width:420px;height:200px;"
+     data-options="resizable:true,modal:true,closed:true,buttons:'#dlg-buttons-edit'">
+    <form id="dlgForm" method="post">
+        <table width="400" border="0" cellpadding="0" cellspacing="0" class="qwf-tb">
+            <tr>
+                <td width="115" scope="row">旧密码</td>
+                <td>
+                    <input type="password" name="oldPwd" id="oldPwd" />
+                    <span class="qwf-font-red">*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>新密码:</td>
+                <td>
+                    <input type="password" name="newPwd1" id="newPwd1" />
+                    <span class="font-red">*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>确认新密码:</td>
+                <td>
+                    <input type="password" name="newPwd2" id="newPwd2" />
+                    <span class="font-red">*</span>
+                </td>
+            </tr>
+        </table>
+        <div id="dlg-buttons-edit" class="qwf-win-footerbar2">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:resetPasswrod();">保存</a>
+        </div>
+    </form>
+</div>
+
+

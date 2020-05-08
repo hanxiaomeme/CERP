@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "权限资源代码";
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+
+        });
+        function init() {
+            initDialog();
+            loaddg();
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '权限资源代码管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+
+        function loaddg() {
+            var qryParams = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/Resource/GetResouceList")',
+                title: '权限资源代码',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: qryParams
+            });
+        }
+        function resetForm() {
+            $('#dlg-form').form('clear');
+        }
+
+        function add() {
+            resetForm();
+            $('#resourceCode').attr('disabled', false);
+            $('#dlg').dialog({ title: '新增资源代码' }).dialog('open');
+        }
+
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的资源代码或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的资源代码！');
+                return false;
+            } else {
+                //set value
+                $('#hidRuleId').val(row.RuleId);
+                $('#resourceName').val(row.ResourceName);
+                $('#resourceCode').val(row.ResourceCode);
+                $('#resourceCode').attr('disabled', true);
+                $('#remark').val(row.ResourceRemarks);
+
+                $('#dlg').dialog({ title: '编辑资源代码' }).dialog('open');
+            }
+        }
+
+        function save() {
+            var form = $("#dlg-form");
+            var obj = form.serializeJSON();
+
+            if (obj.resourceName == undefined || obj.resourceName == '') {
+                alertError("请填写资源代码名称");
+                return false;
+            }
+
+            if (obj.hidRuleId == undefined || parseInt(obj.hidRuleId) == 0) {
+                if (obj.resourceCode == undefined || obj.resourceCode == '') {
+                    alertError("请填写资源代码");
+                    return false;
+                }
+            }
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Resource/SaveResource")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        loaddg();
+                        alertInfo("保存成功！");
+                    }
+
+                }
+            });
+        }
+
+        /**/
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '确认要删除下面所选择的资源代码吗？删除资源代码，数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Resource/DelResource")',
+                        data: { ruleId: row.RuleId },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            } 
+                        }
+                    });
+                }
+            });
+
+        }
+
+    </script>
+}
+<body>
+    <form id="qryForm">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            资源名称:<input type="text" id="qryResourceName" name="qryResourceName" />
+                        </td>
+                        <td>
+                            资源代码:<input type="text" id="qryResourceCode" name="qryResourceCode" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();">删除</a>
+            </div>
+        </div>
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'RuleId',checkbox:true"></th>
+                    <th field="ResourceName" width="120">资源名称</th>
+                    <th field="ResourceCode" width="200">资源代码</th>
+                    <th field="ResourceRemarks" width="200">备注</th>
+                    <th field="CreateTime" width="130">创建时间</th>
+                    <th field="UpdateTime" width="130">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+
+    <div id="dlg">
+        <form id="dlg-form">
+            <input type="hidden" name="hidRuleId" id="hidRuleId" />
+            <table width="100%" border="0" cellpadding="5" cellspacing="5" class="qwf-win-tb">
+                <tr>
+                    <td width="100px">资源名称:</td>
+                    <td><input name="resourceName" id="resourceName" /><span class="qwf-font-red">*</span></td>
+                </tr>
+                <tr>
+                    <td>资源代码:</td>
+                    <td><input name="resourceCode" id="resourceCode" size="35" /><span class="qwf-font-red">*</span></td>
+                </tr>
+                <tr>
+                    <td>备注:</td>
+                    <td><textarea name="remark" id="remark" rows="5" cols="35"></textarea></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>

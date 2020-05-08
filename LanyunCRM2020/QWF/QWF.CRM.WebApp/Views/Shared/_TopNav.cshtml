@@ -1,0 +1,27 @@
+﻿<!-- 顶部导航 begin -->
+@{ 
+    var curUser = QWF.Framework.Web.UserContext.GetCurrentInfo();
+}
+<div class="topNav">
+    <div class="left">
+        @*<div class="logo">客户关系管理系统</div>*@
+        <div class="logo">@QWF.Framework.GlobalConst.AppName</div>
+    </div>
+    <div class="user">
+        <i class="fa fa-user-circle"></i>
+        <span>@curUser.CurrentUserName (@curUser.Realname)</span>
+    </div>
+    <div class="menuNav">
+        <a class="seleted" href="@Url.Content("~/Sales/Main")">业务中心</a>
+        <a href="#">报表</a>
+        <a href="#">报表2</a>
+        <a href="#">报表3</a>
+        <a href="#">报表4</a>
+        <a href="@Url.Content("~/Sales/Report")">dddd</a>
+        <a href="@Url.Content("~/QWebFramework/Main")">配置</a>
+    </div>
+
+
+  
+</div>
+<!-- end -->

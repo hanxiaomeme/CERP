@@ -1,0 +1,53 @@
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\uiInv.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\uiInv.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Business.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Common.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Component.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\ESOffice.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\ISecurity.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\uiBase.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\uiRef.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\DALayer.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Microsoft.Office.Interop.Excel.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\FastReport.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\DataHelper.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\FastReport.Bars.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\FastReport.Editor.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Business.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Common.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\Component.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\ESOffice.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\ISecurity.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\uiBase.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\uiRef.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\DALayer.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Release\DataHelper.pdb
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmInvClass.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmIUInv.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmQBank.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.Properties.Resources.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmInv.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.ImportExcel.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmAtt.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmAttClass_Add.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\Eastar.FmAtt_Add.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\uiInv.dll
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Release\uiInv.pdb
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\uiInv.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\NDF.FmInv.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\NDF.FmInvClass.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\NDF.FmInvDetail.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\NDF.FmInvQuery.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\NDF.FmPDFView.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\NDF.Properties.Resources.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\uiInv.csproj.GenerateResource.Cache
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\uiInv.dll
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\uiInv.pdb
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\MES.FmInv.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\MES.FmInvClass.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\MES.FmInvDetail.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\MES.FmInvQuery.resources
+E:\Project\C# Project\00.MES\Client\uiInv\obj\x86\Release\MES.FmPDFView.resources

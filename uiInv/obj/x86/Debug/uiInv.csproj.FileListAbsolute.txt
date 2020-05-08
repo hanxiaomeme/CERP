@@ -1,0 +1,171 @@
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\uiInv.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\uiInv.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Business.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Common.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Component.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\ESOffice.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\ISecurity.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\uiBase.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\uiRef.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\DALayer.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\FastReport.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\DataHelper.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\FastReport.Bars.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\FastReport.Editor.dll
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Business.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Common.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\Component.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\ESOffice.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\ISecurity.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\uiBase.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\uiRef.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\DALayer.pdb
+D:\EAStar\01.世达钢管\uiInv\bin\x86\Debug\DataHelper.pdb
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmInvClass.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmIUInv.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmQBank.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.Properties.Resources.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmInv.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.ImportExcel.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmAtt.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmAttClass_Add.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\Eastar.FmAtt_Add.resources
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\uiInv.dll
+D:\EAStar\01.世达钢管\uiInv\obj\x86\Debug\uiInv.pdb
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\uiInv.csprojResolveAssemblyReference.cache
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\uiInv.csproj.GenerateResource.Cache
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\uiInv.dll
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\uiInv.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\uiInv.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\uiInv.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Business.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Common.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Component.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\ESOffice.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\ISecurity.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\uiBase.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\uiRef.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\DALayer.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\FastReport.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\DataHelper.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\FastReport.Bars.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\System.Windows.Forms.DataVisualization.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\FastReport.Editor.dll
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Business.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Common.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\Component.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\ESOffice.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\ISecurity.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\uiBase.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\uiRef.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\DALayer.pdb
+G:\C# Project\EASTAR\uiInv\bin\x86\Debug\DataHelper.pdb
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmInvClass.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmIUInv.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmQBank.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.Properties.Resources.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmInv.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.ImportExcel.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmAtt.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmAttClass_Add.resources
+G:\C# Project\EASTAR\uiInv\obj\x86\Debug\Eastar.FmAtt_Add.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\uiInv.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\uiInv.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\Business.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\Component.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\ESOffice.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\ISecurity.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\uiBase.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\uiRef.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\DALayer.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\FastReport.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\DataHelper.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\FastReport.Bars.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\FastReport.Editor.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\Business.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\Component.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\ESOffice.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\ISecurity.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\uiBase.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\uiRef.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\DALayer.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\FastReport.xml
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\bin\x86\Debug\DataHelper.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.csprojResolveAssemblyReference.cache
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmInvClass.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmIUInv.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmQBank.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.Properties.Resources.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmInv.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.ImportExcel.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAtt.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAttClass_Add.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAtt_Add.resources
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.csproj.GenerateResource.Cache
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.pdb
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\uiInv.dll
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\uiInv.pdb
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.csprojResolveAssemblyReference.cache
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmInvClass.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmIUInv.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmQBank.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.Properties.Resources.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmInv.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.ImportExcel.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAtt.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAttClass_Add.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAtt_Add.resources
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.csproj.GenerateResource.Cache
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.dll
+D:\EAStar\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\uiInv.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\uiInv.pdb
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.csprojResolveAssemblyReference.cache
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmInvClass.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmIUInv.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmQBank.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.Properties.Resources.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmInv.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.ImportExcel.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAtt.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAttClass_Add.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.FmAtt_Add.resources
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.csproj.GenerateResource.Cache
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.dll
+E:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\uiInv.pdb
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\uiInv.dll
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\uiInv.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\uiInv\obj\x86\Debug\Eastar.uiInv.FrmInv.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.csprojResolveAssemblyReference.cache
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.csproj.GenerateResource.Cache
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.dll
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.pdb
+G:\C# Project\NDFCAD\Eastar\bin\x86\Debug\uiInv.dll
+G:\C# Project\NDFCAD\Eastar\bin\x86\Debug\uiInv.pdb
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInv.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvClass.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.Properties.Resources.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvUI.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvDetail.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmPDFView.resources
+G:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvQuery.resources
+E:\C# Project\NDFCAD\Eastar\bin\x86\Debug\uiInv.dll
+E:\C# Project\NDFCAD\Eastar\bin\x86\Debug\uiInv.pdb
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.csprojResolveAssemblyReference.cache
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInv.resources
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvClass.resources
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvDetail.resources
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmInvQuery.resources
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.FmPDFView.resources
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\NDF.Properties.Resources.resources
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.csproj.GenerateResource.Cache
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.dll
+E:\C# Project\NDFCAD\uiInv\obj\x86\Debug\uiInv.pdb

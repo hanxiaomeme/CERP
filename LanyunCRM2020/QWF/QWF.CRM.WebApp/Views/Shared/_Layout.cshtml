@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>@ViewBag.Title - Powered by QCRM </title>
+    <meta name="author" content="@QWF.Assembly.Common.COMPANY" />
+    <meta name="copyright" content="@QWF.Framework.GlobalConst.Copyright" />
+    <meta name="framework" content="@(QWF.Assembly.QWebFramework.ASSEMBLY_VERSION+"_" + QWF.Assembly.QWebFramework.ASSEMBLY_VERSION_SUFFIX)" />
+    <meta name="version" content="@(QWF.Assembly.QCRM.ASSEMBLY_VERSION+"_" + QWF.Assembly.QCRM.ASSEMBLY_VERSION_SUFFIX)" />
+
+    <script src="~/QCRM/Scripts/jquery.min.1.12.4.js"></script>
+    <script src="~/QCRM/Scripts/EasyUI/1.6.9/jquery.easyui.min.js"></script>
+    <script src="~/QCRM/Scripts/jquery.texteditor.js"></script>
+    <script src="~/QCRM/Scripts/EasyUI/1.6.9/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/QCRM/Scripts/EasyUI/1.6.9/themes/icon.css" rel="stylesheet" />
+    <link href="~/QCRM/Css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/QCRM/Css/texteditor.css" rel="stylesheet" />
+    <script src="~/QCRM/Scripts/jquery.json.2.2.js"></script>
+    <script src="~/QCRM/Scripts/jquery.form.js"></script>
+    <link href="~/QCRM/Css/qcrm.main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    @{
+        var userConter = QWF.CRM.Utils.UserConter.GetUserConfig();
+        if (userConter == null || userConter.UI_Style == "01")
+        {
+            <link href="~/QCRM/Scripts/EasyUI/1.6.9/themes/material-teal/easyui.css" rel="stylesheet" />
+            <link href="~/QCRM/Scripts/EasyUI/1.6.9/themes/material-teal/easyui-material-teal.css" rel="stylesheet" />
+
+        }
+        else
+        {
+            <link href="~/QCRM/Scripts/EasyUI/1.6.9/themes/default/easyui.css" rel="stylesheet" />
+            <link href="~/QCRM/Scripts/EasyUI/1.6.9/themes/default/easyui-default.css" rel="stylesheet" />
+
+        }
+    } 
+    
+    <script src="~/QCRM/Scripts/qwf.qcrm.core.js"></script>
+    <script src="~/QCRM/Scripts/qwf.qcrm.easyui.js"></script>
+    <script src="~/QCRM/Scripts/qwf.qcrm.public.js"></script>
+    <script src="~/QCRM/Scripts/qwf.qcrm.prototype.js"></script>
+    @RenderSection("css", false)
+    @RenderSection("script", false)
+</head>
+    @RenderBody()
+</html>

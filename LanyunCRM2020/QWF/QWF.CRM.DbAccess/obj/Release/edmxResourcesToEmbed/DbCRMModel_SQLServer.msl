@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbCRMkEntity_SQLServerStoreContainer" CdmEntityContainer="DbCRMContext">
+    <EntitySetMapping Name="T_QCRM_CustomerProduct">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_CustomerProduct">
+        <MappingFragment StoreEntitySet="T_QCRM_CustomerProduct">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ProductItemId" ColumnName="ProductItemId" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_ListInForm">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_ListInForm">
+        <MappingFragment StoreEntitySet="T_QCRM_ListInForm">
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ListType" ColumnName="ListType" />
+          <ScalarProperty Name="FormCode" ColumnName="FormCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_Product">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Product">
+        <MappingFragment StoreEntitySet="T_QCRM_Product">
+          <ScalarProperty Name="ItemTitle" ColumnName="ItemTitle" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ServerType" ColumnName="ServerType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_ProductItem">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_ProductItem">
+        <MappingFragment StoreEntitySet="T_QCRM_ProductItem">
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ProduceCode" ColumnName="ProduceCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_QuickSreach">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QuickSreach">
+        <MappingFragment StoreEntitySet="T_QCRM_QuickSreach">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="SreachType" ColumnName="SreachType" />
+          <ScalarProperty Name="SreachTitle" ColumnName="SreachTitle" />
+          <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+          <ScalarProperty Name="QueryFieldId" ColumnName="QueryFieldId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_QuickSreachUser">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QuickSreachUser">
+        <MappingFragment StoreEntitySet="T_QCRM_QuickSreachUser">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="SreachId" ColumnName="SreachId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_Tabs">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Tabs">
+        <MappingFragment StoreEntitySet="T_QCRM_Tabs">
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="TabCode" ColumnName="TabCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_UserInForm">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserInForm">
+        <MappingFragment StoreEntitySet="T_QCRM_UserInForm">
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="FormCode" ColumnName="FormCode" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_UserQueryListSetting">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserQueryListSetting">
+        <MappingFragment StoreEntitySet="T_QCRM_UserQueryListSetting">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="StyleWidth" ColumnName="StyleWidth" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="QueryListId" ColumnName="QueryListId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_UserQuerySetting">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserQuerySetting">
+        <MappingFragment StoreEntitySet="T_QCRM_UserQuerySetting">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTIme" ColumnName="UpdateTIme" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="QueryCategoryId" ColumnName="QueryCategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_Config">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Config">
+        <MappingFragment StoreEntitySet="T_QWF_Config">
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="ConfigRemarks" ColumnName="ConfigRemarks" />
+          <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="ConfigIdList" ColumnName="ConfigIdList" />
+          <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+          <ScalarProperty Name="ConfigValueType" ColumnName="ConfigValueType" />
+          <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+          <ScalarProperty Name="ConfigResourceCode" ColumnName="ConfigResourceCode" />
+          <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_LoginLog">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_LoginLog">
+        <MappingFragment StoreEntitySet="T_QWF_LoginLog">
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_Menu">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Menu">
+        <MappingFragment StoreEntitySet="T_QWF_Menu">
+          <ScalarProperty Name="Target" ColumnName="Target" />
+          <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+          <ScalarProperty Name="IconCls" ColumnName="IconCls" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="DefaultUrl" ColumnName="DefaultUrl" />
+          <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="MenuIdList" ColumnName="MenuIdList" />
+          <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_MenuInUrl">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_MenuInUrl">
+        <MappingFragment StoreEntitySet="T_QWF_MenuInUrl">
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_Org">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Org">
+        <MappingFragment StoreEntitySet="T_QWF_Org">
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="OrgCodeList" ColumnName="OrgCodeList" />
+          <ScalarProperty Name="OrgIdList" ColumnName="OrgIdList" />
+          <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="IsOut" ColumnName="IsOut" />
+          <ScalarProperty Name="OrgAttribute" ColumnName="OrgAttribute" />
+          <ScalarProperty Name="OrgNamePath" ColumnName="OrgNamePath" />
+          <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+          <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_Resource">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Resource">
+        <MappingFragment StoreEntitySet="T_QWF_Resource">
+          <ScalarProperty Name="ResourceRemarks" ColumnName="ResourceRemarks" />
+          <ScalarProperty Name="ResourceType" ColumnName="ResourceType" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+          <ScalarProperty Name="ResourceCode" ColumnName="ResourceCode" />
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_Role">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Role">
+        <MappingFragment StoreEntitySet="T_QWF_Role">
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="RoleGroupId" ColumnName="RoleGroupId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_RoleGroup">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_RoleGroup">
+        <MappingFragment StoreEntitySet="T_QWF_RoleGroup">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="GroupRemarks" ColumnName="GroupRemarks" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_RoleInMenu">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_RoleInMenu">
+        <MappingFragment StoreEntitySet="T_QWF_RoleInMenu">
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_RoleInResource">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_RoleInResource">
+        <MappingFragment StoreEntitySet="T_QWF_RoleInResource">
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_Seq">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Seq">
+        <MappingFragment StoreEntitySet="T_QWF_Seq">
+          <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+          <ScalarProperty Name="SerialLength" ColumnName="SerialLength" />
+          <ScalarProperty Name="DateFormart" ColumnName="DateFormart" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_User">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_User">
+        <MappingFragment StoreEntitySet="T_QWF_User">
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="UserRemarks" ColumnName="UserRemarks" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Weixin" ColumnName="Weixin" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Realname" ColumnName="Realname" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="LastLoginIp" ColumnName="LastLoginIp" />
+          <ScalarProperty Name="Leader" ColumnName="Leader" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_UserActionLog">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_UserActionLog">
+        <MappingFragment StoreEntitySet="T_QWF_UserActionLog">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="LogItems" ColumnName="LogItems" />
+          <ScalarProperty Name="LogDescription" ColumnName="LogDescription" />
+          <ScalarProperty Name="ActionMethod" ColumnName="ActionMethod" />
+          <ScalarProperty Name="UserIp" ColumnName="UserIp" />
+          <ScalarProperty Name="LogType" ColumnName="LogType" />
+          <ScalarProperty Name="LogCode" ColumnName="LogCode" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QWF_UserInRole">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_UserInRole">
+        <MappingFragment StoreEntitySet="T_QWF_UserInRole">
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_UserInRoles">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.vw_UserInRoles">
+        <MappingFragment StoreEntitySet="vw_UserInRoles">
+          <ScalarProperty Name="RoleNames" ColumnName="RoleNames" />
+          <ScalarProperty Name="RoleCodes" ColumnName="RoleCodes" />
+          <ScalarProperty Name="RoleIds" ColumnName="RoleIds" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_FormInput">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_FormInput">
+        <MappingFragment StoreEntitySet="T_QCRM_FormInput">
+          <ScalarProperty Name="InputDesc" ColumnName="InputDesc" />
+          <ScalarProperty Name="CssHeight" ColumnName="CssHeight" />
+          <ScalarProperty Name="CssWidth" ColumnName="CssWidth" />
+          <ScalarProperty Name="SelectItemValue" ColumnName="SelectItemValue" />
+          <ScalarProperty Name="DictionaryCode" ColumnName="DictionaryCode" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="DefaultValueType" ColumnName="DefaultValueType" />
+          <ScalarProperty Name="InputType" ColumnName="InputType" />
+          <ScalarProperty Name="InputName" ColumnName="InputName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="FormCode" ColumnName="FormCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_Tables">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Tables">
+        <MappingFragment StoreEntitySet="T_QCRM_Tables">
+          <ScalarProperty Name="DeleteFlag" ColumnName="DeleteFlag" />
+          <ScalarProperty Name="DeleteField" ColumnName="DeleteField" />
+          <ScalarProperty Name="DeleteType" ColumnName="DeleteType" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_ListType">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_ListType">
+        <MappingFragment StoreEntitySet="T_QCRM_ListType">
+          <ScalarProperty Name="AscOrDesc" ColumnName="AscOrDesc" />
+          <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="TableRelation" ColumnName="TableRelation" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="ListType" ColumnName="ListType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_Fields">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Fields">
+        <MappingFragment StoreEntitySet="T_QCRM_Fields">
+          <ScalarProperty Name="IsVirtual" ColumnName="IsVirtual" />
+          <ScalarProperty Name="OnlyKey" ColumnName="OnlyKey" />
+          <ScalarProperty Name="IsNotNull" ColumnName="IsNotNull" />
+          <ScalarProperty Name="PK" ColumnName="PK" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="FieldTypeLength" ColumnName="FieldTypeLength" />
+          <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_Dictionary">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Dictionary">
+        <MappingFragment StoreEntitySet="T_QCRM_Dictionary">
+          <ScalarProperty Name="ItemFullNamePath" ColumnName="ItemFullNamePath" />
+          <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+          <ScalarProperty Name="ViewName" ColumnName="ViewName" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DictionaryType" ColumnName="DictionaryType" />
+          <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+          <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+          <ScalarProperty Name="IdList" ColumnName="IdList" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="ItemSort" ColumnName="ItemSort" />
+          <ScalarProperty Name="ItemValue" ColumnName="ItemValue" />
+          <ScalarProperty Name="ItemValueType" ColumnName="ItemValueType" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_UserCenter">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserCenter">
+        <MappingFragment StoreEntitySet="T_QCRM_UserCenter">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UI_Style" ColumnName="UI_Style" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_Form">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Form">
+        <MappingFragment StoreEntitySet="T_QCRM_Form">
+          <ScalarProperty Name="PlugInClass" ColumnName="PlugInClass" />
+          <ScalarProperty Name="ButtonIcon" ColumnName="ButtonIcon" />
+          <ScalarProperty Name="ButtonStyle" ColumnName="ButtonStyle" />
+          <ScalarProperty Name="WindowsWidth" ColumnName="WindowsWidth" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="StyleColums" ColumnName="StyleColums" />
+          <ScalarProperty Name="ActionStyle" ColumnName="ActionStyle" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="MainTable" ColumnName="MainTable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_RoleInQueryCategory">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_RoleInQueryCategory">
+        <MappingFragment StoreEntitySet="T_QCRM_RoleInQueryCategory">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_QueryList">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QueryList">
+        <MappingFragment StoreEntitySet="T_QCRM_QueryList">
+          <ScalarProperty Name="IsUserField" ColumnName="IsUserField" />
+          <ScalarProperty Name="Sortable" ColumnName="Sortable" />
+          <ScalarProperty Name="Hide" ColumnName="Hide" />
+          <ScalarProperty Name="Checkbox" ColumnName="Checkbox" />
+          <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+          <ScalarProperty Name="FormatterType" ColumnName="FormatterType" />
+          <ScalarProperty Name="FieldFormatter" ColumnName="FieldFormatter" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+          <ScalarProperty Name="StyleCss" ColumnName="StyleCss" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="StyleWidth" ColumnName="StyleWidth" />
+          <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+          <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+          <ScalarProperty Name="ListType" ColumnName="ListType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_QueryCategory">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QueryCategory">
+        <MappingFragment StoreEntitySet="T_QCRM_QueryCategory">
+          <ScalarProperty Name="AndOr" ColumnName="AndOr" />
+          <ScalarProperty Name="AscOrDesc" ColumnName="AscOrDesc" />
+          <ScalarProperty Name="SortField" ColumnName="SortField" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ShareType" ColumnName="ShareType" />
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QCRM_QueryWhere">
+      <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QueryWhere">
+        <MappingFragment StoreEntitySet="T_QCRM_QueryWhere">
+          <ScalarProperty Name="SortId" ColumnName="SortId" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UserCodeType" ColumnName="UserCodeType" />
+          <ScalarProperty Name="FieldQueryType" ColumnName="FieldQueryType" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="DateType" ColumnName="DateType" />
+          <ScalarProperty Name="DateNum" ColumnName="DateNum" />
+          <ScalarProperty Name="StaticDateValue" ColumnName="StaticDateValue" />
+          <ScalarProperty Name="FieldValueType" ColumnName="FieldValueType" />
+          <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+          <ScalarProperty Name="QueryCategoryId" ColumnName="QueryCategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

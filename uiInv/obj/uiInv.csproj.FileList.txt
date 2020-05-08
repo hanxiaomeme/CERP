@@ -1,0 +1,7 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SUPortal.FmInvClass.resources
+obj\Debug\SUPortal.FmIUInv.resources
+obj\Debug\SUPortal.FmQBank.resources
+obj\Debug\SUPortal.Properties.Resources.resources
+obj\Debug\SUPortal.FmInv.resources
+obj\Debug\uiInv.csproj.GenerateResource.Cache

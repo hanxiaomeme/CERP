@@ -1,0 +1,458 @@
+﻿
+@{
+    ViewBag.Title = "公司员工管理";
+
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+
+        function init() {
+            loaddg();
+            initDialog();
+            initChangeDialog();
+            loadQryOrgTree();
+        }
+
+        function loadQryOrgTree() {
+            $('#qryOrgId').combotree({
+                url: '@Url.Content("~/QCRMSetting/Employee/GetOrgTree")'
+            });
+        }
+        function loaddg() {
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/Employee/GetList")',
+                title: '公司员工管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '公司员工管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            resetForm();
+            $('#dlg').dialog('open');
+
+            $('#userName').textbox('enable');
+            $('#password').textbox({prompt: '密码最少6位！'});
+            
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的数据！');
+                return false;
+            } else {
+
+                resetForm();
+                $('#dlg').dialog('open');
+
+                $('#id').val(row.UserId);
+                $('#orgId').combotree('setValue', row.OrgId);
+                $('#realname').textbox('setValue', row.Realname);
+                $('#userName').textbox('setValue', row.UserName).textbox('disable');
+                $('#password').textbox({
+                    prompt: '不修改密码，则不填！'
+                });
+                $('#phone').textbox('setValue', row.Phone);
+                $('#tel').textbox('setValue', row.Tel);
+                $('#fax').textbox('setValue', row.Fax);
+                $('#email').textbox('setValue', row.Email);
+                $('#qq').textbox('setValue', row.QQ);
+                $('#weixin').textbox('setValue', row.Weixin);
+                $('#position').textbox('setValue', row.Position);
+                if (row.Leader == '1') {
+                    $('#leader').checkbox('check');
+                } else {
+                    $('#leader').checkbox('uncheck');
+                }
+                $('#userRemarks').textbox('setValue', row.UserRemarks);
+                $('#userStatus').combobox('setValue', row.UserStatus);
+
+                var roleCodes = row.RoleCodes.split(',');
+                $.each(roleCodes, function (i, code) {
+                    $('#roleCode_' + code).checkbox('check');
+                })
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/Employee/Delete")',
+                        data: {
+                            userId: row.UserId
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            console.log(obj);
+
+            if (obj.orgId.isNull()) {
+                alertError('请选择部门。');
+                return false;
+            } else if (obj.realname.isNull()) {
+                alertError("请填写姓名。");
+                return false;
+            }
+            else if (obj.id.isNull()) {
+                if(obj.userName.isNull()){
+                    alertError("请填写账号。");
+                    return false;
+                }
+            } else if (obj.id.isNull() && obj.password.isNull()) {
+                alertError('请填写密码。');
+                return false;
+            } else if (obj.roleCode == undefined || obj.roleCode.isNull()) {
+                alertError('请选择角色。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/Employee/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+
+        function initChangeDialog() {
+            $('#dlg-change').dialog({
+                width: 500,
+                height: '80%',
+                title: '客户信息批量转移',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        saveChangeCustomer();
+                    }
+                }
+                ]
+            });
+        }
+
+        function openChangeCustomer() {
+            $('#dlg-change').dialog('open');
+        }
+
+        function saveChangeCustomer() {
+            
+            var fromUserCode = $('#fromUserCode').combobox('getValue');
+            var fromUserText = $('#fromUserCode').combobox('getText');
+            var toUserCode = $('#toUserCode').combobox('getValue');
+            var toUserText = $('#toUserCode').combobox('getText');
+
+            if (fromUserCode.isNull()) {
+                alertError("请选择拥有者。")
+                return false;
+            }
+            if (toUserCode.isNull()) {
+                alertError("请选择接收者。")
+                return false;
+            }
+
+
+            $.messager.confirm('操作确认框', '确定要将【' + fromUserText + '】的客户一次性转移给【' + toUserText + '】吗？', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/Employee/ChangCustomer")',
+                        data: {
+                            fromUserCode: fromUserCode,
+                            toUserCode: toUserCode
+                            
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            部门:<input id="qryOrgId" name="qryOrgId" class="easyui-combotree"  />
+                        </td>
+                        <td>
+                           关键字:<input type="text" id="qryKey" name="qryKey" prompt="姓名、ID、账号、编码" class="easyui-textbox"/>
+                        </td>
+                        <td>
+                            角色:<input type="text" id="qryRoleCode" name="qryRoleCode" class="easyui-combobox"
+                                      data-options="valueField:'Value',textField:'Name',url:'@Url.Content("~/QCRMSetting/Employee/GetRoles")'" panelHeight="200" />
+                        </td>
+                        <td>
+                            状态:
+                            <select id="qryUserStatus" name="qryUserStatus" class="easyui-combobox" panelHeight="100" style="width:100px">
+                                <option value="">==全部==</option>
+                                <option value="1">正常</option>
+                                <option value="2">禁用</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" style="width: 100px" onclick="openChangeCustomer();">转移客户</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead data-options="frozen:true">
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="OrgNamePath" width="200">部门</th>
+                    <th field="UserId" width="80">ID</th>
+                    <th field="UserCode" width="150">编号</th>
+                    <th field="Realname" width="90">姓名</th>
+                    <th field="UserName" width="100">账号</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th field="UserStatusName" width="60">状态</th>
+                    <th field="RoleNames" width="200">角色</th>
+                    <th field="LeaderName" width="60">负责人</th>
+                    <th field="Tel" width="120">电话</th>
+                    <th field="Phone" width="120">手机</th>
+                    <th field="Email" width="200">E-Mail</th>
+                    <th field="Position" width="100">职位</th>
+                    <th field="QQ" width="80">QQ</th>
+                    <th field="Weixin" width="100">微信号</th>
+                    <th field="Fax" width="120">传真</th>
+                    <th field="LastLoginIp" width="100">上次登录IP</th>
+                    <th field="LastLoginTime" width="130">上次登录时间</th>
+                    <th field="CreateTime" width="130">创建时间</th>
+                    <th field="UserRemarks" width="200">用户备注</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</body>
+<div id="dlg" style="max-width:450px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <input class="easyui-combotree" id="orgId" name="orgId" label="部门<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       url="@Url.Content("~/QCRMSetting/Employee/GetOrgTree")"
+                       panelHeight="200"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="realname" name="realname" label="姓名<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="userName" name="userName" label="账号<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="password" name="password" label="密码<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+
+            </div>
+
+
+            <div class="dlg-input-item">
+               
+                <label style="text-align: left;width:100px;  height: 30px; line-height: 30px;">所属角色<span class='font-red'>*</span>：</label>
+                @{
+                    var roles = (List<QWF.Framework.Services.SvrModels.SvrConfig>)ViewBag.Roles;
+                    <div class="chk-list-lf100" style="width: 300px;">
+                        @foreach (var role in roles)
+                        {
+                            <div class="input-chk">
+                                <input id="roleCode_@role.Value" name="roleCode" value="@role.Value" label="@role.Name" labelWidth="200" labelPosition="after"
+                                       style="width:15px; height:15px;" labelAlign="left" class="easyui-checkbox" />
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="userStatus" name="userStatus" class="easyui-combobox" label="用户状态:" labelAlign="left" labelWidth="100" panelHeight="100" style="width:200px">
+                    <option value="1" selected>正常</option>
+                    <option value="2">禁用</option>
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input id="leader" name="leader" value="1" label="负责人:" labelWidth="100" labelAlign="left" class="easyui-checkbox" />
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="tel" name="tel" label="电话："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="phone" name="phone" label="手机："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="email" name="email" label="E-Mail："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="position" name="position" label="职位："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="qq" name="qq" label="QQ："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="weixin" name="weixin" label="微信："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="fax" name="fax" label="传真："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="userRemarks" name="userRemarks" label="用户备注："
+                       multiline="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px; height:100px">
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<div id="dlg-change" style="max-width:450px;">
+    <form id="dlg-form-change">
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <select id="fromUserCode" name="fromUserCode" class="easyui-combobox" label="拥有者:" 
+                        url="@Url.Content("~/QCRMSetting/Employee/GetAllUserList")" valueField="Value" textField="Name" 
+                        labelAlign="left" labelWidth="100" panelHeight="200" style="width:300px">
+                </select>
+            </div>
+            <div class="dlg-input-item">
+                <select id="toUserCode" name="toUserCode" class="easyui-combobox" label="接收者:"
+                        url="@Url.Content("~/QCRMSetting/Employee/GetAllUserList")" valueField="Value" textField="Name"
+                        labelAlign="left" labelWidth="100" panelHeight="200" style="width:300px"></select>
+            </div>
+            <div class="dlg-form-desc">
+                1.该功能可以将"李四"的客户一次性转移"张三"。<br />
+                2.客户批量转移的操作为<span class="font-red">不可逆的一次性操作</span>，请谨慎操作。 <br />
+            </div>
+        </div>
+    </form>
+</div>

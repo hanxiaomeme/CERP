@@ -1,0 +1,271 @@
+﻿
+@{
+    var roleGroups = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.RoleGroupItmes;
+}
+
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg(); //
+            initDialog();
+            loadOrgTree();//
+            loadUserdg();
+            loadRoleGroup();
+        }
+
+        //
+        function loadOrgTree() {
+            $('#orgTree').tree({
+                url: '@Url.Content("~/QWebFramework/Common/GetOrgTree")',
+                onClick: function (node) {
+                    loadUserdg(node.id);
+                }
+            });
+        }
+        ///获取用户
+        function loaddg() {
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/UserInRole/List")',
+                title: '用户角色管理',
+                singleSelect: false,
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '用户角色管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+        }
+
+        function btnOrders(type) {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+
+            var ids = '';
+            var itmes = $('#dg').datagrid('getChecked');
+            $.each(itmes, function (index, item) {
+                if (ids.length > 0)
+                    ids += ',';
+
+                ids += item.Id;
+            });
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/UserInRole/DeleteUserInRole")',
+                        data: { ids: ids },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function loadRoleGroup() {
+            $('#userQryRoleGroupId').combobox({
+                width: 'auto',
+                height: 'auto',
+                onClick: function (data) {
+                    loadRole(data.value);
+                }
+            });
+        }
+
+        function loadRole(id) {
+            $('#userQryRoleId').combobox({
+                url: '@Url.Content("~/QWebFramework/UserInRole/GetRoleList")',
+                width: 200,
+                height: 'auto',
+                valueField: 'Key',
+                textField: 'Value',
+                queryParams: { groupId: id }
+            });
+
+            $('#userQryRoleId').combobox('reload');
+        }
+
+        function loadUserdg(orgId) {
+            var qryParams = {};
+            if (orgId != undefined && orgId != null && parseInt(orgId) > 0) {
+                qryParams = {
+                    qryOrgId: orgId
+                };
+            } else {
+                qryParams = $('#userform').serializeJSON();
+            }
+
+            $('#userdg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/UserInRole/GetUserList")',
+                toolbar:"#usertb",
+                singleSelect: false,
+                queryParams: qryParams
+            });
+        }
+
+        function save() {
+            var roleId = $('#userQryRoleId').combobox('getValue');
+            var userIds = '';
+            var itmes = $('#userdg').datagrid('getChecked');
+            $.each(itmes, function (index, item) {
+                if (userIds.length > 0)
+                    userIds += ',';
+
+                userIds += item.UserId;
+            });
+
+            if (userIds==undefined || userIds.length == 0) {
+                alertError('请选择用户');
+                return false;
+            } else if (roleId == undefined || parseInt(roleId) == 0) {
+                alertError('请选择角色');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/UserInRole/SaveUserInRole")',
+                data: {
+                    roleId: roleId,
+                    userIds: userIds
+                },
+                success: function (data) {
+                    if (data.Success) {
+                        alertInfo('保存成功!');
+                        loaddg();
+                    }    
+                }
+            });
+        }
+        //
+    </script>
+}
+<body>
+   
+        <div id="tb">
+            <form id="qryForm">
+                <div class="qwf-searchbar" style="padding: 10px">
+                    <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                        <tr>
+                            <td>
+                                角色组:
+                                <select id="qryGroupId" name="qryGroupId" class="easyui-combobox">
+                                    @foreach (var item in roleGroups)
+                                    {
+                                        <option value="@item.Key">@item.Value</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                角色名称:<input type="text" id="qryRoleName" name="qryRoleName" />
+                            </td>
+                            <td>
+                                用户名:<input type="text" id="qryUserName" name="qryUserName" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="toolbar" style="padding: 3px">
+                    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 120px" onclick="add();">新增用户角色</a>
+                    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="btnOrders('del');">删除</a>
+                </div>
+            </form>
+</div>
+
+    <table id="dg">
+        <thead>
+            <tr>
+                <th data-options="field:'Id',checkbox:true"></th>
+                <th field="GroupName" width="150">角色组名称</th>
+                <th field="RoleName" width="150">角色名称</th>
+                <th field="UserName" width="120">用户名</th>
+                <th field="Realname" width="120">姓名</th>
+                <th field="CreateTime" width="130">创建时间</th>
+            </tr>
+        </thead>
+    </table>
+
+    <div id="dlg" style="max-width:1000px;" >
+        <form id="userform" style="height:100%" class="easyui-layout">
+            <div data-options="region:'west',split:true,border:true" style="width:180px; height:100%;">
+                <ul id="orgTree" class="easyui-tree" lines="true"></ul>
+            </div>
+            <div data-options="region:'center',border:false">
+                <input type="hidden" id="hidId" name="hidId" value="0" />
+                <div id="usertb">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="5">
+                        <tr>
+                            <td width="70px" scope="row">所属角色：</td>
+                            <td>
+                                <select id="userQryRoleGroupId" name="qryRoleGroupId" class="easyui-combobox">
+                                    @foreach (var item in roleGroups)
+                                    {
+                                        <option value="@item.Key">@item.Value</option>
+                                    }
+                                </select>
+
+                                <select id="userQryRoleId" name="qryRoleId" class="easyui-combobox"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="70px">查询用户：</td>
+                            <td>
+                                用户名：<input name="qryUserName" id="userQryUserName" type="text" />&nbsp;
+                                姓 名：<input name="qryRealname" id="useQryRealname" type="text" />&nbsp;
+                                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:60px" onclick="loadUserdg();">查询</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table id="userdg">
+                    <thead>
+                        <tr>
+                            <th data-options="field:'Id',checkbox:true"></th>
+                            <th field="OrgName" width="80">机构</th>
+                            <th field="UserId" width="80">用户ID</th>
+                            <th field="Realname" width="80">姓名</th> 
+                            <th field="UserName" width="120">用户名</th>
+                            <th field="Leader" width="60">负责人</th>
+                            <th field="Position" width="100">职位</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>

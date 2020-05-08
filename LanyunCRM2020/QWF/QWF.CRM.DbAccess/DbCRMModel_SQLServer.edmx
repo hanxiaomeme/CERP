@@ -1,0 +1,1835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbCRMkEntity_SQLServer.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_QCRM_CustomerProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductItemId" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="255" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+          <Property Name="BeginTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ItemValueType" Type="int" Nullable="false" />
+          <Property Name="ItemValue" Type="varchar" MaxLength="512" />
+          <Property Name="ItemSort" Type="int" Nullable="false" />
+          <Property Name="Hide" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="IdList" Type="varchar" MaxLength="50" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="DictionaryType" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="ViewName" Type="varchar" MaxLength="255" />
+          <Property Name="DataSource" Type="int" Nullable="false" />
+          <Property Name="ItemFullNamePath" Type="varchar" MaxLength="2048" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Fields">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="TableCode" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="TableCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="FieldType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="FieldTypeLength" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="512" />
+          <Property Name="PK" Type="int" Nullable="false" />
+          <Property Name="IsNotNull" Type="int" Nullable="false" />
+          <Property Name="OnlyKey" Type="int" Nullable="false" />
+          <Property Name="IsVirtual" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Form">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="MainTable" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ActionType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ActionStyle" Type="int" Nullable="false" />
+          <Property Name="StyleColums" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="64" />
+          <Property Name="WindowsWidth" Type="int" Nullable="false" />
+          <Property Name="ButtonStyle" Type="varchar" MaxLength="64" />
+          <Property Name="ButtonIcon" Type="varchar" MaxLength="64" />
+          <Property Name="PlugInClass" Type="varchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="T_QCRM_FormInput">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="TableCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="InputName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="InputType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="DefaultValueType" Type="varchar" MaxLength="32" />
+          <Property Name="DefaultValue" Type="varchar" MaxLength="128" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="DictionaryCode" Type="varchar" MaxLength="50" />
+          <Property Name="SelectItemValue" Type="varchar" MaxLength="50" />
+          <Property Name="CssWidth" Type="int" Nullable="false" />
+          <Property Name="CssHeight" Type="int" Nullable="false" />
+          <Property Name="InputDesc" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="T_QCRM_ListInForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ListType" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_ListType">
+          <Key>
+            <PropertyRef Name="ListType" />
+          </Key>
+          <Property Name="ListType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="IsHide" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1024" />
+          <Property Name="TableRelation" Type="varchar" MaxLength="2048" Nullable="false" />
+          <Property Name="OrderBy" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="PageSize" Type="int" Nullable="false" />
+          <Property Name="AscOrDesc" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServerType" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+          <Property Name="IsHide" Type="int" Nullable="false" />
+          <Property Name="SortId" Type="int" />
+          <Property Name="ItemTitle" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_QCRM_ProductItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProduceCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsHide" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+          <Property Name="SortId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QueryCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="255" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="ShareType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+          <Property Name="SortField" Type="varchar" MaxLength="256" />
+          <Property Name="AscOrDesc" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AndOr" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QueryList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListType" Type="varchar" MaxLength="32" />
+          <Property Name="TableCode" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="StyleWidth" Type="int" Nullable="false" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="StyleCss" Type="varchar" MaxLength="32" />
+          <Property Name="TitleName" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="FieldFormatter" Type="varchar" MaxLength="32" />
+          <Property Name="FormatterType" Type="varchar" MaxLength="50" />
+          <Property Name="FieldType" Type="varchar" MaxLength="32" />
+          <Property Name="Checkbox" Type="int" Nullable="false" />
+          <Property Name="Hide" Type="int" Nullable="false" />
+          <Property Name="Sortable" Type="int" Nullable="false" />
+          <Property Name="IsUserField" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QueryWhere">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QueryCategoryId" Type="int" Nullable="false" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Expression" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="FieldValue" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="FieldValueType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="StaticDateValue" Type="varchar" MaxLength="32" />
+          <Property Name="DateNum" Type="int" />
+          <Property Name="DateType" Type="int" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="FieldQueryType" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UserCodeType" Type="int" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QuickSreach">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QueryFieldId" Type="int" Nullable="false" />
+          <Property Name="DictionaryId" Type="int" Nullable="false" />
+          <Property Name="SreachTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SreachType" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QuickSreachUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SreachId" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_RoleInQueryCategory">
+          <Key>
+            <PropertyRef Name="RoleCode" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="RoleCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Tables">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="DeleteType" Type="int" Nullable="false" />
+          <Property Name="DeleteField" Type="varchar" MaxLength="128" />
+          <Property Name="DeleteFlag" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Tabs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TabCode" Type="varchar" MaxLength="50" />
+          <Property Name="TableCode" Type="varchar" MaxLength="50" />
+          <Property Name="FieldCode" Type="varchar" MaxLength="50" />
+          <Property Name="SortId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserCenter">
+          <Key>
+            <PropertyRef Name="UserCode" />
+          </Key>
+          <Property Name="UserCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UI_Style" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserInForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="TypeCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="FormCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserQueryListSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QueryListId" Type="int" Nullable="false" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="StyleWidth" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsHide" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="50" />
+          <Property Name="UpdateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserQuerySetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QueryCategoryId" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsHide" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateTIme" Type="datetime" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="T_QWF_Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigResourceCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfigName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfigValueType" Type="varchar" MaxLength="50" />
+          <Property Name="ConfigValue" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="ConfigIdList" Type="varchar(max)" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="IsHidden" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="ConfigRemarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_LoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppId" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ip" Type="varchar" MaxLength="64" />
+          <Property Name="LoginTime" Type="datetime" Nullable="false" />
+          <Property Name="LoginStatus" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="T_QWF_Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="MenuIdList" Type="varchar(max)" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsShow" Type="int" Nullable="false" />
+          <Property Name="DefaultUrl" Type="varchar" MaxLength="1024" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="IconCls" Type="varchar" MaxLength="64" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="Target" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_MenuInUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Org">
+          <Key>
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="OrgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="OrgName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="OrgNamePath" Type="nvarchar(max)" />
+          <Property Name="OrgAttribute" Type="int" Nullable="false" />
+          <Property Name="IsOut" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="OrgIdList" Type="varchar(max)" />
+          <Property Name="OrgCodeList" Type="varchar(max)" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_Resource">
+          <Key>
+            <PropertyRef Name="ResourceCode" />
+          </Key>
+          <Property Name="RuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceCode" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="ResourceName" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="ResourceType" Type="int" Nullable="false" />
+          <Property Name="ResourceRemarks" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="T_QWF_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleCode" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RoleGroupId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="512" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="GroupRemarks" Type="nvarchar" MaxLength="256" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInMenu">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInResource">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RuleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RuleId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Seq">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prefix" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DateFormart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SerialLength" Type="int" Nullable="false" />
+          <Property Name="CurrentNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="Leader" Type="int" Nullable="false" />
+          <Property Name="LastLoginIp" Type="varchar" MaxLength="32" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="UserStatus" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="QQ" Type="varchar" MaxLength="64" />
+          <Property Name="Realname" Type="nvarchar" MaxLength="64" />
+          <Property Name="Tel" Type="varchar" MaxLength="32" />
+          <Property Name="Phone" Type="varchar" MaxLength="32" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="Position" Type="nvarchar" MaxLength="64" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Weixin" Type="varchar" MaxLength="64" />
+          <Property Name="Fax" Type="varchar" MaxLength="32" />
+          <Property Name="UserRemarks" Type="nvarchar" MaxLength="512" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserActionLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LogCode" Type="varchar" MaxLength="255" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="UserIp" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ActionMethod" Type="nvarchar" MaxLength="2048" />
+          <Property Name="LogDescription" Type="nvarchar(max)" />
+          <Property Name="LogItems" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserInRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“db_qwf.dbo.vw_UserInRoles”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="vw_UserInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleIds" Type="nvarchar(max)" />
+          <Property Name="RoleCodes" Type="nvarchar(max)" />
+          <Property Name="RoleNames" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="DbCRMkEntity_SQLServerStoreContainer">
+          <EntitySet Name="T_QCRM_CustomerProduct" EntityType="Self.T_QCRM_CustomerProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_Dictionary" EntityType="Self.T_QCRM_Dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_Fields" EntityType="Self.T_QCRM_Fields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_Form" EntityType="Self.T_QCRM_Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_FormInput" EntityType="Self.T_QCRM_FormInput" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_ListInForm" EntityType="Self.T_QCRM_ListInForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_ListType" EntityType="Self.T_QCRM_ListType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_Product" EntityType="Self.T_QCRM_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_ProductItem" EntityType="Self.T_QCRM_ProductItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_QueryCategory" EntityType="Self.T_QCRM_QueryCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_QueryList" EntityType="Self.T_QCRM_QueryList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_QueryWhere" EntityType="Self.T_QCRM_QueryWhere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_QuickSreach" EntityType="Self.T_QCRM_QuickSreach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_QuickSreachUser" EntityType="Self.T_QCRM_QuickSreachUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_RoleInQueryCategory" EntityType="Self.T_QCRM_RoleInQueryCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_Tables" EntityType="Self.T_QCRM_Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_Tabs" EntityType="Self.T_QCRM_Tabs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_UserCenter" EntityType="Self.T_QCRM_UserCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_UserInForm" EntityType="Self.T_QCRM_UserInForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_UserQueryListSetting" EntityType="Self.T_QCRM_UserQueryListSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QCRM_UserQuerySetting" EntityType="Self.T_QCRM_UserQuerySetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Config" EntityType="Self.T_QWF_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_LoginLog" EntityType="Self.T_QWF_LoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Menu" EntityType="Self.T_QWF_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_MenuInUrl" EntityType="Self.T_QWF_MenuInUrl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Org" EntityType="Self.T_QWF_Org" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Resource" EntityType="Self.T_QWF_Resource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Role" EntityType="Self.T_QWF_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_RoleGroup" EntityType="Self.T_QWF_RoleGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_RoleInMenu" EntityType="Self.T_QWF_RoleInMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_RoleInResource" EntityType="Self.T_QWF_RoleInResource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Seq" EntityType="Self.T_QWF_Seq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_User" EntityType="Self.T_QWF_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_UserActionLog" EntityType="Self.T_QWF_UserActionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_UserInRole" EntityType="Self.T_QWF_UserInRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_UserInRoles" EntityType="Self.vw_UserInRoles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_UserInRoles].[UserId] AS [UserId], 
+[vw_UserInRoles].[RoleIds] AS [RoleIds], 
+[vw_UserInRoles].[RoleCodes] AS [RoleCodes], 
+[vw_UserInRoles].[RoleNames] AS [RoleNames]
+FROM [dbo].[vw_UserInRoles] AS [vw_UserInRoles]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbCRMkEntity_SQLServer" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbCRMContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_QCRM_CustomerProduct" EntityType="DbCRMkEntity_SQLServer.T_QCRM_CustomerProduct" />
+          <EntitySet Name="T_QCRM_ListInForm" EntityType="DbCRMkEntity_SQLServer.T_QCRM_ListInForm" />
+          <EntitySet Name="T_QCRM_Product" EntityType="DbCRMkEntity_SQLServer.T_QCRM_Product" />
+          <EntitySet Name="T_QCRM_ProductItem" EntityType="DbCRMkEntity_SQLServer.T_QCRM_ProductItem" />
+          <EntitySet Name="T_QCRM_QuickSreach" EntityType="DbCRMkEntity_SQLServer.T_QCRM_QuickSreach" />
+          <EntitySet Name="T_QCRM_QuickSreachUser" EntityType="DbCRMkEntity_SQLServer.T_QCRM_QuickSreachUser" />
+          <EntitySet Name="T_QCRM_Tabs" EntityType="DbCRMkEntity_SQLServer.T_QCRM_Tabs" />
+          <EntitySet Name="T_QCRM_UserInForm" EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserInForm" />
+          <EntitySet Name="T_QCRM_UserQueryListSetting" EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserQueryListSetting" />
+          <EntitySet Name="T_QCRM_UserQuerySetting" EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserQuerySetting" />
+          <EntitySet Name="T_QWF_Config" EntityType="DbCRMkEntity_SQLServer.T_QWF_Config" />
+          <EntitySet Name="T_QWF_LoginLog" EntityType="DbCRMkEntity_SQLServer.T_QWF_LoginLog" />
+          <EntitySet Name="T_QWF_Menu" EntityType="DbCRMkEntity_SQLServer.T_QWF_Menu" />
+          <EntitySet Name="T_QWF_MenuInUrl" EntityType="DbCRMkEntity_SQLServer.T_QWF_MenuInUrl" />
+          <EntitySet Name="T_QWF_Org" EntityType="DbCRMkEntity_SQLServer.T_QWF_Org" />
+          <EntitySet Name="T_QWF_Resource" EntityType="DbCRMkEntity_SQLServer.T_QWF_Resource" />
+          <EntitySet Name="T_QWF_Role" EntityType="DbCRMkEntity_SQLServer.T_QWF_Role" />
+          <EntitySet Name="T_QWF_RoleGroup" EntityType="DbCRMkEntity_SQLServer.T_QWF_RoleGroup" />
+          <EntitySet Name="T_QWF_RoleInMenu" EntityType="DbCRMkEntity_SQLServer.T_QWF_RoleInMenu" />
+          <EntitySet Name="T_QWF_RoleInResource" EntityType="DbCRMkEntity_SQLServer.T_QWF_RoleInResource" />
+          <EntitySet Name="T_QWF_Seq" EntityType="DbCRMkEntity_SQLServer.T_QWF_Seq" />
+          <EntitySet Name="T_QWF_User" EntityType="DbCRMkEntity_SQLServer.T_QWF_User" />
+          <EntitySet Name="T_QWF_UserActionLog" EntityType="DbCRMkEntity_SQLServer.T_QWF_UserActionLog" />
+          <EntitySet Name="T_QWF_UserInRole" EntityType="DbCRMkEntity_SQLServer.T_QWF_UserInRole" />
+          <EntitySet Name="vw_UserInRoles" EntityType="DbCRMkEntity_SQLServer.vw_UserInRoles" />
+          <EntitySet Name="T_QCRM_FormInput" EntityType="DbCRMkEntity_SQLServer.T_QCRM_FormInput" />
+          <EntitySet Name="T_QCRM_Tables" EntityType="DbCRMkEntity_SQLServer.T_QCRM_Tables" />
+          <EntitySet Name="T_QCRM_ListType" EntityType="DbCRMkEntity_SQLServer.T_QCRM_ListType" />
+          <EntitySet Name="T_QCRM_Fields" EntityType="DbCRMkEntity_SQLServer.T_QCRM_Fields" />
+          <EntitySet Name="T_QCRM_Dictionary" EntityType="DbCRMkEntity_SQLServer.T_QCRM_Dictionary" />
+          <EntitySet Name="T_QCRM_UserCenter" EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserCenter" />
+          <EntitySet Name="T_QCRM_Form" EntityType="DbCRMkEntity_SQLServer.T_QCRM_Form" />
+          <EntitySet Name="T_QCRM_RoleInQueryCategory" EntityType="DbCRMkEntity_SQLServer.T_QCRM_RoleInQueryCategory" />
+          <EntitySet Name="T_QCRM_QueryList" EntityType="DbCRMkEntity_SQLServer.T_QCRM_QueryList" />
+          <EntitySet Name="T_QCRM_QueryCategory" EntityType="DbCRMkEntity_SQLServer.T_QCRM_QueryCategory" />
+          <EntitySet Name="T_QCRM_QueryWhere" EntityType="DbCRMkEntity_SQLServer.T_QCRM_QueryWhere" />
+        </EntityContainer>
+        <EntityType Name="T_QCRM_CustomerProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductItemId" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BeginTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QCRM_ListInForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ListType" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServerType" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHide" Type="Int32" Nullable="false" />
+          <Property Name="SortId" Type="Int32" />
+          <Property Name="ItemTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_ProductItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProduceCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHide" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QuickSreach">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QueryFieldId" Type="Int32" Nullable="false" />
+          <Property Name="DictionaryId" Type="Int32" Nullable="false" />
+          <Property Name="SreachTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SreachType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QuickSreachUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SreachId" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Tabs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TabCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TableCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserInForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="TypeCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="FormCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserQueryListSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QueryListId" Type="Int32" Nullable="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="StyleWidth" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHide" Type="Int32" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserQuerySetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QueryCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHide" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTIme" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigResourceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigValueType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="ConfigIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="IsHidden" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="ConfigRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_LoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginStatus" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_QWF_Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="MenuIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsShow" Type="Int32" Nullable="false" />
+          <Property Name="DefaultUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="IconCls" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="Target" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_MenuInUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Org">
+          <Key>
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="OrgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OrgName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="OrgNamePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgAttribute" Type="Int32" Nullable="false" />
+          <Property Name="IsOut" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="OrgIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrgCodeList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_Resource">
+          <Key>
+            <PropertyRef Name="ResourceCode" />
+          </Key>
+          <Property Name="RuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceCode" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ResourceName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="ResourceType" Type="Int32" Nullable="false" />
+          <Property Name="ResourceRemarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_QWF_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoleGroupId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="GroupRemarks" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInMenu">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInResource">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RuleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RuleId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Seq">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prefix" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DateFormart" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerialLength" Type="Int32" Nullable="false" />
+          <Property Name="CurrentNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="Leader" Type="Int32" Nullable="false" />
+          <Property Name="LastLoginIp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="UserStatus" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="QQ" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Realname" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Weixin" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserRemarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserActionLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LogCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="UserIp" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ActionMethod" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="LogDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserInRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_UserInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleCodes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleNames" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_QCRM_FormInput">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="TableCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="FieldCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="InputName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="InputType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultValueType" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultValue" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DictionaryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SelectItemValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CssWidth" Type="Int32" Nullable="false" />
+          <Property Name="CssHeight" Type="Int32" Nullable="false" />
+          <Property Name="InputDesc" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Tables">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeleteType" Type="Int32" Nullable="false" />
+          <Property Name="DeleteField" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DeleteFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_ListType">
+          <Key>
+            <PropertyRef Name="ListType" />
+          </Key>
+          <Property Name="ListType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="IsHide" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="TableRelation" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="OrderBy" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PageSize" Type="Int32" Nullable="false" />
+          <Property Name="AscOrDesc" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Fields">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="TableCode" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="TableCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="FieldType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FieldTypeLength" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="PK" Type="Int32" Nullable="false" />
+          <Property Name="IsNotNull" Type="Int32" Nullable="false" />
+          <Property Name="OnlyKey" Type="Int32" Nullable="false" />
+          <Property Name="IsVirtual" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ItemValueType" Type="Int32" Nullable="false" />
+          <Property Name="ItemValue" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ItemSort" Type="Int32" Nullable="false" />
+          <Property Name="Hide" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IdList" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="DictionaryType" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ViewName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DataSource" Type="Int32" Nullable="false" />
+          <Property Name="ItemFullNamePath" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_UserCenter">
+          <Key>
+            <PropertyRef Name="UserCode" />
+          </Key>
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UI_Style" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QCRM_Form">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MainTable" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ActionType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ActionStyle" Type="Int32" Nullable="false" />
+          <Property Name="StyleColums" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="WindowsWidth" Type="Int32" Nullable="false" />
+          <Property Name="ButtonStyle" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ButtonIcon" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PlugInClass" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_RoleInQueryCategory">
+          <Key>
+            <PropertyRef Name="RoleCode" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QueryList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ListType" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TableCode" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FieldCode" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="StyleWidth" Type="Int32" Nullable="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="StyleCss" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TitleName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="FieldFormatter" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FormatterType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldType" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Checkbox" Type="Int32" Nullable="false" />
+          <Property Name="Hide" Type="Int32" Nullable="false" />
+          <Property Name="Sortable" Type="Int32" Nullable="false" />
+          <Property Name="IsUserField" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QueryCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="ShareType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortField" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AscOrDesc" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AndOr" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_QCRM_QueryWhere">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QueryCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="FieldCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Expression" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FieldValue" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FieldValueType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="StaticDateValue" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DateNum" Type="Int32" />
+          <Property Name="DateType" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FieldQueryType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserCodeType" Type="Int32" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbCRMkEntity_SQLServerStoreContainer" CdmEntityContainer="DbCRMContext">
+          <EntitySetMapping Name="T_QCRM_CustomerProduct">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_CustomerProduct">
+              <MappingFragment StoreEntitySet="T_QCRM_CustomerProduct">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ProductItemId" ColumnName="ProductItemId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_ListInForm">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_ListInForm">
+              <MappingFragment StoreEntitySet="T_QCRM_ListInForm">
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ListType" ColumnName="ListType" />
+                <ScalarProperty Name="FormCode" ColumnName="FormCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_Product">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Product">
+              <MappingFragment StoreEntitySet="T_QCRM_Product">
+                <ScalarProperty Name="ItemTitle" ColumnName="ItemTitle" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ServerType" ColumnName="ServerType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_ProductItem">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_ProductItem">
+              <MappingFragment StoreEntitySet="T_QCRM_ProductItem">
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ProduceCode" ColumnName="ProduceCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_QuickSreach">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QuickSreach">
+              <MappingFragment StoreEntitySet="T_QCRM_QuickSreach">
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="SreachType" ColumnName="SreachType" />
+                <ScalarProperty Name="SreachTitle" ColumnName="SreachTitle" />
+                <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+                <ScalarProperty Name="QueryFieldId" ColumnName="QueryFieldId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_QuickSreachUser">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QuickSreachUser">
+              <MappingFragment StoreEntitySet="T_QCRM_QuickSreachUser">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="SreachId" ColumnName="SreachId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_Tabs">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Tabs">
+              <MappingFragment StoreEntitySet="T_QCRM_Tabs">
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+                <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+                <ScalarProperty Name="TabCode" ColumnName="TabCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_UserInForm">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserInForm">
+              <MappingFragment StoreEntitySet="T_QCRM_UserInForm">
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="FormCode" ColumnName="FormCode" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_UserQueryListSetting">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserQueryListSetting">
+              <MappingFragment StoreEntitySet="T_QCRM_UserQueryListSetting">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="StyleWidth" ColumnName="StyleWidth" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="QueryListId" ColumnName="QueryListId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_UserQuerySetting">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserQuerySetting">
+              <MappingFragment StoreEntitySet="T_QCRM_UserQuerySetting">
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTIme" ColumnName="UpdateTIme" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="QueryCategoryId" ColumnName="QueryCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Config">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Config">
+              <MappingFragment StoreEntitySet="T_QWF_Config">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ConfigRemarks" ColumnName="ConfigRemarks" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="ConfigIdList" ColumnName="ConfigIdList" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+                <ScalarProperty Name="ConfigValueType" ColumnName="ConfigValueType" />
+                <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+                <ScalarProperty Name="ConfigResourceCode" ColumnName="ConfigResourceCode" />
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_LoginLog">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_LoginLog">
+              <MappingFragment StoreEntitySet="T_QWF_LoginLog">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Menu">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Menu">
+              <MappingFragment StoreEntitySet="T_QWF_Menu">
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="IconCls" ColumnName="IconCls" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="DefaultUrl" ColumnName="DefaultUrl" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="MenuIdList" ColumnName="MenuIdList" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_MenuInUrl">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_MenuInUrl">
+              <MappingFragment StoreEntitySet="T_QWF_MenuInUrl">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Org">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Org">
+              <MappingFragment StoreEntitySet="T_QWF_Org">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="OrgCodeList" ColumnName="OrgCodeList" />
+                <ScalarProperty Name="OrgIdList" ColumnName="OrgIdList" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsOut" ColumnName="IsOut" />
+                <ScalarProperty Name="OrgAttribute" ColumnName="OrgAttribute" />
+                <ScalarProperty Name="OrgNamePath" ColumnName="OrgNamePath" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Resource">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Resource">
+              <MappingFragment StoreEntitySet="T_QWF_Resource">
+                <ScalarProperty Name="ResourceRemarks" ColumnName="ResourceRemarks" />
+                <ScalarProperty Name="ResourceType" ColumnName="ResourceType" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+                <ScalarProperty Name="ResourceCode" ColumnName="ResourceCode" />
+                <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Role">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Role">
+              <MappingFragment StoreEntitySet="T_QWF_Role">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="RoleGroupId" ColumnName="RoleGroupId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_RoleGroup">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_RoleGroup">
+              <MappingFragment StoreEntitySet="T_QWF_RoleGroup">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="GroupRemarks" ColumnName="GroupRemarks" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_RoleInMenu">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_RoleInMenu">
+              <MappingFragment StoreEntitySet="T_QWF_RoleInMenu">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_RoleInResource">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_RoleInResource">
+              <MappingFragment StoreEntitySet="T_QWF_RoleInResource">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Seq">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_Seq">
+              <MappingFragment StoreEntitySet="T_QWF_Seq">
+                <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+                <ScalarProperty Name="SerialLength" ColumnName="SerialLength" />
+                <ScalarProperty Name="DateFormart" ColumnName="DateFormart" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_User">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_User">
+              <MappingFragment StoreEntitySet="T_QWF_User">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="UserRemarks" ColumnName="UserRemarks" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Weixin" ColumnName="Weixin" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Realname" ColumnName="Realname" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="LastLoginIp" ColumnName="LastLoginIp" />
+                <ScalarProperty Name="Leader" ColumnName="Leader" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_UserActionLog">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_UserActionLog">
+              <MappingFragment StoreEntitySet="T_QWF_UserActionLog">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LogItems" ColumnName="LogItems" />
+                <ScalarProperty Name="LogDescription" ColumnName="LogDescription" />
+                <ScalarProperty Name="ActionMethod" ColumnName="ActionMethod" />
+                <ScalarProperty Name="UserIp" ColumnName="UserIp" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogCode" ColumnName="LogCode" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_UserInRole">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QWF_UserInRole">
+              <MappingFragment StoreEntitySet="T_QWF_UserInRole">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_UserInRoles">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.vw_UserInRoles">
+              <MappingFragment StoreEntitySet="vw_UserInRoles">
+                <ScalarProperty Name="RoleNames" ColumnName="RoleNames" />
+                <ScalarProperty Name="RoleCodes" ColumnName="RoleCodes" />
+                <ScalarProperty Name="RoleIds" ColumnName="RoleIds" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_FormInput">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_FormInput">
+              <MappingFragment StoreEntitySet="T_QCRM_FormInput">
+                <ScalarProperty Name="InputDesc" ColumnName="InputDesc" />
+                <ScalarProperty Name="CssHeight" ColumnName="CssHeight" />
+                <ScalarProperty Name="CssWidth" ColumnName="CssWidth" />
+                <ScalarProperty Name="SelectItemValue" ColumnName="SelectItemValue" />
+                <ScalarProperty Name="DictionaryCode" ColumnName="DictionaryCode" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="DefaultValueType" ColumnName="DefaultValueType" />
+                <ScalarProperty Name="InputType" ColumnName="InputType" />
+                <ScalarProperty Name="InputName" ColumnName="InputName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+                <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+                <ScalarProperty Name="FormCode" ColumnName="FormCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_Tables">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Tables">
+              <MappingFragment StoreEntitySet="T_QCRM_Tables">
+                <ScalarProperty Name="DeleteFlag" ColumnName="DeleteFlag" />
+                <ScalarProperty Name="DeleteField" ColumnName="DeleteField" />
+                <ScalarProperty Name="DeleteType" ColumnName="DeleteType" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_ListType">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_ListType">
+              <MappingFragment StoreEntitySet="T_QCRM_ListType">
+                <ScalarProperty Name="AscOrDesc" ColumnName="AscOrDesc" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="TableRelation" ColumnName="TableRelation" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsHide" ColumnName="IsHide" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="ListType" ColumnName="ListType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_Fields">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Fields">
+              <MappingFragment StoreEntitySet="T_QCRM_Fields">
+                <ScalarProperty Name="IsVirtual" ColumnName="IsVirtual" />
+                <ScalarProperty Name="OnlyKey" ColumnName="OnlyKey" />
+                <ScalarProperty Name="IsNotNull" ColumnName="IsNotNull" />
+                <ScalarProperty Name="PK" ColumnName="PK" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="FieldTypeLength" ColumnName="FieldTypeLength" />
+                <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_Dictionary">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Dictionary">
+              <MappingFragment StoreEntitySet="T_QCRM_Dictionary">
+                <ScalarProperty Name="ItemFullNamePath" ColumnName="ItemFullNamePath" />
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+                <ScalarProperty Name="ViewName" ColumnName="ViewName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="DictionaryType" ColumnName="DictionaryType" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="IdList" ColumnName="IdList" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="ItemSort" ColumnName="ItemSort" />
+                <ScalarProperty Name="ItemValue" ColumnName="ItemValue" />
+                <ScalarProperty Name="ItemValueType" ColumnName="ItemValueType" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_UserCenter">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_UserCenter">
+              <MappingFragment StoreEntitySet="T_QCRM_UserCenter">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UI_Style" ColumnName="UI_Style" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_Form">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_Form">
+              <MappingFragment StoreEntitySet="T_QCRM_Form">
+                <ScalarProperty Name="PlugInClass" ColumnName="PlugInClass" />
+                <ScalarProperty Name="ButtonIcon" ColumnName="ButtonIcon" />
+                <ScalarProperty Name="ButtonStyle" ColumnName="ButtonStyle" />
+                <ScalarProperty Name="WindowsWidth" ColumnName="WindowsWidth" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="StyleColums" ColumnName="StyleColums" />
+                <ScalarProperty Name="ActionStyle" ColumnName="ActionStyle" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="MainTable" ColumnName="MainTable" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_RoleInQueryCategory">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_RoleInQueryCategory">
+              <MappingFragment StoreEntitySet="T_QCRM_RoleInQueryCategory">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_QueryList">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QueryList">
+              <MappingFragment StoreEntitySet="T_QCRM_QueryList">
+                <ScalarProperty Name="IsUserField" ColumnName="IsUserField" />
+                <ScalarProperty Name="Sortable" ColumnName="Sortable" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="Checkbox" ColumnName="Checkbox" />
+                <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+                <ScalarProperty Name="FormatterType" ColumnName="FormatterType" />
+                <ScalarProperty Name="FieldFormatter" ColumnName="FieldFormatter" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="StyleCss" ColumnName="StyleCss" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="StyleWidth" ColumnName="StyleWidth" />
+                <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+                <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+                <ScalarProperty Name="ListType" ColumnName="ListType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_QueryCategory">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QueryCategory">
+              <MappingFragment StoreEntitySet="T_QCRM_QueryCategory">
+                <ScalarProperty Name="AndOr" ColumnName="AndOr" />
+                <ScalarProperty Name="AscOrDesc" ColumnName="AscOrDesc" />
+                <ScalarProperty Name="SortField" ColumnName="SortField" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ShareType" ColumnName="ShareType" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QCRM_QueryWhere">
+            <EntityTypeMapping TypeName="DbCRMkEntity_SQLServer.T_QCRM_QueryWhere">
+              <MappingFragment StoreEntitySet="T_QCRM_QueryWhere">
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UserCodeType" ColumnName="UserCodeType" />
+                <ScalarProperty Name="FieldQueryType" ColumnName="FieldQueryType" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="DateType" ColumnName="DateType" />
+                <ScalarProperty Name="DateNum" ColumnName="DateNum" />
+                <ScalarProperty Name="StaticDateValue" ColumnName="StaticDateValue" />
+                <ScalarProperty Name="FieldValueType" ColumnName="FieldValueType" />
+                <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+                <ScalarProperty Name="Expression" ColumnName="Expression" />
+                <ScalarProperty Name="FieldCode" ColumnName="FieldCode" />
+                <ScalarProperty Name="QueryCategoryId" ColumnName="QueryCategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

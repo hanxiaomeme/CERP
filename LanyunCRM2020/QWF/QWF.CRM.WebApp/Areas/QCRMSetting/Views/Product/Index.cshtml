@@ -1,0 +1,445 @@
+﻿
+@{
+    ViewBag.Title = "公司业务管理";
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+        var index = 0;
+        var itemIndex = 0;
+        function init() {
+            loaddg();
+            initDialog();
+        }
+
+        function loaddg() {
+            index =0;
+            var params = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/Product/GetList")',
+                title: '公司业务管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '公司业务管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            resetForm();
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择一条需要编辑的数据。');
+                return false;
+            } else {
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#id').val(row.Id);
+                $('#productName').textbox('setValue', row.Name);
+                $('#itemTitle').textbox('setValue', row.ItemTitle);
+                $('#serverType').checkbox({ checked: row.ServerType == 1 ? true : false });
+                $('#isHide').checkbox({ checked: row.IsHide == 1 ? true : false });
+
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条需要删除的记录。');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/Product/Delete")',
+                        data: {
+                            id: row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+            console.log(obj);
+            if (obj.productName.isNull()) {
+                alertError('请填写公司相关业务的名称。');
+                return false;
+            } 
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/Product/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+        function fmtSort(value, row) {
+            if (row.Checkbox == 1) {
+                return '';
+            }
+            else {
+                index++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+            }
+        }
+
+        function sort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#qryForm').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/Product/Sort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        /****************************/
+        function fmtSetting(val, row, index) {
+            return '<a herf="javascript:void(0);" onclick="openFormSetting(\'' + row.Name + '\',\''+row.Code+'\');" >配置子项</a>';
+        }
+        function openFormSetting(name, code) {
+
+            $("#dlg-productItem").dialog({ title: name + '的业务子类项' }).dialog('open');
+            $('#productCode').val(code);
+            loadProductItem(code)
+
+        }
+        function loadProductItem(code) {
+            itemIndex = 0;
+            if (code == undefined || code == null || code == '') {
+                code = $('#productCode').val();
+            }
+
+            $('#dg-productItem').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/Product/GetProductItem")',
+                singleSelect: true,
+                pagination:false,
+                toolbar: 'tools-productItem',
+                onDblClickRow: function (index, row) {
+                    openItemEditWindows(row);
+                },
+                queryParams: {
+                    qryProductCode: code
+                }
+            });
+
+
+        }
+
+        function openAddProductItem()
+        {
+            resetProductItemForm();
+            $('#dlg-productItemAdd').dialog('open');
+        }
+        function editItem() {
+            var row = $('#dg-productItem').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openItemEditWindows(row);
+            }
+        }
+
+        function openItemEditWindows(row) {
+            if (!row) {
+                alertError('请选择一条需要编辑的数据。');
+                return false;
+            } else {
+                resetProductItemForm();
+                $('#dlg-productItemAdd').dialog('open');
+                $('#itemId').val(row.Id);
+                $('#productItemName').textbox('setValue', row.ItemName);
+                $('#productItemHide').checkbox({ checked: row.IsHide == 1 ? true : false });
+
+            }
+        }
+        function saveProductItem() {
+            var form = $('#dlg-form-productItemAdd');
+            var obj = form.serializeJSON();
+
+            if (obj.productItemName.isNull()) {
+                alertError('请填写相关业务子类项的名称');
+                return false;
+            }
+            var productCode = $('#productCode').val(); 
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/Product/SaveProductItem")' + '?productCode=' + productCode,
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loadProductItem(productCode);
+                    }
+                }
+            });
+        }
+
+        //设置隐藏
+        function deleteProductItem() {
+            var row = $('#dg-productItem').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条需要删除的记录');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '确定要将本条数据吗？', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/Product/DeleteProductItem")',
+                        data: {
+                            itemId :row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loadProductItem(row.ProductCode)
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function fmtSortItem(value, row) {
+            if (row.Checkbox == 1) {
+                return '';
+            }
+            else {
+                itemIndex++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + itemIndex + "' size='3'/>";
+            }
+        }
+
+        function sortItem() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#qryForm').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/Product/SortItem")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loadProductItem();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function resetProductItemForm() {
+            $('#dlg-form-productItemAdd').form('clear');
+        }
+
+    </script>
+}
+
+<body>
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            业务名称:<input type="text" id="qryName" name="qryName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="sort();">排序</a>
+
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="Code" width="200">编号</th>
+                    <th field="Name" width="200">名称</th>
+                    <th field="SortId" formatter="fmtSort" width="150">排序</th>
+                    <th field="ServerTypeName" width="180">业务类型</th>
+                    <th field="ItemTitle" width="100">业务子类名称</th>
+                    <th field="Setting" formatter="fmtSetting" width="100">子项</th>
+                    <th field="HideName" width="100">隐藏</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="productName" name="productName" label="名称<span class='font-red'>*</span>" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="itemTitle" name="itemTitle" label="子类标题"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="serverType" name="serverType" label="有时限:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="isHide" name="isHide" label="隐藏:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+            <div class="dlg-form-desc">
+                1.有时限是指有服务开始和结束时间，比如：数字电视年费。<br />
+                2.不勾选表示一次性业务或服务。 <br />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="dlg-productItem" class="easyui-dialog" title="配置相关业务子类" style="width:60%;height:80%; padding:10px"
+     data-options="closed:true,maximizable:true, modal:true, iconCls:'icon-save' ,
+     toolbar:[{
+     text:'刷新',
+     iconCls:'icon-search',
+     handler:function(){
+        loadProductItem();
+        }
+     },'-',{
+     text:'新增',
+     iconCls:'icon-add',
+     handler:function(){
+        openAddProductItem();
+        }
+     },'-',{
+     text:'编辑',
+     iconCls:'icon-remove',
+     handler:function(){
+        editItem();
+     }
+     },'-',{
+     text:'删除',
+     iconCls:'icon-remove',
+     handler:function(){
+        deleteProductItem();
+     }
+     },'-',{
+     text:'排序',
+     handler:function(){
+        sortItem();
+     }
+     }]
+     ">
+    <div id="tools-productItem"></div>
+    <input type="hidden" name="productCode" id="productCode" value="" />
+    <table id="dg-productItem">
+        <thead>
+            <tr>
+                <th data-options="field:'Id',checkbox:true"></th>
+                <th field="ItemName" width="220">子类名称</th>
+                <th field="SortId" formatter="fmtSortItem" width="150">排序ID</th>
+                <th field="HideName" width="100">隐藏</th>
+                <th field="CreateTime" width="150">创建时间</th>
+                <th field="UpdateTime" width="150">修改时间</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="dlg-productItemAdd" class="easyui-dialog" title="添加产品子项" style="width:420px;height:260px;padding:10px"
+     data-options="closed :true,maximizable: true,modal : true,iconCls :'icon-save',
+     buttons:[{
+				text:'保存',
+                iconCls: 'icon-ok',
+                
+				handler:function(){ saveProductItem();}
+			}]">
+    <form id="dlg-form-productItemAdd">
+        <input type="hidden" id="itemId" name="itemId" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="productItemName" name="productItemName" label="名称" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="productItemHide" name="productItemHide" label="隐藏:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+        </div>
+    </form>
+
+</div>
+
+

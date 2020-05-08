@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MESConfig>
+  <skin>
+    <style>Office2010Blue</style>
+    <color>Office2016 Dark Blue</color>
+  </skin>
+
+  <LoginUser>Admin</LoginUser>
+
+  <!--服务端 IP-->
+  <add key="ServerIP" value="10.10.10.88"/>
+  <!--服务端 命令端口-->
+  <add key="ServerCmdPort" value="8889"/>
+  <!--服务端 数据端口-->
+  <add key="ServerDataPort" value="8000"/>
+  <!--心跳间隔,单位:秒-->
+  <add key="HeartbeatIntervalSec" value="10"/>
+  <!--心跳间隔,单位:秒-->
+  <add key="AutoRunDelaySec" value="10"/>
+  
+  <version>1</version>
+</MESConfig>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="54e22f82-e599-4844-9b96-3663f51d935f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="MES.Server.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.1.88:8000/UserManager" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserManager3.xsd" MetadataType="Schema" ID="1c3f9023-ba5e-4931-a69f-d6689c6a290d" SourceId="1" SourceUrl="http://192.168.1.88:8000/UserManager?xsd=xsd1" />
+    <MetadataFile FileName="UserManager31.xsd" MetadataType="Schema" ID="df385140-80dd-4258-8fef-4b81169ece7d" SourceId="1" SourceUrl="http://192.168.1.88:8000/UserManager?xsd=xsd0" />
+    <MetadataFile FileName="UserManager1.wsdl" MetadataType="Wsdl" ID="add5fc0c-cb5f-4ad2-bfb2-335c5c2a994e" SourceId="1" SourceUrl="http://192.168.1.88:8000/UserManager?wsdl" />
+    <MetadataFile FileName="UserManager32.xsd" MetadataType="Schema" ID="bd15bb97-bf17-4ed9-9960-0e2ee2484f7f" SourceId="1" SourceUrl="http://192.168.1.88:8000/UserManager?xsd=xsd2" />
+    <MetadataFile FileName="UserManager1.disco" MetadataType="Disco" ID="ed580a70-653d-401b-8224-62f64d3974d2" SourceId="1" SourceUrl="http://192.168.1.88:8000/UserManager?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

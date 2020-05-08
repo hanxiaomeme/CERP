@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnRefDate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEAAAAAAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8k
+        KDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3
+        Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAAQABADASIAAhEBAxEB/8QA
+        HwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIh
+        MUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW
+        V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG
+        x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQF
+        BgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAV
+        YnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOE
+        hYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq
+        8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDNuPAs11bWSGS2tEgij3Tw6S+ZA5VQzkk7vuZyOpLAZyaW58Dr
+        pWiaxMbqG7YWl04Nxorgp5W4ZRg3yk7iSSPlKqD0FdykwhhQSPHlILbcjam4YFZDxgdCB/D/AAdetcvd
+        tOLLXGlleaO4sL9Yoheyyl3kYGP5CuAQB25PBNdLxdZx5W9BKCvex//Z
+</value>
+  </data>
+  <data name="btnRef1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        /9j/4AAQSkZJRgABAQEAAAAAAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8k
+        KDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3
+        Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAAQABADASIAAhEBAxEB/8QA
+        HwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIh
+        MUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW
+        V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXG
+        x8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQF
+        BgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAV
+        YnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOE
+        hYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq
+        8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDudC0a11Wyt0S2srdLe1gDutnE8ksjRK5JLKePmHbJOeanuNN0
+        9vDmtCXTNOF3ZRzR+dFaou4iPcrDjg4YfQg0aVNoraVp0o16KxuxZQxzeVdxqWwg4ZWyMjnnGRWXd3Sa
+        XHq1rZ6xZX+l31rO/wA93GZoJSh98uGOPfJ+pbu96Ujn0SP/2Q==
+</value>
+  </data>
+  <data name="Report.ReportResourceString" xml:space="preserve">
+    <value>﻿&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report ScriptLanguage="CSharp" ReportInfo.Created="02/29/2012 09:22:45" ReportInfo.Modified="09/01/2017 14:30:24" ReportInfo.CreatorVersion="2014.4.8.0"&gt;
+  &lt;Dictionary&gt;
+    &lt;MsSqlDataConnection Name="Connection" ConnectionString="rijcmlq+rW0RkboK+/8CKGGYUID3ctBV8q9SvKYxl3iiE7vBnh7Tgou0+4WFf3NfmPSvHVFdpl8ZHgVLZfWqwxgDXuv9okaSvx1M4F6jWVcdLQn+ziY87V156rtftARQcMB54DJ19dbAY40CAWcUTSCKEnZBZYTzF+6CB1ww8gkEzNpZIWhaWR6THxCVTKR5cdic3W1"&gt;
+      &lt;TableDataSource Name="V_SaleOrderDetail" DataType="System.Int32" Enabled="true" TableName="V_SaleOrderDetail"&gt;
+        &lt;Column Name="IsSelected" DataType="System.Int32"/&gt;
+        &lt;Column Name="AutoId" DataType="System.Int32"/&gt;
+        &lt;Column Name="SOId" DataType="System.Int32"/&gt;
+        &lt;Column Name="tSOId" DataType="System.Int32"/&gt;
+        &lt;Column Name="StateFlag" DataType="System.Int32"/&gt;
+        &lt;Column Name="StateFlagDesc" DataType="System.String"/&gt;
+        &lt;Column Name="SODate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="SOCode" DataType="System.String"/&gt;
+        &lt;Column Name="DepId" DataType="System.Int32"/&gt;
+        &lt;Column Name="DepCode" DataType="System.String"/&gt;
+        &lt;Column Name="DepName" DataType="System.String"/&gt;
+        &lt;Column Name="BusPsn" DataType="System.String"/&gt;
+        &lt;Column Name="CusId" DataType="System.Int32"/&gt;
+        &lt;Column Name="CusCode" DataType="System.String"/&gt;
+        &lt;Column Name="CusName" DataType="System.String"/&gt;
+        &lt;Column Name="InvId" DataType="System.Int32"/&gt;
+        &lt;Column Name="InvCode" DataType="System.String"/&gt;
+        &lt;Column Name="tInvCode" DataType="System.String"/&gt;
+        &lt;Column Name="InvName" DataType="System.String"/&gt;
+        &lt;Column Name="InvSpec" DataType="System.String"/&gt;
+        &lt;Column Name="WJ" DataType="System.Double"/&gt;
+        &lt;Column Name="BH" DataType="System.Double"/&gt;
+        &lt;Column Name="CD" DataType="System.Double"/&gt;
+        &lt;Column Name="InvCId" DataType="System.Int32"/&gt;
+        &lt;Column Name="InvCCode" DataType="System.String"/&gt;
+        &lt;Column Name="InvCName" DataType="System.String"/&gt;
+        &lt;Column Name="iNum" DataType="System.Double"/&gt;
+        &lt;Column Name="Qty" DataType="System.Double"/&gt;
+        &lt;Column Name="WFQty" DataType="System.Double"/&gt;
+        &lt;Column Name="WFNum" DataType="System.Double"/&gt;
+        &lt;Column Name="NoWFQty" DataType="System.Double"/&gt;
+        &lt;Column Name="NoWFNum" DataType="System.Double"/&gt;
+        &lt;Column Name="DQty" DataType="System.Double"/&gt;
+        &lt;Column Name="NoDQty" DataType="System.Double"/&gt;
+        &lt;Column Name="DNum" DataType="System.Double"/&gt;
+        &lt;Column Name="NoDNum" DataType="System.Double"/&gt;
+        &lt;Column Name="PPQty" DataType="System.Double"/&gt;
+        &lt;Column Name="NoPPQty" DataType="System.Double"/&gt;
+        &lt;Column Name="PPNum" DataType="System.Double"/&gt;
+        &lt;Column Name="NoPPNum" DataType="System.Double"/&gt;
+        &lt;Column Name="PrQty" DataType="System.Double"/&gt;
+        &lt;Column Name="NoPrQty" DataType="System.Double"/&gt;
+        &lt;Column Name="PrNum" DataType="System.Double"/&gt;
+        &lt;Column Name="NoPrNum" DataType="System.Double"/&gt;
+        &lt;Column Name="RQty" DataType="System.Double"/&gt;
+        &lt;Column Name="NoRQty" DataType="System.Double"/&gt;
+        &lt;Column Name="RNum" DataType="System.Double"/&gt;
+        &lt;Column Name="NoRNum" DataType="System.Double"/&gt;
+        &lt;Column Name="Price" DataType="System.Double"/&gt;
+        &lt;Column Name="TaxPrice" DataType="System.Double"/&gt;
+        &lt;Column Name="SumMoney" DataType="System.Decimal"/&gt;
+        &lt;Column Name="SumTax" DataType="System.Decimal"/&gt;
+        &lt;Column Name="SumMoneyTax" DataType="System.Decimal"/&gt;
+        &lt;Column Name="TaxRate" DataType="System.Double"/&gt;
+        &lt;Column Name="SOItemDesc" DataType="System.String"/&gt;
+        &lt;Column Name="ArrDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="DStateFlag" DataType="System.Int32"/&gt;
+        &lt;Column Name="DStateFlagDesc" DataType="System.String"/&gt;
+        &lt;Column Name="Memo" DataType="System.String"/&gt;
+        &lt;Column Name="gDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="Closer" DataType="System.String"/&gt;
+        &lt;Column Name="CloseDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="MUGType" DataType="System.Int32"/&gt;
+        &lt;Column Name="MUGTypeDesc" DataType="System.String"/&gt;
+        &lt;Column Name="ChgRate" DataType="System.Double"/&gt;
+        &lt;Column Name="MUId" DataType="System.Int32"/&gt;
+        &lt;Column Name="MUCode" DataType="System.String"/&gt;
+        &lt;Column Name="MUName" DataType="System.String"/&gt;
+        &lt;Column Name="MUGId" DataType="System.Int32"/&gt;
+        &lt;Column Name="SAMUId" DataType="System.Int32"/&gt;
+        &lt;Column Name="SAMUCode" DataType="System.String"/&gt;
+        &lt;Column Name="SAMUName" DataType="System.String"/&gt;
+        &lt;Column Name="CSFreeQty" DataType="System.Int32"/&gt;
+        &lt;Column Name="CSbhFreeQty" DataType="System.Int32"/&gt;
+        &lt;Column Name="SGWhPId" DataType="System.Int32"/&gt;
+        &lt;Column Name="WhPName" DataType="System.String"/&gt;
+        &lt;Column Name="tWhPName" DataType="System.String"/&gt;
+        &lt;Column Name="SGWhId" DataType="System.Int32"/&gt;
+        &lt;Column Name="WhName" DataType="System.String"/&gt;
+        &lt;Column Name="BatchCode" DataType="System.String"/&gt;
+        &lt;Column Name="tBatchCode" DataType="System.String"/&gt;
+        &lt;Column Name="iBatch" DataType="System.String"/&gt;
+        &lt;Column Name="tiBatch" DataType="System.String"/&gt;
+        &lt;Column Name="VdDate" DataType="System.String"/&gt;
+        &lt;Column Name="SGQty1" DataType="System.Int32"/&gt;
+        &lt;Column Name="CanSG" DataType="System.Int32"/&gt;
+        &lt;Column Name="IsCR" DataType="System.Int32"/&gt;
+        &lt;Column Name="scStd" DataType="System.String"/&gt;
+        &lt;Column Name="Material" DataType="System.String"/&gt;
+        &lt;Column Name="F3" DataType="System.String"/&gt;
+        &lt;Column Name="F4" DataType="System.String"/&gt;
+        &lt;Column Name="F5" DataType="System.String"/&gt;
+        &lt;Column Name="F6" DataType="System.String"/&gt;
+        &lt;Column Name="F7" DataType="System.String"/&gt;
+        &lt;Column Name="F8" DataType="System.String"/&gt;
+        &lt;Column Name="F9" DataType="System.String"/&gt;
+        &lt;Column Name="F10" DataType="System.String"/&gt;
+        &lt;Column Name="F11" DataType="System.Double"/&gt;
+        &lt;Column Name="F12" DataType="System.Double"/&gt;
+        &lt;Column Name="F13" DataType="System.Double"/&gt;
+        &lt;Column Name="F14" DataType="System.Double"/&gt;
+        &lt;Column Name="F15" DataType="System.Double"/&gt;
+        &lt;Column Name="F16" DataType="System.Double"/&gt;
+        &lt;Column Name="F17" DataType="System.Double"/&gt;
+        &lt;Column Name="F18" DataType="System.Double"/&gt;
+        &lt;Column Name="F19" DataType="System.Double"/&gt;
+        &lt;Column Name="F20" DataType="System.Double"/&gt;
+        &lt;Column Name="F21" DataType="System.DateTime"/&gt;
+        &lt;Column Name="F22" DataType="System.DateTime"/&gt;
+        &lt;Column Name="IsDComp" DataType="System.Int32"/&gt;
+      &lt;/TableDataSource&gt;
+      &lt;TableDataSource Name="V_SaleOrderMain" DataType="System.Int32" Enabled="true" TableName="V_SaleOrderMain"&gt;
+        &lt;Column Name="IsSelected" DataType="System.Int32"/&gt;
+        &lt;Column Name="SOId" DataType="System.Int32"/&gt;
+        &lt;Column Name="BusType" DataType="System.String"/&gt;
+        &lt;Column Name="STId" DataType="System.Int32"/&gt;
+        &lt;Column Name="STCode" DataType="System.String"/&gt;
+        &lt;Column Name="STName" DataType="System.String"/&gt;
+        &lt;Column Name="SODate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="SOBarCode" DataType="System.String"/&gt;
+        &lt;Column Name="SOCode" DataType="System.String"/&gt;
+        &lt;Column Name="CusId" DataType="System.Int32"/&gt;
+        &lt;Column Name="CusCode" DataType="System.String"/&gt;
+        &lt;Column Name="CusName" DataType="System.String"/&gt;
+        &lt;Column Name="DepId" DataType="System.Int32"/&gt;
+        &lt;Column Name="DepCode" DataType="System.String"/&gt;
+        &lt;Column Name="DepName" DataType="System.String"/&gt;
+        &lt;Column Name="BusPsn" DataType="System.String"/&gt;
+        &lt;Column Name="Maker" DataType="System.String"/&gt;
+        &lt;Column Name="MDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="Verifier" DataType="System.String"/&gt;
+        &lt;Column Name="VDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="MdyPsn" DataType="System.String"/&gt;
+        &lt;Column Name="MdyDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="StateFlag" DataType="System.Int32"/&gt;
+        &lt;Column Name="StateFlagDesc" DataType="System.String"/&gt;
+        &lt;Column Name="Memo" DataType="System.String"/&gt;
+        &lt;Column Name="gDate" DataType="System.DateTime"/&gt;
+        &lt;Column Name="IsDComp" DataType="System.Int32"/&gt;
+        &lt;Column Name="IsDCompDesc" DataType="System.String"/&gt;
+        &lt;Column Name="IsSGComp" DataType="System.Int32"/&gt;
+        &lt;Column Name="IsSGCompDesc" DataType="System.String"/&gt;
+        &lt;Column Name="F1" DataType="System.String"/&gt;
+        &lt;Column Name="F2" DataType="System.String"/&gt;
+        &lt;Column Name="F3" DataType="System.String"/&gt;
+        &lt;Column Name="F4" DataType="System.String"/&gt;
+        &lt;Column Name="F5" DataType="System.String"/&gt;
+        &lt;Column Name="F6" DataType="System.String"/&gt;
+        &lt;Column Name="F7" DataType="System.String"/&gt;
+        &lt;Column Name="F8" DataType="System.String"/&gt;
+        &lt;Column Name="F9" DataType="System.String"/&gt;
+        &lt;Column Name="F10" DataType="System.String"/&gt;
+        &lt;Column Name="F11" DataType="System.Double"/&gt;
+        &lt;Column Name="F12" DataType="System.Double"/&gt;
+        &lt;Column Name="F13" DataType="System.Double"/&gt;
+        &lt;Column Name="F14" DataType="System.Double"/&gt;
+        &lt;Column Name="F15" DataType="System.Double"/&gt;
+        &lt;Column Name="F16" DataType="System.Double"/&gt;
+        &lt;Column Name="F17" DataType="System.Double"/&gt;
+        &lt;Column Name="F18" DataType="System.Double"/&gt;
+        &lt;Column Name="F19" DataType="System.Double"/&gt;
+        &lt;Column Name="F20" DataType="System.Double"/&gt;
+        &lt;Column Name="F21" DataType="System.DateTime"/&gt;
+        &lt;Column Name="F22" DataType="System.DateTime"/&gt;
+        &lt;Column Name="TechnicalRS" DataType="System.String"/&gt;
+      &lt;/TableDataSource&gt;
+    &lt;/MsSqlDataConnection&gt;
+    &lt;Relation Name="V_PuOMain1_V_PuODetail" ParentDataSource="null" ChildDataSource="null" ParentColumns="PuOId" ChildColumns="PuOId" Enabled="true"/&gt;
+    &lt;Relation Name="V_RDMain_V_RDDetail" ParentDataSource="null" ChildDataSource="null" ParentColumns="RDId" ChildColumns="RDId" Enabled="true"/&gt;
+    &lt;Relation Name="V_SaleOrderMain_V_SaleOrderDetail" ParentDataSource="V_SaleOrderMain" ChildDataSource="V_SaleOrderDetail" ParentColumns="SOId" ChildColumns="SOId" Enabled="true"/&gt;
+    &lt;Total Name="SumQty" Expression="[V_SaleOrderDetail.Qty]" Evaluator="Data3"/&gt;
+    &lt;Total Name="SumMoney" Expression="[V_SaleOrderDetail.SumMoneyTax]" Evaluator="Data3"/&gt;
+  &lt;/Dictionary&gt;
+  &lt;ReportPage Name="Page1" Landscape="true" PaperWidth="215" PaperHeight="140" TopMargin="5" RightMargin="5" BottomMargin="5"&gt;
+    &lt;PageHeaderBand Name="PageHeader1" Width="756" Height="37.8"&gt;
+      &lt;TextObject Name="Text2" Left="302.4" Top="9.45" Width="103.95" Height="18.9" Text="销售订单" Font="Arial, 14pt, style=Bold"/&gt;
+      &lt;TextObject Name="Text41" Left="-9450" Top="-9450" Width="160.65" Height="18.9" Border.Lines="All" Text="存货代码" HorzAlign="Center" VertAlign="Center"/&gt;
+      &lt;TextObject Name="Text46" Left="-9450" Top="-9450" Width="94.5" Height="18.9" Border.Lines="All" Text="数量" HorzAlign="Center" VertAlign="Center"/&gt;
+    &lt;/PageHeaderBand&gt;
+    &lt;DataBand Name="Data1" Top="41.8" Width="756" Height="160.65" CanGrow="true" StartNewPage="true" DataSource="V_SaleOrderMain" KeepDetail="true"&gt;
+      &lt;TextObject Name="Text1" Left="9.45" Top="18.9" Width="236.25" Height="18.9" Text="订  单  号： [V_SaleOrderMain.SOCode]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text4" Left="255.15" Top="18.9" Width="236.25" Height="18.9" Text="日        期：[V_SaleOrderMain.SODate]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text18" Left="500.85" Top="75.6" Width="245.7" Height="18.9" Text="部        门：[V_SaleOrderMain.DepName]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text20" Left="9.45" Top="75.6" Width="236.25" Height="18.9" Text="制  单  人：[V_SaleOrderMain.Maker]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text22" Left="255.15" Top="75.6" Width="236.25" Height="18.9" Text="审  核  人：[V_SaleOrderMain.Verifier]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text26" Left="9.45" Top="103.95" Width="236.25" Height="18.9" Text="制单日期：[V_SaleOrderMain.gDate]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text28" Left="500.85" Top="103.95" Width="245.7" Height="18.9" Text="业  务  员：[V_SaleOrderMain.BusPsn]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text66" Left="9.45" Top="47.25" Width="737.1" Height="18.9" Text="客        户：[V_SaleOrderMain.CusName]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text67" Left="255.15" Top="103.95" Width="236.25" Height="18.9" Text="审核日期：[V_SaleOrderMain.VDate]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text71" Left="500.85" Top="18.9" Width="245.7" Height="18.9" Text="发货情况：[V_SaleOrderMain.StateFlagDesc]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;TextObject Name="Text72" Left="9.45" Top="132.3" Width="737.1" Height="18.9" Text="技术要求：[V_SaleOrderMain.TechnicalRS]" VertAlign="Center" Font="Arial, 9pt"/&gt;
+      &lt;DataBand Name="Data3" Top="229.35" Width="756" Height="18.9" DataSource="V_SaleOrderDetail" RowCount="10"&gt;
+        &lt;TextObject Name="Text36" Width="94.5" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.InvCode]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text34" Left="359.1" Width="66.15" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.Qty]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text43" Left="94.5" Width="113.4" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.InvName]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text45" Left="207.9" Width="103.95" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.InvSpec]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text48" Left="311.85" Width="47.25" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.MUName]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text53" Left="425.25" Width="66.15" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.TaxPrice]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text54" Left="491.4" Width="85.05" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.SumMoneyTax]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text58" Left="652.05" Width="85.05" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.Memo]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;TextObject Name="Text69" Left="576.45" Width="75.6" Height="18.9" Border.Lines="All" Text="[V_SaleOrderDetail.ArrDate]" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+        &lt;DataHeaderBand Name="DataHeader1" Top="206.45" Width="756" Height="18.9"&gt;
+          &lt;TextObject Name="Text40" Width="94.5" Height="18.9" Border.Lines="All" Text="存货代码" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text39" Left="359.1" Width="66.15" Height="18.9" Border.Lines="All" Text="数量" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text42" Left="94.5" Width="113.4" Height="18.9" Border.Lines="All" Text="存货名称" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text44" Left="207.9" Width="103.95" Height="18.9" Border.Lines="All" Text="规格" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text47" Left="311.85" Width="47.25" Height="18.9" Border.Lines="All" Text="单位" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text51" Left="425.25" Width="66.15" Height="18.9" Border.Lines="All" Text="单价" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text52" Left="491.4" Width="85.05" Height="18.9" Border.Lines="All" Text="金额" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text57" Left="652.05" Width="85.05" Height="18.9" Border.Lines="All" Text="备注" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text68" Left="576.45" Width="75.6" Height="18.9" Border.Lines="All" Text="发货日期" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+        &lt;/DataHeaderBand&gt;
+        &lt;DataFooterBand Name="DataFooter1" Top="252.25" Width="756" Height="18.9"&gt;
+          &lt;TextObject Name="Text3" Width="94.5" Height="18.9" Border.Lines="All" Text="合计：" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text59" Left="94.5" Width="113.4" Height="18.9" Border.Lines="All" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text60" Left="207.9" Width="103.95" Height="18.9" Border.Lines="All" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text61" Left="311.85" Width="47.25" Height="18.9" Border.Lines="All" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text62" Left="359.1" Width="66.15" Height="18.9" Border.Lines="All" Text="[SumQty]" HideZeros="true" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+          &lt;TextObject Name="Text63" Left="425.25" Width="66.15" Height="18.9" Border.Lines="All" HideZeros="true" HorzAlign="Center" VertAlign="Center" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text64" Left="491.4" Width="85.05" Height="18.9" Border.Lines="All" Text="[SumMoney]" HideZeros="true" HorzAlign="Center" VertAlign="Center" Font="Arial, 8pt"/&gt;
+          &lt;TextObject Name="Text65" Left="576.45" Width="75.6" Height="18.9" Border.Lines="All" Font="黑体, 9pt"/&gt;
+          &lt;TextObject Name="Text70" Left="652.05" Width="85.05" Height="18.9" Border.Lines="All" Font="黑体, 9pt"/&gt;
+        &lt;/DataFooterBand&gt;
+      &lt;/DataBand&gt;
+    &lt;/DataBand&gt;
+    &lt;PageFooterBand Name="PageFooter1" Top="275.15" Width="756" Height="56.7"/&gt;
+  &lt;/ReportPage&gt;
+&lt;/Report&gt;
+</value>
+  </data>
+  <metadata name="ToolBtn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>102, 7</value>
+  </metadata>
+  <data name="Btn_Add.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Edit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Del.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Save.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Cancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Audit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_UnAudit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_First.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVDhPYyAWhK76zwxlkg7q6/8zpXQ8loFysYPCWc//
+        1897+iuq494bqBAYgDQnTvugFN7+4D9UCDvInfns/6oj7/8jKwQ5O37Sa4347gf/gxuu4TcgY8rT/wv3
+        fYArBGlO6HxqG9n+4NfS/f//+1dfwG9AQs+T/9O2vAcrBGlO7H1kH9F+/z9Ic+as//+9Sk/gNyCy69H/
+        3tUfwApBmkNb74E1t64D2t75979L/gH8BgQ2P/xfN/8dWGFwy93/i/b+/98B1Jwx5+d/u7qf/+0ztuM3
+        wKPq/v/8aW/ACmW8VwbaFd/+nz7n93//rm//dQrf/bdIWI/fAPvSu/+zJ7+GK5T2XuGln3L+v0nRi/8q
+        WZ/+G0cuw2+ARd6d/6n9r1EUSvqssjFIOvFfNu3rf93gefgNMMy6/T+s5SWGQknPZa76qZf/a/hOw2+A
+        TtqN/37VD7EqlPJZ46viMQG/AXZZl3+BFGFVGLqKWcp7rR+UN6gAAwMAwVLhhh629JIAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="Btn_Previous.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEGSURBVDhPY6AbCF31nxnKJA3U1/9nipnyUiW8/cF/qBDx
+        AGRr/KTXGvHdD/4HN1wjzQCQ5oTOp7b+9Q9+Ld3//79/9QXiDQBpTux9ZB/Rfv8/SHPmrP//vUpPEGcA
+        THNo6z2w5tZ1QNs7//53yT9AnAGOxWecglvu/l+09///DqDmjDk//9vV/fxvn7GdeC/IeK8MtCu+/T99
+        zu///l3f/usUvvtvkbCetECU9l7hpZ9y/r9J0Yv/Klmf/htHLiPNABCQ9FllY5B04r9s2tf/usHzSDcA
+        BCQ9l7nqp17+r+E7DbcB/+sZmKBMrEDKZ42viscE8lwABqGrmKW81/pBeYMKMDAAACHwgveWoBQXAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="Btn_Next.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD2SURBVDhPY8AGQlf9Z4YyyQMpHY9l6uv/M0G5pIPCWc//
+        J077oES2Ibkzn/1P6L73P37Saw2yvJMx5en/eft//w9quPk6ofOpLcmGJPQ8+T9736//nVv//ncrvfw/
+        sfeRPUmGRHY9+j9l26//JUv//k+Y/ve/Te5Z0gwJbH74v3Xte7Bm45Iv/6Wjr/03jlz236HgdDxRhnhU
+        3f9fMvcdXLOiS89/Ge+VgVBpwsC+9O7/wJZncM3S3iu8oFLEAYu8O/9tCq6ANUv6rLKBChMPDLNuQzR7
+        LnOFCpEGdNJu/JfyWeML5ZIOpLzX+gFzFOkpcAAAAwMAylWGggwmxE0AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Btn_Last.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFxSURBVDhPY8AGQuuvsEGZ5IGE7kem9fX/WaBc0kHhrOf/
+        Yye+s0c3BCReP+/pr6iOe2+gQthB7sxn/xO67/2PnfDKC9k7IPFVR97/D29/8B8qhB1kTHn6f97+3//9
+        G679je95kg0zBCS+cN+H/8EN1/AbkNDz5P/sfb/+d279+9+t9PL/+O7HeSBDQOLTtrz/7199Ab8BkV2P
+        /k/Z9ut/ydK//xOm//1vk3sWbAhIvHf1h/9epSfwGxDY/PB/69r3YM3GJV/+S0df+28cuew/SLxu/rv/
+        LvkH8BvgUXX/f8ncd3DNii49/6V8VnWAxPOnvflvn7EdvwH2pXf/B7Y8Q9K8oh4mnj359X+LhPX4DbDI
+        u/PfpuAKTHMWVBgsntr/GuwdqBB2YJh1G6xZ0mt5OVQIDEDiYS0v/+sGz8NvgE7ajf/S3quboVw4AIn7
+        VT/8r+E7Db8Bkt5rW7RCV2FkKLusy79UPCb8B2Go0IADBgYAXFPhZVgQGOwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="Btn_Reflash.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_PrintMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Att.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_List.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Query.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="Btn_Exit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="OpenFileDlg.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>188, 9</value>
+  </metadata>
+  <metadata name="SaveFileDlg.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>302, 9</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>36</value>
+  </metadata>
+</root>

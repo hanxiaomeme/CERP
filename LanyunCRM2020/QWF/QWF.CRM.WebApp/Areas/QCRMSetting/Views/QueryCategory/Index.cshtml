@@ -1,0 +1,743 @@
+﻿
+@{
+    ViewBag.Title = "客户分类管理";
+    var expressions = QWF.Framework.MainServices.CreateWebAppServices.GetConfigServices().GetNodeItemsByCode("qwf.qcrm.expression");
+    var dateExpressions = QWF.Framework.MainServices.CreateWebAppServices.GetConfigServices().GetNodeItemsByCode("qwf.qcrm.dateExpression");
+}
+
+@section script{
+    <script type="text/javascript">
+        var index = 0;
+        var subIndex = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loadTreeGrid();
+
+            $('#isTopNode').checkbox({
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#categoryCombobox').combobox('disable');
+                        $('#sortField').combobox('disable');
+                        $('#ascOrDesc').combobox('disable');
+                        $('#andOr').combobox('disable');
+                    } else {
+                        $('#categoryCombobox').combobox('enable');
+                        $('#sortField').combobox('enable');
+                        $('#ascOrDesc').combobox('enable');
+                        $('#andOr').combobox('enable');
+                    }
+                }
+            });
+
+            loadCategoryCombox();
+            initDialog();
+
+            $('#fieldCode').combobox({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/GetFieldList")',
+                valueField: 'Code',
+                textField: 'Name',
+                onSelect: function (res) {
+                    onSelectField(res);
+                }
+            });
+
+            $('#dateType').combobox({
+                onSelect: function (res) {
+                    onSelectDateType(res);
+                }
+            });
+
+        }
+
+        function loadCategoryCombox(o) {
+            $('#categoryCombobox').combobox({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/GetBigCategoryList")',
+                valueField: 'Id',
+                textField: 'Name',
+                onLoadSuccess: function () {
+                    if (o) {
+                        if (o.ParentId == 0) {
+                            $('#categoryCombobox').combobox('setValue', o.Id);
+                        } else if (o.ParentId > 0) {
+                            $('#categoryCombobox').combobox('setValue', o.ParentId);
+                        }
+                    }
+                }
+            });
+        }
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '客户分类管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保 存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.name.isNull()) {
+                alertError("请填写分类名称。");
+                return false;
+            }
+            if (obj.isTopNode == 0 && obj.parentId.isNull()) {
+                alertError("请勾选大类。");
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        loadCategoryCombox({
+                            ParentId: res.Data.ParentId,
+                            Id: res.Data.Id
+                        });
+                        loadTreeGrid();
+                    }
+                }
+            });
+        }
+        function loadTreeGrid() {
+            index = 0;
+            $('#categoryTreeGrid').treegrid({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/GetList")',
+                fit: true,
+                fitColumns: false,
+                idField: 'id',
+                treeField: 'Name',
+                toolbar: '#toolbar',
+                border: false,
+                onDblClickRow: function (row) {
+                    openEditWindows(row);
+                }
+
+            });
+            return false;
+        }
+
+
+        function fmtSort(value, row) {
+            index++;
+            return "<input type='text' name='sortId_" + row.id + "' value='" + index + "' size='3'/>";
+        }
+
+        function fmtWhere(value, row, index) {
+            //
+            if (row.ParentId == 0) {
+                return '';
+            }
+            else {
+                return '<a href="javascript:void(0);" onclick="openWhereWindows(\'' + row.QueryCategoryId + '\');" > 配置查询条件 </a> '
+            }
+
+        }
+        function addNode() {
+            //重置表单
+            resetForm();
+            $('#isTopNode').checkbox({ disabled: false });
+            $('#dlg').dialog('open');
+        }
+
+        function editNode() {
+            var node = $('#categoryTreeGrid').treegrid('getSelected');
+            if (!node) {
+                alertError('请选择要编辑的数据，或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(node);
+            }
+        }
+
+        function openEditWindows(node) {
+            resetForm();
+            $('#isTopNode').checkbox({ disabled: false });
+            if (!node) {
+                alertError('请选择要编辑的分类！');
+                return false;
+            } else {
+                //设置数据
+                $('#id').val(node.id);
+                $('#isTopNode').checkbox({
+                    checked: parseInt(node.ParentId) == 0 ? true : false
+                });;
+
+                if (parseInt(node.ParentId) == 0) {
+                    //顶级分类不能成为子类，但是子类可以成为父类
+                    $('#isTopNode').checkbox('disable');
+                    $('#categoryCombobox').combobox('setValue', '');
+                    $('#categoryCombobox').combobox('disable');
+                    $('#sortField').combobox('disable');
+                    $('#ascOrDesc').combobox('disable');
+                    $('#andOr').combobox('disable');
+
+                } else {
+                    $('#categoryCombobox').combobox('enable');
+                    $('#sortField').combobox('enable');
+                    $('#ascOrDesc').combobox('enable');
+                    $('#andOr').combobox('enable');
+
+                    $('#categoryCombobox').combobox('setValue', node.ParentId);
+                    $('#sortField').combobox('setValue', node.SortField);
+                    $('#ascOrDesc').combobox('setValue', node.AscOrDesc);
+                    $('#andOr').combobox('setValue', node.AndOr);
+                }
+
+                $('#name').textbox('setValue', node.Name);
+                $('#remarks').textbox('setValue', node.Remarks);
+
+
+                $('#dlg').dialog('open');
+            }
+        }
+
+        function delNode() {
+            var node = $('#categoryTreeGrid').treegrid('getSelected');
+
+            if (!node) {
+                alertError('请选择一条需要删除的数据。');
+                return false;
+            }
+            $.messager.confirm('删除确认框', '确定删除吗?删除后数据将不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/QueryCategory/Delete")',
+                        data: {
+                            id: node.id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                reLoad();
+                                alertInfo('删除成功。');
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function treeSort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#mainForm').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/QueryCategory/Sort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                reLoad();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function resetForm() {
+            $("#dlg-from").form('clear');
+            $("#dlg-from").form('reset');
+        }
+
+        function reLoad() {
+            loadTreeGrid();
+        }
+
+        /*********** 配置查询 ***/
+        function openWhereWindows(categoryId) {
+            //打开
+            $('#dlg-whereList').dialog('open');
+            $('#categoryId').val(categoryId);
+            loadWhereListDg(categoryId);
+
+        }
+
+        function addWhereList(inputId) {
+            $('#dlg-form-whereList').form('clear');
+            openInputItemList(inputId);
+        }
+
+        function loadWhereListDg(categoryId) {
+            subIndex = 0;
+            if (categoryId == undefined || categoryId == null || categoryId == '' || categoryId == 0) {
+                categoryId = $('#categoryId').val();
+            }
+            $('#dg-whereList').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/GetWhereListById")',
+                singleSelect: true,
+                toolbar: 'tools-whereList',
+                queryParams: {
+                    categoryId: categoryId
+                },
+                onDblClickRow: function () {
+                    openEditWhereList();
+                }
+            });
+        }
+
+
+        function openAddWhere() {
+            resetWhereListAddForm();
+            $('#dlg-whereListAdd').dialog('open');
+            //分类ID是否被重置
+            var node = $('#categoryTreeGrid').treegrid('getSelected');
+            $('#categoryId').val(node.QueryCategoryId);
+ 
+        }
+
+        function resetWhereListAddForm() {
+            //重置表单
+            $('#dlg-form-whereListAdd').form('clear');
+            $('#dlg-form-whereListAdd').form('reset');
+        }
+
+        function openEditWhereList() {
+            var row = $('#dg-whereList').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条需要编辑的数据。');
+                return false;
+            }
+            //重置
+            resetWhereListAddForm();
+
+         
+            //设置值:
+            $('#whereId').val(row.Id);
+            $('#categoryId').val(row.QueryCategoryId);
+            $('#fieldType').val(row.FieldValueType);
+            $('#fieldCode').combobox('setValue', row.FieldCode);
+            $('#expression').combobox('setValue', row.Expression);
+            $('#isUserField').val(row.FieldQueryType == '02' ? 1 : 0);
+
+            if (row.FieldQueryType == '01') {
+                $('#dateType').combobox('setValue', row.DateType);
+
+                if (row.DateType < 10) {
+                    //固定日期显示
+                    $('#div-dateStatic').show();
+                    $('#div-dateNum').hide();
+                    $('#staticDate').datebox('setValue', row.StaticDateValue);
+
+                } else if(row.DateType>=50) {
+                    $('#div-dateStatic').hide();
+                    $('#div-dateNum').show();
+                    $('#dateNum').textbox('setValue', row.DateNum);
+                }
+                //显示日期配置
+                $('#div-dateValue').show();
+                $('#div-textValue').hide();
+                $('#fieldValue').textbox('setValue', '');
+            } else if (row.FieldQueryType == '02') {
+                //用户
+                $('#sysUserCode').combobox('setValue', row.UserCode);
+                $('#div-dateValue').hide();
+                $('#div-textValue').hide();
+                $('#div-sysuser').show();
+                $('#fieldValue').textbox('setValue', '');
+            }
+            else {
+                $('#fieldValue').textbox('setValue', row.FieldValue);
+                $('#div-dateValue').hide();
+                $('#div-textValue').show();
+            }
+
+            $('#dlg-whereListAdd').dialog('open');
+        }
+
+        function saveWhereList() {
+            var form = $('#dlg-form-whereListAdd');
+            var obj = form.serializeJSON();
+
+            if (obj.fieldCode.isNull()) {
+                alertError('请选择字段。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/SaveWhereSetting")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loadWhereListDg(obj.categoryId);
+                    }
+                }
+            });
+        }
+
+
+        //设置隐藏
+        function deleteWhereList() {
+            var row = $('#dg-whereList').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '删除数据则不可恢复！确定要删除吗？', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/QueryCategory/DeleteWhereSetting")',
+                        data: {
+                            id: row.Id,
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loadWhereListDg(row.QueryCategoryId);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function onSelectDateType(res)
+        {
+            var val = parseInt(res.value)
+            if (val < 10) {
+                $('#div-dateStatic').show();
+                $('#div-dateNum').hide();
+            } else if (val >= 50) {
+                $('#div-dateStatic').hide();
+                $('#div-dateNum').show();
+            } else {
+                $('#div-dateNum').hide();
+                $('#div-dateStatic').hide();
+            }
+        }
+
+        function onSelectField(res) {
+            //
+            var exp = $('#expression');
+            $('#fieldType').val(res.Type);
+            $('#isUserField').val(res.IsUserField ? 1 : 0);
+
+            if (res.Type == 'datetime') {
+                $('#div-dateValue').show();
+                $('#div-sysuser').hide();
+                $('#div-textValue').hide();
+                $('#dlg-div-dateType').show();
+                $('#dlg-div-expression').hide();
+                exp.combobox('enable');
+            } else if (res.IsUserField) {
+                $('#div-dateValue').hide();
+                $('#div-sysuser').show();
+                $('#div-textValue').hide();
+                $('#dlg-div-dateType').hide();
+                $('#dlg-div-expression').hide();
+                exp.combobox('setValue', '=').combobox('disable');
+            }
+            else {
+                $('#div-dateValue').hide();
+                $('#div-sysuser').hide();
+                $('#div-textValue').show();
+                $('#dlg-div-expression').show();
+                $('#dlg-div-dateType').hide();
+                exp.combobox('enable');
+            }
+        }
+
+        function fmtExpression(val, row, index) {
+            if (row.FieldQueryType == '01') {
+                return '';
+            }
+            return row.ExpressionName;
+        }
+
+        function fmtFieldValue(val, row, index) {
+
+            if (row.FieldQueryType == '01') {
+                var dateType = parseInt(row.DateType);
+                if (dateType < 10) {
+                    return row.DateTypeName + " " + row.StaticDateValue;
+                }
+                else if(dateType>=50) {
+                    return row.DateTypeName.replace('xx', row.DateNum);
+                }
+                return row.DateTypeName;
+
+            } else if (row.FieldQueryType == '02') {
+                //
+                if (row.UserCodeType == 1) {
+                    return '自己';
+                } else {
+                    return row.UserRealname;
+                }
+            } else {
+                return row.FieldValueName;
+            }
+        }
+
+        function fmtWhereSort(value, row) {
+            subIndex++;
+            return "<input type='text' name='sortId_" + row.Id + "' value='" + subIndex + "' size='3'/>";
+
+        }
+
+        function saveWhereSort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#form-whereList').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/QueryCategory/SaveWhereSort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loadWhereListDg();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+    </script>
+}
+
+<form id="mainForm" name="mainForm" method="post">
+    <div id="toolbar" style="padding:3px">
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width:80px" onclick="addNode();">新增</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width:80px" onclick="editNode()">编辑</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width:80px" onclick="delNode()">删除</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="treeSort();">排序</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="reLoad();">刷新</a>
+    </div>
+
+    <table id="categoryTreeGrid" title="客户分类管理" class="easyui-treegrid">
+        <thead>
+            <tr>
+                <th data-options="field:'Id',checkbox:true"></th>
+                <th field="Name" width="220">分类名称</th>
+                <th field="SortId" width="150" formatter='fmtSort'>排序ID</th>
+                <th field="AndOrName" width="120" >条件组规则</th>
+                <th field="Where" width="120" formatter='fmtWhere'>配置查询组</th>
+                <th field="SortFieldName" width="150">排序字段</th>
+                <th field="Remarks" width="220">备注</th>
+                <th field="CreateTime" width="150">创建时间</th>
+                <th field="UpdateTime" width="150">修改时间</th>
+            </tr>
+        </thead>
+    </table>
+</form>
+
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-form" method="post">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <!-- 顶级节点-->
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="isTopNode" name="isTopNode" value="1" label="大类:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'">
+            </div>
+
+            <div class="dlg-input-item">
+                <input id="categoryCombobox"
+                       name="parentId" label="所属大类<span class='font-red'>*</span>:" labelWidth="100px" labelAlign="right" class="easyui-combobox"
+                       style="width:300px;" />
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="分类名称<span class='font-red'>*</span>:"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'"
+                       style="width:300px;" />
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-combobox" id="sortField" name="sortField" label="排序字段 :" panelHeight="180"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px',
+                                    url:'@Url.Content("~/QCRMSetting/QueryCategory/GetSortFileds")',
+                                    valueField:'Code',
+                                    textField:'Name'"
+                       style="width:300px;" />
+
+                <select id="ascOrDesc" name="ascOrDesc" class="easyui-combobox"
+                        data-options="labelPosition:'before',labelAlign:'left'" panelHeight="100" style="width:120px;">
+                    <option value="desc" selected>↓降序(由高到低)</option>
+                    <option value="asc">↑升序(由低到高)</option>
+                </select>
+                <div class="dlg-form-desc">
+                    1.如果没有排序字段，请在“表单框架”>“查询列表字段管理”先配置<br />
+                </div>
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="andOr" name="andOr" class="easyui-combobox"
+                        data-options="labelPosition:'before',labelAlign:'left'" label="条件组规则 <span class='font-red'>*</span>:" panelHeight="100" style="width:300px;">
+                    <option value="and" selected>满足全部条件</option>
+                    <option value="or"> 满足其中之一</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="dlg-input-item">
+            <input class="easyui-textbox" id="remarks" name="remarks" label="备注:"
+                   data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px',multiline:true"
+                   style="width:300px;height:60px;" />
+        </div>
+    </form>
+
+</div>
+
+
+<div id="dlg-whereList" class="easyui-dialog" title="客户分类查询条件" style="width:80%;height:80%;padding:10px"
+     data-options="closed: true,maximizable: true, modal :true,iconCls: 'icon-save' ,toolbar: [{
+     text:'刷新',
+     iconCls:'icon-search',
+     handler:function(){
+        loadWhereListDg();
+     }
+     },'-',{
+     text:'新增',
+     iconCls:'icon-add',
+     handler:function(){
+        openAddWhere();
+     }
+     },'-',{
+     text:'编辑',
+     iconCls:'icon-edit',
+     handler:function(){
+        openEditWhereList();
+     }
+     },'-',{
+     text:'删除',
+     iconCls:'icon-remove',
+     handler:function(){
+        deleteWhereList();
+     }
+     },'-',{
+     text:'排序',
+     iconCls:'icon-save',
+     handler:function(){
+        saveWhereSort();
+     }
+     }]
+     ">
+    <form id="form-whereList" name="form-whereList" method="post" >
+        <div id="tools-whereList"></div>
+        <table id="dg-whereList">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="SortId" width="120" formatter='fmtWhereSort'>排序ID</th>
+                    <th field="FieldName" width="100">字段</th>
+                    <th field="ExpressionName"  formatter = "fmtExpression" width="100">表达式</th>
+                    <th field="FieldValueName" formatter="fmtFieldValue" width="200">值描述</th>
+                    <th field="FieldValueTypeName" width="80">字段类型</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</div>
+
+<div id="dlg-whereListAdd" class="easyui-dialog" title="配置查询条件项" style="max-width:800px;padding:10px"
+     data-options="closed :true,maximizable: true,modal : true,iconCls :'icon-save',width:'80%',height:'80%',
+     buttons:[{
+				text:'保存',
+                iconCls: 'icon-ok',
+				handler:function(){ saveWhereList();}
+			}]">
+    <form id="dlg-form-whereListAdd">
+        <input type="hidden" id="fieldType" name="fieldType" />
+        <input type="hidden" id="isUserField" name="isUserField" />
+        <input type="hidden" id="whereId" name="whereId" />
+        <input type="hidden" id="categoryId" name="categoryId" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <select id="fieldCode" name="fieldCode" class="easyui-combobox" label="字段<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;"></select>
+
+                <div class="dlg-form-desc">
+                    1.当字段为时间类型则会出现与时间相关的配置。<br />
+                    2.当字段为用户类型，则可以按“用户”过滤条件，例如：拥用者等于某人或自己<br />
+                    3.需要在“查询列表字段管理”>> 勾选“用户字段”，通常是设置xxx编码的字段而非名称。 <br />
+                </div>
+            </div>
+
+
+            <div class="dlg-input-item" id="dlg-div-expression">
+                <select id="expression" name="expression" class="easyui-combobox" label="表达式<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var expression in expressions)
+                    {
+                        <option value="@expression.Value">@expression.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item" id="dlg-div-dateType" style="display:none">
+                <select id="dateType" name="dateType" class="easyui-combobox" label="时间范围<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var expression in dateExpressions)
+                    {
+                        <option value="@expression.Value">@expression.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item" id="div-textValue" style="display:none;" >
+                <input class="easyui-textbox" id="fieldValue" name="fieldValue" label="固定值：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:400px;">
+                <div class="dlg-form-desc">
+                    1.为了方便阅读，系统会自动将系统编码转化为“值描述”。<br />
+                    2.如果转化的名称不正确，可能是因为值填写错误、有多个相同的编码、编码不是本系统编码。<br />
+                </div>
+            </div>
+
+            <div class="dlg-input-item" id="div-sysuser" style="display:none;">
+                <select id="sysUserCode" name="sysUserCode" class="easyui-combobox" label="系统用户<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        url="@Url.Content("~/QCRMSetting/QueryCategory/GetSysUserList")" valueField="Value" textField="Name"
+                        style="width:300px;"></select>
+            </div>
+
+            <div id="div-dateValue" style="display:none;">
+
+                 <div class="dlg-input-item" id="div-dateStatic"  style="display:none;">
+                    <input class="easyui-datebox" id="staticDate" name="staticDate" label="固定日期：" required="true"
+                           data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                           style="width:300px;">
+                </div>
+
+                <div class="dlg-input-item" id="div-dateNum" style="display:none;">
+                    <input class="easyui-textbox" id="dateNum" name="dateNum" label="天数:" value=""
+                           data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                           style="width:150px;">
+                </div>
+
+             </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+
+
+

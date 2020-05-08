@@ -1,0 +1,56 @@
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.alpha.v3.0.1.0.dll.config
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.alpha.v3.0.1.0.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.alpha.v3.0.1.0.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.SqlServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.ServiceLocation.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.Interception.Configuration.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.Interception.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Newtonsoft.Json.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Assembly.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.DbAccess.SQLServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\System.Web.Mvc.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Assembly.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.DbAccess.SQLServer.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.SqlServer.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\Newtonsoft.Json.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\System.Web.Mvc.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\bin\Release\zh-Hans\System.Web.Mvc.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\obj\Release\QWF.Framework.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\obj\Release\QWF.Framework.alpha.v3.0.1.0.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Framework\obj\Release\QWF.Framework.alpha.v3.0.1.0.pdb
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.alpha.v3.0.1.0.dll.config
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.alpha.v3.0.1.0.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.alpha.v3.0.1.0.pdb
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.SqlServer.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.ServiceLocation.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.Interception.Configuration.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Microsoft.Practices.Unity.Interception.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Newtonsoft.Json.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\System.Web.Mvc.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\QWF.Framework.DbAccess.SQLServer.pdb
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.xml
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\EntityFramework.SqlServer.xml
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\Newtonsoft.Json.xml
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\System.Web.Mvc.xml
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\open_qcrm\QWF\QWF.Framework\bin\Release\zh-Hans\System.Web.Mvc.resources.dll
+D:\open_qcrm\QWF\QWF.Framework\obj\Release\QWF.Framework.csprojResolveAssemblyReference.cache
+D:\open_qcrm\QWF\QWF.Framework\obj\Release\QWF.Framework.alpha.v3.0.1.0.dll
+D:\open_qcrm\QWF\QWF.Framework\obj\Release\QWF.Framework.alpha.v3.0.1.0.pdb

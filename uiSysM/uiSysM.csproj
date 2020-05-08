@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{09DB18C4-6C15-450D-8AA3-9A7B271EBDBF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eastar</RootNamespace>
+    <AssemblyName>uiSysM</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Role\FmIURole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Role\FmIURole.Designer.cs">
+      <DependentUpon>FmIURole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\FmRoleModule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Role\FmRoleModule.Designer.cs">
+      <DependentUpon>FmRoleModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Role\FmRole.cs" />
+    <Compile Include="Role\FmRole.Designer.cs">
+      <DependentUpon>FmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Role\FmRoleUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Role\FmRoleUserList.Designer.cs">
+      <DependentUpon>FmRoleUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysLog\FmQSysIOLog1.cs" />
+    <Compile Include="SysLog\FmQSysIOLog1.Designer.cs">
+      <DependentUpon>FmQSysIOLog1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysLog\FmSysIOLog.cs" />
+    <Compile Include="SysLog\FmSysIOLog.Designer.cs">
+      <DependentUpon>FmSysIOLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\FmIUUser.cs" />
+    <Compile Include="User\FmIUUser.Designer.cs">
+      <DependentUpon>FmIUUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\FmUser.cs" />
+    <Compile Include="User\FmUser.Designer.cs">
+      <DependentUpon>FmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\FmUserAuthority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\FmUserAuthority.Designer.cs">
+      <DependentUpon>FmUserAuthority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\FmUserRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\FmUserRole.Designer.cs">
+      <DependentUpon>FmUserRole.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lanyun.Common\Lanyun.Common.csproj">
+      <Project>{5E1931F3-AE49-4D1A-AF55-698E77FE68C4}</Project>
+      <Name>Lanyun.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Component\Component.csproj">
+      <Project>{8C0C2E03-9EC0-42B1-A75F-CE7BA35FC70A}</Project>
+      <Name>Component</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.DAL\LanyunMES.DAL.csproj">
+      <Project>{c42ddb07-0803-46a1-8982-959bacc9d1d5}</Project>
+      <Name>LanyunMES.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.UIBase\LanyunMES.UIBase.csproj">
+      <Project>{7D3D1874-6DF1-41C7-A6CD-DF7249DAD153}</Project>
+      <Name>LanyunMES.UIBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Role\FmIURole.resx">
+      <DependentUpon>FmIURole.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Role\FmRoleModule.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FmRoleModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Role\FmRole.resx">
+      <DependentUpon>FmRole.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Role\FmRoleUserList.resx">
+      <DependentUpon>FmRoleUserList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysLog\FmQSysIOLog1.resx">
+      <DependentUpon>FmQSysIOLog1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysLog\FmSysIOLog.resx">
+      <DependentUpon>FmSysIOLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FmIUUser.resx">
+      <DependentUpon>FmIUUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FmUser.resx">
+      <DependentUpon>FmUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FmUserAuthority.resx">
+      <DependentUpon>FmUserAuthority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\FmUserRole.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FmUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

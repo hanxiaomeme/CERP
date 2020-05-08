@@ -1,0 +1,5 @@
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.Common\bin\x86\Release\Lanyun.Common.dll
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.Common\bin\x86\Release\Lanyun.Common.pdb
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.Common\obj\x86\Release\Lanyun.Common.csprojResolveAssemblyReference.cache
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.Common\obj\x86\Release\Lanyun.Common.dll
+C:\Lanyun Project\Lanyun_MES\Client\Lanyun.Common\obj\x86\Release\Lanyun.Common.pdb

@@ -1,0 +1,2357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E25938E5-F968-48FB-8A60-8E3FFEE5824B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QWF.CRM.WebApp</RootNamespace>
+    <AssemblyName>QWF.CRM.WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblys\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
+    <Compile Include="Areas\Account\Controllers\LoginController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_UserInFormController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\CustomerTabsController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\EmployeeController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\ProductController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\QuickSreachController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\QuickSreachUserController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\UserCenterController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\UserColumnSettingController.cs" />
+    <Compile Include="Areas\QCRMSetting\Models\DictionaryTreeGrid.cs" />
+    <Compile Include="Areas\QCRMSetting\Models\QueryCategoryTreeGrid.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_DictionaryController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_FieldsController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_FormController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_FormInputController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_ListTypeController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_QueryListController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\BDS_TableController.cs" />
+    <Compile Include="Areas\QCRMSetting\Controllers\QueryCategoryController.cs" />
+    <Compile Include="Areas\QCRMSetting\Models\RoleInQueryCategory.cs" />
+    <Compile Include="Areas\QCRMSetting\QCRMSettingAreaRegistration.cs" />
+    <Compile Include="Areas\Sales\Controllers\DictionaryController.cs" />
+    <Compile Include="Areas\Sales\Controllers\MainController.cs" />
+    <Compile Include="Areas\Sales\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Sales\Models\UI_CustomerTab.cs" />
+    <Compile Include="Areas\Sales\Models\UI_DictionaryKeyInValue.cs" />
+    <Compile Include="Areas\Sales\Models\UI_FormInputs.cs" />
+    <Compile Include="Areas\Sales\Models\UI_Input.cs" />
+    <Compile Include="Areas\Sales\Models\UI_Product.cs" />
+    <Compile Include="Areas\Sales\Models\UI_ProductItem.cs" />
+    <Compile Include="Areas\Sales\Models\UI_SalesMainForm.cs" />
+    <Compile Include="Areas\Sales\Models\UI_SalesMain.cs" />
+    <Compile Include="Areas\Sales\Models\UI_UserField.cs" />
+    <Compile Include="Areas\Sales\SalesAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Sales\Views\web.config" />
+    <Content Include="login.html" />
+    <Content Include="QCRM\Css\Images\backcolor.png" />
+    <Content Include="QCRM\Css\Images\bold.png" />
+    <Content Include="QCRM\Css\Images\forecolor.png" />
+    <Content Include="QCRM\Css\Images\image.png" />
+    <Content Include="QCRM\Css\Images\indent.png" />
+    <Content Include="QCRM\Css\Images\insertorderedlist.png" />
+    <Content Include="QCRM\Css\Images\insertunorderedlist.png" />
+    <Content Include="QCRM\Css\Images\italic.png" />
+    <Content Include="QCRM\Css\Images\justifycenter.png" />
+    <Content Include="QCRM\Css\Images\justifyfull.png" />
+    <Content Include="QCRM\Css\Images\justifyleft.png" />
+    <Content Include="QCRM\Css\Images\justifyright.png" />
+    <Content Include="QCRM\Css\Images\link.png" />
+    <Content Include="QCRM\Css\Images\outdent.png" />
+    <Content Include="QCRM\Css\Images\strikethrough.png" />
+    <Content Include="QCRM\Css\Images\underline.png" />
+    <Content Include="QCRM\Images\backcolor.png" />
+    <Content Include="QCRM\Images\bold.png" />
+    <Content Include="QCRM\Images\forecolor.png" />
+    <Content Include="QCRM\Images\image.png" />
+    <Content Include="QCRM\Images\indent.png" />
+    <Content Include="QCRM\Images\insertorderedlist.png" />
+    <Content Include="QCRM\Images\insertunorderedlist.png" />
+    <Content Include="QCRM\Images\italic.png" />
+    <Content Include="QCRM\Images\justifycenter.png" />
+    <Content Include="QCRM\Images\justifyfull.png" />
+    <Content Include="QCRM\Images\justifyleft.png" />
+    <Content Include="QCRM\Images\justifyright.png" />
+    <Content Include="QCRM\Images\link.png" />
+    <Content Include="QCRM\Images\outdent.png" />
+    <Content Include="QCRM\Images\strikethrough.png" />
+    <Content Include="QCRM\Images\underline.png" />
+    <Content Include="QCRM\Scripts\images\backcolor.png" />
+    <Content Include="QCRM\Scripts\images\bold.png" />
+    <Content Include="QCRM\Scripts\images\forecolor.png" />
+    <Content Include="QCRM\Scripts\images\image.png" />
+    <Content Include="QCRM\Scripts\images\indent.png" />
+    <Content Include="QCRM\Scripts\images\insertorderedlist.png" />
+    <Content Include="QCRM\Scripts\images\insertunorderedlist.png" />
+    <Content Include="QCRM\Scripts\images\italic.png" />
+    <Content Include="QCRM\Scripts\images\justifycenter.png" />
+    <Content Include="QCRM\Scripts\images\justifyfull.png" />
+    <Content Include="QCRM\Scripts\images\justifyleft.png" />
+    <Content Include="QCRM\Scripts\images\justifyright.png" />
+    <Content Include="QCRM\Scripts\images\link.png" />
+    <Content Include="QCRM\Scripts\images\outdent.png" />
+    <Content Include="QCRM\Scripts\images\strikethrough.png" />
+    <Content Include="QCRM\Scripts\images\underline.png" />
+    <Content Include="QCRM\Scripts\jquery.texteditor.js" />
+    <Content Include="QCRM\Css\texteditor.css" />
+    <Content Include="QCRM\Scripts\wangEditor\wangEditor.css" />
+    <Content Include="QCRM\Scripts\wangEditor\wangEditor.js" />
+    <Content Include="QCRM\Scripts\wangEditor\wangEditor.min.css" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="QWebFramework\Css\page.main.css" />
+    <Content Include="QWebFramework\Css\qwf.main.css" />
+    <Content Include="QWebFramework\Css\sidemenu.css" />
+    <Content Include="QWebFramework\Images\edit-password.png" />
+    <Content Include="QWebFramework\Images\error.jpg" />
+    <Content Include="QWebFramework\Images\help.jpg" />
+    <Content Include="QWebFramework\Images\logo-mini.png" />
+    <Content Include="QWebFramework\Images\logo.png" />
+    <Content Include="QWebFramework\Images\logout.png" />
+    <Content Include="QWebFramework\Images\menu.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\changelog.txt" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\accordion\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\accordion\header.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\accordion\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\animation\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\animation\fade.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\animation\pop.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\animation\slide.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\badge\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\badge\button.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\badge\list.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\badge\tabs.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\button\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\button\group.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\button\style.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\button\switch.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\datagrid\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\datagrid\rowediting.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\datalist\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\datalist\group.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\datalist\selection.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\dialog\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\dialog\message.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\form\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\images\login1.jpg" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\images\modem.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\images\more.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\images\pda.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\images\scanner.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\images\tablet.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\input\numberspinner.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\input\textbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\layout\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\menu\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\menu\menubar.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\panel\ajax.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\panel\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\panel\nav.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\panel\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\simplelist\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\simplelist\button.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\simplelist\group.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\simplelist\image.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\simplelist\link.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\tabs\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\tabs\nav.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\tabs\pill.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\toolbar\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\toolbar\button.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\toolbar\menu.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\tree\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo-mobile\tree\dnd.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\ajax.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\expandable.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\horizontal.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\multiple.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\tools.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\calendar\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\calendar\custom.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\calendar\disabledate.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\calendar\firstday.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\calendar\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\calendar\weeknumber.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\checkbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\customformat.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\dynamicdata.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\group.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\icons.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\itemicon.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\multiline.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\multiple.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\navigation.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\remotedata.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\remotejsonp.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\initvalue.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\multiple.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\navigation.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\setvalue.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotreegrid\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotreegrid\multiple.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotree\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotree\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotree\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotree\initvalue.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotree\multiple.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combo\animation.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combo\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\aligncolumns.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\cacheeditor.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\cellediting.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\cellstyle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\checkbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\clientpagination.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\columngroup.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\complextoolbar.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\contextmenu.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\custompager.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\footer.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\formatcolumns.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\frozencolumns.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\frozenrows.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\mergecells.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\multisorting.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\rowborder.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\rowediting.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\rowstyle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\selection.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\simpletoolbar.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\transform.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datalist\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datalist\checkbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datalist\group.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datalist\multiselect.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datalist\remotedata.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\buttons.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\clone.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\dateformat.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\events.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\restrict.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\sharedcalendar.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datebox\validate.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimebox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimebox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimebox\initvalue.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimebox\showseconds.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimespinner\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimespinner\clearicon.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimespinner\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datetimespinner\format.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\demo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\dialog\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\dialog\complextoolbar.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\dialog\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\dialog\toolbarbuttons.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\draggable\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\draggable\constrain.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\draggable\snap.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\droppable\accept.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\droppable\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\droppable\sort.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\easyloader\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\filebox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\filebox\buttonalign.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\filebox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\form\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\form\load.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\form\validateonsubmit.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\addremove.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\autoheight.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\collapsetitle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\complex.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\customcollapsetitle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\full.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\nestedlayout.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\nocollapsible.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\group.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\iconalign.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\plain.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\size.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\style.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\linkbutton\toggle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\maskedbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menubutton\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menubutton\alignment.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menubutton\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menubutton\nav.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menu\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menu\customitem.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menu\events.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menu\inline.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\menu\nav.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\messager\alert.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\messager\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\messager\interactive.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\messager\position.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberbox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberbox\format.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberbox\range.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberspinner\align.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberspinner\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberspinner\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberspinner\increment.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\numberspinner\range.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\pagination\attaching.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\pagination\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\pagination\custombuttons.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\pagination\layout.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\pagination\links.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\pagination\simple.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\customtools.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\footer.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\halign.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\loadcontent.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\nestedpanel.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\paneltools.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\panel\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\passwordbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\passwordbox\flash.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\passwordbox\validatepassword.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\progressbar\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\progressbar\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\propertygrid\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\propertygrid\customcolumns.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\propertygrid\groupformat.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\radiobutton\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\resizable\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\searchbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\searchbox\category.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\searchbox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\sidemenu\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\sidemenu\sidemenu_style.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\sidemenu\style.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\formattip.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\nonlinear.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\range.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\rule.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\slider\vertical.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\splitbutton\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\splitbutton\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\switchbutton\action.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\switchbutton\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\autoheight.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\dropdown.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\fixedwidth.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\hover.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\images\modem.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\images\pda.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\images\scanner.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\images\tablet.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\nestedtabs.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\striptools.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\style.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\tabimage.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\tabposition.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\tabstools.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\autocomplete.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\button.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\format.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\style.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\validate.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\button.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\clearicon.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\custom.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\icons.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\multiline.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\textbox\size.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\timespinner\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\timespinner\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\timespinner\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\timespinner\range.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\ajax.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\customcontent.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\customstyle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\position.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\toolbar.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\tooltipdialog.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\_content.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tooltip\_dialog.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\checkbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\clientpagination.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\contextmenu.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\customcheckbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\editable.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\footer.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\lines.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\reports.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\actions.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\animation.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\checkbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\contextmenu.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\customcheckbox.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\dnd.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\editable.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\formatting.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\icons.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\lazyload.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\lines.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\validatebox\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\validatebox\customtooltip.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\validatebox\errorplacement.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\validatebox\validateonblur.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\basic.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\borderstyle.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\customtools.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\fluid.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\footer.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\inlinewindow.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\modalwindow.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\window\windowlayout.html" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\easyloader.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\jquery.easyui.min.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\jquery.easyui.mobile.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\jquery.min.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\license_freeware.txt" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-af.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-am.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-ar.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-bg.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-ca.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-cs.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-cz.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-da.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-de.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-el.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-en.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-es.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-fa.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-fr.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-it.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-jp.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-ko.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-nl.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-pl.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-pt_BR.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-ru.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-sv_SE.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-tr.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-ua.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-zh_CN.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\locale\easyui-lang-zh_TW.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.accordion.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.calendar.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.checkbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.combo.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.combobox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.combogrid.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.combotree.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.combotreegrid.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.datagrid.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.datalist.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.datebox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.datetimebox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.datetimespinner.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.dialog.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.draggable.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.droppable.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.filebox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.form.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.layout.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.linkbutton.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.maskedbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.menu.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.menubutton.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.messager.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.mobile.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.numberbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.numberspinner.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.pagination.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.panel.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.parser.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.passwordbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.progressbar.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.propertygrid.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.radiobutton.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.resizable.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.searchbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.sidemenu.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.slider.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.spinner.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.splitbutton.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.switchbutton.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.tabs.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.tagbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.textbox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.timespinner.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.tooltip.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.tree.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.treegrid.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.validatebox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\plugins\jquery.window.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\readme.txt" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\easyloader.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.accordion.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.calendar.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.combobox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.datebox.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.draggable.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.droppable.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.form.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.linkbutton.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.menu.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.parser.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.progressbar.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.propertygrid.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.resizable.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.slider.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.tabs.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\src\jquery.window.js" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\angular.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\black\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\bootstrap\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\color.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\easyui-default.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\default\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\gray\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icon.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\back.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\cancel.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\clear.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\cut.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\edit_add.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\edit_remove.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\filesave.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\filter.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\help.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\large_chart.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\large_clipart.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\large_picture.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\large_shapes.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\large_smartart.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\lock.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\man.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\mini_add.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\mini_edit.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\mini_refresh.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\more.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\no.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\ok.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\pencil.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\print.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\redo.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\reload.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\search.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\sum.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\tip.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\icons\undo.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\easyui-material-teal.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material-teal\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\material\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\accordion.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\calendar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\checkbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\combo.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\combobox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\datagrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\datalist.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\datebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\dialog.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\easyui.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\filebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\accordion_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\blank.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\calendar_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\combo_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\datagrid_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\datebox_arrow.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\layout_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\linkbutton_bg.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\loading.gif" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\menu_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\messager_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\pagination_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\panel_tools.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\passwordbox_close.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\passwordbox_open.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\searchbox_button.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\slider_handle.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\spinner_arrows.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\tabs_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\tagbox_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\tree_icons.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\images\validatebox_warning.png" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\layout.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\linkbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\menu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\menubutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\messager.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\numberbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\pagination.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\panel.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\passwordbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\progressbar.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\propertygrid.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\radiobutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\searchbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\sidemenu.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\slider.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\spinner.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\splitbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\switchbutton.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\tabs.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\tagbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\textbox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\tooltip.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\tree.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\validatebox.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\metro\window.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\mobile.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\react.css" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\themes\vue.css" />
+    <Content Include="QWebFramework\Js\jquery.form.js" />
+    <Content Include="QWebFramework\Js\jquery.json.2.2.js" />
+    <Content Include="QWebFramework\Js\jquery.min.1.12.4.js" />
+    <Content Include="QWebFramework\Js\md5.js" />
+    <Content Include="QWebFramework\Js\Page\login.js" />
+    <Content Include="QWebFramework\Js\qwf.core.js" />
+    <Content Include="QWebFramework\Js\qwf.easyui.js" />
+    <Content Include="QWebFramework\Js\qwf.public.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\changelog.txt" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\accordion\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\accordion\header.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\accordion\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\animation\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\animation\fade.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\animation\pop.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\animation\slide.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\badge\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\badge\button.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\badge\list.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\badge\tabs.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\button\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\button\group.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\button\style.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\button\switch.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\datagrid\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\datagrid\rowediting.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\datalist\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\datalist\group.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\datalist\selection.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\dialog\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\dialog\message.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\form\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\images\login1.jpg" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\images\modem.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\images\more.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\images\pda.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\images\scanner.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\images\tablet.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\input\numberspinner.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\input\textbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\layout\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\menu\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\menu\menubar.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\panel\ajax.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\panel\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\panel\nav.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\panel\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\simplelist\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\simplelist\button.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\simplelist\group.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\simplelist\image.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\simplelist\link.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\tabs\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\tabs\nav.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\tabs\pill.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\toolbar\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\toolbar\button.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\toolbar\menu.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\tree\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo-mobile\tree\dnd.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\ajax.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\expandable.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\horizontal.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\multiple.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\tools.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\calendar\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\calendar\custom.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\calendar\disabledate.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\calendar\firstday.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\calendar\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\calendar\weeknumber.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\checkbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\customformat.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\dynamicdata.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\group.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\icons.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\itemicon.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\multiline.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\multiple.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\navigation.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\remotedata.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\remotejsonp.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\initvalue.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\multiple.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\navigation.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\setvalue.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotreegrid\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotreegrid\multiple.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotree\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotree\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotree\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotree\initvalue.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotree\multiple.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combo\animation.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combo\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\aligncolumns.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\cacheeditor.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\cellediting.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\cellstyle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\checkbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\clientpagination.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\columngroup.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\complextoolbar.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\contextmenu.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\custompager.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\footer.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\formatcolumns.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\frozencolumns.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\frozenrows.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\mergecells.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\multisorting.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\rowborder.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\rowediting.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\rowstyle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\selection.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\simpletoolbar.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\transform.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datalist\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datalist\checkbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datalist\group.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datalist\multiselect.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datalist\remotedata.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\buttons.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\clone.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\dateformat.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\events.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\restrict.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\sharedcalendar.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datebox\validate.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimebox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimebox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimebox\initvalue.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimebox\showseconds.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimespinner\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimespinner\clearicon.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimespinner\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datetimespinner\format.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\demo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\dialog\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\dialog\complextoolbar.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\dialog\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\dialog\toolbarbuttons.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\draggable\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\draggable\constrain.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\draggable\snap.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\droppable\accept.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\droppable\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\droppable\sort.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\easyloader\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\filebox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\filebox\buttonalign.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\filebox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\form\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\form\load.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\form\validateonsubmit.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\addremove.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\autoheight.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\collapsetitle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\complex.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\customcollapsetitle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\full.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\nestedlayout.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\nocollapsible.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\group.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\iconalign.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\plain.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\size.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\style.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\linkbutton\toggle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\maskedbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menubutton\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menubutton\alignment.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menubutton\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menubutton\nav.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menu\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menu\customitem.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menu\events.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menu\inline.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\menu\nav.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\messager\alert.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\messager\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\messager\interactive.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\messager\position.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberbox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberbox\format.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberbox\range.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberspinner\align.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberspinner\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberspinner\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberspinner\increment.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\numberspinner\range.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\pagination\attaching.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\pagination\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\pagination\custombuttons.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\pagination\layout.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\pagination\links.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\pagination\simple.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\customtools.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\footer.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\halign.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\loadcontent.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\nestedpanel.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\paneltools.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\panel\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\passwordbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\passwordbox\flash.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\passwordbox\validatepassword.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\progressbar\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\progressbar\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\propertygrid\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\propertygrid\customcolumns.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\propertygrid\groupformat.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\radiobutton\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\resizable\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\searchbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\searchbox\category.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\searchbox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\sidemenu\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\sidemenu\sidemenu_style.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\sidemenu\style.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\formattip.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\nonlinear.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\range.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\rule.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\slider\vertical.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\splitbutton\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\splitbutton\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\switchbutton\action.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\switchbutton\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\autoheight.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\dropdown.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\fixedwidth.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\hover.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\images\modem.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\images\pda.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\images\scanner.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\images\tablet.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\nestedtabs.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\striptools.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\style.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\tabimage.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\tabposition.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\tabstools.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\autocomplete.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\button.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\format.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\style.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\validate.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\button.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\clearicon.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\custom.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\icons.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\multiline.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\textbox\size.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\timespinner\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\timespinner\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\timespinner\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\timespinner\range.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\ajax.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\customcontent.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\customstyle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\position.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\toolbar.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\tooltipdialog.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\_content.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tooltip\_dialog.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\checkbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\clientpagination.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\contextmenu.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\customcheckbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\editable.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\footer.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\lines.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\reports.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\actions.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\animation.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\checkbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\contextmenu.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\customcheckbox.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\dnd.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\editable.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\formatting.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\icons.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\lazyload.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\lines.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\validatebox\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\validatebox\customtooltip.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\validatebox\errorplacement.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\validatebox\validateonblur.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\basic.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\borderstyle.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\customtools.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\fluid.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\footer.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\inlinewindow.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\modalwindow.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\window\windowlayout.html" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\easyloader.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\jquery.easyui.min.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\jquery.easyui.mobile.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\jquery.min.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\license_freeware.txt" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-af.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-am.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-ar.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-bg.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-ca.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-cs.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-cz.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-da.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-de.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-el.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-en.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-es.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-fa.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-fr.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-it.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-jp.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-ko.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-nl.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-pl.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-pt_BR.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-ru.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-sv_SE.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-tr.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-ua.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-zh_CN.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\locale\easyui-lang-zh_TW.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.accordion.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.calendar.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.checkbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.combo.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.combobox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.combogrid.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.combotree.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.combotreegrid.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.datagrid.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.datalist.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.datebox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.datetimebox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.datetimespinner.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.dialog.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.draggable.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.droppable.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.filebox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.form.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.layout.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.linkbutton.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.maskedbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.menu.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.menubutton.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.messager.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.mobile.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.numberbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.numberspinner.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.pagination.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.panel.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.parser.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.passwordbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.progressbar.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.propertygrid.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.radiobutton.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.resizable.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.searchbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.sidemenu.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.slider.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.spinner.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.splitbutton.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.switchbutton.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.tabs.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.tagbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.textbox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.timespinner.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.tooltip.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.tree.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.treegrid.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.validatebox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\plugins\jquery.window.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\readme.txt" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\easyloader.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.accordion.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.calendar.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.combobox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.datebox.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.draggable.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.droppable.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.form.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.linkbutton.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.menu.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.parser.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.progressbar.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.propertygrid.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.resizable.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.slider.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.tabs.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\src\jquery.window.js" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\angular.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\black\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\bootstrap\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\color.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\easyui-default.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\default\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\gray\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icon.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\back.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\cancel.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\clear.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\cut.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\edit_add.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\edit_remove.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\filesave.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\filter.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\help.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\large_chart.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\large_clipart.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\large_picture.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\large_shapes.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\large_smartart.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\lock.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\man.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\mini_add.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\mini_edit.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\mini_refresh.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\more.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\no.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\ok.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\pencil.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\print.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\redo.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\reload.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\search.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\sum.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\tip.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\icons\undo.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\easyui-material-teal.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material-teal\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\material\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\accordion.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\calendar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\checkbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\combo.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\combobox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\datagrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\datalist.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\datebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\dialog.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\easyui.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\filebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\accordion_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\blank.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\calendar_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\combo_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\datagrid_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\datebox_arrow.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\layout_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\linkbutton_bg.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\loading.gif" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\menu_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\messager_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\pagination_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\panel_tools.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\passwordbox_close.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\passwordbox_open.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\searchbox_button.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\slider_handle.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\spinner_arrows.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\tabs_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\tagbox_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\tree_icons.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\images\validatebox_warning.png" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\layout.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\linkbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\menu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\menubutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\messager.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\numberbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\pagination.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\panel.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\passwordbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\progressbar.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\propertygrid.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\radiobutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\searchbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\sidemenu.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\slider.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\spinner.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\splitbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\switchbutton.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\tabs.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\tagbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\textbox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\tooltip.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\tree.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\validatebox.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\metro\window.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\mobile.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\react.css" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\themes\vue.css" />
+    <Content Include="QCRM\Scripts\jquery.form.js" />
+    <Content Include="QCRM\Scripts\jquery.json.2.2.js" />
+    <Content Include="QCRM\Scripts\jquery.min.1.12.4.js" />
+    <Content Include="QCRM\Scripts\qwf.qcrm.easyui.js" />
+    <Content Include="QCRM\Scripts\qwf.qcrm.core.js" />
+    <Content Include="QCRM\Scripts\qwf.qcrm.public.js" />
+    <Content Include="QCRM\Scripts\_references.js" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Account\Models\" />
+    <Folder Include="Areas\Account\Views\Login\" />
+    <Folder Include="Areas\Account\Views\Shared\" />
+    <Folder Include="Areas\QCRMSetting\Views\Shared\" />
+    <Folder Include="Areas\Sales\Views\Dictionary\" />
+    <Folder Include="Areas\Sales\Views\Shared\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Areas\Sales\Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sales\Views\Main\Index.cshtml" />
+    <Content Include="QCRM\Css\qcrm.main.css" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\core.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\list.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\path.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="QCRM\Css\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Areas\QWebFramework\Views\Config\ConfigList.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Config\ConfigSort.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Logs\AppLogs.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Logs\UserActionLogs.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Logs\UserLoginLogs.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Main\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Menu\MenuList.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Menu\MenuSort.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Organization\OrganizationList.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Resource\ResourceList.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\RoleGroup\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\RoleInMenu\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\RoleInResource\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Role\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Seq\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Shared\_Resouces.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\UserInRole\Index.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\Users\UserList.cshtml" />
+    <Content Include="Areas\QWebFramework\Views\web.config" />
+    <Content Include="Areas\QWebFramework\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Account\Views\web.config" />
+    <Content Include="Config\qwf.core.config" />
+    <Content Include="Config\qwf.ioc.config" />
+    <Content Include="Config\qwf.crm.config" />
+    <Content Include="Areas\QCRMSetting\Views\web.config" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_Table\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_Fields\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_Form\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_FormInput\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_ListType\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_QueryList\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_Dictionary\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\QueryCategory\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\CustomerTabs\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\Product\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_Dictionary\TreeIndex.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\Employee\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\BDS_UserInForm\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\UserColumnSetting\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\QuickSreach\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\QuickSreachUser\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\UserCenter\Index.cshtml" />
+    <Content Include="Areas\QCRMSetting\Views\QueryCategory\RoleInCategory.cshtml" />
+    <Content Include="Areas\Sales\Views\Report\Index.cshtml" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Views\Shared\_TopNav.cshtml" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\accordion\datagrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\combobox_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combobox\combobox_data2.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combogrid\datagrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotreegrid\treegrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\combotree\tree_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\datagrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\datagrid_data2.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datagrid\products.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\datalist\datalist_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\form\form_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\datagrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\propertygrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\layout\tree_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\propertygrid\propertygrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tabs\tree_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tagbox\tagbox_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\treegrid_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\treegrid_data2.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\treegrid\treegrid_data3.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\tree_data1.json" />
+    <Content Include="QCRM\Scripts\EasyUI\1.6.9\demo\tree\tree_data2.json" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\core.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\list.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\path.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="QWebFramework\Css\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\accordion\datagrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\combobox_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combobox\combobox_data2.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combogrid\datagrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotreegrid\treegrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\combotree\tree_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\datagrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\datagrid_data2.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datagrid\products.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\datalist\datalist_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\form\form_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\datagrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\propertygrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\layout\tree_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\propertygrid\propertygrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tabs\tree_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tagbox\tagbox_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\treegrid_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\treegrid_data2.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\treegrid\treegrid_data3.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\tree_data1.json" />
+    <Content Include="QWebFramework\Js\EasyUI\1.6.9\demo\tree\tree_data2.json" />
+    <Content Include="QCRM\Scripts\qwf.qcrm.prototype.js" />
+    <Content Include="Views\Shared\_FormInput.cshtml" />
+    <None Include="Properties\PublishProfiles\QCRM.pubxml" />
+    <Content Include="QCRM\Scripts\images\.DS_Store" />
+    <Content Include="QCRM\Images\.DS_Store" />
+    <Content Include="QCRM\Css\Images\.DS_Store" />
+    <Content Include="QCRM\Scripts\wangEditor\fonts\w-e-icon.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QWF.Assembly\QWF.Assembly.csproj">
+      <Project>{787742ec-c1c4-4788-baa7-2b87593fab56}</Project>
+      <Name>QWF.Assembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWF.CRM.DbAccess\QWF.CRM.DbAccess.SQLServer.csproj">
+      <Project>{28d1f85e-67ed-4934-9a8c-c15d891890f2}</Project>
+      <Name>QWF.CRM.DbAccess.SQLServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWF.CRM.PlugIn\QWF.CRM.PlugIn.csproj">
+      <Project>{cde20442-b24d-4dea-bb78-74fdaf5a656f}</Project>
+      <Name>QWF.CRM.PlugIn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWF.CRM\QWF.CRM.csproj">
+      <Project>{56271153-6b18-4cc8-9c3f-b9baeb8b98a1}</Project>
+      <Name>QWF.CRM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWF.Framework.Sites\QWF.Framework.Sites.csproj">
+      <Project>{9512c630-9935-4db9-ab24-8bde43c00e8f}</Project>
+      <Name>QWF.Framework.Sites</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QWF.Framework\QWF.Framework.csproj">
+      <Project>{aae2931b-348b-4213-add7-2665e52617bc}</Project>
+      <Name>QWF.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63327</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63327/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

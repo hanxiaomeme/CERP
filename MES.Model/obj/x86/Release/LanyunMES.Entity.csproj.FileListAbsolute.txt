@@ -1,0 +1,5 @@
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\bin\x86\Release\LanyunMES.Entity.dll.config
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\bin\x86\Release\LanyunMES.Entity.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\bin\x86\Release\LanyunMES.Entity.pdb
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\obj\x86\Release\LanyunMES.Entity.dll
+C:\Lanyun Project\Lanyun_MES\Client\MES.Model\obj\x86\Release\LanyunMES.Entity.pdb

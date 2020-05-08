@@ -1,0 +1,64 @@
+﻿
+/*.menu-left {
+    float: left;
+    background-color: #222d32;
+    width: 200px;
+    height: 100%;
+    box-shadow: 2px 0 6px rgba(0,21,41,.35);
+}*/
+.main-top{
+    background-color:#366CB3;
+}
+.main-left-bg{
+    background-color:#2C3B41;
+}
+.leftmenu-bar
+{
+    background-color:#2C3B41;
+    cursor:pointer;
+
+}
+.leftmenu-bar:hover{
+    background-color:#1E282C;
+}
+.menu-bar-text{
+    float:left;
+    font-size:10px;
+    line-height:14px;
+    color: #55737E; 
+    padding-left:10px;
+}
+.menu-bar-btn{
+     float:right;
+     padding:2px;
+     font-size:12px;
+     color: #B8C6CD; 
+     font-family:'Wingdings 3';
+     text-align:right;
+     margin-right:6px;
+}
+.main-top-nva{
+     line-height:50px;
+}
+.main-top-nva .log-text{
+    font-size: 18px;      /*设置字体的大小*/
+    font-family:'Microsoft YaHei';
+    color: #FFFFFF;        
+    text-shadow: 2px 2px 2px #000;
+    float:left;
+    margin-left:10px;
+}
+.main-top-nva .user-info{
+    color: #FFFFFF;        
+    float:right;
+    margin-right:30px;
+}
+.main-top-nva .user-info-item{      
+    float:left;
+    font-size:14px;
+    line-height:50px;
+    margin-left:32px;
+}
+.main-top-nva .user-info-item span{      
+    margin-left:5px;
+}

@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "客户分类权限管理";
+}
+
+@section script{
+    <script type="text/javascript" language="javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+
+        $(document).ready(function () {
+            loadRole();
+        });
+
+        function loadRole() {
+            $('#roledg').datagrid({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/GetRoleList")',
+                title: '系统角色',
+                singleSelect: true,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#tb',
+                pagination: false,
+                onClickRow: function (rowIndex, rowData) {
+                    if (rowData) {
+                        if (rowData.RoleCode) {
+                            loadCategoryTree(rowData.RoleCode);
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadCategoryTree(roleCode) {
+            $('#categoryTree').tree({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/GetRoleInCategoryList")',
+                checkbox: true,
+                lines:false,
+                queryParams: {
+                    roleCode: roleCode
+                }
+            });
+        }
+
+        function saveRoleInCategory() {
+            var row = $('#roledg').datagrid('getSelected');
+            var nodes = $('#categoryTree').tree('getChecked');
+            if (!row) {
+                alertError("请选择角色。");
+                return false;
+            }
+
+            var categoryIds = '';
+            for (var i = 0; i < nodes.length; i++) {
+                if (categoryIds != '')
+                    categoryIds += ',';
+                categoryIds += nodes[i].id;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/QueryCategory/SaveRoleInCategory")',
+                data: {
+                    roleCode: row.RoleCode,
+                    categoryIds: categoryIds
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功');
+                    }
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+    <form id="form1" class="easyui-layout">
+        <div data-options="region:'west',split:true,border:true" style="width:350px;padding:0px">
+            <div class="qwf-topbar" id="tb">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="loadRole();">刷新</a>
+            </div>
+
+            <table id="roledg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'RoleName'" width="100%">角色名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div data-options="region:'center',border:true" style="padding:0px" title="全部查询分类">
+            <div id="form_toolbar" class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" onclick="saveRoleInCategory();">保存</a>
+            </div>
+            <ul id="categoryTree" class="easyui-tree" lines="true"></ul>
+        </div>
+    </form>
+
+</body>
+

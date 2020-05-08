@@ -1,0 +1,10 @@
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Assembly\bin\x86\Release\QWF.Assembly.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Assembly\bin\x86\Release\QWF.Assembly.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Assembly\obj\x86\Release\QWF.Assembly.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Assembly\obj\x86\Release\QWF.Assembly.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.Assembly\obj\x86\Release\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.Assembly\bin\x86\Release\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.Assembly\bin\x86\Release\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.Assembly\obj\x86\Release\QWF.Assembly.csprojResolveAssemblyReference.cache
+D:\open_qcrm\QWF\QWF.Assembly\obj\x86\Release\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.Assembly\obj\x86\Release\QWF.Assembly.pdb

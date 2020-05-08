@@ -1,0 +1,92 @@
+﻿
+@section script{
+<script type="text/javascript" language="javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+        $(document).ready(function () {
+            loadRoledg();
+        });
+        // role
+        function loadRoledg() {
+            $('#roledg').datagrid({
+                url: '@Url.Content("~/QWebFramework/RoleInMenu/GetRoleList")',
+                title: '系统角色',
+                singleSelect: true,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#tb',
+                pagination: false,
+                onClickRow: function (rowIndex, rowData) {
+                    if (rowData) {
+                        if (rowData.RoleId) {
+                            loadMenuTree(rowData.RoleId);
+                        }
+                    }
+                }
+            });
+        }
+        // menu
+        function loadMenuTree(roleId) {
+            $('#menuTree').tree({
+                url:  '@Url.Content("~/QWebFramework/RoleInMenu/GetMenuTree")',
+                checkbox: true,
+                queryParams: {
+                    roleId:roleId
+                }
+            });
+        }
+
+        //
+        function saveRoleInMenu() {
+            var row = $('#roledg').datagrid('getSelected');
+            var nodes = $('#menuTree').tree('getChecked');
+            if (!row) {
+                alertError("请选择角色");
+                return false;
+            }
+
+            var menuIds = '';
+            for (var i = 0; i < nodes.length; i++) {
+                if (menuIds != '') menuIds += ',';
+                menuIds += nodes[i].id;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/RoleInMenu/SaveRoleInMenu")',
+                data: { roleId: row.RoleId, menuIds: menuIds },
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功');
+                    } 
+                }
+            });
+        }
+</script>
+}
+<body>
+    <form id="form1" class="easyui-layout">
+        <div data-options="region:'west',split:true,border:true" style="width:350px;padding:0px">
+            <div class="qwf-topbar" id="tb">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="loadRoledg();">刷新</a>
+            </div>
+            <table id="roledg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'RoleName'" width="100%">角色名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div data-options="region:'center',border:true" style="padding:0px" title="菜单权限">
+            <div class="qwf-topbar">
+                <!-- <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="openAddDialog(true);">刷新</a>-->
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" onclick="saveRoleInMenu();">保存</a>
+            </div>
+            <ul id="menuTree" class="easyui-tree" lines="true"></ul>
+        </div>
+
+    </form>
+</body>

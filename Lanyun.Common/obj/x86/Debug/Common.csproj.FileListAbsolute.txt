@@ -1,0 +1,95 @@
+D:\EAStar\01.世达钢管\Common\bin\x86\Debug\Common.dll
+D:\EAStar\01.世达钢管\Common\bin\x86\Debug\Common.pdb
+D:\EAStar\01.世达钢管\Common\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管\Common\obj\x86\Debug\Common.dll
+D:\EAStar\01.世达钢管\Common\obj\x86\Debug\Common.pdb
+G:\C# Project\EASTAR\Common\bin\x86\Debug\Common.dll
+G:\C# Project\EASTAR\Common\bin\x86\Debug\Common.pdb
+G:\C# Project\EASTAR\Common\obj\x86\Debug\Common.dll
+G:\C# Project\EASTAR\Common\obj\x86\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\bin\x86\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\bin\x86\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.pdb
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\Common.dll
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\Common.pdb
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.dll
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.pdb
+D:\EAStar\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\Common.pdb
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\Common.dll
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Eastar\bin\x86\Debug\Common.pdb
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.dll
+E:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+G:\C# Project\NDFCAD\Eastar\bin\x86\Debug\Common.dll
+G:\C# Project\NDFCAD\Eastar\bin\x86\Debug\Common.pdb
+G:\C# Project\NDFCAD\Common\obj\x86\Debug\Common.dll
+G:\C# Project\NDFCAD\Common\obj\x86\Debug\Common.pdb
+G:\C# Project\NDFCAD\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\NDFCAD\Eastar\bin\x86\Debug\Common.dll
+E:\C# Project\NDFCAD\Eastar\bin\x86\Debug\Common.pdb
+E:\C# Project\NDFCAD\Common\obj\x86\Debug\Common.dll
+E:\C# Project\NDFCAD\Common\obj\x86\Debug\Common.pdb
+E:\C# Project\NDFCAD\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\VS2015 Program\NDFCAD\Eastar\bin\x86\Debug\Common.dll
+E:\C# Project\VS2015 Program\NDFCAD\Eastar\bin\x86\Debug\Common.pdb
+E:\C# Project\VS2015 Program\NDFCAD\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\VS2015 Program\NDFCAD\Common\obj\x86\Debug\Common.dll
+E:\C# Project\VS2015 Program\NDFCAD\Common\obj\x86\Debug\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Eastar\bin\x86\Debug\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Eastar\bin\x86\Debug\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\U8Ext.UI\bin\x86\Debug\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\U8Ext.UI\bin\x86\Debug\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Debug\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Debug\Common.pdb
+E:\Project\C# Project\VS2015 Program\U8Ext\U8Ext.UI\bin\x86\Debug\Common.dll
+E:\Project\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Debug\Common.dll
+E:\Project\C# Project\VS2015 Program\U8Ext\Common\obj\x86\Debug\Common.pdb
+E:\Project\C# Project\VS2015 Program\U8Ext\U8Ext.UI\bin\x86\Debug\Common.pdb
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\Common.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\Common.pdb
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\microsoft.office.interop.excel.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\NPOI.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\NPOI.OOXML.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\office.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\Microsoft.Vbe.Interop.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\NPOI.OpenXmlFormats.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\NPOI.OpenXml4Net.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\stdole.dll
+E:\Project\C# Project\00.MES\Common\bin\x86\Debug\NPOI.xml
+E:\Project\C# Project\00.MES\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.MES\Common\obj\x86\Debug\Common.dll
+E:\Project\C# Project\00.MES\Common\obj\x86\Debug\Common.pdb
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\Common.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\Common.pdb
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\microsoft.office.interop.excel.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\NPOI.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\NPOI.OOXML.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\office.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\Microsoft.Vbe.Interop.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\NPOI.OpenXmlFormats.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\NPOI.OpenXml4Net.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\stdole.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\x86\Debug\NPOI.xml
+E:\Project\C# Project\00.Modules\Client\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.Modules\Client\Common\obj\x86\Debug\Common.dll
+E:\Project\C# Project\00.Modules\Client\Common\obj\x86\Debug\Common.pdb
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\Common.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\Common.pdb
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\EPPlus.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\ICSharpCode.SharpZipLib.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\NPOI.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\NPOI.OOXML.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\NPOI.OpenXml4Net.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\NPOI.OpenXmlFormats.dll
+E:\Project\C# Project\00.Modules\01.Common\bin\x86\Debug\EPPlus.xml
+E:\Project\C# Project\00.Modules\01.Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.Modules\01.Common\obj\x86\Debug\Common.dll
+E:\Project\C# Project\00.Modules\01.Common\obj\x86\Debug\Common.pdb

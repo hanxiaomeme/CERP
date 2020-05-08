@@ -1,0 +1,41 @@
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.dll.config
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.SqlServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.Assembly.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.Assembly.pdb
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.SqlServer.xml
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\zh-Hans\EntityFramework.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.dll
+E:\Project\C# Project\测试\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.pdb
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.dll.config
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.pdb
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.SqlServer.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.Assembly.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.Assembly.pdb
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.xml
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.SqlServer.xml
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\zh-Hans\EntityFramework.resources.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\bin\x86\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.csprojResolveAssemblyReference.cache
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.dll
+D:\open_qcrm\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.pdb
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.dll.config
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.CRM.DbAccess.SQLServer.pdb
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.SqlServer.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.Assembly.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\QWF.Assembly.pdb
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.xml
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\EntityFramework.SqlServer.xml
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\zh-Hans\EntityFramework.resources.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\bin\x86\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.csprojResolveAssemblyReference.cache
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.dll
+D:\LanyunCRM2020\QWF\QWF.CRM.DbAccess\obj\x86\Release\QWF.CRM.DbAccess.SQLServer.pdb

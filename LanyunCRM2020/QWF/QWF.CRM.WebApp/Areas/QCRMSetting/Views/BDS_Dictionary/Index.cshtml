@@ -1,0 +1,527 @@
+﻿
+@{
+    ViewBag.Title = "表单数据字典管理";
+}
+@section script{
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            $('#dlg-div-viewname').hide();
+            loaddg();
+            initDialog();
+        }
+
+        function loaddg() {
+            var params = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/GetList")',
+                title: '表单数据字典管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: 550,
+                height: '80%',
+                title: '表单数据字典管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+
+            $('#dlg').dialog('open');
+            $('#dlg-div-viewname').hide();
+
+
+            resetForm();
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的数据！');
+                return false;
+            } else {
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#id').val(row.Id);
+                $('#name').textbox('setValue', row.Name);
+                $('#remarks').textbox('setValue', row.Remarks);
+                if (row.DataSource == 1) {
+                    $('#dlg-div-viewname').show();
+                    $('#dataSource').checkbox('check');
+                    $('#viewName').textbox('setValue', row.ViewName);
+                } else {
+                    $('#dlg-div-viewname').hide();
+                    $('#dataSource').checkbox('uncheck');
+                }
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/Delete")',
+                        data: {
+                            id: row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.id.isNull() && obj.name.isNull()) {
+                alertError('请填写分类名称。');
+                return false;
+            }
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        loaddg();
+                        if (obj.id.isNull()) {
+                            resetForm();
+                        }
+                    }
+                }
+            });
+        }
+
+        /****************  字典子项 *************************/
+
+        function restInputItemForm() {
+            
+            $('#dlg-form-inputItemAdd').form('clear');
+            $('#dlg-form-inputItemAdd').form('reset');
+
+        }
+
+        function fmtInputItem(value, row, index) {
+            if (row.DataSource == 0) {
+                return '<a href="javascript:void(0);" onclick="addInputItem(' + row.Id + ');">编辑子项</a>'
+            }
+        }
+
+        function addInputItem(parentId) {
+            restInputItemForm();
+            openInputItemList(parentId);
+        }
+
+        function loadInputItemDg(parentId) {
+            index = 0;
+            if (parentId == undefined || parentId == null || parentId == '' || parentId == 0) {
+                parentId = $('#parentId').val();
+            }
+
+            $('#dg-InputItem').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/GetInputItemList")',
+                singleSelect: true,
+                toolbar: 'tools-InputItem',
+                queryParams: {
+                    parentId: parentId
+                }
+            });
+        }
+
+        function openInputItemList(parentId) {
+            $("#dlg-inputItem").dialog("open");
+            $('#parentId').val(parentId);
+            loadInputItemDg(parentId);
+        }
+
+        function openAddInputItem() {
+            var parentId = $('#parentId').val();
+            
+            restInputItemForm();
+            $('#itemValue').textbox({ disabled: false });
+            $('#parentId').val(parentId);
+
+            $('#dlg-inputItemAdd').dialog('open');
+            $('#div-itemValue').hide();
+            $('#systemVaule').checkbox({
+                checked: true,
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#div-itemValue').hide();
+                    } else {
+                        $('#div-itemValue').show();
+                    }
+                }
+            });
+        }
+
+        function openEditInputItem() {
+            var row = $('#dg-InputItem').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要编辑的数据。');
+                return false;
+            }
+
+            $('#systemVaule').checkbox({
+                checked: true,
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#div-itemValue').hide();
+                    } else {
+                        $('#div-itemValue').show();
+                    }
+                }
+            });
+
+            $('#dlg-inputItemAdd').dialog('open');
+
+            //设置值:
+            $('#itemId').val(row.Id);
+            $('#parentId').val(row.ParentId);
+            $('#itemName').textbox('setValue', row.ItemName);
+            $('#itemValue').textbox('setValue', row.ItemValue);
+            if (row.ItemValueType == 1) {
+                $('#div-itemValue').hide();
+                $('#itemValue').textbox('disable');
+            }
+            else {
+                $('#systemVaule').checkbox('enable');
+                $('#itemValue').textbox('enable');
+                $('#div-itemValue').show();
+            }
+        }
+
+        function saveInputItem() {
+            var form = $('#dlg-form-inputItemAdd');
+            var obj = form.serializeJSON();
+
+            if (obj.itemName.isNull()) {
+                alertError('请填写子项名称。');
+                return false;
+            }
+
+            if (obj.itemId.isNull()) {
+                if (obj.systemVaule == "false" && obj.itemValue.isNull()) {
+                    alertError('请填写自定义的子项的值。');
+                    return false;
+                }
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/SaveInputItem")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loadInputItemDg(obj.parentId);
+                    }
+                }
+            });
+        }
+
+        //设置隐藏
+        function orderInputItem(type) {
+            var row = $('#dg-InputItem').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要隐藏/显示的记录。');
+                return false;
+            }
+
+            var message = ''
+            switch (type) {
+                case 'hide':
+                    message = '确定要将本条数据设置成隐藏状态吗？';
+                    break;
+                case 'show':
+                    message = '确定要将本条数据设置成显示状态吗？';
+                    break;
+            }
+
+            $.messager.confirm('操作确认框', message, function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/OrderIntpuItem")',
+                        data: {
+                            id: row.Id,
+                            type: type
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loadInputItemDg(row.ParentId);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function fmtSort(value, row) {
+
+            if (row.InputType == 'system') {
+                return '';
+            }
+            else {
+                index++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+            }
+
+        }
+
+        function sort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#form-InputItem').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Dictionary/Sort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                var parentId = $('#parentId').val();
+                                loadInputItemDg(parentId);
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function onChangeDataSrouce(checked) {
+            if(checked){
+                $('#dlg-div-viewname').show();
+            } else {
+                $('#dlg-div-viewname').hide();
+            }
+        }
+    </script>
+
+
+
+
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            分类名称:<input type="text" id="qryName" name="qryName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="del();">删除</a>
+            </div>
+
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="Code" width="200">分类编号</th>
+                    <th field="DataSourceName" width="100">动态数据</th>
+                    <th field="Name" width="200">分类名称</th>
+                    <th field="S" formatter="fmtInputItem" width="200">配置</th>
+                    <th field="ViewName" width="200">视图</th>
+                    <th field="Remarks" width="300">备注</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+
+</body>
+
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="分类名称<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div id="dlg-div-datasource" class="dlg-input-item">
+                <input class="easyui-checkbox" id="dataSource" name="dataSource" label="动态数据：" required="true"
+                       value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',onChange:function(checked){onChangeDataSrouce(checked);}">
+            </div>
+            <div id="dlg-div-viewname" class="dlg-input-item">
+                <input class="easyui-textbox" id="viewName" name="viewName" label="视图名称：" 
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+                <div class="dlg-form-desc">
+                    1.动态数据可以不用配置子项。<br />
+                    2.动态数据表示非固定值。<br />
+                    2.视图名称请交有系统管理或开发人员配置，请勿轻易配置，否则会导致系统故障。<br />
+                </div>
+
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'" multiline="true"
+                       style="width:300px; height:100px;">
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div id="dlg-inputItem" class="easyui-dialog" title="数据字典子项数据列表" style="width:80%;height:80%;padding:10px"
+     data-options="closed: true, maximizable: true, modal: true,iconCls :'icon-save' ,
+     toolbar: [{
+     text:'刷新',
+     iconCls:'icon-search',
+     handler:function(){
+     loadInputItemDg();
+     }
+     },'-',{
+     text:'新增',
+     iconCls:'icon-add',
+     handler:function(){
+     openAddInputItem();
+     }
+     },'-',{
+     text:'编辑',
+     iconCls:'icon-edit',
+     handler:function(){
+     openEditInputItem();
+     }
+     },'-',{
+     text:'隐藏',
+     iconCls:'icon-remove',
+     handler:function(){
+     orderInputItem('hide');
+     }
+     },'-',{
+     text:'显示',
+     iconCls:'icon-remove',
+     handler:function(){
+     orderInputItem('show');
+     }
+      },'-',{
+     text:'排序',
+     iconCls:'',
+     handler:function(){
+        sort();
+     }
+     }]
+     ">
+    <div id="tools-InputItem"></div>
+    <form id="form-InputItem" name="form-InputItem" method="post">
+        <table id="dg-InputItem">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="ItemName" width="150">名称</th>
+                    <th field="ItemValue" width="100">值</th>
+                    <th field="ItemValueTypeName" width="100">值类型</th>
+                    <th field="ItemSort" formatter="fmtSort" fmtSort width="100">排序ID</th>
+                    <th field="HideName" width="80">隐藏</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</div>
+
+<div id="dlg-inputItemAdd" class="easyui-dialog" title="配置子项数据" style="width:500px;height:400px;padding:10px"
+     data-options="closed :true,maximizable: true,modal : true,iconCls :'icon-save',
+     buttons:[{
+				text:'保存',
+                iconCls: 'icon-ok',
+				handler:function(){ saveInputItem();}
+			}]">
+    <form id="dlg-form-inputItemAdd" method="post">
+        <input type="hidden" id="itemId" name="itemId" />
+        <input type="hidden" id="parentId" name="parentId" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="itemName" name="itemName" label="子项名称<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="systemVaule" name="systemVaule" label="子项值(系统生成):" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+
+            <div id="div-itemValue" class="dlg-input-item">
+                <input class="easyui-textbox" id="itemValue" name="itemValue" label="子项值(自定义)<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-form-desc">
+                1.子项值为不勾选则可以自定义子项的值。<br />
+                2.子项默认值规则:为类似P20193020001的编号,本系统唯一码。<br />
+                3.子项名称如果有数据产生报表，不建议再修改，否则会产生“脏数据”。<br />
+            </div>
+
+        </div>
+    </form>
+
+</div>

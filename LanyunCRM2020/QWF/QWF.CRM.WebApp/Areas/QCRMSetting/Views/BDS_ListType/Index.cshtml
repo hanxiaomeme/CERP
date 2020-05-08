@@ -1,0 +1,441 @@
+﻿
+@{
+    ViewBag.Title = "查询列表管理";
+    var formList = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.FormList;
+    var permission = QWF.CRM.Utils.PermissionUtils.Create();
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+        var index = 0;
+        function init() {
+            loaddg();
+            initDialog();
+        }
+
+        function loaddg() {
+ 
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_ListType/GetList")',
+                title: '查询列表管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '编辑查询列表',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            $('#listType').textbox('enable');
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行.');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择一条要编辑的数据。');
+                return false;
+            } else {
+
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#id').val(row.ListType);
+                $('#listType').textbox('disable').textbox('setValue', row.ListType);
+                $('#typeName').textbox('setValue', row.TypeName);                
+                $('#remarks').textbox('setValue', row.Remarks);
+                $('#pageSize').textbox('setValue', row.PageSize);
+                
+                @{ 
+                    if(permission.IsAdministrator())
+                    {
+                        <text>
+                        $('#orderBy').textbox('setValue', row.OrderBy);
+                        $('#tableRelation').textbox('setValue', row.TableRelation);
+                        $('#ascOrDesc').combobox('setValue', row.AscOrDesc);
+                       </text>
+                    }
+                }
+                
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_ListType/Delete")',
+                        data: {
+                            listType: row.ListType
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.id.isNull() && obj.listType.isNull()) {
+                alertError('请填写编号。');
+                return false;
+            } else if (obj.typeName.isNull()) {
+                alertError('请填写名称。');
+                return false;
+            } else if (obj.pageSize.isNull()) {
+                alertError('请填写分页数。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_ListType/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+        function fmtSort(value, row) {
+            if (row.Checkbox == 1) {
+                return '';
+            }
+            else {
+                index++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+            }
+        }
+
+        function sort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#formSetting').ajaxSubmit({
+                        url: '/QCRMSetting/BDS_ListType/Sort',
+                        success: function (res) {
+                            if (res.Success) {
+                                loadFormSettingDg();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+
+        /****************************/
+        function fmtSetting(val, row, index) {
+            return '<a herf="javascript:void(0);" onclick="openFormSetting(\'' + row.ListType + '\',\''+row.TypeName+'\');" >配置表单</a>';
+        }
+        function openFormSetting(listType, listName) {
+
+            $("#dlg-formSetting").dialog({ title: listName + '关联的表单列表' }).dialog('open');
+            $('#formInListType').val(listType);
+
+            loadFormSettingDg(listType);
+
+        }
+        function loadFormSettingDg(listType) {
+
+            index = 0;
+            if (listType == undefined || listType == null || listType == '') {
+                listType = $('#formInListType').val();
+            }
+
+            $('#dg-formSetting').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_ListType/GetListFormByCode")',
+                singleSelect: true,
+                toolbar: 'tools-formSetting',
+                queryParams: {
+                    listType: listType
+                }
+            });
+        }
+
+        function openAddFormSetting()
+        {
+            $('#dlg-formSettingAdd').dialog('open');
+          
+        }
+
+        function saveFormSetting() {
+            var form = $('#dlg-form-formSettingAdd');
+            var obj = form.serializeJSON();
+
+            if (obj.formCode.isNull()) {
+                alertError('请选择需要关联的表单。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_ListType/SaveFormSetting")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loadFormSettingDg(obj.listType);
+                    }
+                }
+            });
+        }
+
+
+        //设置隐藏
+        function deleteFormSetting() {
+
+            var row = $('#dg-formSetting').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的数据。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '确定要将本条数据吗？', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_ListType/DeleteFormSetting")',
+                        data: {
+                            listType: row.ListType,
+                            formCode: row.FormCode
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loadFormSettingDg(row.ListType);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+    </script>
+}
+
+<body>
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            列表编号:<input type="text" id="qryListType" name="qryListType" />
+                        </td>
+                        <td>
+                            列表名称:<input type="text" id="qryName" name="qryName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();">删除</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="ListType" width="200">编号</th>
+                    <th field="TypeName" width="200">名称</th>
+                    <th field="OrderBy" width="260">排序字段</th>
+                    <th field="AscOrDescName" width="80">排序规则</th>
+                    <th field="PageSize" width="80">分页数</th>
+                    <th field="Setting" formatter="fmtSetting" width="100">操作</th>
+                    <th field="IsHideName" width="100">隐藏</th>
+                    <th field="Remarks" width="300">备注</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="listType" name="listType" label="编号" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+                <div class="dlg-form-desc">
+                    1.编号命名规则：只能是英文字母、数字或下划线的组合。<br />
+                    2.一旦创建则不能修改。
+                </div>
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="typeName" name="typeName" label="名称<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="pageSize" name="pageSize" label="分页条数<span class='font-red'>*</span>：" required="true" prompt="每页显示多少条数据"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注:"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:true"
+                       style="width:100%;height:60px;">
+            </div>
+            @{
+             
+                if (permission.IsAdministrator())
+                {
+
+                    <div class="dlg-input-item">
+                        <input class="easyui-textbox" id="tableRelation" name="tableRelation" label="表关系<span class='font-red'>*</span>:"
+                               data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:true"
+                               style="width:100%;height:60px;">
+                    </div>
+                    <div class="dlg-input-item">
+                        <input class="easyui-textbox" id="orderBy" name="orderBy" label="排序字段<span class='font-red'>*</span>：" required="true"
+                               data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                               style="width:300px;">
+                    </div>
+
+                    <div class="dlg-input-item">
+                        `
+                    </div>
+                        
+                        <div class="dlg-form-desc">
+                            1.务必由开发人员配置,并用系统管理员账号登录。<br />
+                            2.请勿随意变更里面的内容，否则会容易引起系统故障。<br />
+                            3.具体的配置规则请参看相关开发文档。<br />
+                        </div>
+                        }
+               }
+
+                    </div>
+    </form>
+</div>
+
+<div id="dlg-formSetting" class="easyui-dialog" title="关联的表单列表" style="width:60%;height:80%; padding:10px"
+     data-options="closed:true,maximizable:true, modal:true, iconCls:'icon-save' ,
+     toolbar:[{
+     text:'刷新',
+     iconCls:'icon-search',
+     handler:function(){
+        loadFormSettingDg();
+        }
+     },'-',{
+     text:'新增',
+     iconCls:'icon-add',
+     handler:function(){
+        openAddFormSetting();
+        }
+     },'-',{
+     text:'删除',
+     iconCls:'icon-remove',
+     handler:function(){
+        deleteFormSetting();
+     }
+     },'-',{
+     text:'排序',
+     iconCls:'',
+     handler:function(){
+        sort();
+     }
+     }]
+     ">
+    <div id="tools-formSetting"></div>
+    <form method="post" id="formSetting" name="formSetting">
+        <table id="dg-formSetting">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="SortId" formatter="fmtSort" width="100">排序ID</th>
+                    <th field="FormName" width="220">表单名称</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</div>
+
+<div id="dlg-formSettingAdd" class="easyui-dialog" title="添加关联列表单" style="width:420px;height:260px;padding:10px"
+     data-options="closed :true,maximizable: true,modal : true,iconCls :'icon-save',
+     buttons:[{
+				text:'保存',
+                iconCls: 'icon-ok',
+				handler:function(){ saveFormSetting();}
+			}]">
+    <form id="dlg-form-formSettingAdd">
+        <input type="hidden" id="formInListType" name="formInListType" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <select id="formCode" name="formCode" class="easyui-combobox" label="选择表单:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    @foreach (var form in formList)
+                    {
+                        <option value="@form.Key">@form.Value</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+

@@ -1,0 +1,41 @@
+﻿@{
+    var easyuiTheme = "material-teal";
+    var easyuiVer = "1.6.9";
+    var ver = "v18.11.12.1";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title - @QWF.Framework.GlobalConst.AppName</title>
+    <meta name="author" content="@QWF.Assembly.Common.COMPANY" />
+    <meta name="copyright" content="@QWF.Framework.GlobalConst.Copyright" />
+    <meta name="framework" content="@(QWF.Assembly.QWebFramework.ASSEMBLY_VERSION+"_" + QWF.Assembly.QWebFramework.ASSEMBLY_VERSION_SUFFIX)" />
+
+    <script src="~/QWebFramework/Js/jquery.min.1.12.4.js"></script>
+    <script src="~/QWebFramework/Js/EasyUI/@easyuiVer/jquery.easyui.min.js"></script>
+    <link href="~/QWebFramework/Js/EasyUI/@easyuiVer/themes/icon.css" rel="stylesheet" />
+    <link href="~/QWebFramework/Js/EasyUI/@easyuiVer/themes/@easyuiTheme/easyui.css" rel="stylesheet" />
+    <script src="~/QWebFramework/Js/EasyUI/@easyuiVer/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/QWebFramework/Js/jquery.form.js"></script>
+    <script src="~/QWebFramework/Js/jquery.json.2.2.js"></script>
+
+    <link href="~/QWebFramework/Css/qwf.main.css?v=@ver" rel="stylesheet" />
+    <script src="~/QWebFramework/Js/qwf.public.js?v=@ver"></script>
+    <script src="~/QWebFramework/Js/qwf.core.js?v=@ver"></script>
+    <script src="~/QWebFramework/Js/qwf.easyui.js?v=@ver"></script>
+    <link href="~/QWebFramework/Css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link href="~/QWebFramework/Js/EasyUI/@easyuiVer/themes/default/easyui-default.css" rel="stylesheet" />*@
+    <link href="~/QWebFramework/Js/EasyUI/@easyuiVer/themes/material-teal/easyui-material-teal.css" rel="stylesheet" />
+
+    @RenderSection("css", false)
+    @RenderSection("script", false)
+
+    
+
+</head>
+<!-- body begin-->
+ @RenderBody()
+</html>
+

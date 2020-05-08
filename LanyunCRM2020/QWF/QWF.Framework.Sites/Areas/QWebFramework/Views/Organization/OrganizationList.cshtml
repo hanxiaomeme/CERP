@@ -1,0 +1,292 @@
+﻿
+@{
+    ViewBag.Title = "组织机构列表";
+}
+
+@section script{
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+
+            //顶级事件
+            $('#isTopNode').checkbox({
+                onChange: function (checked) {
+                    if (checked) {
+                        $('#orgComboTree').combotree('disable');
+                    } else {
+                        $('#orgComboTree').combotree('enable');
+                    }
+                }
+            });
+
+            //加载弹窗机构树
+            loadOrgTreeCombox();
+            //初始化弹窗
+            initDialog();
+            //加载机构树表格
+            loadTreeGrid();
+
+        }
+        function loadOrgTreeCombox() {
+            $('#orgComboTree').combotree({
+                url: '@Url.Content("~/QWebFramework/Common/GetOrgTree")'
+            });
+        }
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '机构信息管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保 存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+
+        function save() {
+            var $from = $('#dlg-from');
+            var obj = $from.serializeJSON();
+
+            if (obj.parentId == undefined || obj.parentId == null || obj.parentId == '0' || obj.parentId == '') {
+                if (obj.isTopNode == undefined || obj.isTopNode == '') {
+                    alertError('请选择所属机构');
+                    return false;
+                }
+            }
+
+            if (obj.orgName == undefined || obj.orgName == null || obj.orgName == '') {
+                alertError("请填写机构名称");
+                return false;
+            }
+
+            if (obj.orgAttr == undefined || obj.orgAttr == null || obj.orgAttr == '') {
+                alertError("请选择机构属性");
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Organization/Save")',
+                data: $from.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功');
+                        loadTreeGrid();
+                    }
+                }
+            });
+        }
+
+
+        function loadTreeGrid() {
+            index = 0;
+            $('#orgTreeGrid').treegrid({
+                url: '@Url.Content("~/QWebFramework/Organization/List")',
+                fit: true,
+                fitColumns: false,
+                idField: 'OrgId',
+                treeField: 'OrgName',
+                toolbar: '#toolbar',
+                border: false,
+                onDblClickRow: function (row) {
+                    openEditWindows(row);
+                }
+
+            });
+            return false;
+        }
+
+
+        function fmtSort(value, row) {
+            index++;
+            return "<input type='text' name='sortId_" + row.id + "' value='" + index + "' size='3'/>";
+        }
+
+        function addNode() {
+            $('#dlg').dialog('open');
+            //重置表单
+            resetForm();
+        }
+
+        function editNode() {
+            var node = $('#orgTreeGrid').treegrid('getSelected');
+            if (!node) {
+                alertError('请选择要编辑的机构，或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(node);
+            }
+        }
+
+        function openEditWindows(node) {
+            if (!node) {
+                alertError('请选择要编辑的机构！');
+                return false;
+            } else {
+                $('#dlg').dialog('open');
+                //设置数据
+                $('#orgId').val(node.OrgId);
+                $('#oldParentId').val(node.ParentId);
+
+                $('#isTopNode').checkbox({
+                    checked: node.ParentId == '0' ? true : false
+                });;
+
+                if (node.ParentId == '0') {
+                    $('#orgComboTree').combotree('setValue', '');
+                    $('#orgComboTree').combotree({ disabled: true });
+                } else {
+                    $('#orgComboTree').combotree({ disabled: false });
+                    $('#orgComboTree').combotree('setValue', node.ParentId);
+
+                }
+
+                $('#orgAttr').combobox('setValue', node.OrgAttribute);
+                $('#orgName').textbox('setValue', node.OrgName);
+                $('#isOut').checkbox({
+                    checked: node.IsOut
+                });
+                $('#remarks').textbox('setValue', node.Remarks);
+
+
+            }
+        }
+
+        function delNode() {
+            var node = $('#orgTreeGrid').treegrid('getSelected');
+            if (!node) {
+                alertError('请选择要删除的机构');
+                return false;
+            }
+            $.messager.confirm('删除确认框', '确定删除【' + node.OrgName + '】吗?删除将不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Organization/Delete")',
+                        data: {
+                            id:node.id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                reLoad();
+                                alertInfo('删除成功!');
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function treeSort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#mainForm').ajaxSubmit({
+                        url: '@Url.Content("~/QWebFramework/Organization/TreeSort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                reLoad();
+                            } 
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        function resetForm() {
+            $("#dlg-from").form('clear');
+        }
+
+        function reLoad() {
+            loadTreeGrid();
+            loadOrgTreeCombox();
+        }
+    </script>
+}
+<form id="mainForm" name="mainForm" method="post">
+    <div id="toolbar" style="padding:3px">
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width:80px" onclick="addNode();">新增</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width:80px" onclick="editNode()">编辑</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width:80px" onclick="delNode()">删除</a>
+
+        <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="treeSort();">排序</a>
+        <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="reLoad();">刷新</a>
+    </div>
+
+    <table id="orgTreeGrid" title="组织机构管理" class="easyui-treegrid">
+        <thead>
+            <tr>
+                <th data-options="field:'Id',checkbox:true"></th>
+                <th field="OrgId" width="80">ID</th>
+                <th field="OrgName" width="180">名称</th>
+                <th field="OrgCode" width="150">编码</th>
+                <th field="OrgAttributeName" width="80">属性</th>
+                <th field="IsOutName" width="80">外部</th>
+                <th field="SortId" width="100" formatter='fmtSort'>排序ID</th>
+                <th field="CreateTime" width="150">创建时间</th>
+                <th field="UpdateTime" width="150">修改时间</th>
+                <th field="Remarks" width="200">备注</th>
+            </tr>
+        </thead>
+    </table>
+</form>
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-from">
+        <input type="hidden" id="orgId" name="orgId" />
+        <input type="hidden" id="oldParentId" name="oldParentId" />
+        <div id="dlg-div" class="dlg-div">
+            <!-- 顶级节点-->
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="isTopNode" name="isTopNode" value="1" label="顶级节点:" data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'">
+            </div>
+
+            <div class="dlg-input-item">
+                <input id="orgComboTree" name="parentId" label="所属机构:" labelWidth="100px" labelAlign="right" class="easyui-combotree" style="width:100%;" />
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="orgName" name="orgName" label="机构名称：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'"
+                       style="width:100%;">
+            </div>
+            <div class="dlg-input-item">
+                <select class="easyui-combobox" id="orgAttr" name="orgAttr" label="机构属性:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'"
+                        style="width:100%;">
+                    <option value="">==请选择==</option>
+                    <option value="1">机构</option>
+                    <option value="2">部门</option>
+                    <option value="3">小组</option>
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="isOut" value="1" name="isOut" label="是否外部:"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注:"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px',multiline:true"
+                       style="width:100%;height:60px;" />
+            </div>
+
+        </div>
+    </form>
+</div>
+
+

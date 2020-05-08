@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "客户模块管理";
+}
+
+@section script{
+    <script type="text/javascript" language="javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+        var index = 0;
+        $(document).ready(function () {
+            loaddg();
+            $('#formdg').hide();
+        });
+
+        function loaddg() {
+            $('#dg').datagrid({
+                url: '@Url.Content("~/QCRMSetting/UserColumnSetting/GetListType")',
+                title: '客户模块',
+                singleSelect: true,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#tb',
+                pagination: false,
+                onClickRow: function (rowIndex, rowData) {
+                    if (rowData) {
+                        if (rowData.ListType) {
+                            loadColumnList(rowData.ListType);
+                        }
+                    }
+                }
+            });
+        }
+
+        function setDefaultSetting() {
+            $.messager.confirm('操作确认框', '确定要导入系统默认配置吗?', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/UserColumnSetting/SetDefaultSetting")',
+                        success: function (res) {
+                            if (res.Success) {
+                                var row = $('#dg').datagrid('getSelected');
+                                if (row) {
+                                    loadColumnList(row.ListType);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function loadColumnList(listType) {
+            index = 0;
+            $('#formdg').datagrid({
+                queryParams: {
+                    qryListType: listType
+                },
+                url: '@Url.Content("~/QCRMSetting/UserColumnSetting/GetColumnList")',
+                singleSelect: false,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#form_toolbar',
+                pagination: false,
+                loadFilter: function (res) {
+                    if (res.Success != undefined && !res.Success) {
+                        alertInfo(res.Message);
+                        return false;
+                    }
+                    return res;
+                }
+            });
+        }
+
+
+        function setColumn(type) {
+            var ids = '';
+            var items = $('#formdg').datagrid('getChecked');
+            for (i = 0; i < items.length; i++) {
+                if (ids.length > 0)
+                    ids += ',';
+                ids += items[i].Id;
+            }
+            if (ids == '') {
+                alertError('请选择列，然后点击保存!');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/UserColumnSetting/SetShowHide")',
+                data: {
+                    ids: ids,
+                    type: type
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        var row = $('#dg').datagrid('getSelected');
+                        if (row) {
+                            loadColumnList(row.ListType);
+                        }
+                    }
+                }
+            });
+        }
+
+
+        function fmtSort(value, row) {
+            if (row.Checkbox == 1 || row.Hide == 1) {
+                return '';
+            }
+            else {
+                index++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+            }
+        }
+
+        function fmtWidth(value, row) {
+            if (row.Checkbox == 1 || row.Hide == 1) {
+                return '';
+            }
+            else {
+                return "<input type='text' name='widthId_" + row.Id + "' value='" + row.StyleWidth + "' size='3'/>";
+            }
+        }
+
+        function save() {
+            $.messager.confirm('排序确认框', '确定要保存下面的配置吗？', function (r) {
+                if (r) {
+                    var form = $('#qryForm');
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/UserColumnSetting/Save")',
+                        data: form.serialize(),
+                        success: function (res) {
+                            if (res.Success) {
+                                alertInfo('保存成功!');
+                                var row = $('#dg').datagrid('getSelected');
+                                if (row) {
+                                    loadColumnList(row.ListType);
+                                }
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+    </script>
+}
+
+<body>
+    <form id="qryForm" class="easyui-layout" method="post">
+        <div data-options="region:'west',split:true,border:true" style="width:350px;padding:0px">
+            <div class="qwf-topbar" id="tb">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="loaddg();">刷新</a>
+            </div>
+
+            <table id="dg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'TypeName'" width="100%">模块名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div data-options="region:'center',border:true" style="padding:0px" title="全部表单">
+            <div id="form_toolbar" class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" onclick="save();">保存</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'" onclick="setColumn('show');">显示列</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'" onclick="setColumn('hide');">隐藏列</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true " onclick="setDefaultSetting();">同步配置字段</a>
+            </div>
+            <table id="formdg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'Id',checkbox:true"></th>
+                        <th field="TitleName" width="120">列名</th>
+                        <th field="StyleWidth" formatter="fmtWidth" width="120">宽度</th>
+                        <th field="SortId" formatter="fmtSort" width="120">排序ID</th>
+                        <th field="HideName" width="120">隐藏</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </form>
+
+</body>
+

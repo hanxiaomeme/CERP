@@ -1,0 +1,372 @@
+﻿
+@{
+    ViewBag.Title = "表单管理";
+    var permission = QWF.CRM.Utils.PermissionUtils.Create();
+
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+            loadActionStyle();
+            $('#windows-item').hide();
+        }
+
+        function loaddg() {
+
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_Form/GetList")',
+                title: '表单管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+
+        function loadActionStyle() {
+            $('#actionStyle').combobox({
+                onSelect: function (e) {
+                    console.log(e);
+                    if (e.value == "10") {
+                        $('#windows-item').show();
+                    } else {
+                        $('#windows-item').hide();
+                    }
+
+                }
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '表单管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+
+            $('#tableCode').combobox('enable');
+            $('#code').textbox('enable');
+            $('#fieldType').combobox('enable');
+            $('#createFieldDiv').show();
+            $('#create').checkbox('enable');
+            $('#mainTable').combobox('enable');
+
+            $('#editFieldDiv').hide();
+            $('#edit').checkbox('disable');
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的数据！');
+                return false;
+            } else {
+
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#id').val(row.Code);
+
+                $('#code').textbox('disable').textbox('setValue', row.Code);
+                $('#name').textbox('setValue', row.Name);
+                $('#actionName').textbox('setValue', row.ActionName);
+                $('#remarks').textbox('setValue', row.Remarks);
+                $('#actionType').combobox('setValue', row.ActionType);
+                $('#actionStyle').combobox('setValue', row.ActionStyle);
+                $('#buttonStyle').textbox('setValue', row.ButtonStyle);
+                $('#windowsWidth').textbox('setValue', row.WindowsWidth);
+                $('#buttonIcon').textbox('setValue', row.ButtonIcon);
+                $('#styleColums').combobox('setValue', row.StyleColums);
+                @if(permission.IsAdministrator())
+                {
+                <text>
+                $('#plugInClass').textbox('setValue', row.PlugInClass);
+                </text>
+                }
+
+                $('#mainTable').combobox('disable');
+                $('#mainTable').combobox('setValue', row.MainTable);
+
+                if (row.ActionStyle == 10) {
+                    $('#windows-item').show();
+                } else {
+                    $('#windows-item').hide();
+                }
+
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复。', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Form/Delete")',
+                        data: {
+                            tableCode: row.TableCode,
+                            code: row.Code
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+            console.log(obj);
+            if (obj.id.isNull() && obj.code.isNull()) {
+                alertError('请填写表单代码。');
+                return false;
+            } else if (obj.name.isNull()) {
+                alertError('请填写表单名称。');
+                return false;
+            } else if (obj.actionType.isNull()) {
+                alertError('请选择事件类型。');
+                return false;
+            } else if (obj.actionName.isNull()) {
+                alertError('请填写事件名称。');
+                return false;
+            } else if (obj.actionStyle.isNull()) {
+                alertError('请选择弹窗样式。');
+                return false;
+            } else if (obj.actionStyle == '10' && obj.styleColums.isNull()) {
+                alertError('请选择数据项列数。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_Form/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            表单编号:<input type="text" id="qryCode" name="qryCode" />
+                        </td>
+                        <td>
+                            表单名称:<input type="text" id="qryCode" name="qryName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();;">删除</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'ID',checkbox:true"></th>
+                    <th field="Code" width="230">表单编号</th>
+                    <th field="Name" width="150">表单名称</th>
+                    <th field="MainTableName" width="150">所属数据表</th>
+                    <th field="ActionTypeName" width="100">事件类型</th>
+                    <th field="ActionName" width="100">事件名称</th>
+                    <th field="ActionStyleName" width="100">弹窗样式</th>
+                    <th field="WindowsWidth" width="100">窗口宽度</th>
+                    <th field="StyleColumsName" width="100">表单项列数</th>
+                    <th field="ButtonStyle" width="150">按钮样式</th>
+                    <th field="ButtonIcon" width="100">按钮ICON</th>
+                    <th field="Remarks" width="300">备注</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="code" name="code" label="表单代码<span class='font-red'>*</span>" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+                <div class="dlg-form-desc">
+                    1.表单代码命名规则：只能是英文字母、数字或下划线的组合。<br />
+                    2.一旦创建表单代码，则不能修改。
+                </div>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="表单名称<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="mainTable" name="mainTable" class="easyui-combobox" label="所属数据表<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',panelHeight:'200px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @{
+                        var tables = (List<QWF.CRM.DbAccess.T_QCRM_Tables>)ViewBag.Tables;
+                        foreach (var table in tables)
+                        {
+                            <option value="@table.Code">@table.Name</option>
+                        }
+                    }
+                </select>
+                <div class="dlg-form-desc">
+                    1.一旦绑定所属数据表则不能修改。
+                </div>
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="actionType" name="actionType" class="easyui-combobox" label="事件类型<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',panelHeight:'120px'"
+                        style="width:300px;">
+                    <option value="create">创建数据</option>
+                    <option value="update">变更数据</option>
+                    <option value="delete">删除数据</option>
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="actionName" name="actionName" label="事件名称：" required="true" prompt="新增、编辑、停用"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="buttonStyle" name="buttonStyle" label="按钮样式：" prompt="按钮CSS样式"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',value:'easyui-linkbutton'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="buttonIcon" name="buttonIcon" label="按钮ICON：" prompt="按钮icon CSS的名称"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="actionStyle" name="actionStyle" class="easyui-combobox" label="弹窗样式:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',panelHeight:'120px'"
+                        style="width:300px;">
+                    <option value="10">弹窗</option>
+                    <option value="20">确认对话框</option>
+                </select>
+            </div>
+            <!-- 弹窗则有下面的项目-->
+            <div id="windows-item">
+                <div class="dlg-input-item">
+                    <input class="easyui-textbox" id="windowsWidth" name="windowsWidth" label="最大宽度：" required="true" prompt="500~1000"
+                           data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                           style="width:300px;">
+                </div>
+                <div class="dlg-input-item">
+                    <select id="styleColums" name="styleColums" class="easyui-combobox" label="数据项列:" required="true"
+                            data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                            style="width:300px;">
+                        <option value="1">单列</option>
+                        <option value="2">多列</option>
+                    </select>
+                </div>
+            </div>
+            <!-- -->
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注:"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:true"
+                       style="width:500px;height:60px;">
+            </div>
+
+            @{
+
+                if (permission.IsAdministrator())
+                {
+
+                    <div class="dlg-input-item">
+                        <input class="easyui-textbox" id="plugInClass" name="plugInClass" label="表单插件："
+                               data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                               style="width:500px;">
+                    </div>
+                }
+                <div class="dlg-form-desc">
+                    1.开始执行、执行完成、执行失败3种类型的事情触发。<br />
+                    2.只能是管理员或开发人员才能配置上面插件。<br />
+                    3.具体的二次开发指南请参见相关二次开发文档。<br />
+                </div>
+
+            }
+
+
+
+        </div>
+    </form>
+</div>

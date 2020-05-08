@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbFrameworkEntity_SQLServer.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_QWF_Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigResourceCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfigName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfigValueType" Type="varchar" MaxLength="50" />
+          <Property Name="ConfigValue" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="ConfigIdList" Type="varchar(max)" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="IsHidden" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="ConfigRemarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_LoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppId" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ip" Type="varchar" MaxLength="64" />
+          <Property Name="LoginTime" Type="datetime" Nullable="false" />
+          <Property Name="LoginStatus" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="T_QWF_Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="MenuIdList" Type="varchar(max)" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsShow" Type="int" Nullable="false" />
+          <Property Name="DefaultUrl" Type="varchar" MaxLength="1024" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="IconCls" Type="varchar" MaxLength="64" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="Target" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_MenuInUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Org">
+          <Key>
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="OrgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgCode" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="OrgName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="OrgNamePath" Type="nvarchar(max)" />
+          <Property Name="OrgAttribute" Type="int" Nullable="false" />
+          <Property Name="IsOut" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="LayerId" Type="int" Nullable="false" />
+          <Property Name="OrgIdList" Type="varchar(max)" />
+          <Property Name="OrgCodeList" Type="varchar(max)" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsSubNode" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="CreateUserId" Type="int" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_Resource">
+          <Key>
+            <PropertyRef Name="ResourceCode" />
+          </Key>
+          <Property Name="RuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceCode" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="ResourceName" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="ResourceType" Type="int" Nullable="false" />
+          <Property Name="ResourceRemarks" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="T_QWF_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleCode" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RoleGroupId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="512" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="GroupRemarks" Type="nvarchar" MaxLength="256" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInMenu">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInResource">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RuleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RuleId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Seq">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prefix" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DateFormart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SerialLength" Type="int" Nullable="false" />
+          <Property Name="CurrentNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCode" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="PassWord" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="Leader" Type="int" Nullable="false" />
+          <Property Name="LastLoginIp" Type="varchar" MaxLength="32" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="UserStatus" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+          <Property Name="QQ" Type="varchar" MaxLength="64" />
+          <Property Name="Realname" Type="nvarchar" MaxLength="64" />
+          <Property Name="Tel" Type="varchar" MaxLength="32" />
+          <Property Name="Phone" Type="varchar" MaxLength="32" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="Position" Type="nvarchar" MaxLength="64" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Weixin" Type="varchar" MaxLength="64" />
+          <Property Name="Fax" Type="varchar" MaxLength="32" />
+          <Property Name="UserRemarks" Type="nvarchar" MaxLength="512" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserActionLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LogCode" Type="varchar" MaxLength="255" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="UserIp" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ActionMethod" Type="nvarchar" MaxLength="2048" />
+          <Property Name="LogDescription" Type="nvarchar(max)" />
+          <Property Name="LogItems" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserInRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DbFrameworkEntity_SQLServerStoreContainer">
+          <EntitySet Name="T_QWF_Config" EntityType="Self.T_QWF_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_LoginLog" EntityType="Self.T_QWF_LoginLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Menu" EntityType="Self.T_QWF_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_MenuInUrl" EntityType="Self.T_QWF_MenuInUrl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Org" EntityType="Self.T_QWF_Org" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Resource" EntityType="Self.T_QWF_Resource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Role" EntityType="Self.T_QWF_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_RoleGroup" EntityType="Self.T_QWF_RoleGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_RoleInMenu" EntityType="Self.T_QWF_RoleInMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_RoleInResource" EntityType="Self.T_QWF_RoleInResource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_Seq" EntityType="Self.T_QWF_Seq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_User" EntityType="Self.T_QWF_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_UserActionLog" EntityType="Self.T_QWF_UserActionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_QWF_UserInRole" EntityType="Self.T_QWF_UserInRole" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbFrameworkEntity_SQLServer" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbFrameworkContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_QWF_Config" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Config" />
+          <EntitySet Name="T_QWF_LoginLog" EntityType="DbFrameworkEntity_SQLServer.T_QWF_LoginLog" />
+          <EntitySet Name="T_QWF_Menu" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Menu" />
+          <EntitySet Name="T_QWF_MenuInUrl" EntityType="DbFrameworkEntity_SQLServer.T_QWF_MenuInUrl" />
+          <EntitySet Name="T_QWF_Org" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Org" />
+          <EntitySet Name="T_QWF_Resource" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Resource" />
+          <EntitySet Name="T_QWF_Role" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Role" />
+          <EntitySet Name="T_QWF_RoleGroup" EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleGroup" />
+          <EntitySet Name="T_QWF_RoleInMenu" EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleInMenu" />
+          <EntitySet Name="T_QWF_RoleInResource" EntityType="DbFrameworkEntity_SQLServer.T_QWF_RoleInResource" />
+          <EntitySet Name="T_QWF_Seq" EntityType="DbFrameworkEntity_SQLServer.T_QWF_Seq" />
+          <EntitySet Name="T_QWF_User" EntityType="DbFrameworkEntity_SQLServer.T_QWF_User" />
+          <EntitySet Name="T_QWF_UserActionLog" EntityType="DbFrameworkEntity_SQLServer.T_QWF_UserActionLog" />
+          <EntitySet Name="T_QWF_UserInRole" EntityType="DbFrameworkEntity_SQLServer.T_QWF_UserInRole" />
+        </EntityContainer>
+        <EntityType Name="T_QWF_Config">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigResourceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigValueType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="ConfigIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="IsHidden" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="ConfigRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_LoginLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginStatus" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_QWF_Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="MenuIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="MenuName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsShow" Type="Int32" Nullable="false" />
+          <Property Name="DefaultUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="IconCls" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="Target" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_MenuInUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Org">
+          <Key>
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="OrgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgCode" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OrgName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="OrgNamePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrgAttribute" Type="Int32" Nullable="false" />
+          <Property Name="IsOut" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="LayerId" Type="Int32" Nullable="false" />
+          <Property Name="OrgIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrgCodeList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsSubNode" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreateUserId" Type="Int32" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_Resource">
+          <Key>
+            <PropertyRef Name="ResourceCode" />
+          </Key>
+          <Property Name="RuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceCode" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ResourceName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="ResourceType" Type="Int32" Nullable="false" />
+          <Property Name="ResourceRemarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_QWF_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoleGroupId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="GroupRemarks" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInMenu">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_RoleInResource">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RuleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RuleId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_Seq">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prefix" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DateFormart" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerialLength" Type="Int32" Nullable="false" />
+          <Property Name="CurrentNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_QWF_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="Leader" Type="Int32" Nullable="false" />
+          <Property Name="LastLoginIp" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="UserStatus" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+          <Property Name="QQ" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Realname" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Weixin" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserRemarks" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserActionLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LogCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="UserIp" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ActionMethod" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="LogDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_QWF_UserInRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbFrameworkEntity_SQLServerStoreContainer" CdmEntityContainer="DbFrameworkContext">
+          <EntitySetMapping Name="T_QWF_Config">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_Config">
+              <MappingFragment StoreEntitySet="T_QWF_Config">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="ConfigRemarks" ColumnName="ConfigRemarks" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="ConfigIdList" ColumnName="ConfigIdList" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+                <ScalarProperty Name="ConfigValueType" ColumnName="ConfigValueType" />
+                <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+                <ScalarProperty Name="ConfigResourceCode" ColumnName="ConfigResourceCode" />
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_LoginLog">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_LoginLog">
+              <MappingFragment StoreEntitySet="T_QWF_LoginLog">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Menu">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_Menu">
+              <MappingFragment StoreEntitySet="T_QWF_Menu">
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="IconCls" ColumnName="IconCls" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="DefaultUrl" ColumnName="DefaultUrl" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="MenuIdList" ColumnName="MenuIdList" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_MenuInUrl">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_MenuInUrl">
+              <MappingFragment StoreEntitySet="T_QWF_MenuInUrl">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Org">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_Org">
+              <MappingFragment StoreEntitySet="T_QWF_Org">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsSubNode" ColumnName="IsSubNode" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="OrgCodeList" ColumnName="OrgCodeList" />
+                <ScalarProperty Name="OrgIdList" ColumnName="OrgIdList" />
+                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsOut" ColumnName="IsOut" />
+                <ScalarProperty Name="OrgAttribute" ColumnName="OrgAttribute" />
+                <ScalarProperty Name="OrgNamePath" ColumnName="OrgNamePath" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Resource">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_Resource">
+              <MappingFragment StoreEntitySet="T_QWF_Resource">
+                <ScalarProperty Name="ResourceRemarks" ColumnName="ResourceRemarks" />
+                <ScalarProperty Name="ResourceType" ColumnName="ResourceType" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+                <ScalarProperty Name="ResourceCode" ColumnName="ResourceCode" />
+                <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Role">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_Role">
+              <MappingFragment StoreEntitySet="T_QWF_Role">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="RoleGroupId" ColumnName="RoleGroupId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_RoleGroup">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_RoleGroup">
+              <MappingFragment StoreEntitySet="T_QWF_RoleGroup">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+                <ScalarProperty Name="GroupRemarks" ColumnName="GroupRemarks" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_RoleInMenu">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_RoleInMenu">
+              <MappingFragment StoreEntitySet="T_QWF_RoleInMenu">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_RoleInResource">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_RoleInResource">
+              <MappingFragment StoreEntitySet="T_QWF_RoleInResource">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_Seq">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_Seq">
+              <MappingFragment StoreEntitySet="T_QWF_Seq">
+                <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+                <ScalarProperty Name="SerialLength" ColumnName="SerialLength" />
+                <ScalarProperty Name="DateFormart" ColumnName="DateFormart" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_User">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_User">
+              <MappingFragment StoreEntitySet="T_QWF_User">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="UserRemarks" ColumnName="UserRemarks" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Weixin" ColumnName="Weixin" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Realname" ColumnName="Realname" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="LastLoginIp" ColumnName="LastLoginIp" />
+                <ScalarProperty Name="Leader" ColumnName="Leader" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_UserActionLog">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_UserActionLog">
+              <MappingFragment StoreEntitySet="T_QWF_UserActionLog">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="LogItems" ColumnName="LogItems" />
+                <ScalarProperty Name="LogDescription" ColumnName="LogDescription" />
+                <ScalarProperty Name="ActionMethod" ColumnName="ActionMethod" />
+                <ScalarProperty Name="UserIp" ColumnName="UserIp" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogCode" ColumnName="LogCode" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QWF_UserInRole">
+            <EntityTypeMapping TypeName="DbFrameworkEntity_SQLServer.T_QWF_UserInRole">
+              <MappingFragment StoreEntitySet="T_QWF_UserInRole">
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

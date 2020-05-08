@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf30466c3d6245c1b0b8b6c37b9a4702" Name="Diagram1">
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_CustomerProduct" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_ListInForm" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_Product" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_ProductItem" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_QuickSreach" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_QuickSreachUser" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_Tabs" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserInForm" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserQueryListSetting" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserQuerySetting" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_Config" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_LoginLog" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_Menu" Width="1.5" PointX="12.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_MenuInUrl" Width="1.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_Org" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_Resource" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_Role" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_RoleGroup" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_RoleInMenu" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_RoleInResource" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_Seq" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_User" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_UserActionLog" Width="1.5" PointX="8.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QWF_UserInRole" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.vw_UserInRoles" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_FormInput" Width="1.5" PointX="11.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_Tables" Width="1.5" PointX="17.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_ListType" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_Fields" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_Dictionary" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_UserCenter" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_Form" Width="1.5" PointX="5.375" PointY="17.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_RoleInQueryCategory" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_QueryList" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_QueryCategory" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DbCRMkEntity_SQLServer.T_QCRM_QueryWhere" Width="1.5" PointX="3.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

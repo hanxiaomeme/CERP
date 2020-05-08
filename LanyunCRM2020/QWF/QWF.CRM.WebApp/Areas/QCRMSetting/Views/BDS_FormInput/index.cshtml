@@ -1,0 +1,626 @@
+﻿@{
+    ViewBag.Title = "表单数据项管理";
+    var formList = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.FormList;
+    var tableList = (List<QWF.CRM.DbAccess.T_QCRM_Tables>)ViewBag.TableList;
+    var inputTypeList = (List<QWF.Framework.Services.SvrModels.SvrConfig>)ViewBag.InputTypeList;
+    var defaultTypeList = (List<QWF.Framework.Services.SvrModels.SvrConfig>)ViewBag.defaultTypeList;
+    var sysCodeList = (List<QWF.CRM.DbAccess.T_QWF_Seq>)ViewBag.SysCodeList;
+}
+@section script{
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+            $('#div-defaultValue').hide();
+            $('#div-sysCode').hide();
+            loadDefaultValueType();
+            initFormCode();
+        }
+
+        function loaddg() {
+            index = 0;
+            var params = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_FormInput/GetList")',
+                title: '表单数据项配置',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+
+        function loadDefaultValueType() {
+            $('#defaultValueType').combobox({
+                onSelect: function (e) {
+                    if (e.value == 'sys_value' || e.value == 'request') {
+                        $('#div-defaultValue').show();
+                    } else {
+                        $('#div-defaultValue').hide();
+                    }
+                    //系统编号
+                    if (e.value == 'sys_code') {
+                        $('#div-sysCode').show();
+                    }
+                    else {
+                        $('#div-sysCode').hide();
+                    }
+
+                }
+            })
+        }
+
+        function initFormCode() {
+            $('#formCode').combobox({
+                onChange: function (newValue, oldValue) {
+                    if (!newValue.isNull()) {
+                        $('#fieldCode').combobox({
+                            url: '@Url.Content("~/QCRMSetting/BDS_FormInput/GetFieldList")',
+                            queryParams: {
+                                formCode: newValue
+                            },
+                            onChange: function (newValue, oldValue) {
+                                var text = $('#fieldCode').combobox('getText');
+                                $('#name').textbox('setValue', text);
+                            },
+                            valueField: 'id',
+                            textField: 'name'
+                        });
+                    }
+
+                }
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '表单数据项管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            $('#code').textbox('enable');
+            $('#fieldType').combobox('enable');
+            $('#createFieldDiv').show();
+            $('#create').checkbox('enable');
+            $('#edit').checkbox('enable');
+
+            $('#editFieldDiv').hide();
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择一条需要编辑的数据。');
+                return false;
+            } else {
+
+                resetForm();
+                $('#dlg').dialog('open');
+
+                $('#id').val(row.Id);
+                $('#formCode').combobox('setValue', row.FormCode);
+                $('#fieldCode').combobox('setValue', row.FieldCode);
+                $('#name').textbox('setValue', row.Name);
+                $('#inputType').combobox('setValue', row.InputType);
+                $('#defaultValue').textbox('setValue', row.DefaultValue);
+                $('#defaultValueType').combobox('setValue', row.DefaultValueType);
+                $('#cssWidth').textbox('setValue', row.CssWidth);
+                if (row.CssHeight > 0) $('#cssHeight').textbox('setValue', row.CssHeight);
+                $('#inputDesc').textbox('setValue', row.InputDesc);
+
+                if (row.DefaultValueType == "sys_value" || row.DefaultValueType == "request") {
+                    $('#div-defaultValue').show();
+                    $('#defaultValue').text('setValue', row.DefaultValue);
+                } else {
+                    $('#div-defaultValue').hide();
+                }
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_FormInput/Delete")',
+                        data: {
+                            id: row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.id.isNull() && obj.formCode.isNull()) {
+                alertError('请选择所属表单。');
+                return false;
+            } else if (obj.fieldCode.isNull()) {
+                alertError('请选择所属字段。');
+                return false;
+            } else if (obj.name.isNull()) {
+                alertError('请填写表单项名称。');
+                return false;
+            } else if (obj.inputType.isNull()) {
+                alertError('请填写表单项类型。');
+                return false;
+            } else if (obj.inputType == 'system' && obj.defaultValueType.isNull()) {
+                alertError('请选择默认值类型。');
+                return false;
+            }
+
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_FormInput/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+        /****************  表单子项 *************************/
+
+        function fmtInputItem(value, row, index) {
+            var type = new Array('select', 'checkbox', 'radio', 'select_tree');
+
+            if ($.inArray(row.InputType, type) > -1) {
+                return '<a href="javascript:void(0);" onclick="addInputItem(' + row.Id + ');">配置字典</a>'
+            }
+        }
+
+        function addInputItem(inputId, dictionaryCode) {
+            openInputItemList(inputId);
+
+        }
+
+        function loadInputItemDg(inputId) {
+         
+
+            if (inputId == undefined || inputId == null || inputId == '' || inputId == 0) {
+                inputId = $('#formInputId').val();
+            }
+
+            $('#dg-InputItem').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_FormInput/GetInputItemList")',
+                singleSelect: true,
+                toolbar: 'tools-InputItem',
+                queryParams: {
+                    formInputId: inputId
+                }
+            });
+        }
+
+        function openInputItemList(inputId) {
+            $("#dlg-inputItem").dialog("open");
+            $('#formInputId').val(inputId);
+            loadInputItemDg(inputId);
+        }
+
+        function openAddInputItem() {
+            $('#dlg-inputItemAdd').dialog('open');
+        }
+
+        function saveInputItem() {
+            var form = $('#dlg-form-inputItemAdd');
+            var obj = form.serializeJSON();
+
+            if (obj.dictionaryCode.isNull()) {
+                alertError('请选择表单数据字典。');
+                return false;
+            }
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_FormInput/SaveInputItem")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        loadInputItemDg(obj.formInputId);
+                    }
+                }
+            });
+        }
+
+
+        //设置隐藏
+        function setDefaultInputItem() {
+            var row = $('#dg-InputItem').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录。');
+                return false;
+            }
+            var formInputId = $('#formInputId').val();
+            $.messager.confirm('操作确认框', '确定要将本条数据设置成默认项吗？', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_FormInput/SetDefaultIntpuItem")',
+                        data: {
+                            id: formInputId,
+                            itemValue: row.ItemValue
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loadInputItemDg(formInputId);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function fmtSort(value, row) {
+
+            if (row.InputType == 'system') {
+                return '';
+            }
+            else {
+                index++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+            }
+
+        }
+
+        function sort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#qryForm').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/BDS_FormInput/Sort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+        /***** 批量复制 ******************/
+
+        function openInputItemCopy() {
+            $('#dlg-inputItemCopy').dialog('open');
+        }
+
+        function saveInputItemCopy() {
+            var form = $('#dlg-form-inputItemCopy');
+            var obj = form.serializeJSON();
+            console.log(obj);
+            if (obj.fromInputCode.isNull()) {
+                alertError('请选择需要复制的表单。');
+                return false;
+            } else if (obj.toInputCode.isNull()) {
+                alertError('请选择"复制到"的表单。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_FormInput/CopyInputItems")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        form.form('reset');
+                        alertInfo('保存成功。');
+                        $('#qryFormCode').combobox('setValue', obj.toInputCode);
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+    </script>
+
+
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            所属表单:
+                            <select id="qryFormCode" name="qryFormCode" class="easyui-combobox" style="width:200px" panelHeight="200">
+                                <option value=""></option>
+                                @foreach (var form in formList)
+                                {
+                                    <option value="@form.Key">@form.Value</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            数据项名称:<input type="text" id="qryName" name="qryName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();;">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="sort();">排序</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width:110px" onclick="openInputItemCopy();">批量复制</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="FormName" width="150">所属表单</th>
+                    <th field="SortId" width="100" formatter='fmtSort'>排序ID</th>
+                    <th field="Name" width="150">表单项名称</th>
+                    <th field="InputTypeName" width="100">表单项类型</th>
+                    <th field="InputItem" formatter="fmtInputItem" width="150">表单项子项</th>
+                    <th field="FieldTypeName" width="100">字段类型</th>
+                    <th field="IsNotNullName" width="80">必填项</th>
+                    <th field="OnlyKeyName" width="80">唯一项</th>
+                    <th field="DefaultValueTypeName" width="150">默认值类型</th>
+                    <th field="DefaultValue" width="100">默认值</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</body>
+
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <select id="formCode" name="formCode" class="easyui-combobox" label="所属表单<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',panelHeight:'200px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var form in formList)
+                    {
+                    <option value="@form.Key">@form.Value</option>
+                    }
+                </select>
+            </div>
+            <div class="dlg-input-item">
+                <select id="fieldCode" name="fieldCode" class="easyui-combobox" label="所属字段<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;"></select>
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="表单项名称<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <select id="inputType" name="inputType" class="easyui-combobox" label="表单项类型<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+
+                    @foreach (var input in inputTypeList)
+                    {
+                    <option value="@input.Value">@input.Name</option>
+                    }
+
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="defaultValueType" name="defaultValueType" class="easyui-combobox" label="默认值类型:"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="">无</option>
+                    @foreach (var defaultType in defaultTypeList)
+                    {
+                    <option value="@defaultType.Value">@defaultType.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item" id="div-sysCode">
+                <select id="sysCode" name="sysCode" class="easyui-combobox" label="系统序列号:"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    @foreach (var sysCode in sysCodeList)
+                    {
+                    <option value="@sysCode.Code">@sysCode.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div id="div-defaultValue" class="dlg-input-item">
+                <input class="easyui-textbox" id="defaultValue" name="defaultValue" label="默认值："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div id="div-defaultValue" class="dlg-input-item">
+                <input class="easyui-textbox" id="cssWidth" name="cssWidth" label="宽度："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+            <div id="div-defaultValue" class="dlg-input-item">
+                <input class="easyui-textbox" id="cssHeight" name="cssHeight" label="高度："
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       prompt="不填写或0为自动"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-form-desc">
+                1.宽度一般默认300。<br />
+                2.高度一般默认0即自动。<br />
+                3.复选框、单选框不用设置宽度和高度。<br />
+            </div>
+            <div id="div-defaultValue" class="dlg-input-item">
+                <input class="easyui-textbox" id="inputDesc" name="inputDesc" label="辅助描述："
+                       multiline="true" 
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:500px; height:120px; ">
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div id="dlg-inputItem" class="easyui-dialog" title="表单子项数据列表" style="width:80%;height:80%;padding:10px"
+     data-options=" closed: true,maximizable: true, modal: true,iconCls :'icon-save' , toolbar: [{
+     text:'刷新',
+     iconCls:'icon-search',
+     handler:function(){
+     loadInputItemDg();
+     }
+     },'-',{
+     text:'选择表单字典',
+     iconCls:'icon-add',
+     handler:function(){
+     openAddInputItem();
+     }
+     },'-',{
+     text:'设置默认项',
+     iconCls:'icon-edit',
+     handler:function(){
+     setDefaultInputItem();
+     }
+     }]
+     ">
+    <div id="tools-InputItem"></div>
+    <table id="dg-InputItem">
+        <thead>
+            <tr>
+                <th data-options="field:'Id',checkbox:true"></th>
+                <th field="ItemName" width="180">名称</th>
+                <th field="ItemValue" width="280">值</th>
+                <th field="DefaultItemName" width="80">默认项</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="dlg-inputItemAdd" class="easyui-dialog" title="配置字典数据" style="width:400px;height:200px;padding:10px"
+     data-options="closed:true,maximizable: true,modal : true,iconCls :'icon-save',
+     buttons:[{
+				text:'保存',
+                iconCls: 'icon-ok',
+				handler:function(){ saveInputItem();}
+			}]">
+    <form id="dlg-form-inputItemAdd">
+        <input type="hidden" id="formInputId" name="formInputId" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <select id="dictionaryCode" name="dictionaryCode" class="easyui-combobox" label="表单字典项:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    @{
+                        var dictionaryList = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.DictionaryList;
+                        foreach (var dic in dictionaryList)
+                        {
+                    <option value="@dic.Key">@dic.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+<div id="dlg-inputItemCopy" class="easyui-dialog" title="批量复制表单配置数据" style="width:500px;height:400px;padding:10px"
+     data-options="closed:true,maximizable: true,modal : true,iconCls :'icon-save',
+     buttons:[{
+				text:'保存',
+                iconCls: 'icon-ok',
+				handler:function(){ saveInputItemCopy();}
+			}]">
+    <form id="dlg-form-inputItemCopy">
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <select id="fromInputCode" name="fromInputCode" class="easyui-combobox" label="将表单:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'80px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @{
+                        foreach (var item in formList)
+                        {
+                            <option value="@item.Key">@item.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="dlg-input-item">
+                <select id="toInputCode" name="toInputCode" class="easyui-combobox" label="复制到:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'80px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var item in formList)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
+                </select>
+            </div>
+            <div class="dlg-form-desc">
+                <h3>说明:</h3>
+                1.该功能主要是起到便捷作用，避免一个个表单项添加。<br />
+                2.主要应用的场景是将“新增的表单”复制到“编辑的表单。<br />
+            </div>
+        </div>
+    </form>
+
+</div>

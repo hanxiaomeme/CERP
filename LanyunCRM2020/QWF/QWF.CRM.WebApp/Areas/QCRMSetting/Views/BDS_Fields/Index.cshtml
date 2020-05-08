@@ -1,0 +1,353 @@
+﻿
+@{
+    ViewBag.Title = "数据表字段管理";
+    var fieldTypeItem = (List<QWF.Framework.Services.SvrModels.SvrConfig>)ViewBag.FieldTypeItem;
+    var Tables = (List<QWF.CRM.DbAccess.T_QCRM_Tables>)ViewBag.Tables;
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+            loadFieldType();
+        }
+
+        function loaddg() {
+
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_Fields/GetList")',
+                title: '数据表字段管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+
+        function loadFieldType() {
+            $('#fieldType').combobox({
+                onSelect: function (e) {
+                    if (e.value == "text") {
+                        $('#fieldTypeLength').textbox('setValue', 50);//文本默认50
+                    } else if (e.value == "decimal") {
+                        $('#fieldTypeLength').textbox('setValue', 4);//小数点后4位
+                    } else {
+                        $('#fieldTypeLength').textbox('setValue', 0);//小数点后4位
+                    }
+
+                }
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '数据表字段管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+
+            $('#tableCode').combobox('enable');
+            $('#code').textbox('enable');
+            $('#fieldType').combobox('enable');
+            $('#create').checkbox('enable');
+            $('#edit').checkbox('enable');
+            $('#createFieldDiv').show();
+            $('#editFieldDiv').hide();
+
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的数据。');
+                return false;
+            } else {
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#tableId').val(row.TableCode);
+                $('#id').val(row.Code);
+                $('#tableCode').combobox('disable').combobox('setValue', row.TableCode);
+                $('#fieldType').combobox('disable').combobox('setValue', row.FieldType);
+                $('#code').textbox('disable').textbox('setValue', row.Code);
+                $('#name').textbox('setValue', row.Name);
+                $('#fieldTypeLength').textbox('setValue', row.FieldTypeLength);
+                $('#remarks').textbox('setValue', row.Remarks);
+                $('#hidFieldType').val(row.FieldType);
+                $('#createFieldDiv').hide();
+                $('#create').checkbox('disable');
+                $('#editFieldDiv').show();
+                $('#edit').checkbox('disable');
+                $('#isNotNull').checkbox({ checked: row.IsNotNull == 1 ? true : false });
+                $('#onlyKey').checkbox({ checked: row.OnlyKey == 1 ? true : false });
+                $('#isVirtual').checkbox({ checked: row.IsVirtual == 1 ? true : false });
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '删除数据后,数据不可恢复。', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Fields/Delete")',
+                        data: {
+                            tableCode: row.TableCode,
+                            code: row.Code
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.id.isNull() && obj.code.isNull()) {
+                alertError('请填写字段');
+                return false;
+            }
+            else if (obj.name.isNull()) {
+                alertError('请填写表名称');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_Fields/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+
+        function setPK() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '确定要设置设置成主键吗?', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_Fields/SetPK")',
+                        data: {
+                            tableCode: row.TableCode,
+                            code: row.Code
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            所属表:
+                            <select id="qwryTableCode" name="qryTableCode" class="easyui-combobox">
+                                <option value="">==全部==</option>
+                                @foreach (var table in Tables)
+                                {
+                                    <option value="@table.Code">@table.Name</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            关键字:<input type="text" id="qryKey" name="qryKey" class="easyui-textbox" prompt="字段、描述"	  />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();;">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 110px" onclick="setPK();">设置主键</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'ID',checkbox:true"></th>
+                    <th field="TableName" width="150">表名称</th>
+                    <th field="Code" width="150">字段名</th>
+                    <th field="PkName" width="80">主键</th>
+                    <th field="Name" width="150">字段描述</th>
+                    <th field="FieldTypeName" width="80">字段类型</th>
+                    <th field="FieldTypeLength" width="80">字段长度</th>
+                    <th field="IsNotNullName" width="80">不为空</th>
+                    <th field="IsVirtualName" width="80">虚拟字段</th>
+                    <th field="OnlyKeyName" width="80">唯一项</th>
+                    <th field="Remarks" width="300">备注</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <input type="hidden" id="tableId" name="tableId" />
+        <input type="hidden" id="hidFieldType" name="hidFieldType" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <select id="tableCode" name="tableCode" class="easyui-combobox" label="所属表<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var table in Tables)
+                    {
+                        <option value="@table.Code">@table.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="code" name="code" label="字段名<span class='font-red'>*</span>:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+                <div class="dlg-form-desc">
+                    1.字段名规范：只能是3-128位字母、数字或下划线组合，不能以数字开头。<br />
+                    2.字段一旦创建,则不能更改名称和类型。<br />
+                </div>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="字段描述<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="fieldType" name="fieldType" class="easyui-combobox" label="字段类型:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    @foreach (var item in fieldTypeItem)
+                    {
+                        <option value="@item.Value">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="fieldTypeLength" name="fieldTypeLength" label="字段长度：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+                <div class="dlg-form-desc">
+                    1.修改字段长度<span class="font-red">只能增加不能减少</span>，否则会导致数据丢失。<br />
+                    2.日期和整数的类型默认字段长度为："0",不必修改。<br />
+                    3.小数类型默认精确到小数点后4位。<br />
+                    4.“文本类型”的字段长度填写为:"0"，则表示不限制长度。<br />
+                    5.只有当字段类型为“文本类型”、“小数”时，修改类型长度才有意义。<br />
+                </div>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="remarks" name="remarks" label="备注:"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:true"
+                       style="width:100%;height:60px;">
+            </div>
+            <div class="dlg-input-item">
+            <input class="easyui-checkbox" id="isNotNull" name="isNotNull" label="不为空:" value="1"
+                   data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+        </div>
+
+        <div class="dlg-input-item">
+            <input class="easyui-checkbox" id="onlyKey" name="onlyKey" label="唯一项:" value="1"
+                   data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+        </div>
+
+            <div id="createFieldDiv" class="dlg-input-item">
+                <input class="easyui-checkbox" id="create" name="create" label="创建物理字段:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+
+            <div id="editFieldDiv" class="dlg-input-item">
+                <input class="easyui-checkbox" id="edit" name="edit" label="修改字段:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="isVirtual" name="isVirtual" label="虚拟字段:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+
+            <div class="dlg-form-desc">
+                1.虚拟字段是指不实际存在的字段，勾选虚拟字段则不会创建物理字段。<br />
+                2.应用场景通常是查询列表的视图下字段，一般不会用做表单值的存储。<br />
+            </div>
+        </div>
+    </form>
+
+</div>

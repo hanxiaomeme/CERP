@@ -1,0 +1,231 @@
+﻿
+@{
+    ViewBag.Title = "角色资源权限";
+}
+
+@section script{
+<script type="text/javascript" language="javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '资源代码查询',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        saveRoleInResource();
+                    }
+                }
+                ]
+            });
+        }
+        $(document).ready(function () {
+            $('#resourcedg').hide();
+            loadRoledg();
+            initDialog();
+        });
+
+        // role
+        function loadRoledg() {
+            $('#roledg').datagrid({
+                url: '@Url.Content("~/QWebFramework/RoleInResource/GetRoleList")',//qwf.urlAction('GetRoleList'),
+                title: '系统角色',
+                singleSelect: true,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#tb',
+                pagination: false,
+                onClickRow: function (rowIndex, rowData) {
+                    if (rowData) {
+                        if (rowData.RoleId) {
+                            loadRoleInResource(rowData.RoleId);
+                        }
+                    }
+                }
+            });
+        }
+        // menu
+        function loadRoleInResource(roleId) {
+            $('#resourcedg').datagrid({
+                url: '@Url.Content("~/QWebFramework/RoleInResource/GetRoleInResource")',//qwf.urlAction('GetRoleInResource'),
+                singleSelect: false,
+                fit: true,
+                fitColumns: false,
+                border: false,
+                toolbar: '#resourcetb',
+                pagination: false,
+                queryParams: { roleId: roleId }
+
+            });
+        }
+
+        function add() {
+            //default value
+            var row = $('#roledg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择角色');
+                return false;
+            }
+
+            $('#dlg').dialog({ title: '新增资源代码' }).dialog('open');
+            var params = {
+                qryResourceName: $('#qryResourceName').val(),
+                qryResourceCode: $('#qryResourceCode').val()
+            };
+            $('#rule-dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/RoleInResource/GetResouceList")',//qwf.urlAction('GetResouceList'),
+                singleSelect: false,
+                toolbar: '#dlgtb',
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+
+        function saveRoleInResource() {
+            var roleId = $('#roledg').datagrid('getSelected').RoleId;
+
+            var ruleIds = '';
+            var items = $('#rule-dg').datagrid('getChecked');
+            for (i = 0; i < items.length; i++) {
+                if (ruleIds.length > 0)
+                    ruleIds += ',';
+                ruleIds += items[i].RuleId;
+            }
+            if (ruleIds == '') {
+                alertError('请选择权限资源代码!');
+                return false;
+            }
+
+            $('#dlg').dialog('close');
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/RoleInResource/SaveRoleInResource")',
+                data: {
+                    roleId: roleId,
+                    ruleIds: ruleIds
+                },
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功！');
+                        loadRoleInResource(roleId);
+                    }
+                }
+            });
+        }
+
+        function del() {
+            var roleId = $('#roledg').datagrid('getSelected').RoleId;
+            var row = $('#resourcedg').datagrid('getChecked');
+            var ruleIds = '';
+            for (i = 0; i < row.length; i++) {
+                if (ruleIds.length > 0)
+                    ruleIds += ',';
+                ruleIds += row[i].RuleId;
+            }
+            if (ruleIds == '') {
+                alertError('请选择要删除的权限!');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '确认要删除下面所选择的权限吗？删除权限，数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url:'@Url.Content("~/QWebFramework/RoleInResource/DelRoleInResource")',
+                        data: {
+                            roleId: roleId,
+                            ruleIds: ruleIds
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loadRoleInResource(roleId);
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+</script>
+}
+<body>
+    <form id="form1" class="easyui-layout">
+        <div data-options="region:'west',split:true,border:true" style="width:350px;padding:0px">
+            <div class="qwf-topbar" id="tb">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" onclick="loadRoledg();">刷新</a>
+            </div>
+
+            <table id="roledg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'RoleName'" width="100%">角色名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div data-options="region:'center',border:true" style="padding:0px" title="权限资源代码">
+            <div id="resourcetb" class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="add();">新增角色权限</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'" onclick="del();">删除角色权限</a>
+            </div>
+            <table id="resourcedg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'ruleId',checkbox:true"></th>
+                        <th field="ResourceName" width="120">资源名称</th>
+                        <th field="ResourceCode" width="300">资源代码</th>
+                        <th field="ResourceRemarks" width="300">备注</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div id="dlg" >
+
+            <div id="dlgtb">
+                <div class="qwf-searchbar" style="padding: 10px">
+                    <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                        <tr>
+                            <td>
+                                资源名称:<input type="text" id="qryResourceName" name="qryResourceName" />
+                            </td>
+                            <td>
+                                资源代码:<input type="text" id="qryResourceCode" name="qryResourceCode" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="toolbar" style="padding: 3px">
+                    <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                </div>
+            </div>
+
+            <table id="rule-dg">
+                <thead>
+                    <tr>
+                        <th data-options="field:'ruleId',checkbox:true"></th>
+                        <th field="ResourceName" width="120">资源名称</th>
+                        <th field="ResourceCode" width="200">资源代码</th>
+                        <th field="ResourceRemarks" width="200">备注</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </form>
+
+</body>
+

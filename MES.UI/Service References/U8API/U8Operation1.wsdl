@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="U8Operation" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://127.0.0.1:8000/U8Operation?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://127.0.0.1:8000/U8Operation?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IU8Operation_PuStoreInAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInAdd" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInAdd2_InputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInAdd2" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInAdd2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInAdd2Response" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInAdd3_InputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInAdd3" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInAdd3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInAdd3Response" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInByTV_InputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInByTV" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_PuStoreInByTV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PuStoreInByTVResponse" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_TransVouch_InputMessage">
+    <wsdl:part name="parameters" element="tns:TransVouch" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_TransVouch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TransVouchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_AuditMaterialPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuditMaterialPlan" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_AuditMaterialPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuditMaterialPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_UnAuditMaterialPlan_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnAuditMaterialPlan" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_UnAuditMaterialPlan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnAuditMaterialPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_MergeMaterialOutAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:MergeMaterialOutAdd" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_MergeMaterialOutAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MergeMaterialOutAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_ProductIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductIn" />
+  </wsdl:message>
+  <wsdl:message name="IU8Operation_ProductIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductInResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IU8Operation">
+    <wsdl:operation name="PuStoreInAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInAdd" message="tns:IU8Operation_PuStoreInAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInAddResponse" message="tns:IU8Operation_PuStoreInAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PuStoreInAdd2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInAdd2" message="tns:IU8Operation_PuStoreInAdd2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInAdd2Response" message="tns:IU8Operation_PuStoreInAdd2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PuStoreInAdd3">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInAdd3" message="tns:IU8Operation_PuStoreInAdd3_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInAdd3Response" message="tns:IU8Operation_PuStoreInAdd3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PuStoreInByTV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInByTV" message="tns:IU8Operation_PuStoreInByTV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/PuStoreInByTVResponse" message="tns:IU8Operation_PuStoreInByTV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TransVouch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/TransVouch" message="tns:IU8Operation_TransVouch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/TransVouchResponse" message="tns:IU8Operation_TransVouch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuditMaterialPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/AuditMaterialPlan" message="tns:IU8Operation_AuditMaterialPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/AuditMaterialPlanResponse" message="tns:IU8Operation_AuditMaterialPlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnAuditMaterialPlan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/UnAuditMaterialPlan" message="tns:IU8Operation_UnAuditMaterialPlan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/UnAuditMaterialPlanResponse" message="tns:IU8Operation_UnAuditMaterialPlan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MergeMaterialOutAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/MergeMaterialOutAdd" message="tns:IU8Operation_MergeMaterialOutAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/MergeMaterialOutAddResponse" message="tns:IU8Operation_MergeMaterialOutAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IU8Operation/ProductIn" message="tns:IU8Operation_ProductIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IU8Operation/ProductInResponse" message="tns:IU8Operation_ProductIn_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IU8Operation" type="tns:IU8Operation">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PuStoreInAdd">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/PuStoreInAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuStoreInAdd2">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/PuStoreInAdd2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuStoreInAdd3">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/PuStoreInAdd3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuStoreInByTV">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/PuStoreInByTV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransVouch">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/TransVouch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuditMaterialPlan">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/AuditMaterialPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnAuditMaterialPlan">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/UnAuditMaterialPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MergeMaterialOutAdd">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/MergeMaterialOutAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductIn">
+      <soap:operation soapAction="http://tempuri.org/IU8Operation/ProductIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="U8Operation">
+    <wsdl:port name="BasicHttpBinding_IU8Operation" binding="tns:BasicHttpBinding_IU8Operation">
+      <soap:address location="http://127.0.0.1:8000/U8Operation" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

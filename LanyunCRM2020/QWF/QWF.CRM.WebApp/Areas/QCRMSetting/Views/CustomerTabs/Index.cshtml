@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewBag.Title = "客户资料分类管理";
+    var tabs = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.Tabs;
+    var fields = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.Fields;
+
+}
+@section script{
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+        }
+
+        function loaddg() {
+            index = 0;
+            var params = $('#qryForm').serializeJSON();
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/CustomerTabs/GetList")',
+                title: '客户资料分类管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '客户资料分类管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            $('#tableCode').combobox({ disabled: false });
+            $('#code').textbox({ disabled: false });
+            $('#fieldType').combobox({ disabled: false });
+            $('#createFieldDiv').show();
+            $('#create').checkbox({ disabled: false });
+            $('#editFieldDiv').hide();
+            $('#edit').checkbox({ disabled: true });
+            resetForm();
+
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/CustomerTabs/Delete")',
+                        data: {
+                            id: row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.tabCode.isNull()) {
+                alertError('请选择分类。');
+                return false;
+            }
+            else if (obj.fieldCode.isNull()) {
+                alertError('请选择客户字段。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/CustomerTabs/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+        function fmtSort(value, row) {
+            index++;
+            return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+        }
+
+        function sort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    $('#qryForm').ajaxSubmit({
+                        url: '@Url.Content("~/QCRMSetting/CustomerTabs/Sort")',
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            所属分类:
+                            <select id="qryTabCode" name="qryTabCode" class="easyui-combobox" style="width:200px;" panelHeight="100px">
+                                <option value="">==全部==</option>
+                                @foreach (var item in tabs)
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+             
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();;">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton"  style="width: 80px" onclick="sort();">排序</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="TabName" width="150">分类名称</th>
+                    <th field="FieldName" width="150">字段名称</th>
+                    <th field="SortId" formatter="fmtSort" width="150">排序ID</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+<div id="dlg" style="max-width:650px;">
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <input type="hidden" id="tableId" name="tableId" />
+        <input type="hidden" id="hidFieldType" name="hidFieldType" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <select id="tabCode" name="tabCode" class="easyui-combobox" label="所属分类<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var item in tabs)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="fieldCode" name="fieldCode" class="easyui-combobox" label="客户字段<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="">==请选择==</option>
+                    @foreach (var item in fields)
+                        {
+                            <option value="@item.Key">@item.Value</option>
+                        }
+                </select>
+            </div>
+
+        </div>
+    </form>
+
+</div>

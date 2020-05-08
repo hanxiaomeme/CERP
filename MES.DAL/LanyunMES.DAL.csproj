@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C42DDB07-0803-46A1-8982-959BACC9D1D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LanyunMES.DAL</RootNamespace>
+    <AssemblyName>LanyunMES.DAL</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Lib\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net40\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MES.Server.Model">
+      <HintPath>..\..\..\..\Lib\MES.Server.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccInfo\UA_AccountDAL.cs" />
+    <Compile Include="AccInfo\UserTokenDAL.cs" />
+    <Compile Include="APS\APSDAL.cs" />
+    <Compile Include="APS\MaintenancePlansDAL.cs" />
+    <Compile Include="APS\MouldEquipmentInvDAL.cs" />
+    <Compile Include="APS\MaintenancePlanDAL..cs" />
+    <Compile Include="BusinessInfoDAL.cs" />
+    <Compile Include="DataTableExtensions.cs" />
+    <Compile Include="CommonDAL.cs" />
+    <Compile Include="Interface\IItemDAL.cs" />
+    <Compile Include="Interface\IBaseMSDAL.cs" />
+    <Compile Include="VoucherDAL.cs" />
+    <Compile Include="基础档案\工艺路线\RoutingDAL.cs" />
+    <Compile Include="生产管理\MaterialPlanDAL.cs" />
+    <Compile Include="生产管理\MaterialRequestDAL.cs" />
+    <Compile Include="ColumnInfoDAL.cs" />
+    <Compile Include="AccInfo\DataScaleDAL.cs" />
+    <Compile Include="Interface\IDAL.cs" />
+    <Compile Include="Interface\ITreeDAL.cs" />
+    <Compile Include="MomOrderDAL.cs" />
+    <Compile Include="GradeInfoDAL.cs" />
+    <Compile Include="AccInfo\ModuleItemDAL.cs" />
+    <Compile Include="OutSourceDAL.cs" />
+    <Compile Include="系统配置\Auth_DataDAL.cs" />
+    <Compile Include="系统配置\ICTableFieldDAL.cs" />
+    <Compile Include="系统配置\ICTransTypeDAL.cs" />
+    <Compile Include="系统配置\RoleDAL.cs" />
+    <Compile Include="系统配置\UIControlStatusDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="基础档案\设备档案\EquipmentDAL.cs" />
+    <Compile Include="基础档案\模具档案\MouldClassDAL.cs" />
+    <Compile Include="基础档案\设备档案\EquipmentClassDAL.cs" />
+    <Compile Include="基础档案\模具档案\MouldDAL.cs" />
+    <Compile Include="APS\WorkCalendarDAL.cs" />
+    <Compile Include="系统配置\MenuDAL.cs" />
+    <Compile Include="系统配置\UserDAL.cs" />
+    <Compile Include="质量管理\QmCardOPDAL.cs" />
+    <Compile Include="质量管理\QMItemDAL.cs" />
+    <Compile Include="质量管理\QmRecordDAL.cs" />
+    <Compile Include="质量管理\QmReportDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lanyun.DBUtil\Lanyun.DBUtil.csproj">
+      <Project>{c2e427ac-787d-40a4-a1d6-e709d3d0dcec}</Project>
+      <Name>Lanyun.DBUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.Model\LanyunMES.Entity.csproj">
+      <Project>{8e8d59ec-498b-4263-844c-391190cb8380}</Project>
+      <Name>LanyunMES.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="库存管理\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

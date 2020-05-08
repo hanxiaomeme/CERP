@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D3D1874-6DF1-41C7-A6CD-DF7249DAD153}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LanyunMES.UIBase</RootNamespace>
+    <AssemblyName>LanyunMES.UIBase</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>..\..\..\..\Lib\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Component">
+      <HintPath>..\..\..\..\Lib\Component.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=12.5.0.2, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\DotNetBar\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="FastReport">
+      <HintPath>D:\Program Files (x86)\FastReport.2017.1.16\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseHelper.cs" />
+    <Compile Include="FmBILL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmBILL.Designer.cs">
+      <DependentUpon>FmBILL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmBIU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmBIU.Designer.cs">
+      <DependentUpon>FmBIU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmRList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmRList.designer.cs">
+      <DependentUpon>FmRList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmTreeClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmTreeClass.Designer.cs">
+      <DependentUpon>FmTreeClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmTreeGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmTreeGrid.Designer.cs">
+      <DependentUpon>FmTreeGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IFormList.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RefForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RefForm.designer.cs">
+      <DependentUpon>RefForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TTreeGrid.cs" />
+    <Compile Include="FmQBox\FmQBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmQBox\FmQBox.Designer.cs">
+      <DependentUpon>FmQBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmQList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmQList.designer.cs">
+      <DependentUpon>FmQList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FmRMDList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmRMDList.Designer.cs">
+      <DependentUpon>FmRMDList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IUIItemSerivce.cs" />
+    <Compile Include="UIControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FmBILL.resx">
+      <DependentUpon>FmBILL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmBIU.resx">
+      <DependentUpon>FmBIU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmRList.resx">
+      <DependentUpon>FmRList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmTreeClass.resx">
+      <DependentUpon>FmTreeClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmTreeGrid.resx">
+      <DependentUpon>FmTreeGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmQBox\FmQBox.resx">
+      <DependentUpon>FmQBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmQList.resx">
+      <DependentUpon>FmQList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmRMDList.resx">
+      <DependentUpon>FmRMDList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RefForm.resx">
+      <DependentUpon>RefForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LanyunMES.Business\LanyunMES.Business.csproj">
+      <Project>{49e372e1-6b41-4c01-b2bc-907398749438}</Project>
+      <Name>LanyunMES.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.DAL\LanyunMES.DAL.csproj">
+      <Project>{c42ddb07-0803-46a1-8982-959bacc9d1d5}</Project>
+      <Name>LanyunMES.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MES.Model\LanyunMES.Entity.csproj">
+      <Project>{8e8d59ec-498b-4263-844c-391190cb8380}</Project>
+      <Name>LanyunMES.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,411 @@
+﻿
+@{
+    ViewBag.Title = "查询列表字段管理";
+    var listTypes = (List<QWF.Framework.Web.BaseItemKeyValue>)ViewBag.ListTypes;
+    var tableList = (List<QWF.CRM.DbAccess.T_QCRM_Tables>)ViewBag.TableList;
+}
+@section script{
+
+    <script type="text/javascript">
+        var index = 0;
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+            initTableCode();
+            initFomatterType();
+        }
+
+        function loaddg() {
+            index = 0;
+            var params = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QCRMSetting/BDS_QueryList/GetList")',
+                title: '查询列表字段管理',
+                singleSelect: true,
+                pagination: false,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '查询列表字段信息',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            $('#listType').textbox('enable');
+            resetForm();
+
+        }
+
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的数据或双击要编辑的行。');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的数据。');
+                return false;
+            } else {
+
+                resetForm();
+                $('#dlg').dialog('open');
+                $('#id').val(row.Id);
+
+                $('#listType').combobox('setValue', row.ListType);
+                $('#tableCode').combobox('setValue', row.TableCode);
+                $('#fieldCode').combobox('setValue', row.FieldCode);
+                $('#formatterType').combobox('setValue', row.FormatterType);
+                $('#fieldFormatter').textbox('setValue', row.FieldFormatter);
+                $('#contentLength').textbox('setValue', row.ContentLength);
+                $('#styleCss').textbox('setValue', row.StyleCss);
+                $('#titleName').textbox('setValue', row.TitleName);
+                $('#styleWidth').textbox('setValue', row.StyleWidth);
+                $('#aHerf').textbox('setValue', row.AHerf);
+                $('#hide').checkbox({ checked: row.Hide == 1 ? true : false });
+                $('#sortable').checkbox({ checked: row.Sortable == 1 ? true : false });
+                $('#isUserField').checkbox({ checked: row.IsUserField == 1 ? true : false });
+            }
+        }
+
+        function del() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条要删除的记录。');
+                return false;
+            }
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复。', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_QueryList/Delete")',
+                        data: {
+                            id: row.Id
+                        },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#dlg-form').form('clear');
+            $('#dlg-form').form('reset');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+            if (obj.id.isNull() && obj.listType.isNull()) {
+                alertError('请选择所属列表。');
+                return false;
+            } else if (obj.tableCode.isNull()) {
+                alertError('请选择所属表。');
+                return false;
+            } else if (obj.fieldCode.isNull()) {
+                alertError('请选择所属字段。');
+                return false;
+            } else if (obj.titleName.isNull()) {
+                alertError('请填写列名称。');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QCRMSetting/BDS_QueryList/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功。');
+                        loaddg();
+                    }
+                }
+            });
+        }
+
+        function initTableCode() {
+            $('#tableCode').combobox({
+                onChange: function (newValue, oldValue) {
+                    $('#fieldCode').combobox({
+                        url: '@Url.Content("~/QCRMSetting/BDS_QueryList/GetFieldList")',
+                        queryParams: {
+                            tableCode: newValue
+                        },
+                        onChange: function (newValue, oldValue) {
+                            var text = $('#fieldCode').combobox('getText')
+                            $('#titleName').textbox('setValue', text);
+                        },
+                        valueField: 'id',
+                        textField: 'name'
+                    });
+                }
+            })
+        }
+
+        function initFomatterType() {
+            $('#formatterType').combobox({
+                onChange: function (newValue, oldValue) {
+                    if (newValue == '100') {
+                        $('#fieldFormatter').textbox('setValue', 'yyyy-MM-dd');
+                    } else if (newValue == '101') {
+                        $('#fieldFormatter').textbox('setValue', '');
+                    } else if (newValue == '102') {
+                        $('#fieldFormatter').textbox('setValue', '');
+                    } else if (newValue == '103') {
+                        $('#fieldFormatter').textbox('setValue', '2');
+                    } else if (newValue == '104') {
+                        $('#fieldFormatter').textbox('setValue', '');
+                    } else if (newValue == '105') {
+                        $('#fieldFormatter').textbox('setValue', '2');
+                    } else if (newValue == '106') {
+                        $('#fieldFormatter').textbox('setValue', '');
+                    } else if (newValue == '107') {
+                        $('#fieldFormatter').textbox('setValue', '4');
+                    }
+                    
+                }
+            })
+        }
+
+        function fmtSort(value, row) {
+            if (row.Checkbox == 1 || row.Hide ==1 ) {
+                return '';
+            }
+            else {
+                index++;
+                return "<input type='text' name='sortId_" + row.Id + "' value='" + index + "' size='3'/>";
+            }
+        }
+
+        function fmtFiledName(value, row, index) {
+            return '<span class="font-hui">' + row.TableCode + '</span>.<span class="font-hui">' + row.FieldCode + '</span>';
+        }
+
+        function sort() {
+            $.messager.confirm('排序确认框', '确定要重新排序吗?', function (r) {
+                if (r) {
+                    var form = $('#qryForm');
+                    ajaxCore({
+                        url: '@Url.Content("~/QCRMSetting/BDS_QueryList/Sort")',
+                        data: form.serialize(),
+                        success: function (res) {
+                            if (res.Success) {
+                                alertInfo('保存成功。');
+                                loaddg();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+        }
+
+    </script>
+
+
+}
+
+<body>
+
+    <form id="qryForm" name="qryForm" method="post">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            所属列表项:
+                            <select id="qryListType" name="qryListType" class="easyui-combobox" style="width:150px;">
+                                <option value="" selected>==请选择==</option>
+                                @foreach (var item in listTypes)
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="del();;">删除</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" style="width:80px" onclick="sort();">排序</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="TypeName" width="150">所属列表</th>
+                    <th field="TableName" width="150">所属数据表</th>
+                    <th field="SortId" formatter="fmtSort" width="100">排序ID</th>
+                    <th field="CheckboxName" width="50">主键</th>
+                    <th field="TitleName"  width="120">列名称</th>
+                    <th field="FieldName" formatter="fmtFiledName" width="200">字段代码</th>
+                    <th field="StyleWidth" width="80">列宽度</th>
+                    <th field="FieldTypeName" width="80">字段类型</th>
+                    <th field="FormatterTypeName" width="80">格式化类型</th>
+                    <th field="FieldFormatter" width="80">显示格式</th>
+                    <th field="IsUserFieldName" width="80">用户字段</th>
+                    <th field="HideName" width="80">隐藏</th>
+                    <th field="StyleCss" width="120">字段样式</th>
+                    <th field="SortableName" width="80">允许排序</th>
+                    <th field="CreateTime" width="150">创建时间</th>
+                    <th field="UpdateTime" width="150">修改时间</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+<div id="dlg" style="max-width:650px;">
+
+    <form id="dlg-form">
+        <input type="hidden" id="id" name="id" />
+        <div id="dlg-div" class="dlg-div">
+
+            <div class="dlg-input-item">
+                <select id="listType" name="listType" class="easyui-combobox" label="所属列表<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="" selected>==请选择==</option>
+                    @foreach (var item in listTypes)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="tableCode" name="tableCode" class="easyui-combobox" label="所属表<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;">
+                    <option value="" selected>==请选择==</option>
+                    @foreach (var table in tableList)
+                    {
+                        <option value="@table.Code">@table.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="fieldCode" name="fieldCode" class="easyui-combobox" label="所属字段<span class='font-red'>*</span>:" required="true"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                        style="width:300px;"></select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="titleName" name="titleName" label="列名称<span class='font-red'>*</span>:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:false"
+                       style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="styleWidth" name="styleWidth" label="列宽度<span class='font-red'>*</span>：" required="true"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',value:'100'"
+                       style="width:300px;">
+            </div>
+
+            <div class="dlg-input-item">
+                <select id="formatterType" name="formatterType" class="easyui-combobox" label="显示格式:"
+                        data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'" panelHeight="150"
+                        style="width:300px;">
+                    @{
+                        var formatter = QWF.Framework.MainServices.CreateWebAppServices.GetConfigServices().GetNodeItemsByCode("qwf.qcrm.fomattertype");
+                        <option value="">无</option>
+                        foreach (var f in formatter)
+                        {
+                            <option value="@f.Value">@f.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="fieldFormatter" name="fieldFormatter" label="格式化字段:"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px',multiline:false" 
+                       style="width:300px;">
+                <div class="dlg-form-desc">
+                    1.模板关键字,数据值=$qwf_value$ <br />
+                    2.日期格式：yyyy-MM-dd HH:mm:ss 表示 2019-10-01 13:11:30。<br />
+                    3.网址：http://www.baidu.com/id?=值  可以使用模板关键字替换; <br />
+                    4.货币格式：88,888,999.03 ￥，可以使用模板关键字替换，如 ;$qwf_value$￥ <br />
+                    5.小数：默认四舍五入，精确到小数点后2位，如需精确到4位则填写“4”;<br />
+                    6.百分比:如：56.78%，默认精确到小数点2位，如需要精确精确到4位请填写“4”; <br />
+                    7.QQ与邮箱：则无需输入任何内容，会直接显示QQ/邮箱直达链接;<br />
+                    8.账号类型：N个数字为一组并用空格隔开，便于阅读，默认4个一组;如：银行账号<br />
+                </div>
+            </div>
+           
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="styleCss" name="styleCss" label="字段样式：" 
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'"
+                       style="width:300px;">
+            </div>
+
+            <div id="createFieldDiv" class="dlg-input-item">
+                <input class="easyui-checkbox" id="hide" name="hide" label="隐藏字段:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+            <div class="dlg-form-desc">
+                1. 一般情况是将表单数据字典的数据、值、编码之类的隐藏。<br />
+                2. 当数据隐藏后对用户是不可见的，主要目的为进一步方便用户个性化配置界面。<br />
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="sortable" name="sortable" label="允许排序:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+            <div class="dlg-form-desc">
+                1. 允许排序：是指可以加入到“业务中心”的“排序”的选项中。 <br />
+                2. 一般是选择有意义的列表加入到排序的选项中。
+                <br />
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-checkbox" id="isUserField" name="isUserField" label="用户字段:" value="1"
+                       data-options="labelPosition:'before',labelAlign:'left',labelWidth:'100px'">
+            </div>
+            <div class="dlg-form-desc">
+                1. 用户字段通常是存储由谁创建的数据。如：创建人、拥有者等类型的字段 <br />
+                2. 主要用于“客户分类”查询条件配置。
+                <br />
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="QWebFramework/Js/jquery.min.1.12.4.js"></script>
+    <script src="QWebFramework/Js/EasyUI/1.6.9/jquery.easyui.min.js"></script>
+    <link href="QWebFramework/Js/EasyUI/1.6.9/themes/icon.css" rel="stylesheet" />
+    <link href="QWebFramework/Js/EasyUI/1.6.9/themes/material-teal/easyui.css" rel="stylesheet" />
+    <script src="QWebFramework/Js/EasyUI/1.6.9/locale/easyui-lang-zh_CN.js"></script>
+    <script src="QWebFramework/Js/jquery.form.js"></script>
+    <script src="QWebFramework/Js/jquery.json.2.2.js"></script>
+
+    <link href="QWebFramework/Css/qwf.main.css" rel="stylesheet" />
+    <script src="QWebFramework/Js/qwf.public.js"></script>
+    <script src="QWebFramework/Js/qwf.core.js"></script>
+    <script src="QWebFramework/Js/qwf.easyui.js"></script>
+    <script src="QWebFramework/Js/md5.js"></script>
+    <script type="text/javascript">
+        document.onkeydown = function (event) {
+            e = event ? event : (window.event ? window.event : null);
+            if (e.keyCode == 13) {
+                btnLogin();
+                return false;
+            }
+        }
+
+        $(function () {
+            initData();
+
+            $('#btnLogin').click(function () {
+                btnLogin();
+            });
+        });
+        function initData() {
+
+        }
+
+        //登录请求
+        function btnLogin() {
+            var param = {
+                userName: $('#userName').val(),
+                passWord: $('#passWord').val()
+            };
+            if (param.userName.length == 0) {
+                alertError('请填写用户名');
+                return false;
+            } else if (param.passWord.length == 0) {
+                alertError('请填写密码');
+                return false;
+            }
+            param.passWord = md5(param.passWord);
+            ajaxCore({
+                url: 'Account/Login',
+                data: param,
+                success: function (data) {
+                    if (data.Success) {
+                        window.location.href = 'Sales/Main';
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</head>
+
+<body class="qwf-login-body">
+    <div id="qwf-login">
+        <h1>
+            用户登录
+        </h1>
+        <div class="login-input">
+            账号：
+            <input type="text" name="userName" id="userName" />
+        </div>
+        <div class="login-input">
+            密码：
+            <input type="password" id="passWord" name="passWord" />
+        </div>
+        <div class="login-btn">
+            <input type="button" name="btnLogin" id="btnLogin" class="btn-login" value="登录" />
+            <span class="readme"></span>
+            <div class="login-bottom">
+                <span class="qwf-copyright">copyright</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

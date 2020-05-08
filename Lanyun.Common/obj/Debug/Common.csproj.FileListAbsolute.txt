@@ -1,0 +1,70 @@
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\Common\bin\Debug\Common.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\Common\bin\Debug\Common.pdb
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\Common\obj\Debug\ResolveAssemblyReference.cache
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\Common\obj\Debug\Common.dll
+E:\phoenix\SU\公司项目\浙江世达企业管理\SourceCode\Common\obj\Debug\Common.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\bin\Debug\Common.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\bin\Debug\Common.pdb
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\obj\Debug\ResolveAssemblyReference.cache
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\obj\Debug\Common.dll
+D:\程序\双宇MES 更新\SourceCode\SourceCode\Common\obj\Debug\Common.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\Common\bin\Debug\Common.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\Common\bin\Debug\Common.pdb
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\Common\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\Common\obj\Debug\Common.dll
+C:\Users\Administrator\Documents\Visual Studio 2008\Projects\SUMESSolution7.0\Common\obj\Debug\Common.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\Common\bin\Debug\Common.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\Common\bin\Debug\Common.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\Common\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\Common\obj\Debug\Common.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\SUMESSolution7.0\Common\obj\Debug\Common.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\Common\bin\Debug\Common.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\Common\bin\Debug\Common.pdb
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\Common\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\Common\obj\Debug\Common.dll
+C:\Users\Administrator\Desktop\project\MES_Source\trunk\MES_Code\ESMESSolution\Common\obj\Debug\Common.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\Common\bin\Debug\Common.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\Common\bin\Debug\Common.pdb
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\Common\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\Common\obj\Debug\Common.dll
+C:\Users\Administrator\Desktop\trunk\MES_Code\ESMESSolution\Common\obj\Debug\Common.pdb
+E:\MES_Source\MES_Code\ESMESSolution\Common\bin\Debug\Common.dll
+E:\MES_Source\MES_Code\ESMESSolution\Common\bin\Debug\Common.pdb
+E:\MES_Source\MES_Code\ESMESSolution\Common\obj\Debug\ResolveAssemblyReference.cache
+E:\MES_Source\MES_Code\ESMESSolution\Common\obj\Debug\Common.dll
+E:\MES_Source\MES_Code\ESMESSolution\Common\obj\Debug\Common.pdb
+D:\EAStar\01.世达钢管\Common\bin\Debug\Common.dll
+D:\EAStar\01.世达钢管\Common\bin\Debug\Common.pdb
+D:\EAStar\01.世达钢管\Common\obj\Debug\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管\Common\obj\Debug\Common.dll
+D:\EAStar\01.世达钢管\Common\obj\Debug\Common.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\Common\bin\Debug\Common.dll
+D:\EAStar\01.世达钢管 - 外币修改版\Common\bin\Debug\Common.pdb
+D:\EAStar\01.世达钢管 - 外币修改版\Common\obj\Debug\ResolveAssemblyReference.cache
+D:\EAStar\01.世达钢管 - 外币修改版\Common\obj\Debug\Common.dll
+D:\EAStar\01.世达钢管 - 外币修改版\Common\obj\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\bin\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\bin\Debug\Common.pdb
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\Debug\Common.dll
+G:\C# Project\00.EASTAR.Net4.0_VS2012\Common\obj\Debug\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\Debug\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\bin\Debug\Common.pdb
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\Debug\Common.dll
+E:\C# Project\VS2015 Program\U8Ext\Common\obj\Debug\Common.pdb
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\Common.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\Common.pdb
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\microsoft.office.interop.excel.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\NPOI.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\NPOI.OOXML.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\office.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\Microsoft.Vbe.Interop.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\NPOI.OpenXml4Net.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\stdole.dll
+E:\Project\C# Project\00.Modules\Client\Common\bin\Debug\NPOI.xml
+E:\Project\C# Project\00.Modules\Client\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Project\C# Project\00.Modules\Client\Common\obj\Debug\Common.dll
+E:\Project\C# Project\00.Modules\Client\Common\obj\Debug\Common.pdb

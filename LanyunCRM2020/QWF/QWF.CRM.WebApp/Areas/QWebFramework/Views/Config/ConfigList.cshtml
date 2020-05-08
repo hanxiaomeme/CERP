@@ -1,0 +1,333 @@
+﻿@{
+    ViewBag.Title = "系统配置表";
+}
+
+@section script{
+
+    <script type="text/javascript">
+        window.onresize = function () {
+            $('#form1').layout('resize');
+        }
+
+        $(document).ready(function () {
+            $('#tb-edit').hide();
+            getConfigTree(0);
+        });
+
+        function getConfigTree(parentId) {
+            $('#configTree').tree({
+                url: '@Url.Content("~/QWebFramework/Config/GetConfigTree")',
+                onClick: function (node) {
+                    if (parseInt(node.id) > 0) {
+                        $('#tb-edit').show();
+                        loadEditConfigInfo(node.id);
+                    }
+                },
+                onLoadSuccess: function (node, data) {
+                    var node = $('#configTree').tree('find', parentId);
+                    if (node != null) {
+                        $('#configTree').tree('expandTo', node.target).tree('select', node.target);
+                    }
+                },
+                onContextMenu: function (e, node) {
+                    e.preventDefault();
+                    if (node != null) {
+                        $(this).tree('select', node.target);
+                        $('#mm').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                }
+            });
+        }
+
+        function combotreeLoad() {
+            $('#combotreeConfig').combotree({
+                url: '@Url.Content("~/QWebFramework/Config/GetConfigTree")'
+            });
+
+        }
+        //加载编辑数据
+        function loadEditConfigInfo(configId) {
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Config/GetConfigInfo")',
+                data: { configId: configId },
+                success: function (res) {
+                    if (res.Success) {
+                        combotreeLoad();
+                        var data = res.Data;
+                        if (parseInt(data.ParentId) > 0) {
+                            $('#combotreeConfig').combotree('setValue', data.ParentId);
+                            $('#hidOldParentId').val(data.ParentId);
+                        } else {
+                            $('#combotreeConfig').combotree('setValue', data.ConfigId);
+                            $('#hidOldParentId').val(data.ConfigId);
+                        }
+
+                        $('#hidConfigId').val(data.ConfigId);
+                        $('#spanConfigId').text(data.ConfigId);
+                        $('#txtConfigValue').val(data.ConfigValue);
+                        $('#txtConfigName').val(data.ConfigName);
+                        $('#txtConfigResourceCode').val(data.ConfigResourceCode);
+                        $('input[name=valType]').each(function () {
+                            if ($(this).val() == data.ValueType) {
+                                $(this).attr('checked', true);
+                            }
+                        });
+                        $('#txtConfigRemarks').val(data.Remarks);
+                    }
+                }
+            });
+        }
+
+        function openAddDialog(isParentNode) {
+            if (isParentNode) {
+                $('#hidAddParentId').val('0');
+                $('#spanParentName').text('顶级节点');
+            }
+            else {
+                var node = $('#configTree').tree('getSelected');
+                if (node) {
+                    $('#hidAddParentId').val(node.id);
+                    $('#spanParentName').text(node.text);
+
+                } else {
+                    qwf.alertError('请选择左侧所属的节点');
+                    return false;
+                }
+            }
+            $('#addDialog').dialog('open');
+        }
+
+        function addConfig() {
+            var params = {
+                parentId: $('#hidAddParentId').val(),
+                configName: $('#txtAddConfigName').val()
+            }
+            if (params.configName == '') {
+                alertError('填写节点名称');
+                return false;
+            }
+            $('#addDialog').dialog('close');
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Config/AddConfig")',
+                data: params,
+                success: function (res) {
+                    if (res.Success) {
+                        getConfigTree(res.Data.ConfigId);
+                        loadEditConfigInfo(res.Data.ConfigId);
+                    }
+                }
+            })
+            return false;
+        }
+
+        function editConfig() {
+            var params = {
+                oldParentId: $('#hidOldParentId').val(),
+                parentId: $('#combotreeConfig').combotree('getValue'),
+                configId: $('#hidConfigId').val(),
+                configName: $('#txtConfigName').val(),
+                configResourceCode: $('#txtConfigResourceCode').val(),
+                configValue: $('#txtConfigValue').val(),
+                remarks: $('#txtConfigRemarks').val(),
+                valueType: $('input[name=valType]:checked').val()
+            };
+            if (params.parentId == '0') {
+                alertError("请选择所属节点");
+                return false;
+            } else if (params.configName == '') {
+                alertError('节点名称不能为空');
+                return false;
+            }
+
+            ajaxCore({
+                url:  '@Url.Content("~/QWebFramework/Config/EditConfig")',//'EditConfigInfo',
+                data: params,
+                success: function (res) {
+                    if (res.Success) {
+                        getConfigTree(params.configId);
+                        loadEditConfigInfo(params.configId);
+                        alertInfo('保存成功!');
+                    }
+                }
+            });
+            return false;
+        }
+
+        function delConfig() {
+            var node = $('#configTree').tree('getSelected');
+            var msg = '确定要删除【 ' + node.text + '】的节点吗?'
+            $.messager.confirm('删除确认框', msg, function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Config/DelConfig")',//
+                        data: { configId: node.id },
+                        success: function (res) {
+                            if (res.Success) {
+                                $('#tb-edit').hide();
+                                getConfigTree();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function hiddenNode() {
+            var node = $('#configTree').tree('getSelected');
+            var msg = '确定要隐藏[ ' + node.text + ' ]的节点吗?'
+
+            $.messager.confirm('隐藏确认框', msg, function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Config/HiddenConfig")',
+                        data: { configId: node.id },
+                        success: function (res) {
+                            if (res.Success) {
+                                getConfigTree();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function showNode() {
+            var node = $('#configTree').tree('getSelected');
+            var msg = '确定要显示[ ' + node.text + ' ]的节点吗?'
+
+            $.messager.confirm('显示确认框', msg, function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Config/ShowConfig")',
+                        data: { configId: node.id },
+                        success: function (res) {
+                            if (res.Success) {
+                                getConfigTree();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+    </script>
+}
+
+<body>
+    <form id="form1" class="easyui-layout">
+        <div data-options="region:'west',split:true,border:true" title="系统配置节点" style="width:300px; ">
+            <div class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="openAddDialog(true);">创建根节点</a>
+                <a href="@Url.Content("~/QWebFramework/Config/ConfigSort")" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">排序</a>
+            </div>
+            <ul id="configTree" class="easyui-tree" lines="true"></ul>
+        </div>
+
+        <div data-options="region:'center',title:'编辑配置节点',border:true">
+            <div class="qwf-topbar">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'" onclick="openAddDialog(false);">新增子节点</a>
+            </div>
+            <table width="500" border="0" cellpadding="5" cellspacing="0" class="qwf-tb" id="tb-edit">
+                <tr>
+                    <td width="120" scope="row">
+                        所属节点：
+                    </td>
+                    <td>
+                        <input id="combotreeConfig" class="easyui-combotree" style="width:300px;" /><span class="qwf-font-red">*</span>
+                        <input type="hidden" id="hidOldParentId" name="hidOldParentId" value="" />
+                        <input type="hidden" id="hidConfigId" name="hidConfigId" value="" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>节点ID：</td>
+                    <td>
+                        <span id="spanConfigId" class="qwf-font-red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>节点名称：</td>
+                    <td>
+                        <input type="text" name="txtConfigName" id="txtConfigName" size="50" /><span class="qwf-font-red">*</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>节点代码：</td>
+                    <td>
+                        <input type="text" name="txtConfigResourceCode" id="txtConfigResourceCode" size="50" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>节点值：</td>
+                    <td>
+                        <textarea id="txtConfigValue" name="txtConfigValue" cols="50" rows="8"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>节点类型：</td>
+                    <td>
+                        <input type="radio" name="valType" value="number" /> 数字
+                        <input type="radio" name="valType" value="string" />字符
+                        <input type="radio" name="valType" value="json" />JSON
+                        <input type="radio" name="valType" value="xml" />XML
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>备注：</td>
+                    <td>
+                        <textarea id="txtConfigRemarks" name="txtConfigRemarks" cols="50" rows="3"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td align="center">
+                        <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="width:80px" onclick="editConfig();">保存</a>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div id="mm" class="easyui-menu" style="width:120px;">
+            <div onclick="openAddDialog()" data-options="iconCls:'icon-add'">新增子节点</div>
+            <div onclick="delConfig()" data-options="iconCls:'icon-remove'">删除节点</div>
+            <div class="menu-sep"></div>
+            <div onclick="hiddenNode()">隐藏节点</div>
+            <div onclick="showNode()">显示节点</div>
+            <div class="menu-sep"></div>
+        </div>
+
+        <!-- add node  -->
+        <div id="addDialog" class="easyui-dialog" title="新增节点" style="width:350px;height:200px;" data-options="resizable:true,modal:true,closed:true,buttons:'#dlg-buttons-add'">
+            <table width="100%" border="0" cellpadding="5" cellspacing="5" class="qwf-tb">
+                <tr>
+                    <td width="120" scope="row">上级节点：</td>
+                    <td>
+                        <span id="spanParentName" class="qwf-font-red"></span>
+                        <input type="hidden" name="hidAddParentId" id="hidAddParentId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>节点名称：</td>
+                    <td>
+                        <input type="text" name="txtAddConfigName" id="txtAddConfigName" /><span class="qwf.font-red">*</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dlg-buttons-add" class="qwf-win-footerbar2">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:addConfig();">保存</a>
+        </div>
+
+    </form>
+
+</body>

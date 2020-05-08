@@ -1,0 +1,230 @@
+﻿
+@{
+    ViewBag.Title = "序列号管理";
+}
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+        function init() {
+            loaddg();
+            initDialog();
+        }
+
+        ///获取角色组
+        function loaddg() {
+            var params = {
+                qrySeqName: $('#qrySeqName').val()
+            };
+
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/Seq/List")',
+                title: '序列号管理',
+                singleSelect: true,
+                onDblClickRow: function (index, row) {
+                    openEditWindows(row);
+                },
+                queryParams: params
+            });
+        }
+        //初始化弹窗
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '序列号管理',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        save();
+                    }
+                }
+                ]
+            });
+        }
+        ///打开弹窗
+        function add() {
+            $('#dlg').dialog('open');
+            resetForm();
+
+        }
+        function edit() {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择要编辑的序列号或双击要编辑的行');
+                return false;
+            } else {
+                openEditWindows(row);
+            }
+        }
+
+        function openEditWindows(row) {
+            if (!row) {
+                alertError('请选择要编辑的序列号！');
+                return false;
+            } else {
+                console.log(row);
+                $('#dlg').dialog('open');
+
+                $('#id').val(row.Code);
+
+                $('#code').textbox({ disabled: true });
+                $('#code').textbox('setValue', row.Code);
+
+                $('#name').textbox('setValue', row.Name);
+                $('#prefix').textbox('setValue', row.Prefix);
+                $('#dateFormart').textbox('setValue', row.DateFormart);
+                $('#serialLength').textbox('setValue', row.SerialLength);
+            }
+        }
+
+        /**/
+        function btnOrders(type) {
+            var row = $('#dg').datagrid('getSelected');
+            if (!row) {
+                alertError('请选择一条记录');
+                return false;
+            }
+
+            $.messager.confirm('操作确认框', '删除数据,数据不可恢复！', function (r) {
+                if (r) {
+                    ajaxCore({
+                        url: '@Url.Content("~/QWebFramework/Seq/Delete")',
+                        data: { code: row.Code },
+                        success: function (res) {
+                            if (res.Success) {
+                                loaddg();
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
+
+        function resetForm() {
+            $('#code').textbox({ disabled: false });
+            $('#dlg-from').form('clear');
+        }
+
+        function save() {
+            var form = $('#dlg-form');
+            var obj = form.serializeJSON();
+
+            if (obj.id == '') {
+                if (obj.code == undefined || obj.code == null || obj.code == '') {
+                    alertError('请填写编号');
+                    return false;
+                }
+            }
+
+            if (obj.name == undefined || obj.name == null || obj.name == '') {
+                alertError('请填写名称');
+                return false;
+            }
+            if (obj.prefix == undefined || obj.prefix == null || obj.prefix == '') {
+                alertError('请填写序列前缀');
+                return false;
+            }
+            if (obj.dateFormart == undefined || obj.dateFormart == null || obj.dateFormart == '') {
+                alertError('请填写日期格式');
+                return false;
+            }
+            if (obj.serialLength == undefined || obj.serialLength == null || obj.serialLength == '') {
+                alertError('请填写流水号长度');
+                return false;
+            }
+
+            ajaxCore({
+                url: '@Url.Content("~/QWebFramework/Seq/Save")',
+                data: form.serialize(),
+                success: function (res) {
+                    if (res.Success) {
+                        alertInfo('保存成功!');
+                        loaddg();
+                    }
+                }
+            });
+        }
+    </script>
+}
+
+<body>
+
+    <form id="mainForm" name="mainForm" method="post">
+
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3">
+                    <tr>
+                        <td>
+                            名称:<input id="qrySeqName" name="qrySeqName" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width: 80px" onclick="add();">新增</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" style="width: 80px" onclick="edit();">编辑</a>
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" style="width: 80px" onclick="btnOrders('del');">删除</a>
+            </div>
+        </div>
+
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th data-options="field:'Id',checkbox:true"></th>
+                    <th field="Code" width="180">编号</th>
+                    <th field="Name" width="120">名称</th>
+                    <th field="Prefix" width="80">序列前缀</th>
+                    <th field="DateFormart" width="100">日期格式</th>
+                    <th field="SerialLength" width="80">流水号长度</th>
+                    <th field="CurrentNumber" width="100">当前序列数</th>
+                </tr>
+            </thead>
+        </table>
+
+    </form>
+</body>
+
+
+<div id="dlg" style="max-width:550px;">
+    <form id="dlg-form">
+        <input type="hidden" name="id" id="id" />
+        <div id="dlg-div" class="dlg-div">
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="code" name="code" label="编号:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:300px">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="name" name="name" label="名称:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="prefix" name="prefix" label="前缀:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:200px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="dateFormart" name="dateFormart" label="日期格式:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:300px;">
+            </div>
+            <div class="dlg-input-item">
+                <input class="easyui-textbox" id="serialLength" name="serialLength" label="流水长度:" required="true"
+                       data-options="labelPosition:'before',labelAlign:'right',labelWidth:'100px'" style="width:200px;">
+            </div>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "应用程序日志";
+    var dirs = (List<string>)ViewBag.Dirs;
+}
+
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loaddg();
+            initDialog();
+        });
+        function initDialog() {
+            $('#dlg').dialog({
+                width: '80%',
+                height: '80%',
+                title: '查看日志',
+                iconCls: 'icon-save',
+                closed: true,
+                maximizable: true,
+                modal: true,
+                onResize: function () {
+                    $(this).dialog('center');
+                }
+            });
+        }
+        function loaddg() {
+            var qryParam = $('#qryForm').serializeJSON();
+            $('#dg').qwfDataGrid({
+                url: '@Url.Content("~/QWebFramework/Logs/GetAppLogList")',
+                title: '应用程序日志',
+                singleSelect: true,
+                queryParams: qryParam,
+                onDblClickRow: function (index, row) {
+                    if (parseFloat(row.FileSize) > 1000 * 10.0) {
+                        alertError('日志文件过大，请选择其它方式查看');
+                        return false;
+                    } else {
+                        openLogWindows(row);
+                    }
+                }
+            });
+        }
+
+        function openLogWindows(row) {
+            $('#dlg').dialog('open');
+            var url = '@Url.Content("~/QWebFramework/Logs/ReadAppContent")' + "?filename=" + row.FileName +"&filedir=" + row.FileDir;
+            $('#dlg').dialog('refresh', url);
+        }
+    </script>
+}
+<body>
+    <form id="qryForm">
+        <div id="tb">
+            <div class="qwf-searchbar" style="padding: 10px">
+                <table width="100%" border="0" cellspacing="5" cellpadding="3">
+                    <tr>
+                        <td>
+                            日志模块:<select id="qryDir" name="qryDir"  class="easyui-combobox" style="width:200px">
+                                @foreach (var dir in dirs)
+                                {
+                                    <option value="@dir">@dir</option>
+                                }
+                            </select>
+
+                        </td>
+                        <td>
+                            开始时间:
+                            <input id="qryBeginTime" name="qryBeginTime" class="easyui-datebox" size="10" />
+                            ~<input id="qryEndTime" name="qryEndTime" class="easyui-datebox" size="10" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="toolbar" style="padding: 3px">
+                <a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 80px" onclick="loaddg();">查询</a>
+            </div>
+        </div>
+        <table id="dg">
+            <thead>
+                <tr>
+                    <th field="FileDir" width="120">目录</th>
+                    <th field="FileName" width="200">文件名称</th>
+                    <th field="FileSize" width="100">文件大小(KB)</th>
+                    <th field="LastTime" width="130">更新时间</th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+    <div id="dlg">
+
+    </div>
+
+</body>
